@@ -1,0 +1,126 @@
+<?xml version="1.0" ?>
+<article xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xml:lang="ja" version="5.0">
+  <info>
+    <title>&lt;boost/xpressive/regex_actions.hpp&gt; ヘッダ</title>
+    <copyright>
+      <year>2008</year>
+      <holder>Eric Niebler</holder>
+    </copyright>
+  </info>
+
+  <para>
+    xpressive におけるアクション式の構文要素がある。
+  </para>
+
+  <synopsis language="C++">BOOST_PROTO_LOCAL_MACRO(N, typename_A, A_const_ref, A_const_ref_a, a)
+BOOST_PROTO_LOCAL_a
+BOOST_PROTO_LOCAL_LIMITS
+namespace boost {
+  namespace xpressive {
+    template&lt;typename Fun&gt; struct function;
+    template&lt;typename T&gt; struct value;
+    template&lt;typename T&gt; struct reference;
+    template&lt;typename T&gt; struct local;
+    template&lt;typename T, int I, typename Dummy&gt; struct placeholder;
+
+    function&lt; op::at &gt;::type const at;
+    function&lt; op::push &gt;::type const push;
+    function&lt; op::push_back &gt;::type const push_back;
+    function&lt; op::push_front &gt;::type const push_front;
+    function&lt; op::pop &gt;::type const pop;
+    function&lt; op::pop_back &gt;::type const pop_back;
+    function&lt; op::pop_front &gt;::type const pop_front;
+    function&lt; op::top &gt;::type const top;
+    function&lt; op::back &gt;::type const back;
+    function&lt; op::front &gt;::type const front;
+    function&lt; op::first &gt;::type const first;
+    function&lt; op::second &gt;::type const second;
+    function&lt; op::matched &gt;::type const matched;
+    function&lt; op::length &gt;::type const length;
+    function&lt; op::str &gt;::type const str;
+    function&lt; op::insert &gt;::type const insert;
+    function&lt; op::make_pair &gt;::type const make_pair;
+    unspecified check;
+    unspecified let;
+    template&lt;typename X2_0, typename A0&gt; unspecified as(A0 const &amp;);
+    template&lt;typename X2_0, typename A0&gt; unspecified static_cast_(A0 const &amp;);
+    template&lt;typename X2_0, typename A0&gt; unspecified dynamic_cast_(A0 const &amp;);
+    template&lt;typename X2_0, typename A0&gt; unspecified const_cast_(A0 const &amp;);
+    template&lt;typename T&gt; value&lt; T &gt; const val(T const &amp;);
+    template&lt;typename T&gt; reference&lt; T &gt; const ref(T &amp;);
+    template&lt;typename T&gt; reference&lt; T const  &gt; const cref(T const &amp;);
+    namespace op {
+      struct push;
+      struct push_back;
+      struct push_front;
+      struct pop;
+      struct pop_back;
+      struct pop_front;
+      struct front;
+      struct back;
+      struct top;
+      struct first;
+      struct second;
+      struct matched;
+      struct length;
+      struct str;
+      struct insert;
+      struct make_pair;
+      template&lt;typename T&gt; struct as;
+      template&lt;typename T&gt; struct static_cast_;
+      template&lt;typename T&gt; struct dynamic_cast_;
+      template&lt;typename T&gt; struct const_cast_;
+      template&lt;typename T&gt; struct construct;
+      template&lt;typename Except&gt; struct throw_;
+    }
+  }
+}</synopsis>
+
+  <para>
+    （訳注）以下の実体を省略しました。
+  </para>
+  <itemizedlist>
+    <listitem>
+      <para>マクロ：BOOST_PROTO_LOCAL_MACRO 、BOOST_PROTO_LOCAL_a 、BOOST_PROTO_LOCAL_LIMITS</para>
+    </listitem>
+    <listitem>
+      <para>構造体テンプレート：function 、value 、local 、as 、static_cast_ 、dynamic_cast_ 、const_cast_ 、construct 、throw_</para>
+    </listitem>
+    <listitem>
+      <para>グローバル定数：at 、push 、push_back 、push_front 、pop 、pop_back 、pop_front 、top、back 、front 、first 、second、matched 、length 、str 、insert 、make_pair</para>
+    </listitem>
+    <listitem>
+      <para>グローバル変数：check 、let</para>
+    </listitem>
+    <listitem>
+      <para>関数テンプレート：as（<code language="C++">lexical_cast</code> のようなもの）、static_cast_ 、dynamic_cast_ 、const_cast_ 、val 、ref 、cref</para>
+    </listitem>
+    <listitem>
+      <para>構造体：push 、push_back 、push_front 、pop 、pop_back 、pop_front 、front 、back 、top 、first 、second 、matched 、length 、str 、insert 、make_pair</para>
+    </listitem>
+  </itemizedlist>
+  
+  <section>
+    <title>placeholder 構造体テンプレート</title>
+    <para>boost::xpressive::placeholder。</para>
+
+    <section>
+      <title>書式</title>
+      <synopsis language="C++">// ヘッダ：&lt;boost/xpressive/regex_actions.hpp&gt;
+
+template&lt;typename T, int I, typename Dummy&gt;
+struct placeholder {
+  // 型
+  typedef placeholder&lt; T, I, Dummy &gt; this_type;      
+  typedef unspecified                action_arg_type;
+};</synopsis>
+    </section>
+
+    <section>
+      <title>説明</title>
+      <para>
+	<classname>placeholder&lt;T&gt;</classname> は、意味アクションにおいて型 <type>T</type> の変数情報を表すプレースホルダを定義するのに使用する。
+      </para>
+    </section>
+  </section>
+</article>

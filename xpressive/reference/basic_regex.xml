@@ -1,0 +1,334 @@
+<?xml version="1.0" ?>
+<article xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xml:lang="ja" version="5.0">
+  <info>
+    <title>&lt;boost/xpressive/basic_regex.hpp&gt; ヘッダ</title>
+    <copyright>
+      <year>2008</year>
+      <holder>Eric Niebler</holder>
+    </copyright>
+  </info>
+
+  <para>
+    <classname>basic_regex&lt;&gt;</classname> クラステンプレートの定義と、関連するヘルパ関数がある。
+  </para>
+  <programlisting language="C++">namespace boost {
+  namespace xpressive {
+    template&lt;typename BidiIter&gt; struct basic_regex;
+    template&lt;typename BidiIter&gt;
+      void swap(basic_regex&lt; BidiIter &gt; &amp;, basic_regex&lt; BidiIter &gt; &amp;);
+  }
+}</programlisting>
+
+  <section>
+    <title>basic_regex 構造体テンプレート</title>
+    <para>
+      boost::xpressive::basic_regex — <classname>basic_regex&lt;&gt;</classname> クラステンプレートはコンパイル済み正規表現を保持するクラスである。
+    </para>
+
+    <section>
+      <title>書式</title>
+      <synopsis language="C++">// ヘッダ：&lt;boost/xpressive/basic_regex.hpp&gt;
+
+template&lt;typename BidiIter&gt;
+struct basic_regex {
+  // 型
+  typedef BidiIter                            iterator_type;
+  typedef iterator_value&lt; BidiIter &gt;::type    char_type;
+  typedef iterator_value&lt; BidiIter &gt;::type    value_type;
+  typedef unspecified                         string_type;
+  typedef regex_constants::syntax_option_type flag_type;
+
+  // 構築、コピー、解体
+  basic_regex();
+  basic_regex(basic_regex&lt; BidiIter &gt; const &amp;);
+  template&lt;typename Expr&gt; basic_regex(Expr const &amp;);
+  basic_regex&lt; BidiIter &gt;&amp; operator=(basic_regex&lt; BidiIter &gt; const &amp;);
+  template&lt;typename Expr&gt; basic_regex&lt; BidiIter &gt;&amp; operator=(Expr const &amp;);
+
+  // 公開メンバ関数
+  std::size_t mark_count() const;
+  regex_id_type regex_id() const;
+  void swap(basic_regex&lt; BidiIter &gt; &amp;);
+
+  // 公開静的メンバ関数
+  template&lt;typename InputIter&gt; 
+    static basic_regex&lt; BidiIter &gt; 
+    compile(InputIter, InputIter, flag_type = regex_constants::ECMAScript);
+  template&lt;typename InputRange&gt; 
+    static basic_regex&lt; BidiIter &gt; 
+    compile(InputRange const &amp;, flag_type = regex_constants::ECMAScript);
+  static basic_regex&lt; BidiIter &gt; 
+  compile(char_type const *, flag_type = regex_constants::ECMAScript);
+  static basic_regex&lt; BidiIter &gt; 
+  compile(char_type const *, std::size_t, flag_type);
+  static regex_constants::syntax_option_type const ECMAScript;
+  static regex_constants::syntax_option_type const icase;
+  static regex_constants::syntax_option_type const nosubs;
+  static regex_constants::syntax_option_type const optimize;
+  static regex_constants::syntax_option_type const collate;
+  static regex_constants::syntax_option_type const single_line;
+  static regex_constants::syntax_option_type const not_dot_null;
+  static regex_constants::syntax_option_type const not_dot_newline;
+  static regex_constants::syntax_option_type const ignore_white_space;
+};</synopsis>
+    </section>
+
+    <section>
+      <title>説明</title>
+
+      <section>
+	<title>basic_regex 構築、コピー、解体の公開演算</title>
+	<orderedlist>
+	  <listitem>
+	    <synopsis language="C++">basic_regex();</synopsis>
+	    <informaltable>
+	      <tr>
+		<th>事後条件：</th>
+		<td><code language="C++">regex_id() == 0</code></td>
+	      </tr>
+	      <tr>
+		<th>事後条件：</th>
+		<td><code language="C++">mark_count() == 0</code></td>
+	      </tr>
+	    </informaltable>
+	  </listitem>
+
+	  <listitem>
+	    <synopsis language="C++">basic_regex(basic_regex&lt; BidiIter &gt; const &amp; that);</synopsis>
+	    <informaltable>
+	      <tr>
+		<th>引数：</th>
+		<td><parameter class="function">that</parameter></td>
+		<td>コピーする <classname>basic_regex</classname> オブジェクト。</td>
+	      </tr>
+	      <tr>
+		<th>事後条件：</th>
+		<td colspan="2"><code language="C++">regex_id() == that.regex_id()</code></td>
+	      </tr>
+	      <tr>
+		<th>事後条件：</th>
+		<td colspan="2"><code language="C++">mark_count() == that.mark_count()</code></td>
+	      </tr>
+	    </informaltable>
+	  </listitem>
+
+	  <listitem>
+	    <synopsis language="C++">template&lt;typename Expr&gt; basic_regex(Expr const &amp; expr);</synopsis>
+	    <para>静的正規表現から構築する。</para>
+	    <informaltable>
+	      <tr>
+		<th>引数：</th>
+		<td><parameter class="function">expr</parameter></td>
+		<td>静的正規表現。</td>
+	      </tr>
+	      <tr>
+		<th>要件：</th>
+		<td colspan="2"><parameter>Expr</parameter> は静的正規表現の型。</td>
+	      </tr>
+	      <tr>
+		<th>事後条件：</th>
+		<td colspan="2"><code language="C++">regex_id() != 0</code></td>
+	      </tr>
+	      <tr>
+		<th>事後条件：</th>
+		<td colspan="2"><code language="C++">mark_count() >= 0</code></td>
+	      </tr>
+	    </informaltable>
+	  </listitem>
+
+	  <listitem>
+	    <synopsis language="C++">basic_regex&lt; BidiIter &gt;&amp; operator=(basic_regex&lt; BidiIter &gt; const &amp; that);</synopsis>
+	    <informaltable>
+	      <tr>
+		<th>引数：</th>
+		<td><parameter class="function">that</parameter></td>
+		<td>コピーする <classname>basic_regex</classname> オブジェクト。</td>
+	      </tr>
+	      <tr>
+		<th>事後条件：</th>
+		<td colspan="2"><code language="C++">regex_id() == that.regex_id()</code></td>
+	      </tr>
+	      <tr>
+		<th>事後条件：</th>
+		<td colspan="2"><code language="C++">mark_count() == that.mark_count()</code></td>
+	      </tr>
+	      <tr>
+		<th>戻り値：</th>
+		<td colspan="2"><returnvalue>*this</returnvalue></td>
+	      </tr>
+	    </informaltable>
+	  </listitem>
+
+	  <listitem>
+	    <synopsis language="C++">template&lt;typename Expr&gt; basic_regex&lt; BidiIter &gt;&amp; operator=(Expr const &amp; expr);</synopsis>
+	    <para>静的正規表現から構築する。</para>
+	    <informaltable>
+	      <tr>
+		<th>引数：</th>
+		<td><parameter class="function">expr</parameter></td>
+		<td>静的正規表現。</td>
+	      </tr>
+	      <tr>
+		<th>要件：</th>
+		<td colspan="2"><parameter>Expr</parameter> は静的正規表現の型。</td>
+	      </tr>
+	      <tr>
+		<th>事後条件：</th>
+		<td colspan="2"><code language="C++">regex_id() != 0</code></td>
+	      </tr>
+	      <tr>
+		<th>事後条件：</th>
+		<td colspan="2"><code language="C++">mark_count() >= 0</code></td>
+	      </tr>
+	      <tr>
+		<th>戻り値：</th>
+		<td colspan="2"><returnvalue>*this</returnvalue></td>
+	      </tr>
+	      <tr>
+		<th>例外：</th>
+		<td colspan="2">メモリ不足のとき <exceptionname>std::bad_alloc</exceptionname></td>
+	      </tr>
+	    </informaltable>
+	  </listitem>
+	</orderedlist>
+      </section>
+
+      <section>
+	<title>basic_regex の公開メンバ関数</title>
+	<orderedlist>
+	  <listitem>
+	    <synopsis language="C++">std::size_t mark_count() const;</synopsis>
+	    <para>この正規表現内の捕捉済み部分式の数を返す。</para>
+	  </listitem>
+
+	  <listitem>
+	    <synopsis language="C++">regex_id_type regex_id() const;</synopsis>
+	    <para>この正規表現を一意に識別するトークンを返す。</para>
+	  </listitem>
+
+	  <listitem>
+	    <synopsis language="C++">void swap(basic_regex&lt; BidiIter &gt; &amp; that);</synopsis>
+	    <para>この <classname>basic_regex</classname> オブジェクトの内容を別のものと交換する。</para>
+	    <note>
+	      <para>
+		参照まで追跡しない浅い交換である。<classname>basic_regex</classname> オブジェクトを参照により別の正規表現に組み込み、他の <classname>basic_regex</classname> オブジェクトと内容を交換すると、外側の正規表現からはこの変更を検出できない。これは <methodname>swap()</methodname> が例外を送出できないためである。
+	      </para>
+	    </note>
+	    <informaltable>
+	      <tr>
+		<th>引数：</th>
+		<td><parameter class="function">that</parameter></td>
+		<td>他の <classname>basic_regex</classname> オブジェクト。</td>
+	      </tr>
+	      <tr>
+		<th>例外：</th>
+		<td colspan="2">例外を送出しない。</td>
+	      </tr>
+	    </informaltable>
+	  </listitem>
+	</orderedlist>
+      </section>
+
+      <section>
+	<title>basic_regex の公開静的メンバ関数</title>
+	<orderedlist>
+	  <listitem>
+	    <synopsis language="C++">template&lt;typename InputIter&gt;
+  static basic_regex&lt; BidiIter &gt;
+  compile(InputIter begin, InputIter end, 
+          flag_type flags = regex_constants::ECMAScript);</synopsis>
+	    <para>文字の範囲から正規表現オブジェクトを構築するファクトリメソッド。<code language="C++">regex_compiler&lt; BidiIter &gt;().compile(begin, end, flags);</code> と等価。</para>
+	    <informaltable>
+	      <tr>
+		<th rowspan="3">引数：</th>
+		<td><parameter class="function">begin</parameter></td>
+		<td>コンパイルする正規表現を表す文字範囲の先頭。</td>
+	      </tr>
+	      <tr>
+		<td><parameter class="function">end</parameter></td>
+		<td>コンパイルする正規表現を表す文字範囲の終端。</td>
+	      </tr>
+	      <tr>
+		<td><parameter class="function">flags</parameter></td>
+		<td>文字列をどのように解釈するかを指定する省略可能なビットマスク（<type role="enum">syntax_option_type</type> を見よ）。</td>
+	      </tr>
+	      <tr>
+		<th>要件：</th>
+		<td colspan="2"><code>[begin, end)</code> が有効な範囲である。<code>[begin, end)</code> で指定した文字の範囲が正規表現の有効な文字列表現である。</td>
+	      </tr>
+	      <tr>
+		<th>戻り値：</th>
+		<td colspan="2">文字の範囲が表す正規表現に相当する <classname>basic_regex</classname> オブジェクト。</td>
+	      </tr>
+	      <tr>
+		<th>例外：</th>
+		<td colspan="2"><exceptionname>regex_error</exceptionname></td>
+	      </tr>
+	    </informaltable>
+	  </listitem>
+
+	  <listitem>
+	    <synopsis language="C++">template&lt;typename InputRange&gt;
+  static basic_regex&lt; BidiIter &gt;
+  compile(InputRange const &amp; pat,
+          flag_type flags = regex_constants::ECMAScript);</synopsis>
+	    <para>利便性のためのメンバ関数多重定義。上記関数と受け取る引数が異なるのみ。</para>
+	  </listitem>
+
+	  <listitem>
+	    <synopsis language="C++">static basic_regex&lt; BidiIter &gt;
+compile(char_type const * begin, 
+        flag_type flags = regex_constants::ECMAScript);</synopsis>
+	    <para>利便性のためのメンバ関数多重定義。上記関数と受け取る引数が異なるのみ。</para>
+	  </listitem>
+
+	  <listitem>
+	    <synopsis language="C++">static basic_regex&lt; BidiIter &gt;
+compile(char_type const * begin, std::size_t len, flag_type flags);</synopsis>
+	    <para>利便性のためのメンバ関数多重定義。上記関数と受け取る引数が異なるのみ。</para>
+	  </listitem>
+	</orderedlist>
+      </section>
+    </section>
+  </section>
+
+  <section>
+    <title>swap 関数テンプレート</title>
+    <para>
+      boost::xpressive::swap – 2 つの <classname linkend="basic_regex">basic_regex</classname> オブジェクトの内容を交換する。
+    </para>
+
+    <section>
+      <title>書式</title>
+      <synopsis language="C++">// ヘッダ：&lt;boost/xpressive/basic_regex.hpp&gt;
+
+
+template&lt;typename BidiIter&gt;
+  void swap(basic_regex&lt; BidiIter &gt; &amp; left, basic_regex&lt; BidiIter &gt; &amp; right);</synopsis>
+    </section>
+
+    <section>
+      <title>説明</title>
+      <note>
+	<para>
+	  参照まで追跡しない浅い交換である。<classname linkend="basic_regex">basic_regex</classname> オブジェクトを参照により別の正規表現に組み込み、他の <classname linkend="basic_regex">basic_regex</classname> オブジェクトと内容を交換すると、外側の正規表現からはこの変更を検出できない。これは <function>swap()</function> が例外を送出できないためである。
+	</para>
+      </note>
+      <informaltable>
+	<tr>
+	  <th rowspan="2">引数：</th>
+	  <td><parameter class="function">left</parameter></td>
+	  <td>第 1 の <classname linkend="basic_regex">basic_regex</classname> オブジェクト。</td>
+	</tr>
+	<tr>
+	  <td><parameter class="function">right</parameter></td>
+	  <td>第 2 の <classname linkend="basic_regex">basic_regex</classname> オブジェクト。</td>
+	</tr>
+	<tr>
+	  <th>例外：</th>
+	  <td colspan="2">送出しない。</td>
+	</tr>
+      </informaltable>
+    </section>
+  </section>
+</article>

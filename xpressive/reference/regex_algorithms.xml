@@ -1,0 +1,450 @@
+<?xml version="1.0" ?>
+<article xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xml:lang="ja" version="5.0">
+  <info>
+    <title>&lt;boost/xpressive/regex_algorithms.hpp&gt; ヘッダ</title>
+    <copyright>
+      <year>2008</year>
+      <holder>Eric Niebler</holder>
+    </copyright>
+  </info>
+
+  <para>
+    <function>regex_match()</function> 、<function>regex_search()</function> および <function>regex_replace()</function> アルゴリズムがある。
+  </para>
+
+  <synopsis language="C++">namespace boost {
+  namespace xpressive {
+    template&lt;typename BidiIter&gt; 
+      bool regex_match(BidiIter, BidiIter, match_results&lt; BidiIter &gt; &amp;, 
+                       basic_regex&lt; BidiIter &gt; const &amp;, 
+                       regex_constants::match_flag_type = regex_constants::match_default);
+    template&lt;typename BidiIter&gt; 
+      bool regex_match(BidiIter, BidiIter, basic_regex&lt; BidiIter &gt; const &amp;, 
+                       regex_constants::match_flag_type = regex_constants::match_default);
+    template&lt;typename Char&gt; 
+      bool regex_match(Char *, match_results&lt; Char * &gt; &amp;, 
+                       basic_regex&lt; Char * &gt; const &amp;, 
+                       regex_constants::match_flag_type = regex_constants::match_default);
+    template&lt;typename BidiRange, typename BidiIter&gt; 
+      bool regex_match(BidiRange &amp;, match_results&lt; BidiIter &gt; &amp;, 
+                       basic_regex&lt; BidiIter &gt; const &amp;, 
+                       regex_constants::match_flag_type = regex_constants::match_default, 
+                       <replaceable>unspecified</replaceable> = 0);
+    template&lt;typename BidiRange, typename BidiIter&gt; 
+      bool regex_match(BidiRange const &amp;, match_results&lt; BidiIter &gt; &amp;, 
+                       basic_regex&lt; BidiIter &gt; const &amp;, 
+                       regex_constants::match_flag_type = regex_constants::match_default, 
+                       <replaceable>unspecified</replaceable> = 0);
+    template&lt;typename Char&gt; 
+      bool regex_match(Char *, basic_regex&lt; Char * &gt; const &amp;, 
+                       regex_constants::match_flag_type = regex_constants::match_default);
+    template&lt;typename BidiRange, typename BidiIter&gt; 
+      bool regex_match(BidiRange &amp;, basic_regex&lt; BidiIter &gt; const &amp;, 
+                       regex_constants::match_flag_type = regex_constants::match_default, 
+                       <replaceable>unspecified</replaceable> = 0);
+    template&lt;typename BidiRange, typename BidiIter&gt; 
+      bool regex_match(BidiRange const &amp;, basic_regex&lt; BidiIter &gt; const &amp;, 
+                       regex_constants::match_flag_type = regex_constants::match_default, 
+                       <replaceable>unspecified</replaceable> = 0);
+    template&lt;typename BidiIter&gt; 
+      bool regex_search(BidiIter, BidiIter, match_results&lt; BidiIter &gt; &amp;, 
+                        basic_regex&lt; BidiIter &gt; const &amp;, 
+                        regex_constants::match_flag_type = regex_constants::match_default);
+    template&lt;typename BidiIter&gt; 
+      bool regex_search(BidiIter, BidiIter, basic_regex&lt; BidiIter &gt; const &amp;, 
+                        regex_constants::match_flag_type = regex_constants::match_default);
+    template&lt;typename Char&gt; 
+      bool regex_search(Char *, match_results&lt; Char * &gt; &amp;, 
+                        basic_regex&lt; Char * &gt; const &amp;, 
+                        regex_constants::match_flag_type = regex_constants::match_default);
+    template&lt;typename BidiRange, typename BidiIter&gt; 
+      bool regex_search(BidiRange &amp;, match_results&lt; BidiIter &gt; &amp;, 
+                        basic_regex&lt; BidiIter &gt; const &amp;, 
+                        regex_constants::match_flag_type = regex_constants::match_default, 
+                        <replaceable>unspecified</replaceable> = 0);
+    template&lt;typename BidiRange, typename BidiIter&gt; 
+      bool regex_search(BidiRange const &amp;, match_results&lt; BidiIter &gt; &amp;, 
+                        basic_regex&lt; BidiIter &gt; const &amp;, 
+                        regex_constants::match_flag_type = regex_constants::match_default, 
+                        <replaceable>unspecified</replaceable> = 0);
+    template&lt;typename Char&gt; 
+      bool regex_search(Char *, basic_regex&lt; Char * &gt; const &amp;, 
+                        regex_constants::match_flag_type = regex_constants::match_default);
+    template&lt;typename BidiRange, typename BidiIter&gt; 
+      bool regex_search(BidiRange &amp;, basic_regex&lt; BidiIter &gt; const &amp;, 
+                        regex_constants::match_flag_type = regex_constants::match_default, 
+                        <replaceable>unspecified</replaceable> = 0);
+    template&lt;typename BidiRange, typename BidiIter&gt; 
+      bool regex_search(BidiRange const &amp;, basic_regex&lt; BidiIter &gt; const &amp;, 
+                        regex_constants::match_flag_type = regex_constants::match_default, 
+                        <replaceable>unspecified</replaceable> = 0);
+    template&lt;typename OutIter, typename BidiIter, typename Formatter&gt; 
+      OutIter regex_replace(OutIter, BidiIter, BidiIter, 
+                            basic_regex&lt; BidiIter &gt; const &amp;, 
+                            Formatter const &amp;, 
+                            regex_constants::match_flag_type = regex_constants::match_default, 
+                            <replaceable>unspecified</replaceable> = 0);
+    template&lt;typename OutIter, typename BidiIter&gt; 
+      OutIter regex_replace(OutIter, BidiIter, BidiIter, 
+                            basic_regex&lt; BidiIter &gt; const &amp;, 
+                            typename iterator_value&lt; BidiIter &gt;::type const *, 
+                            regex_constants::match_flag_type = regex_constants::match_default);
+    template&lt;typename BidiContainer, typename BidiIter, typename Formatter&gt; 
+      BidiContainer 
+      regex_replace(BidiContainer &amp;, basic_regex&lt; BidiIter &gt; const &amp;, 
+                    Formatter const &amp;, 
+                    regex_constants::match_flag_type = regex_constants::match_default, 
+                    <replaceable>unspecified</replaceable> = 0);
+    template&lt;typename BidiContainer, typename BidiIter, typename Formatter&gt; 
+      BidiContainer 
+      regex_replace(BidiContainer const &amp;, basic_regex&lt; BidiIter &gt; const &amp;, 
+                    Formatter const &amp;, 
+                    regex_constants::match_flag_type = regex_constants::match_default, 
+                    <replaceable>unspecified</replaceable> = 0);
+    template&lt;typename Char, typename Formatter&gt; 
+      std::basic_string&lt; typename remove_const&lt; Char &gt;::type &gt; 
+      regex_replace(Char *, basic_regex&lt; Char * &gt; const &amp;, Formatter const &amp;, 
+                    regex_constants::match_flag_type = regex_constants::match_default, 
+                    <replaceable>unspecified</replaceable> = 0);
+    template&lt;typename BidiContainer, typename BidiIter&gt; 
+      BidiContainer 
+      regex_replace(BidiContainer &amp;, basic_regex&lt; BidiIter &gt; const &amp;, 
+                    typename iterator_value&lt; BidiIter &gt;::type const *, 
+                    regex_constants::match_flag_type = regex_constants::match_default, 
+                    <replaceable>unspecified</replaceable> = 0);
+    template&lt;typename BidiContainer, typename BidiIter&gt; 
+      BidiContainer 
+      regex_replace(BidiContainer const &amp;, basic_regex&lt; BidiIter &gt; const &amp;, 
+                    typename iterator_value&lt; BidiIter &gt;::type const *, 
+                    regex_constants::match_flag_type = regex_constants::match_default, 
+                    <replaceable>unspecified</replaceable> = 0);
+    template&lt;typename Char&gt; 
+      std::basic_string&lt; typename remove_const&lt; Char &gt;::type &gt; 
+      regex_replace(Char *, basic_regex&lt; Char * &gt; const &amp;, 
+                    typename add_const&lt; Char &gt;::type *, 
+                    regex_constants::match_flag_type = regex_constants::match_default);
+  }
+}</synopsis>
+
+  <section>
+    <title>regex_match 関数</title>
+    <para>
+      boost::xpressive::regex_match – 正規表現がシーケンスの先頭から終端までにマッチするか調べる。
+    </para>
+
+    <section>
+      <title>書式</title>
+      <synopsis language="C++">// ヘッダ：&lt;boost/xpressive/regex_algorithms.hpp&gt;
+
+
+template&lt;typename BidiIter&gt; 
+  bool regex_match(BidiIter begin, BidiIter end, 
+                   match_results&lt; BidiIter &gt; &amp; what, 
+                   basic_regex&lt; BidiIter &gt; const &amp; re, 
+                   regex_constants::match_flag_type flags = regex_constants::match_default);
+template&lt;typename BidiIter&gt; 
+  bool regex_match(BidiIter begin, BidiIter end, 
+                   basic_regex&lt; BidiIter &gt; const &amp; re, 
+                   regex_constants::match_flag_type flags = regex_constants::match_default);
+template&lt;typename Char&gt; 
+  bool regex_match(Char * begin, match_results&lt; Char * &gt; &amp; what, 
+                   basic_regex&lt; Char * &gt; const &amp; re, 
+                   regex_constants::match_flag_type flags = regex_constants::match_default);
+template&lt;typename BidiRange, typename BidiIter&gt; 
+  bool regex_match(BidiRange &amp; rng, match_results&lt; BidiIter &gt; &amp; what, 
+                   basic_regex&lt; BidiIter &gt; const &amp; re, 
+                   regex_constants::match_flag_type flags = regex_constants::match_default, 
+                   <replaceable>unspecified</replaceable> = 0);
+template&lt;typename BidiRange, typename BidiIter&gt; 
+  bool regex_match(BidiRange const &amp; rng, match_results&lt; BidiIter &gt; &amp; what, 
+                   basic_regex&lt; BidiIter &gt; const &amp; re, 
+                   regex_constants::match_flag_type flags = regex_constants::match_default, 
+                   <replaceable>unspecified</replaceable> = 0);
+template&lt;typename Char&gt; 
+  bool regex_match(Char * begin, basic_regex&lt; Char * &gt; const &amp; re, 
+                   regex_constants::match_flag_type flags = regex_constants::match_default);
+template&lt;typename BidiRange, typename BidiIter&gt; 
+  bool regex_match(BidiRange &amp; rng, basic_regex&lt; BidiIter &gt; const &amp; re, 
+                   regex_constants::match_flag_type flags = regex_constants::match_default, 
+                   <replaceable>unspecified</replaceable> = 0);
+template&lt;typename BidiRange, typename BidiIter&gt; 
+  bool regex_match(BidiRange const &amp; rng, basic_regex&lt; BidiIter &gt; const &amp; re, 
+                   regex_constants::match_flag_type flags = regex_constants::match_default, 
+                   <replaceable>unspecified</replaceable> = 0);</synopsis>
+    </section>
+
+    <section>
+      <title>説明</title>
+      <para>
+	正規表現 <parameter class="function">re</parameter> とシーケンス <code>[begin, end)</code> 全体の間に完全なマッチがあるか確定する。
+      </para>
+      <informaltable>
+	<tr>
+	  <th rowspan="6">引数：</th>
+	  <td><parameter class="function">begin</parameter></td>
+	  <td>シーケンスの先頭。</td>
+	</tr>
+	<tr>
+	  <td><parameter class="function">end</parameter></td>
+	  <td>シーケンスの終端。</td>
+	</tr>
+	<tr>
+	  <td><parameter class="function">flags</parameter></td>
+	  <td>正規表現をシーケンスに対してどのようにマッチさせるか制御する、省略可能なマッチフラグ（<type role="enum">match_flag_type</type> を見よ）。</td>
+	</tr>
+	<tr>
+	  <td><parameter class="function">re</parameter></td>
+	  <td>使用する正規表現オブジェクト。</td>
+	</tr>
+	<tr>
+	  <td><parameter class="function">rng</parameter></td>
+	  <td>シーケンス。</td>
+	</tr>
+	<tr>
+	  <td><parameter class="function">what</parameter></td>
+	  <td><classname>sub_match</classname> を書き込む <classname linkend="match_results">match_results</classname> 構造体。</td>
+	</tr>
+	<tr>
+	  <th>要件：</th>
+	  <td colspan="2">型 <parameter>BidiIter</parameter> が双方向イテレータ（24.1.4）の要件を満たす。</td>
+	</tr>
+	<tr>
+	  <th>要件：</th>
+	  <td colspan="2"><code>[begin, end)</code> が有効なイテレータ範囲を表す。</td>
+	</tr>
+	<tr>
+	  <th>戻り値：</th>
+	  <td colspan="2">マッチが見つかった場合は <literal>true</literal> 、それ以外の場合は <literal>false</literal>。</td>
+	</tr>
+	<tr>
+	  <th>例外：</th>
+	  <td colspan="2">スタックが枯渇した場合 <exceptionname linkend="regex_error">regex_error</exceptionname></td>
+	</tr>
+      </informaltable>
+    </section>
+  </section>
+
+  <section>
+    <title>regex_search 関数</title>
+    <para>
+      boost::xpressive::regex_search – <code>[begin, end)</code> 内に、正規表現 <parameter class="function">re</parameter> にマッチする部分シーケンスがあるか調べる。
+    </para>
+
+    <section>
+      <title>書式</title>
+      <synopsis language="C++">// ヘッダ：&lt;boost/xpressive/regex_algorithms.hpp&gt;
+
+
+template&lt;typename BidiIter&gt; 
+  bool regex_search(BidiIter begin, BidiIter end, 
+                    match_results&lt; BidiIter &gt; &amp; what, 
+                    basic_regex&lt; BidiIter &gt; const &amp; re, 
+                    regex_constants::match_flag_type flags = regex_constants::match_default);
+template&lt;typename BidiIter&gt; 
+  bool regex_search(BidiIter begin, BidiIter end, 
+                    basic_regex&lt; BidiIter &gt; const &amp; re, 
+                    regex_constants::match_flag_type flags = regex_constants::match_default);
+template&lt;typename Char&gt; 
+  bool regex_search(Char * begin, match_results&lt; Char * &gt; &amp; what, 
+                    basic_regex&lt; Char * &gt; const &amp; re, 
+                    regex_constants::match_flag_type flags = regex_constants::match_default);
+template&lt;typename BidiRange, typename BidiIter&gt; 
+  bool regex_search(BidiRange &amp; rng, match_results&lt; BidiIter &gt; &amp; what, 
+                    basic_regex&lt; BidiIter &gt; const &amp; re, 
+                    regex_constants::match_flag_type flags = regex_constants::match_default, 
+                    <replaceable>unspecified</replaceable> = 0);
+template&lt;typename BidiRange, typename BidiIter&gt; 
+  bool regex_search(BidiRange const &amp; rng, match_results&lt; BidiIter &gt; &amp; what, 
+                    basic_regex&lt; BidiIter &gt; const &amp; re, 
+                    regex_constants::match_flag_type flags = regex_constants::match_default, 
+                    <replaceable>unspecified</replaceable> = 0);
+template&lt;typename Char&gt; 
+  bool regex_search(Char * begin, basic_regex&lt; Char * &gt; const &amp; re, 
+                    regex_constants::match_flag_type flags = regex_constants::match_default);
+template&lt;typename BidiRange, typename BidiIter&gt; 
+  bool regex_search(BidiRange &amp; rng, basic_regex&lt; BidiIter &gt; const &amp; re, 
+                    regex_constants::match_flag_type flags = regex_constants::match_default, 
+                    <replaceable>unspecified</replaceable> = 0);
+template&lt;typename BidiRange, typename BidiIter&gt; 
+  bool regex_search(BidiRange const &amp; rng, basic_regex&lt; BidiIter &gt; const &amp; re, 
+                    regex_constants::match_flag_type flags = regex_constants::match_default, 
+                    <replaceable>unspecified</replaceable> = 0);</synopsis>
+    </section>
+
+    <section>
+      <title>説明</title>
+      <para>
+	<code>[begin, end)</code> 内に、正規表現reにマッチする部分シーケンスがあるか確定する。
+      </para>
+      <informaltable>
+	<tr>
+	  <th rowspan="6">引数：</th>
+	  <td><parameter class="function">begin</parameter></td>
+	  <td>シーケンスの先頭</td>
+	</tr>
+	<tr>
+	  <td><parameter class="function">end</parameter></td>
+	  <td>シーケンスの終端。</td>
+	</tr>
+	<tr>
+	  <td><parameter class="function">flags</parameter></td>
+	  <td>正規表現をシーケンスに対してどのようにマッチさせるか制御する、省略可能なマッチフラグ（<type role="enum">match_flag_type</type> を見よ）。</td>
+	</tr>
+	<tr>
+	  <td><parameter class="function">rng</parameter></td>
+	  <td>シーケンス。</td>
+	</tr>
+	<tr>
+	  <td><parameter class="function">re</parameter></td>
+	  <td>使用する正規表現オブジェクト。</td>
+	</tr>
+	<tr>
+	  <td><parameter class="function">what</parameter></td>
+	  <td><classname>sub_match</classname> を書き込む <classname linkend="match_results">match_results</classname> 構造体。</td>
+	</tr>
+	<tr>
+	  <th>要件：</th>
+	  <td colspan="2">型 <parameter>BidiIter</parameter> が双方向イテレータ（24.1.4）の要件を満たす。</td>
+	</tr>
+	<tr>
+	  <th>要件：</th>
+	  <td colspan="2"><code>[begin, end)</code> が有効なイテレータ範囲を表す。</td>
+	</tr>
+	<tr>
+	  <th>戻り値：</th>
+	  <td colspan="2">マッチが見つかった場合は <literal>true</literal> 、それ以外の場合は <literal>false</literal>。</td>
+	</tr>
+	<tr>
+	  <th>例外：</th>
+	  <td colspan="2">スタックが枯渇した場合 <exceptionname linkend="regex_error">regex_error</exceptionname></td>
+	</tr>
+      </informaltable>
+    </section>
+  </section>
+
+  <section>
+    <title>regex_replace 関数</title>
+    <para>
+      boost::xpressive::replace – 与えられた入力シーケンス、正規表現、および書式化文字列、書式化オブジェクト、関数、式に対して出力シーケンスを構築する。
+    </para>
+
+    <section>
+      <title>書式</title>
+      <synopsis language="C++">// ヘッダ：&lt;boost/xpressive/regex_algorithms.hpp&gt;
+
+
+template&lt;typename OutIter, typename BidiIter, typename Formatter&gt; 
+  OutIter regex_replace(OutIter out, BidiIter begin, BidiIter end, 
+                        basic_regex&lt; BidiIter &gt; const &amp; re, 
+                        Formatter const &amp; format, 
+                        regex_constants::match_flag_type flags = regex_constants::match_default, 
+                        <replaceable>unspecified</replaceable> = 0);
+template&lt;typename OutIter, typename BidiIter&gt; 
+  OutIter regex_replace(OutIter out, BidiIter begin, BidiIter end, 
+                        basic_regex&lt; BidiIter &gt; const &amp; re, 
+                        typename iterator_value&lt; BidiIter &gt;::type const * format, 
+                        regex_constants::match_flag_type flags = regex_constants::match_default);
+template&lt;typename BidiContainer, typename BidiIter, typename Formatter&gt; 
+  BidiContainer 
+  regex_replace(BidiContainer &amp; str, basic_regex&lt; BidiIter &gt; const &amp; re, 
+                Formatter const &amp; format, 
+                regex_constants::match_flag_type flags = regex_constants::match_default, 
+                <replaceable>unspecified</replaceable> = 0);
+template&lt;typename BidiContainer, typename BidiIter, typename Formatter&gt; 
+  BidiContainer 
+  regex_replace(BidiContainer const &amp; str, basic_regex&lt; BidiIter &gt; const &amp; re, 
+                Formatter const &amp; format, 
+                regex_constants::match_flag_type flags = regex_constants::match_default, 
+                <replaceable>unspecified</replaceable> = 0);
+template&lt;typename Char, typename Formatter&gt; 
+  std::basic_string&lt; typename remove_const&lt; Char &gt;::type &gt; 
+  regex_replace(Char * str, basic_regex&lt; Char * &gt; const &amp; re, 
+                Formatter const &amp; format, 
+                regex_constants::match_flag_type flags = regex_constants::match_default, 
+                <replaceable>unspecified</replaceable> = 0);
+template&lt;typename BidiContainer, typename BidiIter&gt; 
+  BidiContainer 
+  regex_replace(BidiContainer &amp; str, basic_regex&lt; BidiIter &gt; const &amp; re, 
+                typename iterator_value&lt; BidiIter &gt;::type const * format, 
+                regex_constants::match_flag_type flags = regex_constants::match_default, 
+                <replaceable>unspecified</replaceable> = 0);
+template&lt;typename BidiContainer, typename BidiIter&gt; 
+  BidiContainer 
+  regex_replace(BidiContainer const &amp; str, basic_regex&lt; BidiIter &gt; const &amp; re, 
+                typename iterator_value&lt; BidiIter &gt;::type const * format, 
+                regex_constants::match_flag_type flags = regex_constants::match_default, 
+                <replaceable>unspecified</replaceable> = 0);
+template&lt;typename Char&gt; 
+  std::basic_string&lt; typename remove_const&lt; Char &gt;::type &gt; 
+  regex_replace(Char * str, basic_regex&lt; Char * &gt; const &amp; re, 
+                typename add_const&lt; Char &gt;::type * format, 
+                regex_constants::match_flag_type flags = regex_constants::match_default);</synopsis>
+    </section>
+
+    <section>
+      <title>説明</title>
+      <para>
+	<code language="C++">regex_iterator&lt; BidiIter &gt; i(begin, end, re, flags)</code> で <classname linkend="regex_iterator">regex_iterator</classname> オブジェクトを構築し、シーケンス <code>[begin, end)</code> に現れる <type>match_results&lt; BidiIter &gt;</type> 型のマッチ <varname>m</varname> すべてを <varname>i</varname> を使って列挙する。マッチが見つからず、かつ <code language="C++">!(flags &amp; format_no_copy)</code> であれば <code language="C++">std::copy(begin, end, out)</code> を呼び出す。それ以外の場合は、見つかった各マッチについて <code language="C++">!(flags &amp; format_no_copy)</code> であれば <code language="C++">std::copy(m.prefix().first, m.prefix().second, out)</code> を呼び出し、次に <code language="C++">m.format(out, format, flags)</code> を呼び出す。最後に <code language="C++">!(flags &amp; format_no_copy)</code> であれば <code language="C++">std::copy(last_m.suffix().first, last_m.suffix().second, out)</code> を呼び出す（<varname>last_m</varname> は最後に見つかったマッチのコピー）。
+      </para>
+      <para>
+	<code language="C++">flags &amp; format_first_only</code> が非ゼロの場合は、最初に見つかったマッチのみを置換する。
+      </para>
+
+      <informaltable>
+	<tr>
+	  <th rowspan="7">引数：</th>
+	  <td><parameter class="function">begin</parameter></td>
+	  <td>入力シーケンスの先頭。</td>
+	</tr>
+	<tr>
+	  <td><parameter class="function">end</parameter></td>
+	  <td>入力シーケンスの終端。</td>
+	</tr>
+	<tr>
+	  <td><parameter class="function">flags</parameter></td>
+	  <td>正規表現をシーケンスに対してどのようにマッチさせるか制御する、省略可能なマッチフラグ（<type role="enum">match_flag_type</type> を見よ）。</td>
+	</tr>
+	<tr>
+	  <td><parameter class="function">format</parameter></td>
+	  <td>置換シーケンスを整形する書式化文字列。または書式化関数、オブジェクト、式。</td>
+	</tr>
+	<tr>
+	  <td><parameter class="function">out</parameter></td>
+	  <td>出力シーケンスを書き込む出力イテレータ。</td>
+	</tr>
+	<tr>
+	  <td><parameter class="function">re</parameter></td>
+	  <td>使用する正規表現オブジェクト。</td>
+	</tr>
+	<tr>
+	  <td><parameter class="function">str</parameter></td>
+	  <td>入力シーケンス。</td>
+	</tr>
+	<tr>
+	  <th>要件：</th>
+	  <td colspan="2"><type>BidiIter</type> が双方向イテレータ（24.1.4）の要件を満たす。</td>
+	</tr>
+	<tr>
+	  <th>要件：</th>
+	  <td colspan="2"><type>OutIter</type> が出力イテレータ（24.1.2）の要件を満たす。</td>
+	</tr>
+	<tr>
+	  <th>要件：</th>
+	  <td colspan="2"><type>Formatter</type> 型が <type>ForwardRange</type> 、<type>Callable&lt;match_results&lt;BidiIter&gt; &gt;, Callable&lt;match_results&lt;BidiIter&gt;, OutIter&gt;</type> あるいは <type>Callable&lt;match_results&lt;BidiIter&gt;, OutIter, regex_constants::match_flag_type&gt;</type> のいずれか。または null 終端書式化文字列か書式化ラムダ式を表す式テンプレート。</td>
+	</tr>
+	<tr>
+	  <th colspan="2">要件：</th>
+	  <td><code>[begin, end)</code> が有効なイテレータ範囲を表す。</td>
+	</tr>
+	<tr>
+	  <th>戻り値：</th>
+	  <td colspan="2">出力シーケンスを書き込んだ後の出力イテレータ。</td>
+	</tr>
+	<tr>
+	  <th>例外：</th>
+	  <td colspan="2">スタックが枯渇した、または書式化文字列が不正な場合 <exceptionname linkend="regex_error">regex_error</exceptionname>。</td>
+	</tr>
+      </informaltable>
+    </section>
+  </section>
+</article>

@@ -1,0 +1,207 @@
+<?xml version="1.0" ?>
+<article xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xml:lang="ja" version="5.0">
+  <info>
+    <title>&lt;boost/xpressive/regex_compiler.hpp&gt; ヘッダ</title>
+    <copyright>
+      <year>2008</year>
+      <holder>Eric Niebler</holder>
+    </copyright>
+  </info>
+
+  <para>
+    正規表現を文字列から構築するファクトリである <classname>regex_compiler</classname> の定義がある。
+  </para>
+
+  <synopsis language="C++">namespace boost {
+  namespace xpressive {
+    template&lt;typename BidiIter, typename RegexTraits, typename CompilerTraits&gt;> 
+      struct regex_compiler;
+  }
+}</synopsis>
+
+  <section>
+    <title>regex_compiler 構造体テンプレート</title>
+    <para>boost::xpressive::regex_compiler – <classname linkend="regex_compiler">regex_compiler</classname> クラステンプレートは文字列から <classname linkend="basic_regex">basic_regex</classname> オブジェクトを構築するファクトリである。</para>
+
+    <section>
+      <title>書式</title>
+      <synopsis language="C++">// ヘッダ：&lt;boost/xpressive/regex_compiler.hpp&gt;
+
+template&lt;typename BidiIter, typename RegexTraits, typename CompilerTraits&gt; 
+struct regex_compiler {
+  // 型
+  typedef BidiIter                            iterator_type;  
+  typedef iterator_value&lt; BidiIter &gt;::type    char_type;      
+  typedef regex_constants::syntax_option_type flag_type;      
+  typedef RegexTraits                         traits_type;    
+  typedef traits_type::string_type            string_type;    
+  typedef traits_type::locale_type            locale_type;    
+  typedef traits_type::char_class_type        char_class_type;
+
+  // 構築、コピー、解体
+  regex_compiler(RegexTraits const &amp; = RegexTraits());
+
+  // 公開メンバ関数
+  locale_type imbue(locale_type);
+  locale_type getloc() const;
+  template&lt;typename InputIter&gt; 
+    basic_regex&lt; BidiIter &gt; 
+    compile(InputIter, InputIter, flag_type = regex_constants::ECMAScript);
+  template&lt;typename InputRange&gt; 
+    disable_if&lt; is_pointer&lt; InputRange &gt;, basic_regex&lt; BidiIter &gt; &gt;::type 
+    compile(InputRange const &amp;, flag_type = regex_constants::ECMAScript);
+  basic_regex&lt; BidiIter &gt; 
+  compile(char_type const *, flag_type = regex_constants::ECMAScript);
+  basic_regex&lt; BidiIter &gt; compile(char_type const *, std::size_t, flag_type);
+  basic_regex&lt; BidiIter &gt; &amp; operator[](string_type const &amp;);
+  basic_regex&lt; BidiIter &gt; const &amp; operator[](string_type const &amp;) const;
+};</synopsis>
+    </section>
+
+    <section>
+      <title>説明</title>
+      <para>
+	<classname linkend="regex_compiler">regex_compiler</classname> クラステンプレートは、文字列から <classname linkend="basic_regex">basic_regex</classname> オブジェクトを構築するのに使用する。文字列は正しい正規表現でなければならない。<classname linkend="regex_compiler">regex_compiler</classname> オブジェクトにロカールを指示すると、以降その <classname linkend="regex_compiler">regex_compiler</classname> オブジェクトが作成する <classname linkend="basic_regex">basic_regex</classname> オブジェクトはすべてそのロカールを使用する。<classname linkend="regex_compiler">regex_compiler</classname> オブジェクト作成後、（必要であればロカールを与え、）正規表現を表す文字列を使って<methodname>compile()</methodname> メソッドを呼び出すことで <classname linkend="basic_regex">basic_regex</classname> オブジェクトを構築する。同じ <classname linkend="regex_compiler">regex_compiler</classname> オブジェクトに対して <methodname>compile()</methodname> は複数回呼び出すことができる。同じ文字列からコンパイルした 2 つの <classname linkend="basic_regex">basic_regex</classname> オブジェクトは異なる <type>regex_id</type> をもつ。
+      </para>
+
+      <section>
+	<title>regex_compiler 構築、コピー、解体の公開演算</title>
+	<orderedlist>
+	  <listitem>
+	    <synopsis language="C++">regex_compiler(RegexTraits const &amp; traits = RegexTraits());</synopsis>
+	  </listitem>
+	</orderedlist>
+      </section>
+
+      <section>
+	<title>regex_compiler 公開メンバ関数</title>
+	<orderedlist>
+	  <listitem>
+	    <synopsis language="C++">locale_type imbue(locale_type loc);</synopsis>
+	    <para>
+	      <classname linkend="regex_compiler">regex_compiler</classname> が使用するロカールを指定する。
+	    </para>
+	    <informaltable>
+	      <tr>
+		<th>引数：</th>
+		<td><parameter class="function">loc</parameter></td>
+		<td>この <classname linkend="regex_compiler">regex_compiler</classname> が使用するロカール。</td>
+	      </tr>
+	      <tr>
+		<th>戻り値：</th>
+		<td colspan="2">直前のロカール。</td>
+	      </tr>
+	    </informaltable>
+	  </listitem>
+	  <listitem>
+	    <synopsis language="C++">locale_type getloc() const;</synopsis>
+	    <para>
+	      <classname linkend="regex_compiler">regex_compiler</classname> が使用しているロカールを返す。
+	    </para>
+	    <informaltable>
+	      <tr>
+		<th>戻り値：</th>
+		<td>この <classname linkend="regex_compiler">regex_compiler</classname> が使用しているロカール。</td>
+	      </tr>
+	    </informaltable>
+	  </listitem>
+	  <listitem>
+	    <synopsis language="C++">template&lt;typename InputIter&gt;
+  basic_regex&lt; BidiIter &gt;
+  compile(InputIter begin, InputIter end, 
+          flag_type flags = regex_constants::ECMAScript);</synopsis>
+	    <para>
+	      文字の範囲から <classname linkend="basic_regex">basic_regex</classname> オブジェクトを構築する。
+	    </para>
+	    <informaltable>
+	      <tr>
+		<th rowspan="3">引数：</th>
+		<td><parameter class="function">begin</parameter></td>
+		<td>コンパイルする正規表現を表す文字範囲の先頭。</td>
+	      </tr>
+	      <tr>
+		<td><parameter class="function">end</parameter></td>
+		<td>コンパイルする正規表現を表す文字範囲の終端。</td>
+	      </tr>
+	      <tr>
+		<td><parameter class="function">flags</parameter></td>
+		<td>パターン文字列をどのように解釈するか決める省略可能なビットマスク（<type role="typedef">syntax_option_type</type> を見よ）。</td>
+	      </tr>
+	      <tr>
+		<th>要件：</th>
+		<td colspan="2"><type>InputIter</type> が入力イテレータの要件を満たす。</td>
+	      </tr>
+	      <tr>
+		<th>要件：</th>
+		<td colspan="2"><code>[begin, end)</code> が有効な範囲である。</td>
+	      </tr>
+	      <tr>
+		<th>要件：</th>
+		<td colspan="2"><code>[begin, end)</code> で指定した文字範囲が正しい正規表現の文字列表現である。</td>
+	      </tr>
+	      <tr>
+		<th>戻り値：</th>
+		<td colspan="2">文字範囲が表す正規表現に相当する <classname linkend="basic_regex">basic_regex</classname> オブジェクト。</td>
+	      </tr>
+	      <tr>
+		<th>例外：</th>
+		<td colspan="2">文字範囲に不正な正規表現構文がある場合 <exceptionname linkend="regex_error">regex_error</exceptionname>。</td>
+	      </tr>
+	    </informaltable>
+	  </listitem>
+	  <listitem>
+	    <synopsis language="C++">template&lt;typename InputRange&gt;
+  disable_if&lt; is_pointer&lt; InputRange &gt;, basic_regex&lt; BidiIter &gt; &gt;::type 
+  compile(InputRange const &amp; pat, 
+          flag_type flags = regex_constants::ECMAScript);</synopsis>
+	    <para>
+	      利便性のためのメンバ関数多重定義。上記関数と受け取る引数が異なるのみ。
+	    </para>
+	  </listitem>
+	  <listitem>
+	    <synopsis language="C++">basic_regex&lt; BidiIter &gt;
+compile(char_type const * begin,
+        flag_type flags = regex_constants::ECMAScript);</synopsis>
+	    <para>
+	      利便性のためのメンバ関数多重定義。上記関数と受け取る引数が異なるのみ。
+	    </para>
+	  </listitem>
+	  <listitem>
+	    <synopsis language="C++">basic_regex&lt; BidiIter &gt;
+compile(char_type const * begin, std::size_t size, flag_type flags);</synopsis>
+	    <para>
+	      利便性のためのメンバ関数多重定義。上記関数と受け取る引数が異なるのみ。
+	    </para>
+	  </listitem>
+	  <listitem>
+	    <synopsis language="C++">basic_regex&lt; BidiIter &gt; &amp; operator[](string_type const &amp; name);</synopsis>
+	    <para>
+	      名前付き正規表現への参照を返す。指定した名前をもつ正規表現が存在しない場合は、新しい正規表現を作成し参照を返す。
+	    </para>
+	    <informaltable>
+	      <tr>
+		<th>引数：</th>
+		<td><parameter class="function">name</parameter></td>
+		<td>正規表現の名前を表す <classname>std::string</classname>。</td>
+	      </tr>
+	      <tr>
+		<th>要件：</th>
+		<td colspan="2">文字列が空でない。</td>
+	      </tr>
+	      <tr>
+		<th>例外：</th>
+		<td colspan="2">メモリ確保に失敗した場合 <exceptionname>bad_alloc</exceptionname>。</td>
+	      </tr>
+	    </informaltable>
+	  </listitem>
+	  <listitem>
+	    <synopsis language="C++">basic_regex&lt; BidiIter &gt; const &amp; operator[](string_type const &amp; name) const;</synopsis>
+	    <para>
+	      利便性のためのメンバ関数多重定義。上記関数と受け取る引数が異なるのみ。
+	    </para>
+	  </listitem>
+	</orderedlist>
+      </section>
+    </section>
+  </section>
+</article>
