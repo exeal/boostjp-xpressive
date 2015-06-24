@@ -1,0 +1,113 @@
+<?xml version="1.0" ?>
+<article xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xml:lang="ja" version="5.0">
+  <info>
+    <title>&lt;boost/xpressive/regex_error.hpp&gt; ヘッダ</title>
+    <copyright>
+      <year>2008</year>
+      <holder>Eric Niebler</holder>
+    </copyright>
+  </info>
+
+  <para>
+    <classname>regex_error</classname> 例外クラスの定義がある。
+  </para>
+
+  <synopsis language="C++">BOOST_XPR_ENSURE_(pred, code, msg)</synopsis>
+
+  <synopsis language="C++">namespace boost {
+  namespace xpressive {
+    struct regex_error;
+  }
+}</synopsis>
+
+  <para>
+    （訳注）以下の実体を省略しました。
+  </para>
+  <itemizedlist>
+    <listitem>
+      <para>マクロ：BOOST_XPR_ENSURE_</para>
+    </listitem>
+  </itemizedlist>
+
+  <section>
+    <title>regex_error 構造体</title>
+    <para>
+      boost::xpressive::regex_error – <classname linkend="regex_error">regex_error</classname> クラスは、正規表現を表す文字列を有限状態マシンに変換するときに、エラーを報告するのに送出する例外オブジェクトの型を定義する。
+    </para>
+
+    <section>
+      <title>書式</title>
+      <synopsis language="C++">// ヘッダ：&lt;boost/xpressive/regex_error.hpp&gt;
+
+
+struct regex_error : public std::runtime_error {
+  // 構築、コピー、解体
+  regex_error(regex_constants::error_type, char const * = "");
+  ~regex_error();
+
+  // 公開メンバ関数
+  regex_constants::error_type code() const;
+};</synopsis>
+    </section>
+
+    <section>
+      <title>説明</title>
+
+      <section>
+	<title>regex_error 構築、コピー、解体の公開演算</title>
+	<orderedlist>
+	  <listitem>
+	    <synopsis language="C++">regex_error(regex_constants::error_type code, char const * str = "");</synopsis>
+	    <para>regex_errorクラスのオブジェクトを構築する。</para>
+	    <informaltable>
+	      <tr>
+		<th rowspan="2">引数：</th>
+		<td><parameter class="function">code</parameter></td>
+		<td>この <classname linkend="regex_error">regex_error</classname> が表す <type role="enum">error_type</type>。</td>
+	      </tr>
+	      <tr>
+		<td><parameter class="function">str</parameter></td>
+		<td>この <classname linkend="regex_error">regex_error</classname> のメッセージ文字列。</td>
+	      </tr>
+	      <tr>
+		<th>事後条件：</th>
+		<td colspan="2"><code language="C++">code() == code</code></td>
+	      </tr>
+	    </informaltable>
+	  </listitem>
+
+	  <listitem>
+	    <synopsis language="C++">~regex_error();</synopsis>
+	    <para><classname linkend="regex_error">regex_error</classname> クラスのデストラクタ。</para>
+	    <informaltable>
+	      <tr>
+		<th>例外：</th>
+		<td>例外は送出しない。</td>
+	      </tr>
+	    </informaltable>
+	  </listitem>
+	</orderedlist>
+      </section>
+
+      <section>
+	<title>regex_error 公開メンバ関数</title>
+	<orderedlist>
+	  <listitem>
+	    <synopsis language="C++">regex_constants::error_type code() const;</synopsis>
+	    <para><type role="enum">error_type</type> 値のアクセス子。</para>
+	    <informaltable>
+	      <tr>
+		<th>戻り値：</th>
+		<td>コンストラクタに渡した <type role="enum">error_type</type> コード。</td>
+	      </tr>
+	      <tr>
+		<th>例外：</th>
+		<td>例外は送出しない。</td>
+	      </tr>
+	    </informaltable>
+	  </listitem>
+	</orderedlist>
+      </section>
+    </section>
+  </section>
+</article>
