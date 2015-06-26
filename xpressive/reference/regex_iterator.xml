@@ -96,7 +96,7 @@ operator=(regex_iterator&lt; BidiIter &gt; const &amp; that);</synopsis>
 	  <listitem>
 	    <synopsis language="C++">regex_iterator&lt; BidiIter &gt; &amp; operator++();</synopsis>
 	    <para>
-	      <code language="C++">what.prefix().first != what[0].second</code> かつ <constant>match_prev_avail</constant> がフラグに設定されていなければ設定する。その上で <code language="C++">regex_search(what[0].second, end, what, *pre, flags)</code> を呼び出したのと同じように振る舞うが、次の規則にしたがう：前回見つかったマッチがゼロ幅だった（<code language="C++">what[0].length() == 0</code>）場合は開始位置が <code language="C++">what[0].second</code> である非ゼロ幅のマッチを探索し、それが失敗かつ <code language="C++">what[0].second != suffix().second</code> である場合に限り開始位置が <code language="C++">what[0].second + 1</code> であるマッチ（これもゼロ幅である可能性がある）を探索する。それ以上マッチが見つからなければ、<code language="C++">*this</code> をシーケンスの終端を指すイテレータと同じ値に設定する。
+	      <code language="C++">what.prefix().first != what[0].second</code> かつ <constant>match_prev_avail</constant> 要素がフラグに設定されていなければ設定する。その上で <code language="C++">regex_search(what[0].second, end, what, *pre, flags)</code> を呼び出したのと同様に振る舞う。ただし以下の点については振る舞いが異なる：前回見つかったマッチがゼロ幅だった（<code language="C++">what[0].length() == 0</code>）場合は開始位置が <code language="C++">what[0].second</code> である非ゼロ幅のマッチを探索し、それが失敗かつ <code language="C++">what[0].second != suffix().second</code> である場合に限り開始位置が <code language="C++">what[0].second + 1</code> であるマッチ（これもゼロ幅である可能性がある）を探索する。それ以上マッチが見つからなければ、<code language="C++">*this</code> をシーケンスの終端を指すイテレータと等値に設定する。
 	    </para>
 	    <informaltable>
 	      <tr>
@@ -109,7 +109,7 @@ operator=(regex_iterator&lt; BidiIter &gt; const &amp; that);</synopsis>
 	      </tr>
 	      <tr>
 		<th>事後条件：</th>
-		<td><code language="C++">(*this)-&gt;prefix().first == （前回見つかったマッチの終点を指すイテレータ）</code></td>
+		<td><code language="C++">(*this)-&gt;prefix().first == （前回見つかったマッチの終端位置を指すイテレータ）</code></td>
 	      </tr>
 	      <tr>
 		<th>事後条件：</th>
@@ -145,19 +145,19 @@ operator=(regex_iterator&lt; BidiIter &gt; const &amp; that);</synopsis>
 	      </tr>
 	      <tr>
 		<th>事後条件：</th>
-		<td><code language="C++">(**this)[n].first == </code>（<code language="C++">n &lt; (*this)-&gt;size()</code> である全ての整数 <replaceable>n</replaceable> について、<replaceable>n</replaceable> 番目の部分式にマッチしたシーケンスの先頭、または <replaceable>n</replaceable> 番目の部分式がマッチしなかった場合はシーケンスの終端）</td>
+		<td><code language="C++">(**this)[n].first == </code>（<code language="C++">n &lt; (*this)-&gt;size()</code> である全ての整数 <replaceable>n</replaceable> について、<replaceable>n</replaceable> 番目の部分式にマッチしたシーケンスの先頭。<replaceable>n</replaceable> 番目の部分式がマッチに関与しなかった場合は <parameter class="function">end</parameter>）</td>
 	      </tr>
 	      <tr>
 		<th>事後条件：</th>
-		<td><code language="C++">(**this)[n].second == </code>（<code language="C++">n &lt; (*this)-&gt;size()</code> である全ての整数 <replaceable>n</replaceable> について、<replaceable>n</replaceable> 番目の部分式にマッチしたシーケンスの終端、または <replaceable>n</replaceable> 番目の部分式がマッチしなかった場合はシーケンスの終端）</td>
+		<td><code language="C++">(**this)[n].second == </code>（<code language="C++">n &lt; (*this)-&gt;size()</code> である全ての整数 <replaceable>n</replaceable> について、<replaceable>n</replaceable> 番目の部分式にマッチしたシーケンスの終端。<replaceable>n</replaceable> 番目の部分式がマッチに関与しなかった場合は <parameter class="function">end</parameter>）</td>
 	      </tr>
 	      <tr>
 		<th>事後条件：</th>
-		<td><code language="C++">(**this)[n].matched == </code>（<code language="C++">n &lt; (*this)-&gt;size()</code> である全ての整数 <replaceable>n</replaceable> について、<replaceable>n</replaceable> 番目の部分式がマッチした場合は true 、マッチしなかった場合は false）</td>
+		<td><code language="C++">(**this)[n].matched == </code>（<code language="C++">n &lt; (*this)-&gt;size()</code> である全ての整数 <replaceable>n</replaceable> について、<replaceable>n</replaceable> 番目の部分式がマッチに関与した場合は true 、それ意外の場合は false）</td>
 	      </tr>
 	      <tr>
 		<th>事後条件：</th>
-		<td><code language="C++">(*this)->position() == </code>（元の走査対象のシーケンスの先頭からこのマッチの先頭までの距離）</td>
+		<td><code language="C++">(*this)->position() == </code>（走査対象シーケンスの先頭からこのマッチの先頭までの距離）</td>
 	      </tr>
 	    </informaltable>
 	  </listitem>
