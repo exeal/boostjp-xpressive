@@ -1,0 +1,404 @@
+<?xml version="1.0" ?>
+<article xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xml:lang="ja" version="5.0">
+  <info>
+    <title>&lt;boost/xpressive/traits/c_regex_traits.hpp&gt; ヘッダ</title>
+    <copyright>
+      <year>2008</year>
+      <holder>Eric Niebler</holder>
+    </copyright>
+  </info>
+
+  <para>
+    静的・動的正規表現の振る舞いをカスタマイズする C ロカール関数のラッパである <classname>c_regex_traits</classname> テンプレートの定義がある。
+  </para>
+
+  <synopsis language="C++">namespace boost {
+  namespace xpressive {
+    template&lt;typename Char&gt; struct c_regex_traits;
+
+    template&lt;&gt; struct has_fold_case&lt;c_regex_traits&lt; char &gt; &gt;;
+  }
+}</synopsis>
+
+  <section>
+    <title>c_regex_traits 構造体テンプレート</title>
+    <para>
+      boost::xpressive::c_regex_traits – <classname linkend="basic_regex">basic_regex&lt;&gt;</classname> クラステンプレートで使用するために標準の C ロカール関数をカプセル化する。
+    </para>
+
+    <section>
+      <title>書式</title>
+      <synopsis language="C++">// ヘッダ：&lt;boost/xpressive/traits/c_regex_traits.hpp&gt;
+
+template&lt;typename Char&gt; 
+struct c_regex_traits {
+  // 型
+  typedef Char                           char_type;      
+  typedef std::basic_string&lt; char_type &gt; string_type;    
+  typedef <replaceable>unspecified</replaceable>                    locale_type;    
+  typedef <replaceable>unspecified</replaceable>                    char_class_type;
+  typedef regex_traits_version_2_tag     version_tag;    
+  typedef <replaceable>unspecified</replaceable>                    base_type;      
+
+  // 構築、コピー、解体
+  c_regex_traits(locale_type const &amp; = locale_type());
+
+  // 公開メンバ関数
+  bool operator==(c_regex_traits&lt; char_type &gt; const &amp;) const;
+  bool operator!=(c_regex_traits&lt; char_type &gt; const &amp;) const;
+  string_type fold_case(char_type) const;
+  locale_type imbue(locale_type);
+  template&lt;&gt; char widen(char);
+  template&lt;&gt; wchar_t widen(char);
+  template&lt;&gt; unsigned char hash(char);
+  template&lt;&gt; unsigned char hash(wchar_t);
+  template&lt;&gt; int value(char, int);
+  template&lt;&gt; int value(wchar_t, int);
+
+  // 公開静的メンバ関数
+  static char_type widen(char);
+  static unsigned char hash(char_type);
+  static char_type translate(char_type);
+  static char_type translate_nocase(char_type);
+  static char_type tolower(char_type);
+  static char_type toupper(char_type);
+  static bool in_range(char_type, char_type, char_type);
+  static bool in_range_nocase(char_type, char_type, char_type);
+  template&lt;typename FwdIter&gt; static string_type transform(FwdIter, FwdIter);
+  template&lt;typename FwdIter&gt; 
+    static string_type transform_primary(FwdIter, FwdIter);
+  template&lt;typename FwdIter&gt; 
+    static string_type lookup_collatename(FwdIter, FwdIter);
+  template&lt;typename FwdIter&gt; 
+    static char_class_type lookup_classname(FwdIter, FwdIter, bool);
+  static bool isctype(char_type, char_class_type);
+  static int value(char_type, int);
+  static locale_type getloc();
+};
+      </synopsis>
+    </section>
+
+    <section>
+      <title>説明</title>
+
+      <section>
+	<title>c_regex_traits 構築、コピー、解体の公開演算</title>
+	<orderedlist>
+	  <listitem>
+	    <synopsis language="C++">c_regex_traits(locale_type const &amp; loc = locale_type());</synopsis>
+	    <para>グローバルな C ロカールを使用する <classname linkend="c_regex_traits">c_regex_traits</classname> オブジェクトを初期化する。</para>
+	  </listitem>
+	</orderedlist>
+      </section>
+
+      <section>
+	<title>c_regex_traits 公開メンバ関数</title>
+	<orderedlist>
+	  <listitem>
+	    <synopsis language="C++">bool operator==(c_regex_traits&lt; char_type &gt; const &amp;) const;</synopsis>
+	    <para>2 つの <classname linkend="c_regex_traits">c_regex_traits</classname> オブジェクトが等値か調べる。</para>
+	    <informaltable>
+	      <tr>
+		<th>戻り値：</th>
+		<td>真</td>
+	      </tr>
+	    </informaltable>
+	  </listitem>
+	  <listitem>
+	    <synopsis language="C++">bool operator!=(c_regex_traits&lt; char_type &gt; const &amp;) const;</synopsis>
+	    <para>2 つの <classname linkend="c_regex_traits">c_regex_traits</classname> オブジェクトが等値でないか調べる。</para>
+	    <informaltable>
+	      <tr>
+		<th>戻り値：</th>
+		<td>偽</td>
+	      </tr>
+	    </informaltable>
+	  </listitem>
+	  <listitem>
+	    <synopsis language="C++">string_type fold_case(char_type ch) const;</synopsis>
+	    <para>渡した文字と大文字小文字を区別せずに比較すると等値となる文字をすべて含む <type role="typedef">string_type</type> を返す。この関数が呼び出されるのは <code language="C++">has_fold_case&lt;c_regex_traits&lt;Char&gt; &gt;</code> が真の場合のみである。</para>
+	    <informaltable>
+	      <tr>
+		<th>引数：</th>
+		<td><parameter class="function">ch</parameter></td>
+		<td>元の文字。</td>
+	      </tr>
+	      <tr>
+		<th>戻り値：</th>
+		<td colspan="2"><parameter class="function">ch</parameter> と大文字小文字を区別せずに比較すると等値となる文字をすべて含む <type role="typedef">string_type</type></td>
+	      </tr>
+	    </informaltable>
+	  </listitem>
+	  <listitem>
+	    <synopsis language="C++">locale_type imbue(locale_type loc);</synopsis>
+	    <para>何もしない。</para>
+	  </listitem>
+	  <listitem>
+	    <synopsis language="C++">template&lt;&gt; char widen(char ch);</synopsis>
+	  </listitem>
+	  <listitem>
+	    <synopsis language="C++">template&lt;&gt; wchar_t widen(char ch);</synopsis>
+	  </listitem>
+	  <listitem>
+	    <synopsis language="C++">template&lt;&gt; unsigned char hash(char ch);</synopsis>
+	  </listitem>
+	  <listitem>
+	    <synopsis language="C++">template&lt;&gt; unsigned char hash(wchar_t ch);</synopsis>
+	  </listitem>
+	  <listitem>
+	    <synopsis language="C++">template&lt;&gt; int value(char ch, int radix);</synopsis>
+	  </listitem>
+	  <listitem>
+	    <synopsis language="C++">template&lt;&gt; int value(wchar_t ch, int radix);</synopsis>
+	  </listitem>
+	</orderedlist>
+      </section>
+
+      <section>
+	<title>c_regex_traits 公開静的メンバ関数</title>
+	<orderedlist>
+	  <listitem>
+	    <synopsis language="C++">static char_type widen(char ch);</synopsis>
+	    <para><type>char</type> 型の値を <type>Char</type> 型に変換する。</para>
+	    <informaltable>
+	      <tr>
+		<th>引数：</th>
+		<td><parameter class="function">ch</parameter></td>
+		<td>元の文字</td>
+	      </tr>
+	      <tr>
+		<th>戻り値：</th>
+		<td colspan="2"><type>Char</type> が <type>char</type> であれば <parameter class="function">ch</parameter> 、<type>Char</type> が <type>wchar_t</type> であれば <code language="C++">std::btowc(ch)</code>。</td>
+	      </tr>
+	    </informaltable>
+	  </listitem>
+	  <listitem>
+	    <synopsis language="C++">static unsigned char hash(char_type ch);</synopsis>
+	    <para><code>[0, UCHAR_MAX]</code> の範囲で <type>Char</type> のハッシュ値を返す。</para>
+	    <informaltable>
+	      <tr>
+		<th>引数：</th>
+		<td><parameter class="function">ch</parameter></td>
+		<td>元の文字。</td>
+	      </tr>
+	      <tr>
+		<th>戻り値：</th>
+		<td colspan="2"><literal>0</literal> 以上 <constant>UCHAR_MAX</constant> 以下の値。</td>
+	      </tr>
+	    </informaltable>
+	  </listitem>
+	  <listitem>
+	    <synopsis language="C++">static char_type translate(char_type ch);</synopsis>
+	    <para>何もしない。</para>
+	    <informaltable>
+	      <tr>
+		<th>引数：</th>
+		<td><parameter class="function">ch</parameter></td>
+		<td>元の文字。</td>
+	      </tr>
+	      <tr>
+		<th>戻り値：</th>
+		<td colspan="2"><parameter class="function">ch</parameter></td>
+	      </tr>
+	    </informaltable>
+	  </listitem>
+	  <listitem>
+	    <synopsis language="C++">static char_type translate_nocase(char_type ch);</synopsis>
+	    <para>現在のグローバルな C ロカールを使用して、文字を小文字に変換する。</para>
+	    <informaltable>
+	      <tr>
+		<th>引数：</th>
+		<td><parameter class="function">ch</parameter></td>
+		<td>元の文字。</td>
+	      </tr>
+	      <tr>
+		<th>戻り値：</th>
+		<td colspan="2"><type>Char</type> が <type>char</type> であれば <code language="C++">std::tolower(ch)</code> 、<type>Char</type> が <type>wchar_t</type> であれば <code language="C++">std::towlower(ch)</code>。</td>
+	      </tr>
+	    </informaltable>
+	  </listitem>
+	  <listitem>
+	    <synopsis language="C++">static char_type tolower(char_type ch);</synopsis>
+	    <para>現在のグローバルな C ロカールを使用して、文字を小文字に変換する。</para>
+	    <informaltable>
+	      <tr>
+		<th>引数：</th>
+		<td><parameter class="function">ch</parameter></td>
+		<td>元の文字。</td>
+	      </tr>
+	      <tr>
+		<th>戻り値：</th>
+		<td colspan="2"><type>Char</type> が <type>char</type> であれば <code language="C++">std::tolower(ch)</code> 、<type>Char</type> が <type>wchar_t</type> であれば <code language="C++">std::towlower(ch)</code>。</td>
+	      </tr>
+	    </informaltable>
+	  </listitem>
+	  <listitem>
+	    <synopsis language="C++">static char_type toupper(char_type ch);</synopsis>
+	    <para>現在のグローバルな C ロカールを使用して、文字を大文字に変換する。</para>
+	    <informaltable>
+	      <tr>
+		<th>引数：</th>
+		<td><parameter class="function">ch</parameter></td>
+		<td>元の文字。</td>
+	      </tr>
+	      <tr>
+		<th>戻り値：</th>
+		<td colspan="2"><type>Char</type> が <type>char</type> であれば <code language="C++">std::toupper(ch)</code> 、<type>Char</type> が <type>wchar_t</type> であれば <code language="C++">std::towupper(ch)</code>。</td>
+	      </tr>
+	    </informaltable>
+	  </listitem>
+	  <listitem>
+	    <synopsis language="C++">static bool in_range(char_type first, char_type last, char_type ch);</synopsis>
+	    <para>文字が文字範囲に含まれるか調べる。</para>
+	    <informaltable>
+	      <tr>
+		<th rowspan="3">引数：</th>
+		<td><parameter class="function">ch</parameter></td>
+		<td>元の文字。</td>
+	      </tr>
+	      <tr>
+		<td><parameter class="function">first</parameter></td>
+		<td>範囲の下限。</td>
+	      </tr>
+	      <tr>
+		<td><parameter class="function">last</parameter></td>
+		<td>範囲の上限。</td>
+	      </tr>
+	      <tr>
+		<th>戻り値：</th>
+		<td colspan="2"><code language="C++">first &lt;= ch &amp;&amp; ch &lt;= last</code></td>
+	      </tr>
+	    </informaltable>
+	  </listitem>
+	  <listitem>
+	    <synopsis language="C++">static bool in_range_nocase(char_type first, char_type last, char_type ch);</synopsis>
+	    <para>文字が文字範囲に含まれるか調べる。大文字小文字を区別しない。</para>
+	    <note>
+	      <para>
+		既定の実装は適正な Unicode ケースフォールディングを行わないが、標準 C ロカールではこれが最善である。
+	      </para>
+	    </note>
+	    <informaltable>
+	      <tr>
+		<th rowspan="3">引数：</th>
+		<td><parameter class="function">ch</parameter></td>
+		<td>元の文字。</td>
+	      </tr>
+	      <tr>
+		<td><parameter class="function">first</parameter></td>
+		<td>範囲の下限。</td>
+	      </tr>
+	      <tr>
+		<td><parameter class="function">last</parameter></td>
+		<td>範囲の上限。</td>
+	      </tr>
+	      <tr>
+		<th>戻り値：</th>
+		<td colspan="2"><code language="C++">in_range(first, last, ch) || in_range(first, last, tolower(ch)) || in_range(first, last, toupper(ch))</code></td>
+	      </tr>
+	    </informaltable>
+	  </listitem>
+	  <listitem>
+	    <synopsis language="C++">template&lt;typename FwdIter&gt;
+  static string_type transform(FwdIter begin, FwdIter end);</synopsis>
+	    <para>イテレータ範囲 <code>[F1, F2)</code> が示す文字シーケンスのソートキーを返す。文字シーケンス <code>[G1, G2)</code> が文字シーケンス <code>[H1, H2)</code> の前にソートされる場合に <code language="C++">v.transform(G1, G2) &lt; v.transform(H1, H2)</code> とならなければならない。</para>
+	    <note>
+	      <para>現在使用していない。</para>
+	    </note>
+	  </listitem>
+	  <listitem>
+	    <synopsis language="C++">template&lt;typename FwdIter&gt;
+  static string_type transform_primary(FwdIter begin, FwdIter end);</synopsis>
+	    <para>イテレータ範囲 <code>[F1, F2)</code> が示す文字シーケンスのソートキーを返す。大文字小文字を区別せずにソートして文字シーケンス <code>[G1, G2)</code> が文字シーケンス <code>[H1, H2)</code> の前に現れる場合に <code language="C++">v.transform(G1, G2) &lt; v.transform(H1, H2)</code> とならなければならない。</para>
+	    <note>
+	      <para>現在使用していない。</para>
+	    </note>
+	  </listitem>
+	  <listitem>
+	    <synopsis language="C++">template&lt;typename FwdIter&gt;
+  static string_type lookup_collatename(FwdIter begin, FwdIter end);</synopsis>
+	    <para>イテレータ範囲 <code>[F1, F2)</code> が示す文字シーケンスが構成する照合要素を表す文字シーケンスを返す。文字シーケンスが正しい照合要素でなければ空文字列を返す。</para>
+	    <note>
+	      <para>現在使用していない。</para>
+	    </note>
+	  </listitem>
+	  <listitem>
+	    <synopsis language="C++">template&lt;typename FwdIter&gt;
+  static char_class_type 
+  lookup_classname(FwdIter begin, FwdIter end, bool icase);</synopsis>
+	    <para>指定した文字シーケンスが表す文字分類について、相当するビットマスクを返す。</para>
+	    <informaltable>
+	      <tr>
+		<th>引数：</th>
+		<td><parameter class="function">begin</parameter></td>
+		<td>文字分類の名前を表す文字シーケンスの先頭を指す前進イテレータ。</td>
+	      </tr>
+	      <tr>
+		<td><parameter class="function">end</parameter></td>
+		<td>文字シーケンスの終端。</td>
+	      </tr>
+	      <tr>
+		<td><parameter class="function">icase</parameter></td>
+		<td>戻り値のビットマスクが大文字小文字を区別しない文字分類を表すかを指定する。</td>
+	      </tr>
+	      <tr>
+		<th>戻り値：</th>
+		<td colspan="2">文字分類を表すビットマスク。</td>
+	      </tr>
+	    </informaltable>
+	  </listitem>
+	  <listitem>
+	    <synopsis language="C++">static bool isctype(char_type ch, char_class_type mask);</synopsis>
+	    <para>文字分類ビットマスクに対して文字をテストする。</para>
+	    <informaltable>
+	      <tr>
+		<th rowspan="2">引数：</th>
+		<td><parameter class="function">ch</parameter></td>
+		<td>テストする文字。</td>
+	      </tr>
+	      <tr>
+		<td><parameter class="function">mask</parameter></td>
+		<td>テストする文字分類のビットマスク。</td>
+	      </tr>
+	      <tr>
+		<th>要件：</th>
+		<td colspan="2"><parameter class="function">mask</parameter> は <methodname>lookup_classname</methodname> が返したビットマスクか、それらのビット和。</td>
+	      </tr>
+	      <tr>
+		<th>戻り値：</th>
+		<td colspan="2">文字が指定した文字分類に含まれれば真、それ以外は偽。</td>
+	      </tr>
+	    </informaltable>
+	  </listitem>
+	  <listitem>
+	    <synopsis language="C++">static int value(char_type ch, int radix);</synopsis>
+	    <para>数字を数値に変換する。</para>
+	    <informaltable>
+	      <tr>
+		<th rowspan="2">引数：</th>
+		<td><parameter class="function">ch</parameter></td>
+		<td>数字。</td>
+	      </tr>
+	      <tr>
+		<td><parameter class="function">radix</parameter></td>
+		<td>変換に使用する序数。</td>
+	      </tr>
+	      <tr>
+		<th>要件：</th>
+		<td colspan="2"><parameter class="function">radix</parameter> は 8 、10 、16 のいずれか。</td>
+	      </tr>
+	      <tr>
+		<th>戻り値：</th>
+		<td colspan="2"><parameter class="function">ch</parameter> が数字でなければ <literal>-1</literal> 、それ以外は文字が表す数値。<type role="typedef">char_type</type> が <type>char</type> であれば <function>std::strtol</function> を、<type role="typedef">char_type</type> が <type>wchar_t</type> であれば <function>std::wcstol</function> を使用する。</td>
+	      </tr>
+	    </informaltable>
+	  </listitem>
+	  <listitem>
+	    <synopsis language="C++">static locale_type getloc();</synopsis>
+	    <para>何もしない。</para>
+	  </listitem>
+	</orderedlist>
+      </section>
+    </section>
+  </section>
+</article>
