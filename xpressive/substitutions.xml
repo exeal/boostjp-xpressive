@@ -1,12 +1,12 @@
 <?xml version="1.0" ?>
-<article xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xml:lang="ja" version="5.0">
-  <info>
-    <title>文字列の置換</title>
-    <copyright>
-      <year>2008</year>
-      <holder>Eric Niebler</holder>
-    </copyright>
-  </info>
+<!--
+  Copyright (c) 2008 Eric Niebler
+  Distributed under the Boost Software License, Version 1.0. (See accompanying
+  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
+-->
+<section xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xml:lang="ja" version="5.0">
+  <title>文字列の置換</title>
+
   <para>
     正規表現が威力を発揮するのはテキスト検索のときだけではない。テキストの<emphasis>操作</emphasis>においても有効である。最もありふれたテキスト操作の 1 つが、「検索して置換」である。xpressive は検索と置換のために <function linkend="regex_replace">regex_replace()</function> アルゴリズムを提供する。
   </para>
@@ -415,4 +415,4 @@ int main()
       上のコードの <code language="C++">ref(env)[s1]</code> が書式化式で、1 番目の部分マッチの値 <constant>s1</constant> を辞書 <varname>env</varname> のキーとするという意味となる。ここで <function>xpressive::ref()</function> を使っているのは、ローカル変数 <varname>env</varname> への参照を<emphasis>遅延</emphasis>して <constant>s1</constant> の置換対象が判明するまで添字演算を遅らせるためである。
     </para>
   </section>
-</article>
+</section>

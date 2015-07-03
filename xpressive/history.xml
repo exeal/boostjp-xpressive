@@ -1,18 +1,17 @@
 <?xml version="1.0" ?>
-<article xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xml:lang="ja" version="5.0">
-  <info>
-    <title>
-      付録 1：履歴
-      <footnote>
-	<para>訳注　原文ではバージョン 2.1.0 までしか記述がありませんが、翻訳版では Boost のリリースノートから以降の履歴を抜粋しました。2.1.0 が Boost 1.36（2008 年 8 月 14 日）に相当します。
-	</para>
-      </footnote>
-    </title>
-    <copyright>
-      <year>2008</year>
-      <holder>Eric Niebler</holder>
-    </copyright>
-  </info>
+<!--
+  Copyright (c) 2008 Eric Niebler
+  Distributed under the Boost Software License, Version 1.0. (See accompanying
+  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
+-->
+<section xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xml:lang="ja" version="5.0">
+  <title>
+    付録 1：履歴
+    <footnote>
+      <para>訳注　原文ではバージョン 2.1.0 までしか記述がありませんが、翻訳版では Boost のリリースノートから以降の履歴を抜粋しました。2.1.0 が Boost 1.36（2008 年 8 月 14 日）に相当します。
+      </para>
+    </footnote>
+  </title>
   
   <section>
     <title>Boost 1.55.0（2013 年 11 月 11 日）</title>
@@ -321,4 +320,4 @@
     <title>バージョン 0.0.1（2003 年 11 月 16 日）</title>
     <para>xpressive のアナウンス：<link xlink:href="http://lists.boost.org/Archives/boost/2003/11/56312.php">http://lists.boost.org/Archives/boost/2003/11/56312.php</link></para>
   </section>
-</article>
+</section>

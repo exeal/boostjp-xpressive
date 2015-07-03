@@ -1,15 +1,17 @@
 <?xml version="1.0" ?>
-<article xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xml:lang="ja" version="5.0">
-  <info>
-    <title>マッチと検索</title>
-    <copyright>
-      <year>2008</year>
-      <holder>Eric Niebler</holder>
-    </copyright>
-  </info>
+<!--
+  Copyright (c) 2008 Eric Niebler
+  Distributed under the Boost Software License, Version 1.0. (See accompanying
+  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
+-->
+<section xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xml:lang="ja" version="5.0">
+  <title>マッチと検索</title>
+
   <section>
     <title>概要</title>
-    <para>正規表現オブジェクトの作成が終わったら、<function linkend="regex_match">regex_match()</function> および <function linkend="regex_search">regex_search()</function> アルゴリズムで文字列からパターンを検索する。本節では正規表現のマッチと検索の基本について述べる。<link xlink:href="http://www.boost.org/libs/regex/">Boost.Regex</link> ライブラリの <function linkend="regex_match">regex_match()</function> および <function linkend="regex_search">regex_search()</function> の振る舞いについて理解しているなら、xpressive 版でも同様の動作をすると考えてよい。</para>
+    <para>
+      正規表現オブジェクトの作成が終わったら、<function linkend="regex_match">regex_match()</function> および <function linkend="regex_search">regex_search()</function> アルゴリズムで文字列からパターンを検索する。本節では正規表現のマッチと検索の基本について述べる。<link xlink:href="http://www.boost.org/libs/regex/">Boost.Regex</link> ライブラリの <function linkend="regex_match">regex_match()</function> および <function linkend="regex_search">regex_search()</function> の振る舞いについて理解しているなら、xpressive 版でも同様の動作をすると考えてよい。
+    </para>
   </section>
 
   <section>
@@ -75,4 +77,4 @@ if( regex_match( str.begin(), str.end(), sre, regex_constants::match_not_bol ) )
       <function linkend="regex_search">regex_search()</function> の使い方に関する完全なプログラム例は<link linkend="examples.see_if_a_string_contains_a_sub_string_that_matches_a_regex">ここ</link>にある。利用可能な多重定義の完全なリストは <function linkend="regex_search">regex_search()</function> のリファレンスを見よ。
     </para>
   </section>
-</article>
+</section>

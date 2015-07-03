@@ -1,12 +1,11 @@
 <?xml version="1.0" ?>
-<article xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xml:lang="ja" version="5.0">
-  <info>
-    <title><classname>tracking_ptr&lt;&gt;</classname> による循環型コレクション</title>
-    <copyright>
-      <year>2008</year>
-      <holder>Eric Niebler</holder>
-    </copyright>
-  </info>
+<!--
+  Copyright (c) 2008 Eric Niebler
+  Distributed under the Boost Software License, Version 1.0. (See accompanying
+  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
+-->
+<section xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xml:lang="ja" version="5.0">
+  <title><classname>tracking_ptr&lt;&gt;</classname> による循環型コレクション</title>
 
   <para>
     xpressive では正規表現オブジェクトがお互いや自分自身を値や参照で参照する場合がある。また参照先の正規表現が生存するために参照カウントを使っている。これにより循環参照が生じ、メモリリークが起きる可能性がある。xpressive は <classname>tracking_ptr&lt;&gt;</classname> という型を使ってリークを回避している。本ドキュメントでは <classname>tracking_ptr&lt;&gt;</classname> の、高水準な観点からの振る舞いについて述べる。
@@ -115,7 +114,6 @@
       参照と依存がどのように伝播するか 1 行ずつ見ていく。
     </para>
     <informaltable>
-      <caption></caption>
       <thead>
 	<tr>
 	  <td>式</td>
@@ -163,7 +161,7 @@ term: cnt5 refs{expr,group,fact,term} deps={expr,group,fact}</literallayout>
 	  </td>
 	</tr>
       </tbody>
-    </table>
+    </informaltable>
     <para>
       オブジェクトの循環が発生したときに参照と依存がどのように伝播するかを示している。（4）の行で循環が閉じられ、以降、各オブジェクトは他のオブジェクトに対して参照カウントをもつ。これでなぜリークしないのか？ 先を続けよう。
     </para>
@@ -218,4 +216,4 @@ struct reference_deleter
       参照と依存を伝播する手法であるため、<classname>std::set</classname> は拡大するのみである。参照が不要になった場合でも縮小しない。xpressive ではこれは問題にならない。参照オブジェクトのグラフは大きくならず、それぞれ孤立したままである。汎用の参照カウント式循環コレクション機構として <classname>tracking_ptr&lt;&gt;</classname> を使おうとすると、この問題に焦点が当てられることになるだろう。
     </para>
   </section>
-</article>
+</section>

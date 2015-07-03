@@ -1,17 +1,21 @@
 <?xml version="1.0" ?>
-<article xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xml:lang="ja" version="5.0">
-  <info>
-    <title>例</title>
-    <copyright>
-      <year>2008</year>
-      <holder>Eric Niebler</holder>
-    </copyright>
-  </info>
-  <para>以下に6つの完全なプログラム例を挙げる。</para>
+<!--
+  Copyright (c) 2008 Eric Niebler
+  Distributed under the Boost Software License, Version 1.0. (See accompanying
+  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
+-->
+<section xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xml:lang="ja" version="5.0">
+  <title>例</title>
+
+  <para>
+    以下に 6 つの完全なプログラム例を挙げる。
+  </para>
   
   <section>
     <title>文字列全体が正規表現にマッチするか調べる</title>
-    <para>導入項にもあった例である。利便性のために再掲する。</para>
+    <para>
+      導入項にもあった例である。利便性のために再掲する。
+    </para>
     <programlisting language="C++">#include &lt;iostream&gt;
 #include &lt;boost/xpressive/xpressive.hpp&gt;
 
@@ -27,13 +31,15 @@ int main()
     if( regex_match( hello, what, rex ) )
     {
         std::cout &lt;&gt; what[0] &lt;&gt; '\n'; // マッチ全体
-        std::cout &lt;&gt; what[1] &lt;&gt; '\n'; // 1番目の捕捉
-        std::cout &lt;&gt; what[2] &lt;&gt; '\n'; // 2番目の捕捉
+        std::cout &lt;&gt; what[1] &lt;&gt; '\n'; // 1 番目の捕捉
+        std::cout &lt;&gt; what[2] &lt;&gt; '\n'; // 2 番目の捕捉
     }
 
     return 0;
 }</programlisting>
-    <para>このプログラムは以下を出力する。</para>
+    <para>
+      このプログラムは以下を出力する。
+    </para>
     <screen>hello world!
 hello
 world</screen>
@@ -41,7 +47,9 @@ world</screen>
 
   <section>
     <title>文字列が正規表現にマッチする部分文字列を含むか調べる</title>
-    <para>この例では、カスタムの <type>mark_tag</type> を使ってパターンを読みやすくしている点に注意していただきたい。後で <type>mark_tag</type> を <classname linkend="match_results">match_results&lt;&gt;</classname> の添字に使っている。</para>
+    <para>
+      この例では、カスタムの <type>mark_tag</type> を使ってパターンを読みやすくしている点に注意していただきたい。後で <type>mark_tag</type> を <classname linkend="match_results">match_results&lt;&gt;</classname> の添字に使っている。
+    </para>
     <programlisting language="C++">#include &lt;iostream&gt;
 #include &lt;boost/xpressive/xpressive.hpp&gt;
 
@@ -73,7 +81,9 @@ int main()
 
     return 0;
 }</programlisting>
-    <para>このプログラムは以下を出力する。</para>
+    <para>
+      このプログラムは以下を出力する。
+    </para>
     <screen>5/30/1973
 30
 5
@@ -83,7 +93,9 @@ int main()
 
   <section>
     <title>正規表現にマッチした部分文字列をすべて置換する</title>
-    <para>以下のプログラムは文字列内の日付を検索し、擬似 HTML でマークアップする。</para>
+    <para>
+      以下のプログラムは文字列内の日付を検索し、擬似 HTML でマークアップする。
+    </para>
     <programlisting language="C++">#include &lt;iostream&gt;
 #include &lt;boost/xpressive/xpressive.hpp&gt;
 
@@ -102,14 +114,19 @@ int main()
     str = regex_replace( str, date, format );
     std::cout &lt;&lt; str &lt;&lt; '\n';
 
-    return 0;</programlisting>
-    <para>このプログラムは以下を出力する。</para>
+    return 0;
+}</programlisting>
+    <para>
+      このプログラムは以下を出力する。
+    </para>
     <screen>I was born on &lt;date&gt;5/30/1973&lt;/date&gt; at 7am.</screen>
   </section>
 
   <section>
     <title>正規表現にマッチする部分文字列をすべて検索し、1 つずつ辿る</title>
-    <para>以下のプログラムはワイド文字列から単語を検索する。<type>wsregex_iterator</type> を使う。<type>wsregex_iterator</type> を参照はがしすると <type>wsmatch</type> オブジェクトが得られることに注意していただきたい。</para>
+    <para>
+      以下のプログラムはワイド文字列から単語を検索する。<type>wsregex_iterator</type> を使う。<type>wsregex_iterator</type> を参照はがしすると <type>wsmatch</type> オブジェクトが得られることに注意していただきたい。
+    </para>
     <programlisting>#include &lt;iostream&gt;
 #include &lt;boost/xpressive/xpressive.hpp&gt;
 
@@ -133,7 +150,9 @@ int main()
 
     return 0;
 }</programlisting>
-    <para>このプログラムは以下を出力する。</para>
+    <para>
+      このプログラムは以下を出力する。
+    </para>
     <screen>This
 is
 his
@@ -142,7 +161,9 @@ face</screen>
 
   <section>
     <title>文字列をそれぞれ正規表現にマッチするトークンに分割する</title>
-    <para>以下のプログラムは文字列からレースのタイムを検索し、はじめに分、次に秒を表示する。<classname linkend="regex_token_iterator">regex_token_iterator&lt;&gt;</classname> を使っている。</para>
+    <para>
+      以下のプログラムは文字列からレースのタイムを検索し、はじめに分、次に秒を表示する。<classname linkend="regex_token_iterator">regex_token_iterator&lt;&gt;</classname> を使っている。
+    </para>
     <programlisting language="C++">#include &lt;iostream&gt;
 #include &lt;boost/xpressive/xpressive.hpp&gt;
 
@@ -169,7 +190,9 @@ int main()
 
     return 0;
 }</programlisting>
-    <para>このプログラムは以下を出力する。</para>
+    <para>
+      このプログラムは以下を出力する。
+    </para>
     <screen>4
 40
 3
@@ -180,7 +203,9 @@ int main()
 
   <section>
     <title>正規表現を区切りとして文字列を分割する</title>
-    <para>以下のプログラムは HTML でマークアップされたテキストからマークアップを除去する。HTML タグにマッチする正規表現と、文字列内の正規表現にマッチ<emphasis>しなかった</emphasis>部分を返す <classname linkend="regex_token_iterator">regex_token_iterator&lt;&gt;</classname>を使っている。</para>
+    <para>
+      以下のプログラムは HTML でマークアップされたテキストからマークアップを除去する。HTML タグにマッチする正規表現と、文字列内の正規表現にマッチ<emphasis>しなかった</emphasis>部分を返す <classname linkend="regex_token_iterator">regex_token_iterator&lt;&gt;</classname>を使っている。
+    </para>
     <programlisting language="C++">#include &lt;iostream&gt;
 #include &lt;boost/xpressive/xpressive.hpp&gt;
 
@@ -191,7 +216,7 @@ int main()
     std::string str( "Now &lt;bold&gt;is the time &lt;i&gt;for all good men&lt;/i&gt;"
                      " to come to the aid of their&lt;/bold&gt; country." );
 
-    // HTMLタグを検索する
+    // HTML タグを検索する
     sregex html = '&lt;' &gt;&gt; optional('/') &gt;&gt; +_w &gt;&gt; '&gt;';
 
     // 以下のようにトークンイテレータに-1を与えると
@@ -207,13 +232,17 @@ int main()
 
     return 0;
 }</programlisting>
-    <para>このプログラムは以下を出力する。</para>
+    <para>
+      このプログラムは以下を出力する。
+    </para>
     <screen>{Now }{is the time }{for all good men}{ to come to the aid of their}{ country.}</screen>
   </section>
 
   <section>
     <title>入れ子になった結果木を表示する</title>
-    <para>入れ子になった結果木を表示する方法を以下のヘルパクラスで示す。</para>
+    <para>
+      入れ子になった結果木を表示する方法を以下のヘルパクラスで示す。
+    </para>
     <programlisting language="C++">// 入れ子になった結果を字下げ付きでstd::coutに出力する
 struct output_nested_results
 {
@@ -243,4 +272,4 @@ struct output_nested_results
     }
 };</programlisting>
   </section>
-</article>
+</section>
