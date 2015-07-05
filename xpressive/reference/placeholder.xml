@@ -1,126 +1,155 @@
 <?xml version="1.0" ?>
-<article xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xml:lang="ja" version="5.0">
-  <info>
-    <title>&lt;boost/xpressive/regex_actions.hpp&gt; ヘッダ</title>
-    <copyright>
-      <year>2008</year>
-      <holder>Eric Niebler</holder>
-    </copyright>
-  </info>
+<refentry xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink" xml:lang="ja" version="5.0" xml:id="placeholder">
+  <refmeta>
+    <refentrytitle>placeholder 構造体テンプレート</refentrytitle>
+  </refmeta>
 
-  <para>
-    xpressive におけるアクション式の構文要素がある。
-  </para>
+  <refnamediv>
+    <refname>boost::xpressive::placeholder</refname>
+    <refpurpose>
+      意味アクション内で変数の代役となるプレースホルダを定義する。
+    </refpurpose>
+  </refnamediv>
 
-  <synopsis language="C++">BOOST_PROTO_LOCAL_MACRO(N, typename_A, A_const_ref, A_const_ref_a, a)
-BOOST_PROTO_LOCAL_a
-BOOST_PROTO_LOCAL_LIMITS
-namespace boost {
-  namespace xpressive {
-    template&lt;typename Fun&gt; struct function;
-    template&lt;typename T&gt; struct value;
-    template&lt;typename T&gt; struct reference;
-    template&lt;typename T&gt; struct local;
-    template&lt;typename T, int I, typename Dummy&gt; struct placeholder;
+  <refsynopsisdiv>
+    <synopsis language="C++">// ヘッダ：&lt;<filename linkend="header.regex_actions_hpp">boost/xpressive/regex_actions.hpp</filename>&gt;
 
-    function&lt; op::at &gt;::type const at;
-    function&lt; op::push &gt;::type const push;
-    function&lt; op::push_back &gt;::type const push_back;
-    function&lt; op::push_front &gt;::type const push_front;
-    function&lt; op::pop &gt;::type const pop;
-    function&lt; op::pop_back &gt;::type const pop_back;
-    function&lt; op::pop_front &gt;::type const pop_front;
-    function&lt; op::top &gt;::type const top;
-    function&lt; op::back &gt;::type const back;
-    function&lt; op::front &gt;::type const front;
-    function&lt; op::first &gt;::type const first;
-    function&lt; op::second &gt;::type const second;
-    function&lt; op::matched &gt;::type const matched;
-    function&lt; op::length &gt;::type const length;
-    function&lt; op::str &gt;::type const str;
-    function&lt; op::insert &gt;::type const insert;
-    function&lt; op::make_pair &gt;::type const make_pair;
-    unspecified check;
-    unspecified let;
-    template&lt;typename X2_0, typename A0&gt; unspecified as(A0 const &amp;);
-    template&lt;typename X2_0, typename A0&gt; unspecified static_cast_(A0 const &amp;);
-    template&lt;typename X2_0, typename A0&gt; unspecified dynamic_cast_(A0 const &amp;);
-    template&lt;typename X2_0, typename A0&gt; unspecified const_cast_(A0 const &amp;);
-    template&lt;typename T&gt; value&lt; T &gt; const val(T const &amp;);
-    template&lt;typename T&gt; reference&lt; T &gt; const ref(T &amp;);
-    template&lt;typename T&gt; reference&lt; T const  &gt; const cref(T const &amp;);
-    namespace op {
-      struct push;
-      struct push_back;
-      struct push_front;
-      struct pop;
-      struct pop_back;
-      struct pop_front;
-      struct front;
-      struct back;
-      struct top;
-      struct first;
-      struct second;
-      struct matched;
-      struct length;
-      struct str;
-      struct insert;
-      struct make_pair;
-      template&lt;typename T&gt; struct as;
-      template&lt;typename T&gt; struct static_cast_;
-      template&lt;typename T&gt; struct dynamic_cast_;
-      template&lt;typename T&gt; struct const_cast_;
-      template&lt;typename T&gt; struct construct;
-      template&lt;typename Except&gt; struct throw_;
-    }
-  }
-}</synopsis>
-
-  <para>
-    （訳注）以下の実体を省略しました。
-  </para>
-  <itemizedlist>
-    <listitem>
-      <para>マクロ：BOOST_PROTO_LOCAL_MACRO 、BOOST_PROTO_LOCAL_a 、BOOST_PROTO_LOCAL_LIMITS</para>
-    </listitem>
-    <listitem>
-      <para>構造体テンプレート：function 、value 、local 、as 、static_cast_ 、dynamic_cast_ 、const_cast_ 、construct 、throw_</para>
-    </listitem>
-    <listitem>
-      <para>グローバル定数：at 、push 、push_back 、push_front 、pop 、pop_back 、pop_front 、top、back 、front 、first 、second、matched 、length 、str 、insert 、make_pair</para>
-    </listitem>
-    <listitem>
-      <para>グローバル変数：check 、let</para>
-    </listitem>
-    <listitem>
-      <para>関数テンプレート：as（<code language="C++">lexical_cast</code> のようなもの）、static_cast_ 、dynamic_cast_ 、const_cast_ 、val 、ref 、cref</para>
-    </listitem>
-    <listitem>
-      <para>構造体：push 、push_back 、push_front 、pop 、pop_back 、pop_front 、front 、back 、top 、first 、second 、matched 、length 、str 、insert 、make_pair</para>
-    </listitem>
-  </itemizedlist>
-  
-  <section>
-    <title>placeholder 構造体テンプレート</title>
-    <para>boost::xpressive::placeholder。</para>
-
-    <section>
-      <title>書式</title>
-      <synopsis language="C++">// ヘッダ：&lt;boost/xpressive/regex_actions.hpp&gt;
-
-template&lt;typename T, int I, typename Dummy&gt;
-struct placeholder {
-  // 型
-  typedef placeholder&lt; T, I, Dummy &gt; this_type;      
-  typedef unspecified                action_arg_type;
+template&lt;typename T, int I = 0&gt;
+struct <classname linkend="placeholder">placeholder</classname> {
+  // <link linkend="placeholder.construct-copy-destruct">構築、コピー、解体</link>
+  <replaceable>unspecified</replaceable> <methodname linkend="placeholder.operator.0">operator=</methodname>(T &amp;) const;
+  <replaceable>unspecified</replaceable> <methodname linkend="placeholder.operator.1">operator=</methodname>(T const &amp;) const;
 };</synopsis>
-    </section>
+  </refsynopsisdiv>
 
-    <section>
-      <title>説明</title>
-      <para>
-	<classname>placeholder&lt;T&gt;</classname> は、意味アクションにおいて型 <type>T</type> の変数情報を表すプレースホルダを定義するのに使用する。
-      </para>
-    </section>
-  </section>
-</article>
+  <refsection>
+    <title>説明</title>
+    <para>
+      <classname>placeholder&lt;&gt;</classname> は、意味アクション内で実際のオブジェクトの代わりに使用するプレースホルダを定義するのに使用する。プレースホルダを使用すると、アクション付きの正規表現を一度だけ定義しておき、その正規表現を定義した時点では使用できないオブジェクトの読み書きを行う多くの状況で再利用できるようになる。
+    </para>
+    <para>
+      <classname>placeholder&lt;&gt;</classname> の使用方法は、<classname>placeholder&lt;T&gt;</classname> 型のオブジェクトを作成し、意味アクション内で型 <type>T</type> のオブジェクトと完全に同じように扱うことである。
+    </para>
+    <programlisting language="C++">placeholder&lt;int&gt; _i;
+placeholder&lt;double&gt; _d;
+
+sregex rex = ( some &gt;&gt; regex &gt;&gt; here )
+    [ ++_i, _d *= _d ];</programlisting>
+    <para>
+      次に <function>regex_search()</function> 、<function>regex_match</function> 、<function>regex_replace()</function> のいずれかでパターンマッチを行うには、正規表現オブジェクトの意味アクションで使用するプレースホルダへの束縛を持つ <classname linkend="match_results">match_results&lt;&gt;</classname> オブジェクトを渡す。
+    </para>
+    <programlisting language="C++">int i = 0;
+double d = 3.14;
+
+smatch what;
+what.let(_i = i)
+    .let(_d = d);
+
+if(regex_match("何かの文字列", rex, what))
+// i と d がここで変化する</programlisting>
+    <para>
+      意味アクションが未束縛のプレースホルダを持つオブジェクトを評価した場合、<exceptionname linkend="regex_error">regex_error</exceptionname> 型の例外を投げる。
+    </para>
+    <para>
+      <function>xpressive::let()</function> の議論とユーザーガイドの「<link linkend="user_s_guide.semantic_actions_and_user_defined_assertions.referring_to_non_local_variables">非ローカル変数を参照する</link>」の節を見よ。
+    </para>
+
+    <refsection>
+      <title>使用例：</title>
+      <programlisting language="C++">// map オブジェクトに対する placeholder を定義する：
+placeholder&lt;std::map&lt;std::string, int&gt; &gt; _map;
+
+// =&gt; で区切られた単語と整数にマッチし
+// 結果を std::map&lt;&gt; に詰め込む
+sregex pair = ( (s1= +_w) &gt;&gt; "=&gt;" &gt;&gt; (s2= +_d) )
+    [ _map[s1] = as&lt;int&gt;(s2) ];
+
+// 空白で区切られた単語、整数の組
+// 1 つ以上にマッチする。
+sregex rx = pair &gt;&gt; *(+_s &gt;&gt; pair);
+
+// 解析する文字列
+std::string str("aaa=&gt;1 bbb=&gt;23 ccc=&gt;456");
+
+// 実際の map：
+std::map&lt;std::string, int&gt; result;
+
+// _map プレースホルダを実際の map に束縛する
+smatch what;
+what.let( _map = result );
+
+// マッチを実行し、結果の map を埋める
+if(regex_match(str, what, rx))
+{
+    std::cout &lt;&lt; result["aaa"] &lt;&lt; '\n';
+    std::cout &lt;&lt; result["bbb"] &lt;&lt; '\n';
+    std::cout &lt;&lt; result["ccc"] &lt;&lt; '\n';
+}</programlisting>
+    </refsection>
+
+    <refsection>
+      <title>テンプレート引数</title>
+      <orderedlist>
+	<listitem>
+	  <synopsis language="C++">typename T</synopsis>
+	  <para>このオブジェクトが代理となるオブジェクトの型。</para>
+	</listitem>
+	<listitem>
+	  <synopsis language="C++">int I = 0</synopsis>
+	  <para>このプレースホルダを、同じ意味アクション内で同じ型を持つ他のものと区別するのに使用する省略可能な識別子。</para>
+	</listitem>
+      </orderedlist>
+    </refsection>
+
+    <refsection xml:id="placeholder.construct-copy-destruct">
+      <title>placeholder 構築、コピー、解体の公開演算</title>
+      <orderedlist>
+	<listitem xml:id="placeholder.operator.0">
+	  <methodsynopsis language="C++">
+	    <type><replaceable>unspecified</replaceable></type>
+	    <methodname>operator=</methodname>
+	    <methodparam>
+	      <type>T &amp;</type>
+	      <parameter>t</parameter>
+	    </methodparam>
+	    <modifier>const</modifier>
+	  </methodsynopsis>
+	  <variablelist spacing="compact">
+	    <varlistentry>
+	      <term>引数：</term>
+	      <listitem>
+		<variablelist spacing="compact">
+		  <varlistentry>
+		    <term><parameter>t</parameter></term>
+		    <listitem>
+		      <para>このプレースホルダに対応するオブジェクト</para>
+		    </listitem>
+		  </varlistentry>
+		</variablelist>
+	      </listitem>
+	    </varlistentry>
+	    <varlistentry>
+	      <term>戻り値：</term>
+	      <listitem>
+		<para><parameter>t</parameter> と <code language="C++">*this</code> の対応を記録する未規定型のオブジェクト。</para>
+	      </listitem>
+	    </varlistentry>
+	  </variablelist>
+	</listitem>
+
+	<listitem xml:id="placeholder.operator.1">
+	  <methodsynopsis language="C++">
+	    <type><replaceable>unspecified</replaceable></type>
+	    <methodname>operator=</methodname>
+	    <methodparam>
+	      <type>T const &amp;</type>
+	      <parameter>t</parameter>
+	    </methodparam>
+	    <modifier>const</modifier>
+	  </methodsynopsis>
+	  <xi:include href="-overload-description.xml"/>
+	</listitem>
+      </orderedlist>
+    </refsection>
+  </refsection>
+</refentry>

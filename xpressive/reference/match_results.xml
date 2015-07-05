@@ -15,12 +15,12 @@
     <synopsis language="C++">// ヘッダ：&lt;<filename linkend="header.match_results_hpp">boost/xpressive/match_results.hpp</filename>&gt;
 
 template&lt;typename BidiIter&gt; 
-struct match_results {
-  // <link linkend="types">型</link>
+struct <classname linkend="match_results">match_results</classname> {
+  // 型
   typedef iterator_value&lt; BidiIter &gt;::type      char_type;          
   typedef unspecified                           string_type;        
   typedef std::size_t                           size_type;          
-  typedef sub_match&lt; BidiIter &gt;                 value_type;         
+  typedef <classname linkend="sub_match">sub_match</classname>&lt; BidiIter &gt;                 value_type;         
   typedef iterator_difference&lt; BidiIter &gt;::type difference_type;    
   typedef value_type const &amp;                    reference;          
   typedef value_type const &amp;                    const_reference;    
@@ -28,44 +28,44 @@ struct match_results {
   typedef <replaceable>unspecified</replaceable>                           const_iterator;     
   typedef <replaceable>unspecified</replaceable>                           nested_results_type;
 
-  // <link linkend="construct-copy-destruct">構築、コピー、解体</link>
-  match_results();
-  match_results(match_results&lt; BidiIter &gt; const &amp;);
-  match_results&lt; BidiIter &gt;&amp; operator=(match_results&lt; BidiIter &gt; const &amp;);
-  ~match_results();
+  // <link linkend="match_results.construct-copy-destruct">構築、コピー、解体</link>
+  <methodname linkend="match_results.match_results.0">match_results</methodname>();
+  <methodname linkend="match_results.match_results.1">match_results</methodname>(<classname linkend="match_results">match_results</classname>&lt; BidiIter &gt; const &amp;);
+  <classname linkend="match_results">match_results</classname>&lt; BidiIter &gt;&amp; <methodname linkend="match_results.operator.0">operator=</methodname>(<classname linkend="match_results">match_results</classname>&lt; BidiIter &gt; const &amp;);
+  <methodname linkend="match_results.-match_results">~match_results</methodname>();
 
-  // <link linkend="public-member-functions">公開メンバ関数</link>
-  size_type size() const;
-  bool empty() const;
-  difference_type length(size_type = 0) const;
-  difference_type position(size_type = 0) const;
-  string_type str(size_type = 0) const;
-  template&lt;typename Sub&gt; const_reference operator[](Sub const &amp;) const;
-  const_reference prefix() const;
-  const_reference suffix() const;
-  const_iterator begin() const;
-  const_iterator end() const;
-  operator bool_type() const;
-  bool operator!() const;
-  regex_id_type regex_id() const;
-  nested_results_type const &amp; nested_results() const;
+  // <link linkend="match_results.public-member-functions">公開メンバ関数</link>
+  size_type <methodname linkend="match_results.size">size</methodname>() const;
+  bool <methodname linkend="match_results.empty">empty</methodname>() const;
+  difference_type <methodname linkend="match_results.length">length</methodname>(size_type = 0) const;
+  difference_type <methodname linkend="match_results.position">position</methodname>(size_type = 0) const;
+  string_type <methodname linkend="match_results.str">str</methodname>(size_type = 0) const;
+  template&lt;typename Sub&gt; const_reference <methodname linkend="match_results.operator.1">operator[]</methodname>(Sub const &amp;) const;
+  const_reference <methodname linkend="match_results.prefix">prefix</methodname>() const;
+  const_reference <methodname linkend="match_results.suffix">suffix</methodname>() const;
+  const_iterator <methodname linkend="match_results.begin">begin</methodname>() const;
+  const_iterator <methodname linkend="match_results.end">end</methodname>() const;
+  operator <methodname linkend="match_results.operator.2">bool_type</methodname>() const;
+  bool <methodname linkend="match_results.operator.3">operator!</methodname>() const;
+  regex_id_type <methodname linkend="match_results.regex_id">regex_id</methodname>() const;
+  nested_results_type const &amp; <methodname linkend="match_results.nested_results">nested_results</methodname>() const;
   template&lt;typename Format, typename OutputIterator&gt; 
     OutputIterator 
-    format(OutputIterator, Format const &amp;, 
+    <methodname linkend="match_results.format.0">format</methodname>(OutputIterator, Format const &amp;, 
            regex_constants::match_flag_type = regex_constants::format_default, 
-           unspecified = 0) const;
+           <replaceable>unspecified</replaceable> = 0) const;
   template&lt;typename OutputIterator&gt; 
     OutputIterator 
-    format(OutputIterator, char_type const *, 
+    <methodname linkend="match_results.format.1">format</methodname>(OutputIterator, char_type const *, 
            regex_constants::match_flag_type = regex_constants::format_default) const;
   template&lt;typename Format, typename OutputIterator&gt; 
-    string_type format(Format const &amp;, 
+    string_type <methodname linkend="match_results.format.2">format</methodname>(Format const &amp;, 
                        regex_constants::match_flag_type = regex_constants::format_default, 
-                       unspecified = 0) const;
-  string_type format(char_type const *, 
+                       <replaceable>unspecified</replaceable> = 0) const;
+  string_type <methodname linkend="match_results.format.3">format</methodname>(char_type const *, 
                      regex_constants::match_flag_type = regex_constants::format_default) const;
-  void swap(match_results&lt; BidiIter &gt; &amp;);
-  template&lt;typename Arg&gt; match_results&lt; BidiIter &gt; &amp; let(Arg const &amp;);
+  void <methodname linkend="match_results.swap">swap</methodname>(<classname linkend="match_results">match_results</classname>&lt; BidiIter &gt; &amp;);
+  template&lt;typename Arg&gt; <classname linkend="match_results">match_results</classname>&lt; BidiIter &gt; &amp; <methodname linkend="match_results.let">let</methodname>(Arg const &amp;);
 };</synopsis>
   </refsynopsisdiv>
 
@@ -78,10 +78,10 @@ struct match_results {
       クラステンプレート <classname linkend="match_results">match_results&lt;&gt;</classname> は、lib.sequence.reqmtsが規定するシーケンスの要件に適合するが、constなシーケンスに対して定義された演算だけをサポートする。
     </para>
 
-    <refsection xml:id="construct-copy-destruct">
+    <refsection xml:id="match_results.construct-copy-destruct">
       <title>match_results の構築、コピー、解体公開演算</title>
       <orderedlist>
-	<listitem>
+	<listitem xml:id="match_results.match_results.0">
 	  <constructorsynopsis language="C++">
 	    <methodname>match_results</methodname>
 	    <void/>
@@ -114,7 +114,7 @@ struct match_results {
 	  </variablelist>
 	</listitem>
 
-	<listitem>
+	<listitem xml:id="match_results.match_results.1">
 	  <constructorsynopsis language="C++">
 	    <methodname>match_results</methodname>
 	    <methodparam>
@@ -193,7 +193,7 @@ struct match_results {
 	  </variablelist>
 	</listitem>
 
-	<listitem>
+	<listitem xml:id="match_results.operator.0">
 	  <methodsynopsis language="C++">
 	    <type>match_results&lt; BidiIter &gt;&amp;</type>
 	    <methodname>operator=</methodname>
@@ -273,7 +273,7 @@ struct match_results {
 	  </variablelist>
 	</listitem>
 
-	<listitem>
+	<listitem xml:id="match_results.-match_results">
 	  <destructorsynopsis language="C++">
 	    <methodname>~match_results</methodname>
 	    <void/>
@@ -282,10 +282,10 @@ struct match_results {
       </orderedlist>
     </refsection>
 
-    <refsection xml:id="public-member-functions">
+    <refsection xml:id="match_results.public-member-functions">
       <title>match_results 公開メンバ関数</title>
       <orderedlist>
-	<listitem>
+	<listitem xml:id="match_results.size">
 	  <methodsynopsis language="C++">
 	    <type>size_type</type>
 	    <methodname>size</methodname>
@@ -295,7 +295,7 @@ struct match_results {
 	  <para><code language="C++">*this</code> が成功したマッチ結果を表す場合は、マッチしたマーク済み部分式の総数に 1 を足した数を返す。それ以外の場合は 0 を返す。</para>
 	</listitem>
 
-	<listitem>
+	<listitem xml:id="match_results.empty">
 	  <methodsynopsis language="C++">
 	    <type>bool</type>
 	    <methodname>empty</methodname>
@@ -305,7 +305,7 @@ struct match_results {
 	  <para><code language="C++">size() == 0</code> を返す。</para>
 	</listitem>
 
-	<listitem>
+	<listitem xml:id="match_results.length">
 	  <methodsynopsis language="C++">
 	    <type>difference_type</type>
 	    <methodname>length</methodname>
@@ -319,7 +319,7 @@ struct match_results {
 	  <para><code language="C++">(*this)[sub].length()を返す。</code></para>
 	</listitem>
 
-	<listitem>
+	<listitem xml:id="match_results.position">
 	  <methodsynopsis language="C++">
 	    <type>difference_type</type>
 	    <methodname>position</methodname>
@@ -340,7 +340,7 @@ struct match_results {
 	  </para>
 	</listitem>
 
-	<listitem>
+	<listitem xml:id="match_results.str">
 	  <methodsynopsis language="C++">
 	    <type>string_type</type>
 	    <methodname>str</methodname>
@@ -354,7 +354,7 @@ struct match_results {
 	  <para><code language="C++">(*this)[sub].str()</code> を返す。</para>
 	</listitem>
 
-	<listitem>
+	<listitem xml:id="match_results.operator.1">
 	  <methodsynopsis language="C++">
 	    <modifier>template&lt;typename Sub&gt;</modifier>
 	    <type>const_reference</type>
@@ -368,7 +368,7 @@ struct match_results {
 	  <para>マーク済み部分式 <parameter>sub</parameter> にマッチしたシーケンスを表す <classname linkend="sub_match">sub_match</classname> オブジェクトへの参照を返す。<code language="C++">sub == 0</code> であれば正規表現全体にマッチしたシーケンスを表す <classname linkend="sub_match">sub_match</classname> オブジェクトへの参照を返す。<code language="C++">sub &gt;= size()</code> であればマッチしなかった部分式を表す <classname linkend="sub_match">sub_match</classname> オブジェクトへの参照を返す。</para>
 	</listitem>
 
-	<listitem>
+	<listitem xml:id="match_results.prefix">
 	  <methodsynopsis language="C++">
 	    <type>const_reference</type>
 	    <methodname>prefix</methodname>
@@ -386,7 +386,7 @@ struct match_results {
 	  </variablelist>
 	</listitem>
 
-	<listitem>
+	<listitem xml:id="match_results.suffix">
 	  <methodsynopsis language="C++">
 	    <type>const_reference</type>
 	    <methodname>suffix</methodname>
@@ -404,7 +404,7 @@ struct match_results {
 	  </variablelist>
 	</listitem>
 
-	<listitem>
+	<listitem xml:id="match_results.begin">
 	  <methodsynopsis language="C++">
 	    <type>const_iterator</type>
 	    <methodname>begin</methodname>
@@ -414,7 +414,7 @@ struct match_results {
 	  <para><code language="C++">*this</code> に格納されたマーク済み部分式マッチをすべて列挙する開始イテレータを返す。</para>
 	</listitem>
 
-	<listitem>
+	<listitem xml:id="match_results.end">
 	  <methodsynopsis language="C++">
 	    <type>const_iterator</type>
 	    <methodname>end</methodname>
@@ -424,7 +424,7 @@ struct match_results {
 	  <para><code language="C++">*this</code> に格納されたマーク済み部分式マッチをすべて列挙する終了イテレータを返す。</para>
 	</listitem>
 
-	<listitem>
+	<listitem xml:id="match_results.operator.2">
 	  <methodsynopsis language="C++">
 	    <methodname>operator bool_type</methodname>
 	    <void/>
@@ -433,7 +433,7 @@ struct match_results {
 	  <para><code language="C++">(*this)[0].matched</code> であれば真を、そうでなければ偽を返す。</para>
 	</listitem>
 
-	<listitem>
+	<listitem xml:id="match_results.operator.3">
 	  <methodsynopsis language="C++">
 	    <type>bool</type>
 	    <methodname>operator!</methodname>
@@ -443,7 +443,7 @@ struct match_results {
 	  <para><code language="C++">empty() || !(*this)[0].matched</code> であれば真を、そうでなければ偽を返す。</para>
 	</listitem>
 
-	<listitem>
+	<listitem xml:id="match_results.regex_id">
 	  <methodsynopsis language="C++">
 	    <type>regex_id_type</type>
 	    <methodname>regex_id</methodname>
@@ -453,7 +453,7 @@ struct match_results {
 	  <para>この <classname linkend="match_results">match_results</classname> オブジェクトで最近使用した <classname linkend="basic_regex">basic_regex</classname> オブジェクトの識別子を返す。</para>
 	</listitem>
 
-	<listitem>
+	<listitem xml:id="match_results.nested_results">
 	  <methodsynopsis language="C++">
 	    <type>nested_results_type const &amp;</type>
 	    <methodname>nested_results</methodname>
@@ -463,7 +463,7 @@ struct match_results {
 	  <para>入れ子の <classname linkend="match_results">match_results</classname> 要素のシーケンスを返す。</para>
 	</listitem>
 
-	<listitem>
+	<listitem xml:id="match_results.format.0">
 	  <methodsynopsis language="C++">
 	    <modifier>template&lt;typename Format, typename OutputIterator&gt;</modifier>
 	    <type>OutputIterator</type>
@@ -502,7 +502,7 @@ struct match_results {
 	  </para>
 	</listitem>
 
-	<listitem>
+	<listitem xml:id="match_results.format.1">
 	  <methodsynopsis language="C++">
 	    <modifier>template&lt;typename OutputIterator&gt;</modifier>
 	    <type>OutputIterator</type>
@@ -525,7 +525,7 @@ struct match_results {
 	  <para>利便性のために提供している多重定義メンバ関数である。上記関数とは受け取る引数が異なるのみである。</para>
 	</listitem>
 
-	<listitem>
+	<listitem xml:id="match_results.format.2">
 	  <methodsynopsis language="C++">
 	    <modifier>template&lt;typename Format, typename OutputIterator&gt;</modifier>
 	    <type>string_type</type>
@@ -559,7 +559,7 @@ struct match_results {
 	  それ以外で <parameter>Format</parameter> が <type>Callable&lt;match_results&lt;BidiIter&gt; &gt;</type> であれば、この関数は <code language="C++">fmt(*this)</code> を返す。</para>
 	</listitem>
 
-	<listitem>
+	<listitem xml:id="match_results.format.3">
 	  <methodsynopsis language="C++">
 	    <type>string_type</type>
 	    <methodname>format</methodname>
@@ -577,7 +577,7 @@ struct match_results {
 	  <para>利便性のために提供している多重定義メンバ関数である。上記関数とは受け取る引数が異なるのみである。</para>
 	</listitem>
 
-	<listitem>
+	<listitem xml:id="match_results.swap">
 	  <methodsynopsis language="C++">
 	    <type>void</type>
 	    <methodname>swap</methodname>
@@ -622,7 +622,7 @@ struct match_results {
 	  </variablelist>
 	</listitem>
 
-	<listitem>
+	<listitem xml:id="match_results.let">
 	  <methodsynopsis language="C++">
 	    <modifier>template&lt;typename Arg&gt;</modifier>
 	    <type>match_results&lt; BidiIter &gt; &amp;</type>

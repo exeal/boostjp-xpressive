@@ -16,7 +16,7 @@
   namespace xpressive {
     template&lt;typename BidiIter&gt; struct <classname linkend="basic_regex">basic_regex</classname>;
     template&lt;typename BidiIter&gt;
-      void <function linkend="swap">swap</function>(basic_regex&lt; BidiIter &gt; &amp;, basic_regex&lt; BidiIter &gt; &amp;);
+      void <function linkend="swap">swap</function>(<classname linkend="basic_regex">basic_regex</classname>&lt; BidiIter &gt; &amp;, <classname linkend="basic_regex">basic_regex</classname>&lt; BidiIter &gt; &amp;);
   }
 }</synopsis>
     <xi:include href="basic_regex.xml"/>
@@ -52,24 +52,24 @@
     template&lt;typename T&gt; struct <classname linkend="reference">reference</classname>;
     template&lt;typename T&gt; struct <classname linkend="value">value</classname>;
 
-    function&lt; op::at &gt;::type const <constant linkend="at">at</constant>;
-    function&lt; op::push &gt;::type const <constant linkend="push">push</constant>;
-    function&lt; op::push_back &gt;::type const <constant linkend="push_back">push_back</constant>;
-    function&lt; op::push_front &gt;::type const <constant linkend="push_front">push_front</constant>;
-    function&lt; op::pop &gt;::type const <constant linkend="pop">pop</constant>;
-    function&lt; op::pop_back &gt;::type const <constant linkend="pop_back">pop_back</constant>;
-    function&lt; op::pop_front &gt;::type const <constant linkend="pop_front">pop_front</constant>;
-    function&lt; op::top &gt;::type const <constant linkend="top">top</constant>;
-    function&lt; op::back &gt;::type const <constant linkend="back">back</constant>;
-    function&lt; op::front &gt;::type const <constant linkend="front">front</constant>;
-    function&lt; op::first &gt;::type const <constant linkend="first">first</constant>;
-    function&lt; op::second &gt;::type const <constant linkend="second">second</constant>;
-    function&lt; op::matched &gt;::type const <constant linkend="matched">matched</constant>;
-    function&lt; op::length &gt;::type const <constant linkend="length">length</constant>;
-    function&lt; op::str &gt;::type const <constant linkend="str">str</constant>;
-    function&lt; op::insert &gt;::type const <constant linkend="insert">insert</constant>;
-    function&lt; op::make_pair &gt;::type const <constant linkend="make_pair">make_pair</constant>;
-    function&lt; op::unwrap_reference &gt;::type const <constant linkend="unwrap_reference">unwrap_reference</constant>;
+    <classname linkend="function">function</classname>&lt; op::at &gt;::type const <constant linkend="at">at</constant>;
+    <classname linkend="function">function</classname>&lt; op::push &gt;::type const <constant linkend="push">push</constant>;
+    <classname linkend="function">function</classname>&lt; op::push_back &gt;::type const <constant linkend="push_back">push_back</constant>;
+    <classname linkend="function">function</classname>&lt; op::push_front &gt;::type const <constant linkend="push_front">push_front</constant>;
+    <classname linkend="function">function</classname>&lt; op::pop &gt;::type const <constant linkend="pop">pop</constant>;
+    <classname linkend="function">function</classname>&lt; op::pop_back &gt;::type const <constant linkend="pop_back">pop_back</constant>;
+    <classname linkend="function">function</classname>&lt; op::pop_front &gt;::type const <constant linkend="pop_front">pop_front</constant>;
+    <classname linkend="function">function</classname>&lt; op::top &gt;::type const <constant linkend="top">top</constant>;
+    <classname linkend="function">function</classname>&lt; op::back &gt;::type const <constant linkend="back">back</constant>;
+    <classname linkend="function">function</classname>&lt; op::front &gt;::type const <constant linkend="front">front</constant>;
+    <classname linkend="function">function</classname>&lt; op::first &gt;::type const <constant linkend="first">first</constant>;
+    <classname linkend="function">function</classname>&lt; op::second &gt;::type const <constant linkend="second">second</constant>;
+    <classname linkend="function">function</classname>&lt; op::matched &gt;::type const <constant linkend="matched">matched</constant>;
+    <classname linkend="function">function</classname>&lt; op::length &gt;::type const <constant linkend="length">length</constant>;
+    <classname linkend="function">function</classname>&lt; op::str &gt;::type const <constant linkend="str">str</constant>;
+    <classname linkend="function">function</classname>&lt; op::insert &gt;::type const <constant linkend="insert">insert</constant>;
+    <classname linkend="function">function</classname>&lt; op::make_pair &gt;::type const <constant linkend="make_pair">make_pair</constant>;
+    <classname linkend="function">function</classname>&lt; op::unwrap_reference &gt;::type const <constant linkend="unwrap_reference">unwrap_reference</constant>;
     template&lt;typename T, typename A&gt; <replaceable>unspecified</replaceable> <function linkend="as">as</function>(A const &amp;);
     template&lt;typename T, typename A&gt; <replaceable>unspecified</replaceable> <function linkend="static_cast_">static_cast_</function>(A const &amp;);
     template&lt;typename T, typename A&gt; <replaceable>unspecified</replaceable> <function linkend="dynamic_cast_">dynamic_cast_</function>(A const &amp;);

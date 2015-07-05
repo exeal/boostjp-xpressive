@@ -1,5 +1,5 @@
 <?xml version="1.0" ?>
-<refentry xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xml:lang="ja" version="5.0" xml:id="basic_regex">
+<refentry xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink" xml:lang="ja" version="5.0" xml:id="basic_regex">
   <refmeta>
     <refentrytitle>basic_regex 構造体テンプレート</refentrytitle>
   </refmeta>
@@ -14,55 +14,39 @@
 
 template&lt;typename BidiIter&gt;
 struct basic_regex {
-  // 型
-  typedef BidiIter                            iterator_type;
-  typedef iterator_value&lt; BidiIter &gt;::type    char_type;
-  typedef iterator_value&lt; BidiIter &gt;::type    value_type;
-  typedef unspecified                         string_type;
-  typedef regex_constants::syntax_option_type flag_type;
+  // <link linkend="basic_regex.construct-copy-destruct">構築、コピー、解体</link>
+  <methodname linkend="basic_regex.basic_regex.0">basic_regex</methodname>();
+  <methodname linkend="basic_regex.basic_regex.1">basic_regex</methodname>(basic_regex&lt; BidiIter &gt; const &amp;);
+  template&lt;typename Expr&gt; <methodname linkend="basic_regex.basic_regex.2">basic_regex</methodname>(Expr const &amp;);
+  basic_regex&lt; BidiIter &gt;&amp; <methodname linkend="basic_regex.operator.0">operator=</methodname>(basic_regex&lt; BidiIter &gt; const &amp;);
+  template&lt;typename Expr&gt; basic_regex&lt; BidiIter &gt;&amp; <methodname linkend="basic_regex.operator.1">operator=</methodname>(Expr const &amp;);
 
-  // <link linkend="construct-copy-destruct">構築、コピー、解体</link>
-  basic_regex();
-  basic_regex(basic_regex&lt; BidiIter &gt; const &amp;);
-  template&lt;typename Expr&gt; basic_regex(Expr const &amp;);
-  basic_regex&lt; BidiIter &gt;&amp; operator=(basic_regex&lt; BidiIter &gt; const &amp;);
-  template&lt;typename Expr&gt; basic_regex&lt; BidiIter &gt;&amp; operator=(Expr const &amp;);
+  // <link linkend="basic_regex.public-member-functions">公開メンバ関数</link>
+  std::size_t <methodname linkend="basic_regex.mark_count">mark_count</methodname>() const;
+  regex_id_type <methodname linkend="basic_regex.regex_id">regex_id</methodname>() const;
+  void <methodname linkend="basic_regex.swap">swap</methodname>(basic_regex&lt; BidiIter &gt; &amp;);
 
-  // <link linkend="public-member-functions">公開メンバ関数</link>
-  std::size_t mark_count() const;
-  regex_id_type regex_id() const;
-  void swap(basic_regex&lt; BidiIter &gt; &amp;);
-
-  // <link linkend="public-static-functions">公開静的メンバ関数</link>
+  // <link linkend="basic_regex.public-static-functions">公開静的メンバ関数</link>
   template&lt;typename InputIter&gt; 
     static basic_regex&lt; BidiIter &gt; 
-    compile(InputIter, InputIter, flag_type = regex_constants::ECMAScript);
+    <methodname linkend="basic_regex.compile.0">compile</methodname>(InputIter, InputIter, flag_type = regex_constants::ECMAScript);
   template&lt;typename InputRange&gt; 
     static basic_regex&lt; BidiIter &gt; 
-    compile(InputRange const &amp;, flag_type = regex_constants::ECMAScript);
+    <methodname linkend="basic_regex.compile.1">compile</methodname>(InputRange const &amp;, flag_type = regex_constants::ECMAScript);
   static basic_regex&lt; BidiIter &gt; 
-  compile(char_type const *, flag_type = regex_constants::ECMAScript);
+  <methodname linkend="basic_regex.compile.2">compile</methodname>(char_type const *, flag_type = regex_constants::ECMAScript);
   static basic_regex&lt; BidiIter &gt; 
-  compile(char_type const *, std::size_t, flag_type);
-  static regex_constants::syntax_option_type const ECMAScript;
-  static regex_constants::syntax_option_type const icase;
-  static regex_constants::syntax_option_type const nosubs;
-  static regex_constants::syntax_option_type const optimize;
-  static regex_constants::syntax_option_type const collate;
-  static regex_constants::syntax_option_type const single_line;
-  static regex_constants::syntax_option_type const not_dot_null;
-  static regex_constants::syntax_option_type const not_dot_newline;
-  static regex_constants::syntax_option_type const ignore_white_space;
+  <methodname linkend="basic_regex.compile.3">compile</methodname>(char_type const *, std::size_t, flag_type);
 };</synopsis>
   </refsynopsisdiv>
 
   <refsection>
     <title>説明</title>
 
-    <refsection xml:id="construct-copy-destruct">
+    <refsection xml:id="basic_regex.construct-copy-destruct">
       <title>basic_regex 構築、コピー、解体の公開演算</title>
       <orderedlist>
-	<listitem>
+	<listitem xml:id="basic_regex.basic_regex.0">
 	  <constructorsynopsis language="C++">
 	    <methodname>basic_regex</methodname>
 	    <void/>
@@ -83,7 +67,7 @@ struct basic_regex {
 	  </variablelist>
 	</listitem>
 
-	<listitem>
+	<listitem xml:id="basic_regex.basic_regex.1">
 	  <constructorsynopsis language="C++">
 	    <methodname>basic_regex</methodname>
 	    <methodparam>
@@ -120,7 +104,7 @@ struct basic_regex {
 	  </variablelist>
 	</listitem>
 
-	<listitem>
+	<listitem xml:id="basic_regex.basic_regex.2">
 	  <constructorsynopsis language="C++">
 	    <modifier>template&lt;typename Expr&gt;</modifier>
 	    <methodname>basic_regex</methodname>
@@ -165,7 +149,7 @@ struct basic_regex {
 	  </variablelist>
 	</listitem>
 
-	<listitem>
+	<listitem xml:id="basic_regex.operator.0">
 	  <methodsynopsis language="C++">
 	    <type>basic_regex&lt; BidiIter &gt;&amp;</type>
 	    <methodname>operator=</methodname>
@@ -209,7 +193,7 @@ struct basic_regex {
 	  </variablelist>
 	</listitem>
 
-	<listitem>
+	<listitem xml:id="basic_regex.operator.1">
 	  <methodsynopsis language="C++">
 	    <modifier>template&lt;typename Expr&gt;</modifier>
 	    <type>basic_regex&lt; BidiIter &gt;&amp;</type>
@@ -269,10 +253,10 @@ struct basic_regex {
       </orderedlist>
     </refsection>
 
-    <refsection xml:id="public-member-functions">
+    <refsection xml:id="basic_regex.public-member-functions">
       <title>basic_regex の公開メンバ関数</title>
       <orderedlist>
-	<listitem>
+	<listitem xml:id="basic_regex.mark_count">
 	  <methodsynopsis language="C++">
 	    <type>std::size_t</type>
 	    <methodname>mark_count</methodname>
@@ -282,7 +266,7 @@ struct basic_regex {
 	  <para>この正規表現内の捕捉済み部分式の数を返す。</para>
 	</listitem>
 
-	<listitem>
+	<listitem xml:id="basic_regex.regex_id">
 	  <methodsynopsis language="C++">
 	    <type>regex_id_type</type>
 	    <methodname>regex_id</methodname>
@@ -292,7 +276,7 @@ struct basic_regex {
 	  <para>この正規表現を一意に識別するトークンを返す。</para>
 	</listitem>
 
-	<listitem>
+	<listitem xml:id="basic_regex.swap">
 	  <methodsynopsis language="C++">
 	    <type>void</type>
 	    <methodname>swap</methodname>
@@ -332,10 +316,10 @@ struct basic_regex {
       </orderedlist>
     </refsection>
 
-    <refsection xml:id="public-static-functions">
+    <refsection xml:id="basic_regex.public-static-functions">
       <title>basic_regex の公開静的メンバ関数</title>
       <orderedlist>
-	<listitem>
+	<listitem xml:id="basic_regex.compile.0">
 	  <methodsynopsis language="C++">
 	    <modifier>template&lt;typename InputIter&gt; static</modifier>
 	    <type>basic_regex&lt; BidiIter &gt;</type>
@@ -404,7 +388,7 @@ struct basic_regex {
 	  </variablelist>
 	</listitem>
 
-	<listitem>
+	<listitem xml:id="basic_regex.compile.1">
 	  <methodsynopsis language="C++">
 	    <modifier>template&lt;typename InputRange&gt; static</modifier>
 	    <type>basic_regex&lt; BidiIter &gt;</type>
@@ -418,10 +402,10 @@ struct basic_regex {
 	      <parameter>flags</parameter>
 	    </methodparam>
 	  </methodsynopsis>
-	  <para>利便性のためのメンバ関数多重定義。上記関数と受け取る引数が異なるのみ。</para>
+	  <xi:include href="-overload-description.xml"/>
 	</listitem>
 
-	<listitem>
+	<listitem xml:id="basic_regex.compile.2">
 	  <methodsynopsis language="C++">
 	    <modifier>static</modifier>
 	    <type>basic_regex&lt; BidiIter &gt;</type>
@@ -437,9 +421,10 @@ struct basic_regex {
 	    </methodparam>
 	  </methodsynopsis>
 	  <para>利便性のためのメンバ関数多重定義。上記関数と受け取る引数が異なるのみ。</para>
+	  <xi:include href="-overload-description.xml"/>
 	</listitem>
 
-	<listitem>
+	<listitem xml:id="basic_regex.compile.3">
 	  <methodsynopsis language="C++">
 	    <modifier>static</modifier>
 	    <type>basic_regex&lt; BidiIter &gt;</type>
@@ -457,7 +442,7 @@ struct basic_regex {
 	      <parameter>flags</parameter>
 	    </methodparam>
 	  </methodsynopsis>
-<para>利便性のためのメンバ関数多重定義。上記関数と受け取る引数が異なるのみ。</para>
+	  <xi:include href="-overload-description.xml"/>
 	</listitem>
       </orderedlist>
     </refsection>

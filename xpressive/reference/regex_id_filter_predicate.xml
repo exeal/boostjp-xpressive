@@ -13,12 +13,12 @@
     <synopsis language="C++">// ヘッダ：&lt;<filename linkend="header.match_results_hpp">boost/xpressive/match_results.hpp</filename>&gt;
 
 template&lt;typename BidiIter&gt;
-struct regex_id_filter_predicate {
+struct <classname linkend="regex_id_filter_predicate">regex_id_filter_predicate</classname> {
   // <link linkend="construct-copy-destruct">構築、コピー、解体</link>
-  regex_id_filter_predicate(regex_id_type);
+  <methodname linkend="regex_id_filter_predicate.regex_id_filter_predicate">regex_id_filter_predicate</methodname>(regex_id_type);
 
   // <link linkend="public-member-functions">公開メンバ関数</link>
-  bool operator()(match_results&lt; BidiIter &gt; const &amp;) const;
+  bool <methodname linkend="regex_id_filter_predicate.operator">operator()</methodname>(<classname linkend="match_results">match_results</classname>&lt; BidiIter &gt; const &amp;) const;
 };</synopsis>
   </refsynopsisdiv>
 
@@ -28,7 +28,7 @@ struct regex_id_filter_predicate {
     <refsection xml:id="construct-copy-destruct">
       <title>regex_id_filter_predicate 構築、コピー、解体の公開演算</title>
       <orderedlist>
-	<listitem>
+	<listitem xml:id="regex_id_filter_predicate.regex_id_filter_predicate">
 	  <constructorsynopsis language="C++">
 	    <methodname>regex_id_filter_predicate</methodname>
 	    <methodparam>
@@ -43,7 +43,7 @@ struct regex_id_filter_predicate {
     <refsection xml:id="public-member-functions">
       <title>regex_id_filter_predicate 公開メンバ関数</title>
       <orderedlist>
-	<listitem>
+	<listitem linkend="regex_id_filter_predicate.operator">
 	  <methodsynopsis language="C++">
 	    <type>bool</type>
 	    <methodname>operator()</methodname>
