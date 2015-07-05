@@ -111,6 +111,10 @@
 }</synopsis>
 
     <xi:include href="function.xml"/>
+    <xi:include href="local.xml"/>
+    <xi:include href="placeholder.xml"/>
+    <xi:include href="reference.xml"/>
+    <xi:include href="value.xml"/>
   </section>
 
   <section>

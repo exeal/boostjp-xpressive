@@ -13,7 +13,7 @@
     <synopsis language="C++">// In header: &lt;<filename class="headerfile" linkend="header.regex_actions_hpp">boost/xpressive/regex_actions.hpp</filename>&gt;
 
 template&lt;typename PolymorphicFunctionObject&gt;
-struct function {
+struct <classname linkend="function">function</classname> {
   // 型
   typedef proto::terminal&lt; PolymorphicFunctionObject &gt;::type type;
 };</synopsis>
