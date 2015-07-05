@@ -1,0 +1,638 @@
+<?xml version="1.0" ?>
+<!--
+  Copyright (c) 2008 Eric Niebler
+  Distributed under the Boost Software License, Version 1.0. (See accompanying
+  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
+-->
+<section xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink" xml:lang="ja" version="5.0" xml:id="reference">
+  <title>リファレンス</title>
+
+  <section xml:id="header.basic_regex_hpp">
+    <title>&lt;boost/xpressive/basic_regex.hpp&gt; ヘッダ</title>
+    <para>
+      <classname>basic_regex&lt;&gt;</classname> クラステンプレートの定義と、関連するヘルパ関数がある。
+    </para>
+    <synopsis language="C++">namespace boost {
+  namespace xpressive {
+    template&lt;typename BidiIter&gt; struct <classname linkend="basic_regex">basic_regex</classname>;
+    template&lt;typename BidiIter&gt;
+      void <function linkend="swap">swap</function>(basic_regex&lt; BidiIter &gt; &amp;, basic_regex&lt; BidiIter &gt; &amp;);
+  }
+}</synopsis>
+    <xi:include href="basic_regex.xml"/>
+    <xi:include href="swap.xml"/>
+  </section>
+
+  <section xml:id="header.match_results_hpp">
+    <title>&lt;boost/xpressive/match_results.hpp&gt; ヘッダ</title>
+    <para>
+      <classname>match_results</classname> 型の定義と、関連するヘルパがある。<classname>match_results</classname> 型は <function>regex_match()</function> および <function>regex_search()</function> 操作の結果を保持する。
+    </para>
+    <synopsis language="C++">namespace boost {
+  namespace xpressive {
+    template&lt;typename BidiIter&gt; struct <classname linkend="match_results">match_results</classname>;
+    template&lt;typename BidiIter&gt; struct <classname linkend="regex_id_filter_predicate">regex_id_filter_predicate</classname>;
+  }
+}</synopsis>
+    
+    <xi:include href="match_results.xml"/>
+    <xi:include href="regex_id_filter_predicate.xml"/>
+  </section>
+
+  <section xml:id="header.regex_actions_hpp">
+    <title>&lt;boost/xpressive/regex_actions.hpp&gt; ヘッダ</title>
+    <para>
+      xpressive におけるアクション式の構文要素がある。
+    </para>
+    <synopsis language="C++">namespace boost {
+  namespace xpressive {
+    template&lt;typename <link xlink:href="http://www.boost.org/libs/proto/PolymorphicFunctionObject.html">PolymorphicFunctionObject</link>&gt; struct <classname linkend="function">function</classname>;
+    template&lt;typename T&gt; struct <classname linkend="local">local</classname>;
+    template&lt;typename T, int I, typename Dummy&gt; struct <classname linkend="placeholder">placeholder</classname>;
+    template&lt;typename T&gt; struct <classname linkend="reference">reference</classname>;
+    template&lt;typename T&gt; struct <classname linkend="value">value</classname>;
+
+    function&lt; op::at &gt;::type const <constant linkend="at">at</constant>;
+    function&lt; op::push &gt;::type const <constant linkend="push">push</constant>;
+    function&lt; op::push_back &gt;::type const <constant linkend="push_back">push_back</constant>;
+    function&lt; op::push_front &gt;::type const <constant linkend="push_front">push_front</constant>;
+    function&lt; op::pop &gt;::type const <constant linkend="pop">pop</constant>;
+    function&lt; op::pop_back &gt;::type const <constant linkend="pop_back">pop_back</constant>;
+    function&lt; op::pop_front &gt;::type const <constant linkend="pop_front">pop_front</constant>;
+    function&lt; op::top &gt;::type const <constant linkend="top">top</constant>;
+    function&lt; op::back &gt;::type const <constant linkend="back">back</constant>;
+    function&lt; op::front &gt;::type const <constant linkend="front">front</constant>;
+    function&lt; op::first &gt;::type const <constant linkend="first">first</constant>;
+    function&lt; op::second &gt;::type const <constant linkend="second">second</constant>;
+    function&lt; op::matched &gt;::type const <constant linkend="matched">matched</constant>;
+    function&lt; op::length &gt;::type const <constant linkend="length">length</constant>;
+    function&lt; op::str &gt;::type const <constant linkend="str">str</constant>;
+    function&lt; op::insert &gt;::type const <constant linkend="insert">insert</constant>;
+    function&lt; op::make_pair &gt;::type const <constant linkend="make_pair">make_pair</constant>;
+    function&lt; op::unwrap_reference &gt;::type const <constant linkend="unwrap_reference">unwrap_reference</constant>;
+    template&lt;typename T, typename A&gt; <replaceable>unspecified</replaceable> <function linkend="as">as</function>(A const &amp;);
+    template&lt;typename T, typename A&gt; <replaceable>unspecified</replaceable> <function linkend="static_cast_">static_cast_</function>(A const &amp;);
+    template&lt;typename T, typename A&gt; <replaceable>unspecified</replaceable> <function linkend="dynamic_cast_">dynamic_cast_</function>(A const &amp;);
+    template&lt;typename T, typename A&gt; <replaceable>unspecified</replaceable> <function linkend="const_cast_">const_cast_</function>(A const &amp;);
+    template&lt;typename T&gt; value&lt; T &gt; const <function linkend="val">val</function>(T const &amp;);
+    template&lt;typename T&gt; reference&lt; T &gt; const <function linkend="ref">ref</function>(T &amp;);
+    template&lt;typename T&gt; reference&lt; T const  &gt; const <function linkend="cref">cref</function>(T const &amp;);
+    template&lt;typename T&gt; <replaceable>unspecified</replaceable> <function linkend="check">check</function>(T const &amp;);
+    template&lt;typename... ArgBindings&gt; <replaceable>unspecified</replaceable> <function linkend="let">let</function>(ArgBindings const &amp;...);
+    template&lt;typename T, typename... Args&gt;
+      <replaceable>unspecified</replaceable> <function linkend="construct">construct</function>(Args const &amp;...);
+    namespace op {
+      template&lt;typename T&gt; struct <classname linkend="op.as">as</classname>;
+      struct <classname linkend="op.at">at</classname>;
+      struct <classname linkend="op.back">back</classname>;
+      template&lt;typename T&gt; struct <classname linkend="op.const_cast_">const_cast_</classname>;
+      template&lt;typename T&gt; struct <classname linkend="op.construct">construct</classname>;
+      template&lt;typename T&gt; struct <classname linkend="op.dynamic_cast_">dynamic_cast_</classname>;
+      struct <classname linkend="op.first">first</classname>;
+      struct <classname linkend="op.front">front</classname>;
+      struct <classname linkend="op.insert">insert</classname>;
+      struct <classname linkend="op.length">length</classname>;
+      struct <classname linkend="op.make_pair">make_pair</classname>;
+      struct <classname linkend="op.matched">matched</classname>;
+      struct <classname linkend="op.pop">pop</classname>;
+      struct <classname linkend="op.pop_back">pop_back</classname>;
+      struct <classname linkend="op.pop_front">pop_front</classname>;
+      struct <classname linkend="op.push">push</classname>;
+      struct <classname linkend="op.push_back">push_back</classname>;
+      struct <classname linkend="op.push_front">push_front</classname>;
+      struct <classname linkend="op.second">second</classname>;
+      template&lt;typename T&gt; struct <classname linkend="op.static_cast_">static_cast_</classname>;
+      struct <classname linkend="op.str">str</classname>;
+      template&lt;typename Except&gt; <classname linkend="op.throw_">struct throw_</classname>;
+      struct <classname linkend="op.top">top</classname>;
+      struct <classname linkend="op.unwrap_reference">unwrap_reference</classname>;
+    }
+  }
+}</synopsis>
+
+    <xi:include href="function.xml"/>
+  </section>
+
+  <section>
+    <title>&lt;boost/xpressive/regex_algorithms.hpp&gt; ヘッダ</title>
+    <para>
+      <function>regex_match()</function> 、<function>regex_search()</function> および <function>regex_replace()</function> アルゴリズムがある。
+    </para>
+    <synopsis language="C++">namespace boost {
+  namespace xpressive {
+    template&lt;typename BidiIter&gt; 
+      bool regex_match(BidiIter, BidiIter, match_results&lt; BidiIter &gt; &amp;, 
+                       basic_regex&lt; BidiIter &gt; const &amp;, 
+                       regex_constants::match_flag_type = regex_constants::match_default);
+    template&lt;typename BidiIter&gt; 
+      bool regex_match(BidiIter, BidiIter, basic_regex&lt; BidiIter &gt; const &amp;, 
+                       regex_constants::match_flag_type = regex_constants::match_default);
+    template&lt;typename Char&gt; 
+      bool regex_match(Char *, match_results&lt; Char * &gt; &amp;, 
+                       basic_regex&lt; Char * &gt; const &amp;, 
+                       regex_constants::match_flag_type = regex_constants::match_default);
+    template&lt;typename BidiRange, typename BidiIter&gt; 
+      bool regex_match(BidiRange &amp;, match_results&lt; BidiIter &gt; &amp;, 
+                       basic_regex&lt; BidiIter &gt; const &amp;, 
+                       regex_constants::match_flag_type = regex_constants::match_default, 
+                       <replaceable>unspecified</replaceable> = 0);
+    template&lt;typename BidiRange, typename BidiIter&gt; 
+      bool regex_match(BidiRange const &amp;, match_results&lt; BidiIter &gt; &amp;, 
+                       basic_regex&lt; BidiIter &gt; const &amp;, 
+                       regex_constants::match_flag_type = regex_constants::match_default, 
+                       <replaceable>unspecified</replaceable> = 0);
+    template&lt;typename Char&gt; 
+      bool regex_match(Char *, basic_regex&lt; Char * &gt; const &amp;, 
+                       regex_constants::match_flag_type = regex_constants::match_default);
+    template&lt;typename BidiRange, typename BidiIter&gt; 
+      bool regex_match(BidiRange &amp;, basic_regex&lt; BidiIter &gt; const &amp;, 
+                       regex_constants::match_flag_type = regex_constants::match_default, 
+                       <replaceable>unspecified</replaceable> = 0);
+    template&lt;typename BidiRange, typename BidiIter&gt; 
+      bool regex_match(BidiRange const &amp;, basic_regex&lt; BidiIter &gt; const &amp;, 
+                       regex_constants::match_flag_type = regex_constants::match_default, 
+                       <replaceable>unspecified</replaceable> = 0);
+    template&lt;typename BidiIter&gt; 
+      bool regex_search(BidiIter, BidiIter, match_results&lt; BidiIter &gt; &amp;, 
+                        basic_regex&lt; BidiIter &gt; const &amp;, 
+                        regex_constants::match_flag_type = regex_constants::match_default);
+    template&lt;typename BidiIter&gt; 
+      bool regex_search(BidiIter, BidiIter, basic_regex&lt; BidiIter &gt; const &amp;, 
+                        regex_constants::match_flag_type = regex_constants::match_default);
+    template&lt;typename Char&gt; 
+      bool regex_search(Char *, match_results&lt; Char * &gt; &amp;, 
+                        basic_regex&lt; Char * &gt; const &amp;, 
+                        regex_constants::match_flag_type = regex_constants::match_default);
+    template&lt;typename BidiRange, typename BidiIter&gt; 
+      bool regex_search(BidiRange &amp;, match_results&lt; BidiIter &gt; &amp;, 
+                        basic_regex&lt; BidiIter &gt; const &amp;, 
+                        regex_constants::match_flag_type = regex_constants::match_default, 
+                        <replaceable>unspecified</replaceable> = 0);
+    template&lt;typename BidiRange, typename BidiIter&gt; 
+      bool regex_search(BidiRange const &amp;, match_results&lt; BidiIter &gt; &amp;, 
+                        basic_regex&lt; BidiIter &gt; const &amp;, 
+                        regex_constants::match_flag_type = regex_constants::match_default, 
+                        <replaceable>unspecified</replaceable> = 0);
+    template&lt;typename Char&gt; 
+      bool regex_search(Char *, basic_regex&lt; Char * &gt; const &amp;, 
+                        regex_constants::match_flag_type = regex_constants::match_default);
+    template&lt;typename BidiRange, typename BidiIter&gt; 
+      bool regex_search(BidiRange &amp;, basic_regex&lt; BidiIter &gt; const &amp;, 
+                        regex_constants::match_flag_type = regex_constants::match_default, 
+                        <replaceable>unspecified</replaceable> = 0);
+    template&lt;typename BidiRange, typename BidiIter&gt; 
+      bool regex_search(BidiRange const &amp;, basic_regex&lt; BidiIter &gt; const &amp;, 
+                        regex_constants::match_flag_type = regex_constants::match_default, 
+                        <replaceable>unspecified</replaceable> = 0);
+    template&lt;typename OutIter, typename BidiIter, typename Formatter&gt; 
+      OutIter regex_replace(OutIter, BidiIter, BidiIter, 
+                            basic_regex&lt; BidiIter &gt; const &amp;, 
+                            Formatter const &amp;, 
+                            regex_constants::match_flag_type = regex_constants::match_default, 
+                            <replaceable>unspecified</replaceable> = 0);
+    template&lt;typename OutIter, typename BidiIter&gt; 
+      OutIter regex_replace(OutIter, BidiIter, BidiIter, 
+                            basic_regex&lt; BidiIter &gt; const &amp;, 
+                            typename iterator_value&lt; BidiIter &gt;::type const *, 
+                            regex_constants::match_flag_type = regex_constants::match_default);
+    template&lt;typename BidiContainer, typename BidiIter, typename Formatter&gt; 
+      BidiContainer 
+      regex_replace(BidiContainer &amp;, basic_regex&lt; BidiIter &gt; const &amp;, 
+                    Formatter const &amp;, 
+                    regex_constants::match_flag_type = regex_constants::match_default, 
+                    <replaceable>unspecified</replaceable> = 0);
+    template&lt;typename BidiContainer, typename BidiIter, typename Formatter&gt; 
+      BidiContainer 
+      regex_replace(BidiContainer const &amp;, basic_regex&lt; BidiIter &gt; const &amp;, 
+                    Formatter const &amp;, 
+                    regex_constants::match_flag_type = regex_constants::match_default, 
+                    <replaceable>unspecified</replaceable> = 0);
+    template&lt;typename Char, typename Formatter&gt; 
+      std::basic_string&lt; typename remove_const&lt; Char &gt;::type &gt; 
+      regex_replace(Char *, basic_regex&lt; Char * &gt; const &amp;, Formatter const &amp;, 
+                    regex_constants::match_flag_type = regex_constants::match_default, 
+                    <replaceable>unspecified</replaceable> = 0);
+    template&lt;typename BidiContainer, typename BidiIter&gt; 
+      BidiContainer 
+      regex_replace(BidiContainer &amp;, basic_regex&lt; BidiIter &gt; const &amp;, 
+                    typename iterator_value&lt; BidiIter &gt;::type const *, 
+                    regex_constants::match_flag_type = regex_constants::match_default, 
+                    <replaceable>unspecified</replaceable> = 0);
+    template&lt;typename BidiContainer, typename BidiIter&gt; 
+      BidiContainer 
+      regex_replace(BidiContainer const &amp;, basic_regex&lt; BidiIter &gt; const &amp;, 
+                    typename iterator_value&lt; BidiIter &gt;::type const *, 
+                    regex_constants::match_flag_type = regex_constants::match_default, 
+                    <replaceable>unspecified</replaceable> = 0);
+    template&lt;typename Char&gt; 
+      std::basic_string&lt; typename remove_const&lt; Char &gt;::type &gt; 
+      regex_replace(Char *, basic_regex&lt; Char * &gt; const &amp;, 
+                    typename add_const&lt; Char &gt;::type *, 
+                    regex_constants::match_flag_type = regex_constants::match_default);
+  }
+}</synopsis>
+  </section>
+
+  <section>
+    <title>&lt;boost/xpressive/regex_compiler.hpp&gt; ヘッダ</title>
+    <para>
+      正規表現を文字列から構築するファクトリである <classname>regex_compiler</classname> の定義がある。
+    </para>
+
+    <synopsis language="C++">namespace boost {
+  namespace xpressive {
+    template&lt;typename BidiIter, typename RegexTraits, typename CompilerTraits&gt;
+      struct <classname linkend="regex_compiler">regex_compiler</classname>;
+  }
+}</synopsis>
+  </section>
+
+  <section>
+    <title>&lt;boost/xpressive/regex_constants.hpp&gt; ヘッダ</title>
+    <para>
+      <type role="enum">syntax_option_type</type> 、<type role="enum">match_flag_type</type> および <type role="enum">error_type</type> 列挙の定義がある。
+    </para>
+
+    <synopsis language="C++">namespace boost {
+  namespace xpressive {
+    namespace regex_constants {
+      enum <type linkend="regex_constants.syntax_option_type">syntax_option_type</type>;
+      enum <type linkend="regex_constants.match_flag_type">match_flag_type</type>;
+      enum <type linkend="regex_constants.error_type">error_type</type>;
+    }
+  }
+}</synopsis>
+  </section>
+
+  <section>
+    <title>&lt;boost/xpressive/regex_error.hpp&gt; ヘッダ</title>
+    <para>
+      <classname>regex_error</classname> 例外クラスの定義がある。
+    </para>
+    <synopsis language="C++"><symbol linkend="BOOST_XPR_ENSURE_">BOOST_XPR_ENSURE_</symbol>(pred, code, msg)</synopsis>
+    <synopsis language="C++">namespace boost {
+  namespace xpressive {
+    struct <classname linkend="regex_error">regex_error</classname>;
+  }
+}</synopsis>
+  </section>
+
+  <section>
+    <title>&lt;boost/xpressive/regex_iterator.hpp&gt; ヘッダ</title>
+    <para>
+      シーケンス内のすべてのマッチを辿る STL 互換のイテレータである <classname>regex_iterator</classname> 型の定義がある。
+    </para>
+    <synopsis language="C++">namespace boost {
+  namespace xpressive {
+    template&lt;typename BidiIter&gt; struct <classname linkend="regex_iterator">regex_iterator</classname>;
+  }
+}</synopsis>
+  </section>
+
+  <section>
+    <title>&lt;boost/xpressive/regex_primitives.hpp&gt; ヘッダ</title>
+    <para>
+      静的正規表現を記述するための構文要素がある。
+    </para>
+    <synopsis language="C++">namespace boost {
+  namespace xpressive {
+    struct <classname linkend="mark_tag">mark_tag</classname>;
+
+    unsigned int const <constant linkend="inf">inf</constant>;    // 部分式の無限回の繰り返しに使う。
+    <replaceable>unspecified</replaceable> <constant linkend="nil">nil</constant>;    // 空のマッチ。
+    <replaceable>unspecified</replaceable> <constant linkend="alnum">alnum</constant>;    // 英数字にマッチ。 
+    <replaceable>unspecified</replaceable> <constant linkend="alpha">alpha</constant>;    // アルファベットにマッチ。 
+    <replaceable>unspecified</replaceable> <constant linkend="blank">blank</constant>;    // 空白（水平空白）文字にマッチ。 
+    <replaceable>unspecified</replaceable> <constant linkend="cntrl">cntrl</constant>;    // 制御文字にマッチ。
+    <replaceable>unspecified</replaceable> <constant linkend="digit">digit</constant>;    // 数字にマッチ。 
+    <replaceable>unspecified</replaceable> <constant linkend="graph">graph</constant>;    // グラフィカルな文字にマッチ。 
+    <replaceable>unspecified</replaceable> <constant linkend="lower">lower</constant>;    // 小文字にマッチ。 
+    <replaceable>unspecified</replaceable> <constant linkend="print">print</constant>;    // 印字可能な文字にマッチ。 
+    <replaceable>unspecified</replaceable> <constant linkend="punct">punct</constant>;    // 区切り文字にマッチ。 
+    <replaceable>unspecified</replaceable> <constant linkend="space">space</constant>;    // 空白類文字にマッチ。
+    <replaceable>unspecified</replaceable> <constant linkend="upper">upper</constant>;    // 大文字にマッチ。 
+    <replaceable>unspecified</replaceable> <constant linkend="xdigit">xdigit</constant>;    // 16 進数字にマッチ。 
+    <replaceable>unspecified</replaceable> <constant linkend="bos">bos</constant>;    // シーケンスの先頭を表す表明。 
+    <replaceable>unspecified</replaceable> <constant linkend="eos">eos</constant>;    // シーケンスの終端を表す表明。
+    <replaceable>unspecified</replaceable> <constant linkend="bol">bol</constant>;    // 行頭を表す表明。
+    <replaceable>unspecified</replaceable> <constant linkend="eol">eol</constant>;    // 行末を表す表明。 
+    <replaceable>unspecified</replaceable> <constant linkend="bow">bow</constant>;    // 語頭を表す表明。 
+    <replaceable>unspecified</replaceable> <constant linkend="eow">eow</constant>;    // 語末を表す表明。 
+    <replaceable>unspecified</replaceable> <constant linkend="_b">_b</constant>;    // 単語境界を表す表明。 
+    <replaceable>unspecified</replaceable> <constant linkend="_w">_w</constant>;    // 単語構成文字にマッチ。 
+    <replaceable>unspecified</replaceable> <constant linkend="_d">_d</constant>;    // 数字にマッチ。 
+    <replaceable>unspecified</replaceable> <constant linkend="_s">_s</constant>;    // 空白類文字にマッチ。 
+    proto::terminal&lt; char &gt;::type const <constant linkend="_n">_n</constant>;    // リテラルの改行 '\n' にマッチ。 
+    <replaceable>unspecified</replaceable> <constant linkend="_ln">_ln</constant>;    // 論理改行シーケンスにマッチ。
+    <replaceable>unspecified</replaceable> <constant linkend="_">_</constant>;    // あらゆる文字にマッチ。
+    <replaceable>unspecified</replaceable> <constant linkend="self">self</constant>;    // 現在の正規表現オブジェクトへの参照。 
+    <replaceable>unspecified</replaceable> <constant linkend="set">set</constant>;    // 文字セットを作成するのに使用。
+    mark_tag const <constant linkend="s0">s0</constant>;    // Perl の $&amp; 部分マッチプレースホルダ。 
+    mark_tag const <constant linkend="sn">s1</constant>;    // Perl の $1 部分マッチプレースホルダ。 
+    mark_tag const s2;
+    mark_tag const s3;
+    mark_tag const s4;
+    mark_tag const s5;
+    mark_tag const s6;
+    mark_tag const s7;
+    mark_tag const s8;
+    mark_tag const s9;
+    <replaceable>unspecified</replaceable> <constant linkend="an">a1</constant>;
+    <replaceable>unspecified</replaceable> a2;
+    <replaceable>unspecified</replaceable> a3;
+    <replaceable>unspecified</replaceable> a4;
+    <replaceable>unspecified</replaceable> a5;
+    <replaceable>unspecified</replaceable> a6;
+    <replaceable>unspecified</replaceable> a7;
+    <replaceable>unspecified</replaceable> a8;
+    <replaceable>unspecified</replaceable> a9;
+    template&lt;typename Expr&gt; <replaceable>unspecified</replaceable> <function linkend="icase">icase</function>(Expr const &amp;);
+    template&lt;typename Literal&gt; <replaceable>unspecified</replaceable> <function linkend="as_xpr">as_xpr</function>(Literal const &amp;);
+    template&lt;typename BidiIter&gt; 
+      proto::terminal&lt; reference_wrapper&lt; basic_regex&lt; BidiIter &gt; const  &gt; &gt;::type const 
+      <function linkend="by_ref">by_ref</function>(basic_regex&lt; BidiIter &gt; const &amp;);
+    template&lt;typename Char&gt; <replaceable>unspecified</replaceable> <function linkend="range">range</function>(Char, Char);
+    template&lt;typename Expr&gt; 
+      proto::result_of::make_expr&lt; proto::tag::logical_not, proto::default_domain, Expr const &amp;
+&gt;::type const 
+      <function linkend="optional">optional</function>(Expr const &amp;);
+    template&lt;unsigned int Min, unsigned int Max, typename Expr&gt; 
+      <replaceable>unspecified</replaceable> <function linkend="repeat">repeat</function>(Expr const &amp;);
+    template&lt;unsigned int Count, typename Expr2&gt; 
+      <replaceable>unspecified</replaceable> <function linkend="repeat">repeat</function>(Expr2 const &amp;);
+    template&lt;typename Expr&gt; <replaceable>unspecified</replaceable> <function linkend="keep">keep</function>(Expr const &amp;);
+    template&lt;typename Expr&gt; <replaceable>unspecified</replaceable> <function linkend="before">before</function>(Expr const &amp;);
+    template&lt;typename Expr&gt; <replaceable>unspecified</replaceable> <function linkend="after">after</function>(Expr const &amp;);
+    template&lt;typename Locale&gt; <replaceable>unspecified</replaceable> <function linkend="imbue">imbue</function>(Locale const &amp;);
+    template&lt;typename Skip&gt; <replaceable>unspecified</replaceable> <function linkend="skip">skip</function>(Skip const &amp;);
+  }
+}</synopsis>
+  </section>
+
+  <section>
+    <title>&lt;boost/xpressive/regex_token_iterator.hpp&gt; ヘッダ</title>
+    <para>
+      <classname>regex_token_iterator</classname> の定義と、正規表現を使って文字列をトークンに分割する STL 互換のイテレータがある。
+    </para>
+    <synopsis language="C++">namespace boost {
+  namespace xpressive {
+    template&lt;typename BidiIter&gt; struct <classname linkend="regex_token_iterator">regex_token_iterator</classname>;
+  }
+}</synopsis>
+  </section>
+
+  <section>
+    <title>&lt;boost/xpressive/regex_traits.hpp&gt; ヘッダ</title>
+    <para>
+      <symbol>BOOST_XPRESSIVE_USE_C_TRAITS</symbol> マクロにしたがって C 正規表現特性か C++ 正規表現特性のヘッダファイルをインクルードする。
+    </para>
+    <synopsis language="C++">namespace boost {
+  namespace xpressive {
+    struct <classname linkend="regex_traits_version_1_tag">regex_traits_version_1_tag</classname>;
+    struct <classname linkend="regex_traits_version_2_tag">regex_traits_version_2_tag</classname>;
+  }
+}</synopsis>
+  </section>
+
+  <section>
+    <title>&lt;boost/xpressive/sub_match.hpp&gt; ヘッダ</title>
+    <para>
+      <classname>sub_match&lt;&gt;</classname> クラステンプレートと、関連するヘルパ関数の定義がある。
+    </para>
+    <synopsis language="C++">namespace boost {
+  namespace xpressive {
+    template&lt;typename BidiIter&gt; struct <classname linkend="sub_match">sub_match</classname>;
+    template&lt;typename BidiIter&gt; BidiIter <function linkend="range_begin">range_begin</function>(sub_match&lt; BidiIter &gt; &amp;);
+    template&lt;typename BidiIter&gt; 
+      BidiIter <function linkend="range_begin">range_begin</function>(sub_match&lt; BidiIter &gt; const &amp;);
+    template&lt;typename BidiIter&gt; BidiIter <function linkend="range_end">range_end</function>(sub_match&lt; BidiIter &gt; &amp;);
+    template&lt;typename BidiIter&gt; 
+      BidiIter <function linkend="range_end">range_end</function>(sub_match&lt; BidiIter &gt; const &amp;);
+    template&lt;typename BidiIter, typename Char, typename Traits&gt; 
+      std::basic_ostream&lt; Char, Traits &gt; &amp; 
+      <function linkend="operator_left_shift">operator&lt;&lt;</function>(std::basic_ostream&lt; Char, Traits &gt; &amp;, 
+                 sub_match&lt; BidiIter &gt; const &amp;);
+    template&lt;typename BidiIter&gt; 
+      bool operator==(sub_match&lt; BidiIter &gt; const &amp; lhs, 
+                      sub_match&lt; BidiIter &gt; const &amp; rhs);
+    template&lt;typename BidiIter&gt; 
+      bool operator!=(sub_match&lt; BidiIter &gt; const &amp; lhs, 
+                      sub_match&lt; BidiIter &gt; const &amp; rhs);
+    template&lt;typename BidiIter&gt; 
+      bool operator&lt;(sub_match&lt; BidiIter &gt; const &amp; lhs, 
+                     sub_match&lt; BidiIter &gt; const &amp; rhs);
+    template&lt;typename BidiIter&gt; 
+      bool operator&lt;=(sub_match&lt; BidiIter &gt; const &amp; lhs, 
+                      sub_match&lt; BidiIter &gt; const &amp; rhs);
+    template&lt;typename BidiIter&gt; 
+      bool operator&gt;=(sub_match&lt; BidiIter &gt; const &amp; lhs, 
+                      sub_match&lt; BidiIter &gt; const &amp; rhs);
+    template&lt;typename BidiIter&gt; 
+      bool operator&gt;(sub_match&lt; BidiIter &gt; const &amp; lhs, 
+                     sub_match&lt; BidiIter &gt; const &amp; rhs);
+    template&lt;typename BidiIter&gt; 
+      bool operator==(typename iterator_value&lt; BidiIter &gt;::type const * lhs, 
+                      sub_match&lt; BidiIter &gt; const &amp; rhs);
+    template&lt;typename BidiIter&gt; 
+      bool operator!=(typename iterator_value&lt; BidiIter &gt;::type const * lhs, 
+                      sub_match&lt; BidiIter &gt; const &amp; rhs);
+    template&lt;typename BidiIter&gt; 
+      bool operator&lt;(typename iterator_value&lt; BidiIter &gt;::type const * lhs, 
+                     sub_match&lt; BidiIter &gt; const &amp; rhs);
+    template&lt;typename BidiIter&gt; 
+      bool operator&gt;(typename iterator_value&lt; BidiIter &gt;::type const * lhs, 
+                     sub_match&lt; BidiIter &gt; const &amp; rhs);
+    template&lt;typename BidiIter&gt; 
+      bool operator&gt;=(typename iterator_value&lt; BidiIter &gt;::type const * lhs, 
+                      sub_match&lt; BidiIter &gt; const &amp; rhs);
+    template&lt;typename BidiIter&gt; 
+      bool operator&lt;=(typename iterator_value&lt; BidiIter &gt;::type const * lhs, 
+                      sub_match&lt; BidiIter &gt; const &amp; rhs);
+    template&lt;typename BidiIter&gt; 
+      bool operator==(sub_match&lt; BidiIter &gt; const &amp; lhs, 
+                      typename iterator_value&lt; BidiIter &gt;::type const * rhs);
+    template&lt;typename BidiIter&gt; 
+      bool operator!=(sub_match&lt; BidiIter &gt; const &amp; lhs, 
+                      typename iterator_value&lt; BidiIter &gt;::type const * rhs);
+    template&lt;typename BidiIter&gt; 
+      bool operator&lt;(sub_match&lt; BidiIter &gt; const &amp; lhs, 
+                     typename iterator_value&lt; BidiIter &gt;::type const * rhs);
+    template&lt;typename BidiIter&gt; 
+      bool operator&gt;(sub_match&lt; BidiIter &gt; const &amp; lhs, 
+                     typename iterator_value&lt; BidiIter &gt;::type const * rhs);
+    template&lt;typename BidiIter&gt; 
+      bool operator&gt;=(sub_match&lt; BidiIter &gt; const &amp; lhs, 
+                      typename iterator_value&lt; BidiIter &gt;::type const * rhs);
+    template&lt;typename BidiIter&gt; 
+      bool operator&lt;=(sub_match&lt; BidiIter &gt; const &amp; lhs, 
+                      typename iterator_value&lt; BidiIter &gt;::type const * rhs);
+    template&lt;typename BidiIter&gt; 
+      bool operator==(typename iterator_value&lt; BidiIter &gt;::type const &amp; lhs, 
+                      sub_match&lt; BidiIter &gt; const &amp; rhs);
+    template&lt;typename BidiIter&gt; 
+      bool operator!=(typename iterator_value&lt; BidiIter &gt;::type const &amp; lhs, 
+                      sub_match&lt; BidiIter &gt; const &amp; rhs);
+    template&lt;typename BidiIter&gt; 
+      bool operator&lt;(typename iterator_value&lt; BidiIter &gt;::type const &amp; lhs, 
+                     sub_match&lt; BidiIter &gt; const &amp; rhs);
+    template&lt;typename BidiIter&gt; 
+      bool operator&gt;(typename iterator_value&lt; BidiIter &gt;::type const &amp; lhs, 
+                     sub_match&lt; BidiIter &gt; const &amp; rhs);
+    template&lt;typename BidiIter&gt; 
+      bool operator&gt;=(typename iterator_value&lt; BidiIter &gt;::type const &amp; lhs, 
+                      sub_match&lt; BidiIter &gt; const &amp; rhs);
+    template&lt;typename BidiIter&gt; 
+      bool operator&lt;=(typename iterator_value&lt; BidiIter &gt;::type const &amp; lhs, 
+                      sub_match&lt; BidiIter &gt; const &amp; rhs);
+    template&lt;typename BidiIter&gt; 
+      bool operator==(sub_match&lt; BidiIter &gt; const &amp; lhs, 
+                      typename iterator_value&lt; BidiIter &gt;::type const &amp; rhs);
+    template&lt;typename BidiIter&gt; 
+      bool operator!=(sub_match&lt; BidiIter &gt; const &amp; lhs, 
+                      typename iterator_value&lt; BidiIter &gt;::type const &amp; rhs);
+    template&lt;typename BidiIter&gt; 
+      bool operator&lt;(sub_match&lt; BidiIter &gt; const &amp; lhs, 
+                     typename iterator_value&lt; BidiIter &gt;::type const &amp; rhs);
+    template&lt;typename BidiIter&gt; 
+      bool operator&gt;(sub_match&lt; BidiIter &gt; const &amp; lhs, 
+                     typename iterator_value&lt; BidiIter &gt;::type const &amp; rhs);
+    template&lt;typename BidiIter&gt; 
+      bool operator&gt;=(sub_match&lt; BidiIter &gt; const &amp; lhs, 
+                      typename iterator_value&lt; BidiIter &gt;::type const &amp; rhs);
+    template&lt;typename BidiIter&gt; 
+      bool operator&lt;=(sub_match&lt; BidiIter &gt; const &amp; lhs, 
+                      typename iterator_value&lt; BidiIter &gt;::type const &amp; rhs);
+    template&lt;typename BidiIter&gt; 
+      sub_match&lt; BidiIter &gt;::string_type 
+      operator+(sub_match&lt; BidiIter &gt; const &amp; lhs, 
+                sub_match&lt; BidiIter &gt; const &amp; rhs);
+    template&lt;typename BidiIter&gt; 
+      sub_match&lt; BidiIter &gt;::string_type 
+      operator+(sub_match&lt; BidiIter &gt; const &amp; lhs, 
+                typename iterator_value&lt; BidiIter &gt;::type const &amp; rhs);
+    template&lt;typename BidiIter&gt; 
+      sub_match&lt; BidiIter &gt;::string_type 
+      operator+(typename iterator_value&lt; BidiIter &gt;::type const &amp; lhs, 
+                sub_match&lt; BidiIter &gt; const &amp; rhs);
+    template&lt;typename BidiIter&gt; 
+      sub_match&lt; BidiIter &gt;::string_type 
+      operator+(sub_match&lt; BidiIter &gt; const &amp; lhs, 
+                typename iterator_value&lt; BidiIter &gt;::type const * rhs);
+    template&lt;typename BidiIter&gt; 
+      sub_match&lt; BidiIter &gt;::string_type 
+      operator+(typename iterator_value&lt; BidiIter &gt;::type const * lhs, 
+                sub_match&lt; BidiIter &gt; const &amp; rhs);
+    template&lt;typename BidiIter&gt; 
+      sub_match&lt; BidiIter &gt;::string_type 
+      operator+(sub_match&lt; BidiIter &gt; const &amp; lhs, 
+                typename sub_match&lt; BidiIter &gt;::string_type const &amp; rhs);
+    template&lt;typename BidiIter&gt; 
+      sub_match&lt; BidiIter &gt;::string_type 
+      operator+(typename sub_match&lt; BidiIter &gt;::string_type const &amp; lhs, 
+                sub_match&lt; BidiIter &gt; const &amp; rhs);
+  }
+}</synopsis>
+  </section>
+
+  <section>
+    <title>&lt;boost/xpressive/traits/c_regex_traits.hpp&gt; ヘッダ</title>
+    <para>
+      静的・動的正規表現の振る舞いをカスタマイズする C ロカール関数のラッパである <classname>c_regex_traits</classname> テンプレートの定義がある。
+    </para>
+  </section>
+
+  <section>
+    <title>&lt;boost/xpressive/traits/cpp_regex_traits.hpp&gt; ヘッダ</title>
+    <para>
+      静的・動的正規表現の振る舞いをカスタマイズする <classname>std::locale</classname> のラッパである <classname>cpp_regex_traits</classname> テンプレートの定義がある。
+    </para>
+  </section>
+
+  <section>
+    <title>&lt;boost/xpressive/traits/null_regex_traits.hpp&gt; ヘッダ</title>
+    <para>
+      非文字データを検索する静的・動的正規表現で使用する控えの正規表現特性の実装である、<classname>null_regex_traits</classname> テンプレートの定義がある。
+    </para>
+  </section>
+
+  <section>
+    <title>&lt;boost/xpressive/xpressive.hpp&gt; ヘッダ</title>
+    <para>
+      静的・動的両方の正規表現サポートを含む xpressive のすべてをインクルードする。
+    </para>
+  </section>
+
+  <section>
+    <title>&lt;boost/xpressive/xpressive_dynamic.hpp&gt; ヘッダ</title>
+    <para>
+      動的正規表現の記述と使用に必要なすべてをインクルードする。
+    </para>
+  </section>
+
+  <section>
+    <title>&lt;boost/xpressive/xpressive_fwd.hpp&gt; ヘッダ</title>
+    <para>
+      xpressive のすべての公開データ型の前方宣言。
+    </para>
+    <synopsis language="C++"><symbol linkend="BOOST_PROTO_FUSION_V2">BOOST_PROTO_FUSION_V2</symbol>
+<symbol linkend="BOOST_XPRESSIVE_HAS_MS_STACK_GUARD">BOOST_XPRESSIVE_HAS_MS_STACK_GUARD</symbol></synopsis>
+  <synopsis language="C++">namespace boost {
+  namespace xpressive {
+    template&lt;typename BidiIter&gt; struct basic_regex;
+    template&lt;typename Char&gt; struct <classname linkend="c_regex_traits">c_regex_traits</classname>;
+    template&lt;typename RegexTraits&gt; struct <classname linkend="compiler_traits">compiler_traits</classname>;
+    template&lt;typename Char&gt; struct <classname linkend="cpp_regex_traits">cpp_regex_traits</classname>;
+    template&lt;typename Traits&gt; struct <classname linkend="has_fold_case">has_fold_case</classname>;
+    template&lt;typename Elem&gt; struct <classname linkend="null_regex_traits">null_regex_traits</classname>;
+    template&lt;typename BidiIter&gt; struct <classname linkend="regex_token_iterator">regex_token_iterator</classname>;
+    template&lt;typename Char, typename Impl&gt; <classname linkend="regex_traits">struct regex_traits</classname>;
+
+    typedef void const * regex_id_type;
+    typedef basic_regex&lt; std::string::const_iterator &gt; sregex;
+    typedef basic_regex&lt; char const * &gt; cregex;
+    typedef basic_regex&lt; std::wstring::const_iterator &gt; wsregex;
+    typedef basic_regex&lt; wchar_t const * &gt; wcregex;
+    typedef sub_match&lt; std::string::const_iterator &gt; ssub_match;
+    typedef sub_match&lt; char const * &gt; csub_match;
+    typedef sub_match&lt; std::wstring::const_iterator &gt; wssub_match;
+    typedef sub_match&lt; wchar_t const * &gt; wcsub_match;
+    typedef regex_compiler&lt; std::string::const_iterator &gt; sregex_compiler;
+    typedef regex_compiler&lt; char const * &gt; cregex_compiler;
+    typedef regex_compiler&lt; std::wstring::const_iterator &gt; wsregex_compiler;
+    typedef regex_compiler&lt; wchar_t const * &gt; wcregex_compiler;
+    typedef regex_iterator&lt; std::string::const_iterator &gt; sregex_iterator;
+    typedef regex_iterator&lt; char const * &gt; cregex_iterator;
+    typedef regex_iterator&lt; std::wstring::const_iterator &gt; wsregex_iterator;
+    typedef regex_iterator&lt; wchar_t const * &gt; wcregex_iterator;
+    typedef regex_token_iterator&lt; std::string::const_iterator &gt; sregex_token_iterator;
+    typedef regex_token_iterator&lt; char const * &gt; cregex_token_iterator;
+    typedef regex_token_iterator&lt; std::wstring::const_iterator &gt; wsregex_token_iterator;
+    typedef regex_token_iterator&lt; wchar_t const * &gt; wcregex_token_iterator;
+    typedef match_results&lt; std::string::const_iterator &gt; smatch;
+    typedef match_results&lt; char const * &gt; cmatch;
+    typedef match_results&lt; std::wstring::const_iterator &gt; wsmatch;
+    typedef match_results&lt; wchar_t const * &gt; wcmatch;
+    typedef <classname linkend="regex_id_filter_predicate">regex_id_filter_predicate</classname>&lt; std::string::const_iterator &gt; sregex_id_filter_predicate;
+    typedef <classname linkend="regex_id_filter_predicate">regex_id_filter_predicate</classname>&lt; char const * &gt; cregex_id_filter_predicate;
+    typedef <classname linkend="regex_id_filter_predicate">regex_id_filter_predicate</classname>&lt; std::wstring::const_iterator &gt; wsregex_id_filter_predicate;
+    typedef <classname linkend="regex_id_filter_predicate">regex_id_filter_predicate</classname>&lt; wchar_t const * &gt; wcregex_id_filter_predicate;
+    namespace op {
+    }
+  }
+}</synopsis>
+  </section>
+
+  <section>
+    <title>&lt;boost/xpressive/xpressive_static.hpp&gt; ヘッダ</title>
+    <para>
+      静的正規表現の記述と使用に必要なすべてをインクルードする。
+    </para>
+  </section>
+
+  <section>
+    <title>&lt;boost/xpressive/xpressive_typeof.hpp&gt; ヘッダ</title>
+    <para>
+      xpressive を Boost.Typeof ライブラリとともに使用するための型登録。
+    </para>
+  </section>
+</section>
