@@ -48,7 +48,7 @@
     <xi:include href="examples.xml"/>
   </section>
 
-  <xi:include href="reference/reference.xml"/>
+  <xi:include href="reference/index.xml"/>
   <xi:include href="acknowledgements.xml"/>
 
   <section>
