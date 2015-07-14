@@ -52,24 +52,24 @@
     template&lt;typename T&gt; struct <classname linkend="reference">reference</classname>;
     template&lt;typename T&gt; struct <classname linkend="value">value</classname>;
 
-    <classname linkend="function">function</classname>&lt; op::at &gt;::type const <constant linkend="at">at</constant>;
-    <classname linkend="function">function</classname>&lt; op::push &gt;::type const <constant linkend="push">push</constant>;
-    <classname linkend="function">function</classname>&lt; op::push_back &gt;::type const <constant linkend="push_back">push_back</constant>;
-    <classname linkend="function">function</classname>&lt; op::push_front &gt;::type const <constant linkend="push_front">push_front</constant>;
-    <classname linkend="function">function</classname>&lt; op::pop &gt;::type const <constant linkend="pop">pop</constant>;
-    <classname linkend="function">function</classname>&lt; op::pop_back &gt;::type const <constant linkend="pop_back">pop_back</constant>;
-    <classname linkend="function">function</classname>&lt; op::pop_front &gt;::type const <constant linkend="pop_front">pop_front</constant>;
-    <classname linkend="function">function</classname>&lt; op::top &gt;::type const <constant linkend="top">top</constant>;
-    <classname linkend="function">function</classname>&lt; op::back &gt;::type const <constant linkend="back">back</constant>;
-    <classname linkend="function">function</classname>&lt; op::front &gt;::type const <constant linkend="front">front</constant>;
-    <classname linkend="function">function</classname>&lt; op::first &gt;::type const <constant linkend="first">first</constant>;
-    <classname linkend="function">function</classname>&lt; op::second &gt;::type const <constant linkend="second">second</constant>;
-    <classname linkend="function">function</classname>&lt; op::matched &gt;::type const <constant linkend="matched">matched</constant>;
-    <classname linkend="function">function</classname>&lt; op::length &gt;::type const <constant linkend="length">length</constant>;
-    <classname linkend="function">function</classname>&lt; op::str &gt;::type const <constant linkend="str">str</constant>;
-    <classname linkend="function">function</classname>&lt; op::insert &gt;::type const <constant linkend="insert">insert</constant>;
-    <classname linkend="function">function</classname>&lt; op::make_pair &gt;::type const <constant linkend="make_pair">make_pair</constant>;
-    <classname linkend="function">function</classname>&lt; op::unwrap_reference &gt;::type const <constant linkend="unwrap_reference">unwrap_reference</constant>;
+    <classname linkend="function">function</classname>&lt; <classname linkend="op.at">op::at</classname> &gt;::type const <constant linkend="at">at</constant>;
+    <classname linkend="function">function</classname>&lt; <classname linkend="op.push">op::push</classname> &gt;::type const <constant linkend="push">push</constant>;
+    <classname linkend="function">function</classname>&lt; <classname linkend="op.push_back">op::push_back</classname> &gt;::type const <constant linkend="push_back">push_back</constant>;
+    <classname linkend="function">function</classname>&lt; <classname linkend="op.push_front">op::push_front</classname> &gt;::type const <constant linkend="push_front">push_front</constant>;
+    <classname linkend="function">function</classname>&lt; <classname linkend="op.pop">op::pop</classname> &gt;::type const <constant linkend="pop">pop</constant>;
+    <classname linkend="function">function</classname>&lt; <classname linkend="op.pop_back">op::pop_back</classname> &gt;::type const <constant linkend="pop_back">pop_back</constant>;
+    <classname linkend="function">function</classname>&lt; <classname linkend="op.pop_front">op::pop_front</classname> &gt;::type const <constant linkend="pop_front">pop_front</constant>;
+    <classname linkend="function">function</classname>&lt; <classname linkend="op.top">op::top</classname> &gt;::type const <constant linkend="top">top</constant>;
+    <classname linkend="function">function</classname>&lt; <classname linkend="op.back">op::back</classname> &gt;::type const <constant linkend="back">back</constant>;
+    <classname linkend="function">function</classname>&lt; <classname linkend="op.front">op::front</classname> &gt;::type const <constant linkend="front">front</constant>;
+    <classname linkend="function">function</classname>&lt; <classname linkend="op.first">op::first</classname> &gt;::type const <constant linkend="first">first</constant>;
+    <classname linkend="function">function</classname>&lt; <classname linkend="op.second">op::second</classname> &gt;::type const <constant linkend="second">second</constant>;
+    <classname linkend="function">function</classname>&lt; <classname linkend="op.matched">op::matched</classname> &gt;::type const <constant linkend="matched">matched</constant>;
+    <classname linkend="function">function</classname>&lt; <classname linkend="op.length">op::length</classname> &gt;::type const <constant linkend="length">length</constant>;
+    <classname linkend="function">function</classname>&lt; <classname linkend="op.str">op::str</classname> &gt;::type const <constant linkend="str">str</constant>;
+    <classname linkend="function">function</classname>&lt; <classname linkend="op.insert">op::insert</classname> &gt;::type const <constant linkend="insert">insert</constant>;
+    <classname linkend="function">function</classname>&lt; <classname linkend="op.make_pair">op::make_pair</classname> &gt;::type const <constant linkend="make_pair">make_pair</constant>;
+    <classname linkend="function">function</classname>&lt; <classname linkend="op.unwrap_reference">op::unwrap_reference</classname> &gt;::type const <constant linkend="unwrap_reference">unwrap_reference</constant>;
     template&lt;typename T, typename A&gt; <replaceable>unspecified</replaceable> <function linkend="as">as</function>(A const &amp;);
     template&lt;typename T, typename A&gt; <replaceable>unspecified</replaceable> <function linkend="static_cast_">static_cast_</function>(A const &amp;);
     template&lt;typename T, typename A&gt; <replaceable>unspecified</replaceable> <function linkend="dynamic_cast_">dynamic_cast_</function>(A const &amp;);
@@ -115,6 +115,34 @@
     <xi:include href="placeholder.xml"/>
     <xi:include href="reference.xml"/>
     <xi:include href="value.xml"/>
+    <xi:include href="at.xml"/>
+    <xi:include href="push.xml"/>
+    <xi:include href="push_back.xml"/>
+    <xi:include href="push_front.xml"/>
+    <xi:include href="pop.xml"/>
+    <xi:include href="pop_back.xml"/>
+    <xi:include href="pop_front.xml"/>
+    <xi:include href="top.xml"/>
+    <xi:include href="back.xml"/>
+    <xi:include href="front.xml"/>
+    <xi:include href="first.xml"/>
+    <xi:include href="second.xml"/>
+    <xi:include href="matched.xml"/>
+    <xi:include href="length.xml"/>
+    <xi:include href="str.xml"/>
+    <xi:include href="insert.xml"/>
+    <xi:include href="make_pair.xml"/>
+    <xi:include href="unwrap_reference.xml"/>
+    <xi:include href="as.xml"/>
+    <xi:include href="static_cast_.xml"/>
+    <xi:include href="dynamic_cast_.xml"/>
+    <xi:include href="const_cast_.xml"/>
+    <xi:include href="val.xml"/>
+    <xi:include href="ref.xml"/>
+    <xi:include href="cref.xml"/>
+    <xi:include href="check.xml"/>
+    <xi:include href="let.xml"/>
+    <xi:include href="construct.xml"/>
   </section>
 
   <section>
