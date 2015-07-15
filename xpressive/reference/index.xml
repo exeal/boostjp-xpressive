@@ -143,6 +143,31 @@
     <xi:include href="check.xml"/>
     <xi:include href="let.xml"/>
     <xi:include href="construct.xml"/>
+
+    <xi:include href="op.as.xml"/>
+    <xi:include href="op.at.xml"/>
+    <xi:include href="op.back.xml"/>
+    <xi:include href="op.const_cast_.xml"/>
+    <xi:include href="op.construct.xml"/>
+    <xi:include href="op.dynamic_cast_.xml"/>
+    <xi:include href="op.first.xml"/>
+    <xi:include href="op.front.xml"/>
+    <xi:include href="op.insert.xml"/>
+    <xi:include href="op.length.xml"/>
+    <xi:include href="op.make_pair.xml"/>
+    <xi:include href="op.matched.xml"/>
+    <xi:include href="op.pop.xml"/>
+    <xi:include href="op.pop_back.xml"/>
+    <xi:include href="op.pop_front.xml"/>
+    <xi:include href="op.push.xml"/>
+    <xi:include href="op.push_back.xml"/>
+    <xi:include href="op.push_front.xml"/>
+    <xi:include href="op.second.xml"/>
+    <xi:include href="op.static_cast_.xml"/>
+    <xi:include href="op.str.xml"/>
+    <xi:include href="op.throw_.xml"/>
+    <xi:include href="op.top.xml"/>
+    <xi:include href="op.unwrap_reference.xml"/>
   </section>
 
   <section>
