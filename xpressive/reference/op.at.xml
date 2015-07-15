@@ -44,7 +44,7 @@ struct <classname linkend="op.at">at</classname> {
   <refsection>
     <title>説明</title>
 
-    <refsection>
+    <refsection xml:id="op.at.public-member-functions">
       <title>at 公開メンバ関数</title>
       <orderedlist>
 	<listitem xml:id="op.at.operator.0">
