@@ -35,7 +35,7 @@ struct <classname linkend="op.const_cast_">const_cast_</classname> {
       </orderedlist>
     </refsection>
 
-    <refsection xml:id="op.back.public-member-functions">
+    <refsection xml:id="op.const_cast_.public-member-functions">
       <title>const_cast_ 公開メンバ関数</title>
       <orderedlist>
 	<listitem xml:id="op.const_cast_.operator.0">
