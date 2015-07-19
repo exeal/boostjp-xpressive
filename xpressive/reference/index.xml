@@ -178,116 +178,120 @@
     <synopsis language="C++">namespace boost {
   namespace xpressive {
     template&lt;typename BidiIter&gt; 
-      bool regex_match(BidiIter, BidiIter, match_results&lt; BidiIter &gt; &amp;, 
-                       basic_regex&lt; BidiIter &gt; const &amp;, 
+      bool <function linkend="regex_match">regex_match</function>(BidiIter, BidiIter, <classname linkend="match_results">match_results</classname>&lt; BidiIter &gt; &amp;, 
+                       <classname linkend="basic_regex">basic_regex</classname>&lt; BidiIter &gt; const &amp;, 
                        regex_constants::match_flag_type = regex_constants::match_default);
     template&lt;typename BidiIter&gt; 
-      bool regex_match(BidiIter, BidiIter, basic_regex&lt; BidiIter &gt; const &amp;, 
+      bool <function linkend="regex_match">regex_match</function>(BidiIter, BidiIter, <classname linkend="basic_regex">basic_regex</classname>&lt; BidiIter &gt; const &amp;, 
                        regex_constants::match_flag_type = regex_constants::match_default);
     template&lt;typename Char&gt; 
-      bool regex_match(Char *, match_results&lt; Char * &gt; &amp;, 
-                       basic_regex&lt; Char * &gt; const &amp;, 
+      bool <function linkend="regex_match">regex_match</function>(Char *, <classname linkend="match_results">match_results</classname>&lt; Char * &gt; &amp;, 
+                       <classname linkend="basic_regex">basic_regex</classname>&lt; Char * &gt; const &amp;, 
                        regex_constants::match_flag_type = regex_constants::match_default);
     template&lt;typename BidiRange, typename BidiIter&gt; 
-      bool regex_match(BidiRange &amp;, match_results&lt; BidiIter &gt; &amp;, 
-                       basic_regex&lt; BidiIter &gt; const &amp;, 
+      bool <function linkend="regex_match">regex_match</function>(BidiRange &amp;, <classname linkend="match_results">match_results</classname>&lt; BidiIter &gt; &amp;, 
+                       <classname linkend="basic_regex">basic_regex</classname>&lt; BidiIter &gt; const &amp;, 
                        regex_constants::match_flag_type = regex_constants::match_default, 
                        <replaceable>unspecified</replaceable> = 0);
     template&lt;typename BidiRange, typename BidiIter&gt; 
-      bool regex_match(BidiRange const &amp;, match_results&lt; BidiIter &gt; &amp;, 
-                       basic_regex&lt; BidiIter &gt; const &amp;, 
+      bool <function linkend="regex_match">regex_match</function>(BidiRange const &amp;, <classname linkend="match_results">match_results</classname>&lt; BidiIter &gt; &amp;, 
+                       <classname linkend="basic_regex">basic_regex</classname>&lt; BidiIter &gt; const &amp;, 
                        regex_constants::match_flag_type = regex_constants::match_default, 
                        <replaceable>unspecified</replaceable> = 0);
     template&lt;typename Char&gt; 
-      bool regex_match(Char *, basic_regex&lt; Char * &gt; const &amp;, 
+      bool <function linkend="regex_match">regex_match</function>(Char *, <classname linkend="basic_regex">basic_regex</classname>&lt; Char * &gt; const &amp;, 
                        regex_constants::match_flag_type = regex_constants::match_default);
     template&lt;typename BidiRange, typename BidiIter&gt; 
-      bool regex_match(BidiRange &amp;, basic_regex&lt; BidiIter &gt; const &amp;, 
+      bool <function linkend="regex_match">regex_match</function>(BidiRange &amp;, <classname linkend="basic_regex">basic_regex</classname>&lt; BidiIter &gt; const &amp;, 
                        regex_constants::match_flag_type = regex_constants::match_default, 
                        <replaceable>unspecified</replaceable> = 0);
     template&lt;typename BidiRange, typename BidiIter&gt; 
-      bool regex_match(BidiRange const &amp;, basic_regex&lt; BidiIter &gt; const &amp;, 
+      bool <function linkend="regex_match">regex_match</function>(BidiRange const &amp;, <classname linkend="basic_regex">basic_regex</classname>&lt; BidiIter &gt; const &amp;, 
                        regex_constants::match_flag_type = regex_constants::match_default, 
                        <replaceable>unspecified</replaceable> = 0);
     template&lt;typename BidiIter&gt; 
-      bool regex_search(BidiIter, BidiIter, match_results&lt; BidiIter &gt; &amp;, 
-                        basic_regex&lt; BidiIter &gt; const &amp;, 
+      bool <function linkend="regex_search">regex_search</function>(BidiIter, BidiIter, <classname linkend="match_results">match_results</classname>&lt; BidiIter &gt; &amp;, 
+                        <classname linkend="basic_regex">basic_regex</classname>&lt; BidiIter &gt; const &amp;, 
                         regex_constants::match_flag_type = regex_constants::match_default);
     template&lt;typename BidiIter&gt; 
-      bool regex_search(BidiIter, BidiIter, basic_regex&lt; BidiIter &gt; const &amp;, 
+      bool <function linkend="regex_search">regex_search</function>(BidiIter, BidiIter, <classname linkend="basic_regex">basic_regex</classname>&lt; BidiIter &gt; const &amp;, 
                         regex_constants::match_flag_type = regex_constants::match_default);
     template&lt;typename Char&gt; 
-      bool regex_search(Char *, match_results&lt; Char * &gt; &amp;, 
-                        basic_regex&lt; Char * &gt; const &amp;, 
+      bool <function linkend="regex_search">regex_search</function>(Char *, <classname linkend="match_results">match_results</classname>&lt; Char * &gt; &amp;, 
+                        <classname linkend="basic_regex">basic_regex</classname>&lt; Char * &gt; const &amp;, 
                         regex_constants::match_flag_type = regex_constants::match_default);
     template&lt;typename BidiRange, typename BidiIter&gt; 
-      bool regex_search(BidiRange &amp;, match_results&lt; BidiIter &gt; &amp;, 
-                        basic_regex&lt; BidiIter &gt; const &amp;, 
+      bool <function linkend="regex_search">regex_search</function>(BidiRange &amp;, <classname linkend="match_results">match_results</classname>&lt; BidiIter &gt; &amp;, 
+                        <classname linkend="basic_regex">basic_regex</classname>&lt; BidiIter &gt; const &amp;, 
                         regex_constants::match_flag_type = regex_constants::match_default, 
                         <replaceable>unspecified</replaceable> = 0);
     template&lt;typename BidiRange, typename BidiIter&gt; 
-      bool regex_search(BidiRange const &amp;, match_results&lt; BidiIter &gt; &amp;, 
-                        basic_regex&lt; BidiIter &gt; const &amp;, 
+      bool <function linkend="regex_search">regex_search</function>(BidiRange const &amp;, <classname linkend="match_results">match_results</classname>&lt; BidiIter &gt; &amp;, 
+                        <classname linkend="basic_regex">basic_regex</classname>&lt; BidiIter &gt; const &amp;, 
                         regex_constants::match_flag_type = regex_constants::match_default, 
                         <replaceable>unspecified</replaceable> = 0);
     template&lt;typename Char&gt; 
-      bool regex_search(Char *, basic_regex&lt; Char * &gt; const &amp;, 
+      bool <function linkend="regex_search">regex_search</function>(Char *, <classname linkend="basic_regex">basic_regex</classname>&lt; Char * &gt; const &amp;, 
                         regex_constants::match_flag_type = regex_constants::match_default);
     template&lt;typename BidiRange, typename BidiIter&gt; 
-      bool regex_search(BidiRange &amp;, basic_regex&lt; BidiIter &gt; const &amp;, 
+      bool <function linkend="regex_search">regex_search</function>(BidiRange &amp;, <classname linkend="basic_regex">basic_regex</classname>&lt; BidiIter &gt; const &amp;, 
                         regex_constants::match_flag_type = regex_constants::match_default, 
                         <replaceable>unspecified</replaceable> = 0);
     template&lt;typename BidiRange, typename BidiIter&gt; 
-      bool regex_search(BidiRange const &amp;, basic_regex&lt; BidiIter &gt; const &amp;, 
+      bool <function linkend="regex_search">regex_search</function>(BidiRange const &amp;, <classname linkend="basic_regex">basic_regex</classname>&lt; BidiIter &gt; const &amp;, 
                         regex_constants::match_flag_type = regex_constants::match_default, 
                         <replaceable>unspecified</replaceable> = 0);
     template&lt;typename OutIter, typename BidiIter, typename Formatter&gt; 
-      OutIter regex_replace(OutIter, BidiIter, BidiIter, 
-                            basic_regex&lt; BidiIter &gt; const &amp;, 
+      OutIter <function linkend="regex_replace">regex_replace</function>(OutIter, BidiIter, BidiIter, 
+                            <classname linkend="basic_regex">basic_regex</classname>&lt; BidiIter &gt; const &amp;, 
                             Formatter const &amp;, 
                             regex_constants::match_flag_type = regex_constants::match_default, 
                             <replaceable>unspecified</replaceable> = 0);
     template&lt;typename OutIter, typename BidiIter&gt; 
-      OutIter regex_replace(OutIter, BidiIter, BidiIter, 
-                            basic_regex&lt; BidiIter &gt; const &amp;, 
+      OutIter <function linkend="regex_replace">regex_replace</function>(OutIter, BidiIter, BidiIter, 
+                            <classname linkend="basic_regex">basic_regex</classname>&lt; BidiIter &gt; const &amp;, 
                             typename iterator_value&lt; BidiIter &gt;::type const *, 
                             regex_constants::match_flag_type = regex_constants::match_default);
     template&lt;typename BidiContainer, typename BidiIter, typename Formatter&gt; 
       BidiContainer 
-      regex_replace(BidiContainer &amp;, basic_regex&lt; BidiIter &gt; const &amp;, 
+      <function linkend="regex_replace">regex_replace</function>(BidiContainer &amp;, <classname linkend="basic_regex">basic_regex</classname>&lt; BidiIter &gt; const &amp;, 
                     Formatter const &amp;, 
                     regex_constants::match_flag_type = regex_constants::match_default, 
                     <replaceable>unspecified</replaceable> = 0);
     template&lt;typename BidiContainer, typename BidiIter, typename Formatter&gt; 
       BidiContainer 
-      regex_replace(BidiContainer const &amp;, basic_regex&lt; BidiIter &gt; const &amp;, 
+      <function linkend="regex_replace">regex_replace</function>(BidiContainer const &amp;, <classname linkend="basic_regex">basic_regex</classname>&lt; BidiIter &gt; const &amp;, 
                     Formatter const &amp;, 
                     regex_constants::match_flag_type = regex_constants::match_default, 
                     <replaceable>unspecified</replaceable> = 0);
     template&lt;typename Char, typename Formatter&gt; 
       std::basic_string&lt; typename remove_const&lt; Char &gt;::type &gt; 
-      regex_replace(Char *, basic_regex&lt; Char * &gt; const &amp;, Formatter const &amp;, 
+      <function linkend="regex_replace">regex_replace</function>(Char *, <classname linkend="basic_regex">basic_regex</classname>&lt; Char * &gt; const &amp;, Formatter const &amp;, 
                     regex_constants::match_flag_type = regex_constants::match_default, 
                     <replaceable>unspecified</replaceable> = 0);
     template&lt;typename BidiContainer, typename BidiIter&gt; 
       BidiContainer 
-      regex_replace(BidiContainer &amp;, basic_regex&lt; BidiIter &gt; const &amp;, 
+      <function linkend="regex_replace">regex_replace</function>(BidiContainer &amp;, <classname linkend="basic_regex">basic_regex</classname>&lt; BidiIter &gt; const &amp;, 
                     typename iterator_value&lt; BidiIter &gt;::type const *, 
                     regex_constants::match_flag_type = regex_constants::match_default, 
                     <replaceable>unspecified</replaceable> = 0);
     template&lt;typename BidiContainer, typename BidiIter&gt; 
       BidiContainer 
-      regex_replace(BidiContainer const &amp;, basic_regex&lt; BidiIter &gt; const &amp;, 
+      <function linkend="regex_replace">regex_replace</function>(BidiContainer const &amp;, <classname linkend="basic_regex">basic_regex</classname>&lt; BidiIter &gt; const &amp;, 
                     typename iterator_value&lt; BidiIter &gt;::type const *, 
                     regex_constants::match_flag_type = regex_constants::match_default, 
                     <replaceable>unspecified</replaceable> = 0);
     template&lt;typename Char&gt; 
       std::basic_string&lt; typename remove_const&lt; Char &gt;::type &gt; 
-      regex_replace(Char *, basic_regex&lt; Char * &gt; const &amp;, 
+      <function linkend="regex_replace">regex_replace</function>(Char *, <classname linkend="basic_regex">basic_regex</classname>&lt; Char * &gt; const &amp;, 
                     typename add_const&lt; Char &gt;::type *, 
                     regex_constants::match_flag_type = regex_constants::match_default);
   }
 }</synopsis>
+
+    <xi:include href="regex_match.xml"/>
+    <xi:include href="regex_search.xml"/>
+    <xi:include href="regex_replace.xml"/>
   </section>
 
   <section>
@@ -406,8 +410,8 @@
     template&lt;typename Expr&gt; <replaceable>unspecified</replaceable> <function linkend="icase">icase</function>(Expr const &amp;);
     template&lt;typename Literal&gt; <replaceable>unspecified</replaceable> <function linkend="as_xpr">as_xpr</function>(Literal const &amp;);
     template&lt;typename BidiIter&gt; 
-      proto::terminal&lt; reference_wrapper&lt; basic_regex&lt; BidiIter &gt; const  &gt; &gt;::type const 
-      <function linkend="by_ref">by_ref</function>(basic_regex&lt; BidiIter &gt; const &amp;);
+      proto::terminal&lt; reference_wrapper&lt; <classname linkend="basic_regex">basic_regex</classname>&lt; BidiIter &gt; const  &gt; &gt;::type const 
+      <function linkend="by_ref">by_ref</function>(<classname linkend="basic_regex">basic_regex</classname>&lt; BidiIter &gt; const &amp;);
     template&lt;typename Char&gt; <replaceable>unspecified</replaceable> <function linkend="range">range</function>(Char, Char);
     template&lt;typename Expr&gt; 
       proto::result_of::make_expr&lt; proto::tag::logical_not, proto::default_domain, Expr const &amp;
@@ -635,7 +639,7 @@
 <symbol linkend="BOOST_XPRESSIVE_HAS_MS_STACK_GUARD">BOOST_XPRESSIVE_HAS_MS_STACK_GUARD</symbol></synopsis>
   <synopsis language="C++">namespace boost {
   namespace xpressive {
-    template&lt;typename BidiIter&gt; struct basic_regex;
+    template&lt;typename BidiIter&gt; struct <classname linkend="basic_regex">basic_regex</classname>;
     template&lt;typename Char&gt; struct <classname linkend="c_regex_traits">c_regex_traits</classname>;
     template&lt;typename RegexTraits&gt; struct <classname linkend="compiler_traits">compiler_traits</classname>;
     template&lt;typename Char&gt; struct <classname linkend="cpp_regex_traits">cpp_regex_traits</classname>;
@@ -645,10 +649,10 @@
     template&lt;typename Char, typename Impl&gt; <classname linkend="regex_traits">struct regex_traits</classname>;
 
     typedef void const * regex_id_type;
-    typedef basic_regex&lt; std::string::const_iterator &gt; sregex;
-    typedef basic_regex&lt; char const * &gt; cregex;
-    typedef basic_regex&lt; std::wstring::const_iterator &gt; wsregex;
-    typedef basic_regex&lt; wchar_t const * &gt; wcregex;
+    typedef <classname linkend="basic_regex">basic_regex</classname>&lt; std::string::const_iterator &gt; sregex;
+    typedef <classname linkend="basic_regex">basic_regex</classname>&lt; char const * &gt; cregex;
+    typedef <classname linkend="basic_regex">basic_regex</classname>&lt; std::wstring::const_iterator &gt; wsregex;
+    typedef <classname linkend="basic_regex">basic_regex</classname>&lt; wchar_t const * &gt; wcregex;
     typedef sub_match&lt; std::string::const_iterator &gt; ssub_match;
     typedef sub_match&lt; char const * &gt; csub_match;
     typedef sub_match&lt; std::wstring::const_iterator &gt; wssub_match;
@@ -665,10 +669,10 @@
     typedef regex_token_iterator&lt; char const * &gt; cregex_token_iterator;
     typedef regex_token_iterator&lt; std::wstring::const_iterator &gt; wsregex_token_iterator;
     typedef regex_token_iterator&lt; wchar_t const * &gt; wcregex_token_iterator;
-    typedef match_results&lt; std::string::const_iterator &gt; smatch;
-    typedef match_results&lt; char const * &gt; cmatch;
-    typedef match_results&lt; std::wstring::const_iterator &gt; wsmatch;
-    typedef match_results&lt; wchar_t const * &gt; wcmatch;
+    typedef <classname linkend="match_results">match_results</classname>&lt; std::string::const_iterator &gt; smatch;
+    typedef <classname linkend="match_results">match_results</classname>&lt; char const * &gt; cmatch;
+    typedef <classname linkend="match_results">match_results</classname>&lt; std::wstring::const_iterator &gt; wsmatch;
+    typedef <classname linkend="match_results">match_results</classname>&lt; wchar_t const * &gt; wcmatch;
     typedef <classname linkend="regex_id_filter_predicate">regex_id_filter_predicate</classname>&lt; std::string::const_iterator &gt; sregex_id_filter_predicate;
     typedef <classname linkend="regex_id_filter_predicate">regex_id_filter_predicate</classname>&lt; char const * &gt; cregex_id_filter_predicate;
     typedef <classname linkend="regex_id_filter_predicate">regex_id_filter_predicate</classname>&lt; std::wstring::const_iterator &gt; wsregex_id_filter_predicate;
