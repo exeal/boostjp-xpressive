@@ -130,7 +130,7 @@ struct <classname linkend="op.insert">insert</classname> {
 	  </methodsynopsis>
 	  <variablelist spacing="compact">
 	    <varlistentry>
-	      <term>引数；</term>
+	      <term>引数：</term>
 	      <listitem>
 		<variablelist spacing="compact">
 		  <varlistentry>

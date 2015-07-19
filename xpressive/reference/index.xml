@@ -46,30 +46,30 @@
     </para>
     <synopsis language="C++">namespace boost {
   namespace xpressive {
-    template&lt;typename <link xlink:href="http://www.boost.org/libs/proto/PolymorphicFunctionObject.html">PolymorphicFunctionObject</link>&gt; struct <classname linkend="function">function</classname>;
+    template&lt;typename <link xlink:href="http://www.boost.org/doc/html/PolymorphicFunctionObject.html">PolymorphicFunctionObject</link>&gt; struct <classname linkend="function">function</classname>;
     template&lt;typename T&gt; struct <classname linkend="local">local</classname>;
     template&lt;typename T, int I, typename Dummy&gt; struct <classname linkend="placeholder">placeholder</classname>;
     template&lt;typename T&gt; struct <classname linkend="reference">reference</classname>;
     template&lt;typename T&gt; struct <classname linkend="value">value</classname>;
 
-    <classname linkend="function">function</classname>&lt; <classname linkend="op.at">op::at</classname> &gt;::type const <constant linkend="at">at</constant>;
-    <classname linkend="function">function</classname>&lt; <classname linkend="op.push">op::push</classname> &gt;::type const <constant linkend="push">push</constant>;
-    <classname linkend="function">function</classname>&lt; <classname linkend="op.push_back">op::push_back</classname> &gt;::type const <constant linkend="push_back">push_back</constant>;
-    <classname linkend="function">function</classname>&lt; <classname linkend="op.push_front">op::push_front</classname> &gt;::type const <constant linkend="push_front">push_front</constant>;
-    <classname linkend="function">function</classname>&lt; <classname linkend="op.pop">op::pop</classname> &gt;::type const <constant linkend="pop">pop</constant>;
-    <classname linkend="function">function</classname>&lt; <classname linkend="op.pop_back">op::pop_back</classname> &gt;::type const <constant linkend="pop_back">pop_back</constant>;
-    <classname linkend="function">function</classname>&lt; <classname linkend="op.pop_front">op::pop_front</classname> &gt;::type const <constant linkend="pop_front">pop_front</constant>;
-    <classname linkend="function">function</classname>&lt; <classname linkend="op.top">op::top</classname> &gt;::type const <constant linkend="top">top</constant>;
-    <classname linkend="function">function</classname>&lt; <classname linkend="op.back">op::back</classname> &gt;::type const <constant linkend="back">back</constant>;
-    <classname linkend="function">function</classname>&lt; <classname linkend="op.front">op::front</classname> &gt;::type const <constant linkend="front">front</constant>;
-    <classname linkend="function">function</classname>&lt; <classname linkend="op.first">op::first</classname> &gt;::type const <constant linkend="first">first</constant>;
-    <classname linkend="function">function</classname>&lt; <classname linkend="op.second">op::second</classname> &gt;::type const <constant linkend="second">second</constant>;
-    <classname linkend="function">function</classname>&lt; <classname linkend="op.matched">op::matched</classname> &gt;::type const <constant linkend="matched">matched</constant>;
-    <classname linkend="function">function</classname>&lt; <classname linkend="op.length">op::length</classname> &gt;::type const <constant linkend="length">length</constant>;
-    <classname linkend="function">function</classname>&lt; <classname linkend="op.str">op::str</classname> &gt;::type const <constant linkend="str">str</constant>;
-    <classname linkend="function">function</classname>&lt; <classname linkend="op.insert">op::insert</classname> &gt;::type const <constant linkend="insert">insert</constant>;
-    <classname linkend="function">function</classname>&lt; <classname linkend="op.make_pair">op::make_pair</classname> &gt;::type const <constant linkend="make_pair">make_pair</constant>;
-    <classname linkend="function">function</classname>&lt; <classname linkend="op.unwrap_reference">op::unwrap_reference</classname> &gt;::type const <constant linkend="unwrap_reference">unwrap_reference</constant>;
+    <classname xlink:href="http://www.boost.org/doc/html/function.html">function</classname>&lt; <classname linkend="op.at">op::at</classname> &gt;::type const <constant linkend="at">at</constant>;
+    <classname xlink:href="http://www.boost.org/doc/html/function.html">function</classname>&lt; <classname linkend="op.push">op::push</classname> &gt;::type const <constant linkend="push">push</constant>;
+    <classname xlink:href="http://www.boost.org/doc/html/function.html">function</classname>&lt; <classname linkend="op.push_back">op::push_back</classname> &gt;::type const <constant linkend="push_back">push_back</constant>;
+    <classname xlink:href="http://www.boost.org/doc/html/function.html">function</classname>&lt; <classname linkend="op.push_front">op::push_front</classname> &gt;::type const <constant linkend="push_front">push_front</constant>;
+    <classname xlink:href="http://www.boost.org/doc/html/function.html">function</classname>&lt; <classname linkend="op.pop">op::pop</classname> &gt;::type const <constant linkend="pop">pop</constant>;
+    <classname xlink:href="http://www.boost.org/doc/html/function.html">function</classname>&lt; <classname linkend="op.pop_back">op::pop_back</classname> &gt;::type const <constant linkend="pop_back">pop_back</constant>;
+    <classname xlink:href="http://www.boost.org/doc/html/function.html">function</classname>&lt; <classname linkend="op.pop_front">op::pop_front</classname> &gt;::type const <constant linkend="pop_front">pop_front</constant>;
+    <classname xlink:href="http://www.boost.org/doc/html/function.html">function</classname>&lt; <classname linkend="op.top">op::top</classname> &gt;::type const <constant linkend="top">top</constant>;
+    <classname xlink:href="http://www.boost.org/doc/html/function.html">function</classname>&lt; <classname linkend="op.back">op::back</classname> &gt;::type const <constant linkend="back">back</constant>;
+    <classname xlink:href="http://www.boost.org/doc/html/function.html">function</classname>&lt; <classname linkend="op.front">op::front</classname> &gt;::type const <constant linkend="front">front</constant>;
+    <classname xlink:href="http://www.boost.org/doc/html/function.html">function</classname>&lt; <classname linkend="op.first">op::first</classname> &gt;::type const <constant linkend="first">first</constant>;
+    <classname xlink:href="http://www.boost.org/doc/html/function.html">function</classname>&lt; <classname linkend="op.second">op::second</classname> &gt;::type const <constant linkend="second">second</constant>;
+    <classname xlink:href="http://www.boost.org/doc/html/function.html">function</classname>&lt; <classname linkend="op.matched">op::matched</classname> &gt;::type const <constant linkend="matched">matched</constant>;
+    <classname xlink:href="http://www.boost.org/doc/html/function.html">function</classname>&lt; <classname linkend="op.length">op::length</classname> &gt;::type const <constant linkend="length">length</constant>;
+    <classname xlink:href="http://www.boost.org/doc/html/function.html">function</classname>&lt; <classname linkend="op.str">op::str</classname> &gt;::type const <constant linkend="str">str</constant>;
+    <classname xlink:href="http://www.boost.org/doc/html/function.html">function</classname>&lt; <classname linkend="op.insert">op::insert</classname> &gt;::type const <constant linkend="insert">insert</constant>;
+    <classname xlink:href="http://www.boost.org/doc/html/function.html">function</classname>&lt; <classname linkend="op.make_pair">op::make_pair</classname> &gt;::type const <constant linkend="make_pair">make_pair</constant>;
+    <classname xlink:href="http://www.boost.org/doc/html/function.html">function</classname>&lt; <classname linkend="op.unwrap_reference">op::unwrap_reference</classname> &gt;::type const <constant linkend="unwrap_reference">unwrap_reference</constant>;
     template&lt;typename T, typename A&gt; <replaceable>unspecified</replaceable> <function linkend="as">as</function>(A const &amp;);
     template&lt;typename T, typename A&gt; <replaceable>unspecified</replaceable> <function linkend="static_cast_">static_cast_</function>(A const &amp;);
     template&lt;typename T, typename A&gt; <replaceable>unspecified</replaceable> <function linkend="dynamic_cast_">dynamic_cast_</function>(A const &amp;);
@@ -103,7 +103,7 @@
       struct <classname linkend="op.second">second</classname>;
       template&lt;typename T&gt; struct <classname linkend="op.static_cast_">static_cast_</classname>;
       struct <classname linkend="op.str">str</classname>;
-      template&lt;typename Except&gt; <classname linkend="op.throw_">struct throw_</classname>;
+      template&lt;typename Except&gt; struct <classname linkend="op.throw_">throw_</classname>;
       struct <classname linkend="op.top">top</classname>;
       struct <classname linkend="op.unwrap_reference">unwrap_reference</classname>;
     }
