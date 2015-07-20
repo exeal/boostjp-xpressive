@@ -356,6 +356,8 @@
     template&lt;typename BidiIter&gt; struct <classname linkend="regex_iterator">regex_iterator</classname>;
   }
 }</synopsis>
+
+    <xi:include href="regex_iterator.xml"/>
   </section>
 
   <section>
