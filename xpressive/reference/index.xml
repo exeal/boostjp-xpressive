@@ -306,6 +306,8 @@
       struct <classname linkend="regex_compiler">regex_compiler</classname>;
   }
 }</synopsis>
+
+    <xi:include href="regex_compiler.xml"/>
   </section>
 
   <section>
