@@ -170,7 +170,7 @@
     <xi:include href="op.unwrap_reference.xml"/>
   </section>
 
-  <section>
+  <section xml:id="header.regex_algorithms_hpp">
     <title>&lt;boost/xpressive/regex_algorithms.hpp&gt; ヘッダ</title>
     <para>
       <function>regex_match()</function> 、<function>regex_search()</function> および <function>regex_replace()</function> アルゴリズムがある。
@@ -294,7 +294,7 @@
     <xi:include href="regex_replace.xml"/>
   </section>
 
-  <section>
+  <section xml:id="header.regex_compiler_hpp">
     <title>&lt;boost/xpressive/regex_compiler.hpp&gt; ヘッダ</title>
     <para>
       正規表現を文字列から構築するファクトリである <classname>regex_compiler</classname> の定義がある。
@@ -310,7 +310,7 @@
     <xi:include href="regex_compiler.xml"/>
   </section>
 
-  <section>
+  <section xml:id="header.regex_constants_hpp">
     <title>&lt;boost/xpressive/regex_constants.hpp&gt; ヘッダ</title>
     <para>
       <type role="enum">syntax_option_type</type> 、<type role="enum">match_flag_type</type> および <type role="enum">error_type</type> 列挙の定義がある。
@@ -325,6 +325,10 @@
     }
   }
 }</synopsis>
+
+    <xi:include href="regex_constants.syntax_option_type.xml"/>
+    <xi:include href="regex_constants.match_flag_type.xml"/>
+    <xi:include href="regex_constants.error_type.xml"/>
   </section>
 
   <section>
