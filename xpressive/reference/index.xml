@@ -360,7 +360,7 @@
     <xi:include href="regex_iterator.xml"/>
   </section>
 
-  <section>
+  <section xml:id="header.regex_primitives_hpp">
     <title>&lt;boost/xpressive/regex_primitives.hpp&gt; ヘッダ</title>
     <para>
       静的正規表現を記述するための構文要素がある。
@@ -398,46 +398,107 @@
     <replaceable>unspecified</replaceable> <constant linkend="_">_</constant>;    // あらゆる文字にマッチ。
     <replaceable>unspecified</replaceable> <constant linkend="self">self</constant>;    // 現在の正規表現オブジェクトへの参照。 
     <replaceable>unspecified</replaceable> <constant linkend="set">set</constant>;    // 文字セットを作成するのに使用。
-    mark_tag const <constant linkend="s0">s0</constant>;    // Perl の $&amp; 部分マッチプレースホルダ。 
-    mark_tag const <constant linkend="sn">s1</constant>;    // Perl の $1 部分マッチプレースホルダ。 
-    mark_tag const s2;
-    mark_tag const s3;
-    mark_tag const s4;
-    mark_tag const s5;
-    mark_tag const s6;
-    mark_tag const s7;
-    mark_tag const s8;
-    mark_tag const s9;
-    <replaceable>unspecified</replaceable> <constant linkend="an">a1</constant>;
-    <replaceable>unspecified</replaceable> a2;
-    <replaceable>unspecified</replaceable> a3;
-    <replaceable>unspecified</replaceable> a4;
-    <replaceable>unspecified</replaceable> a5;
-    <replaceable>unspecified</replaceable> a6;
-    <replaceable>unspecified</replaceable> a7;
-    <replaceable>unspecified</replaceable> a8;
-    <replaceable>unspecified</replaceable> a9;
-    template&lt;typename Expr&gt; <replaceable>unspecified</replaceable> <function linkend="icase">icase</function>(Expr const &amp;);
+    <classname linkend="mark_tag">mark_tag</classname> const <constant linkend="s0">s0</constant>;    // Perl の $&amp; 部分マッチプレースホルダ。 
+    <classname linkend="mark_tag">mark_tag</classname> const <constant linkend="s1">s1</constant>;    // Perl の $1 部分マッチプレースホルダ。 
+    <classname linkend="mark_tag">mark_tag</classname> const <constant linkend="s2">s2</constant>;
+    <classname linkend="mark_tag">mark_tag</classname> const <constant linkend="s3">s3</constant>;
+    <classname linkend="mark_tag">mark_tag</classname> const <constant linkend="s4">s4</constant>;
+    <classname linkend="mark_tag">mark_tag</classname> const <constant linkend="s5">s5</constant>;
+    <classname linkend="mark_tag">mark_tag</classname> const <constant linkend="s6">s6</constant>;
+    <classname linkend="mark_tag">mark_tag</classname> const <constant linkend="s7">s7</constant>;
+    <classname linkend="mark_tag">mark_tag</classname> const <constant linkend="s8">s8</constant>;
+    <classname linkend="mark_tag">mark_tag</classname> const <constant linkend="s9">s9</constant>;
+    <replaceable>unspecified</replaceable> <constant linkend="a1">a1</constant>;
+    <replaceable>unspecified</replaceable> <constant linkend="a2">a2</constant>;
+    <replaceable>unspecified</replaceable> <constant linkend="a3">a3</constant>;
+    <replaceable>unspecified</replaceable> <constant linkend="a4">a4</constant>;
+    <replaceable>unspecified</replaceable> <constant linkend="a5">a5</constant>;
+    <replaceable>unspecified</replaceable> <constant linkend="a6">a6</constant>;
+    <replaceable>unspecified</replaceable> <constant linkend="a7">a7</constant>;
+    <replaceable>unspecified</replaceable> <constant linkend="a8">a8</constant>;
+    <replaceable>unspecified</replaceable> <constant linkend="a9">a9</constant>;
+    template&lt;typename <type xlink:href="http://www.boost.org/doc/html/Expr.html">Expr</type>&gt; <replaceable>unspecified</replaceable> <function linkend="icase">icase</function>(Expr const &amp;);
     template&lt;typename Literal&gt; <replaceable>unspecified</replaceable> <function linkend="as_xpr">as_xpr</function>(Literal const &amp;);
     template&lt;typename BidiIter&gt; 
       proto::terminal&lt; reference_wrapper&lt; <classname linkend="basic_regex">basic_regex</classname>&lt; BidiIter &gt; const  &gt; &gt;::type const 
       <function linkend="by_ref">by_ref</function>(<classname linkend="basic_regex">basic_regex</classname>&lt; BidiIter &gt; const &amp;);
     template&lt;typename Char&gt; <replaceable>unspecified</replaceable> <function linkend="range">range</function>(Char, Char);
-    template&lt;typename Expr&gt; 
+    template&lt;typename <type xlink:href="http://www.boost.org/doc/html/Expr.html">Expr</type>&gt; 
       proto::result_of::make_expr&lt; proto::tag::logical_not, proto::default_domain, Expr const &amp;
 &gt;::type const 
       <function linkend="optional">optional</function>(Expr const &amp;);
-    template&lt;unsigned int Min, unsigned int Max, typename Expr&gt; 
+    template&lt;unsigned int Min, unsigned int Max, typename <type xlink:href="http://www.boost.org/doc/html/Expr.html">Expr</type>&gt; 
       <replaceable>unspecified</replaceable> <function linkend="repeat">repeat</function>(Expr const &amp;);
-    template&lt;unsigned int Count, typename Expr2&gt; 
+    template&lt;unsigned int Count, typename <type xlink:href="http://www.boost.org/doc/html/Expr.html">Expr2</type>&gt; 
       <replaceable>unspecified</replaceable> <function linkend="repeat">repeat</function>(Expr2 const &amp;);
-    template&lt;typename Expr&gt; <replaceable>unspecified</replaceable> <function linkend="keep">keep</function>(Expr const &amp;);
-    template&lt;typename Expr&gt; <replaceable>unspecified</replaceable> <function linkend="before">before</function>(Expr const &amp;);
-    template&lt;typename Expr&gt; <replaceable>unspecified</replaceable> <function linkend="after">after</function>(Expr const &amp;);
+    template&lt;typename <type xlink:href="http://www.boost.org/doc/html/Expr.html">Expr</type>&gt; <replaceable>unspecified</replaceable> <function linkend="keep">keep</function>(Expr const &amp;);
+    template&lt;typename <type xlink:href="http://www.boost.org/doc/html/Expr.html">Expr</type>&gt; <replaceable>unspecified</replaceable> <function linkend="before">before</function>(Expr const &amp;);
+    template&lt;typename <type xlink:href="http://www.boost.org/doc/html/Expr.html">Expr</type>&gt; <replaceable>unspecified</replaceable> <function linkend="after">after</function>(Expr const &amp;);
     template&lt;typename Locale&gt; <replaceable>unspecified</replaceable> <function linkend="imbue">imbue</function>(Locale const &amp;);
     template&lt;typename Skip&gt; <replaceable>unspecified</replaceable> <function linkend="skip">skip</function>(Skip const &amp;);
   }
 }</synopsis>
+
+    <xi:include href="mark_tag.xml"/>
+    <xi:include href="inf.xml"/>
+    <xi:include href="nil.xml"/>
+    <xi:include href="alnum.xml"/>
+    <xi:include href="alpha.xml"/>
+    <xi:include href="blank.xml"/>
+    <xi:include href="cntrl.xml"/>
+    <xi:include href="digit.xml"/>
+    <xi:include href="graph.xml"/>
+    <xi:include href="lower.xml"/>
+    <xi:include href="print.xml"/>
+    <xi:include href="punct.xml"/>
+    <xi:include href="space.xml"/>
+    <xi:include href="upper.xml"/>
+    <xi:include href="xdigit.xml"/>
+    <xi:include href="bos.xml"/>
+    <xi:include href="eos.xml"/>
+    <xi:include href="bol.xml"/>
+    <xi:include href="eol.xml"/>
+    <xi:include href="bow.xml"/>
+    <xi:include href="eow.xml"/>
+    <xi:include href="_b.xml"/>
+    <xi:include href="_w.xml"/>
+    <xi:include href="_d.xml"/>
+    <xi:include href="_s.xml"/>
+    <xi:include href="_n.xml"/>
+    <xi:include href="_ln.xml"/>
+    <xi:include href="_.xml"/>
+    <xi:include href="self.xml"/>
+    <xi:include href="set.xml"/>
+    <xi:include href="s0.xml"/>
+    <xi:include href="s1.xml"/>
+    <xi:include href="s2.xml"/>
+    <xi:include href="s3.xml"/>
+    <xi:include href="s4.xml"/>
+    <xi:include href="s5.xml"/>
+    <xi:include href="s6.xml"/>
+    <xi:include href="s7.xml"/>
+    <xi:include href="s8.xml"/>
+    <xi:include href="s9.xml"/>
+    <xi:include href="a1.xml"/>
+    <xi:include href="a2.xml"/>
+    <xi:include href="a3.xml"/>
+    <xi:include href="a4.xml"/>
+    <xi:include href="a5.xml"/>
+    <xi:include href="a6.xml"/>
+    <xi:include href="a7.xml"/>
+    <xi:include href="a8.xml"/>
+    <xi:include href="a9.xml"/>
+    <xi:include href="icase.xml"/>
+    <xi:include href="as_xpr.xml"/>
+    <xi:include href="by_ref.xml"/>
+    <xi:include href="range.xml"/>
+    <xi:include href="optional.xml"/>
+    <xi:include href="repeat.xml"/>
+    <xi:include href="keep.xml"/>
+    <xi:include href="before.xml"/>
+    <xi:include href="after.xml"/>
+    <xi:include href="imbue.xml"/>
+    <xi:include href="skip.xml"/>
   </section>
 
   <section>
