@@ -1,353 +1,193 @@
 <?xml version="1.0" ?>
-<article xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xml:lang="ja" version="5.0">
-  <info>
-    <title>&lt;boost/xpressive/sub_match.hpp&gt; ヘッダ</title>
-    <copyright>
-      <year>2008</year>
-      <holder>Eric Niebler</holder>
-    </copyright>
-  </info>
+<refentry xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink" xml:lang="ja" version="5.0" xml:id="sub_match">
+  <refmeta>
+    <refentrytitle>sub_match 構造体テンプレート</refentrytitle>
+  </refmeta>
 
-  <para>
-    <classname>sub_match&lt;&gt;</classname> クラステンプレートと、関連するヘルパ関数の定義がある。
-  </para>
+  <refnamediv>
+    <refname>boost::xpressive::sub_match</refname>
+    <refpurpose>
+      <classname linkend="sub_match">sub_match</classname> クラステンプレートは、個々のマーク済み部分式にマッチした文字シーケンスを表す。
+    </refpurpose>
+  </refnamediv>
 
-  <synopsis language="C++">namespace boost {
-  namespace xpressive {
-    template&lt;typename BidiIter&gt; struct sub_match;
-    template&lt;typename BidiIter, typename Char, typename Traits&gt; 
-      std::basic_ostream&lt; Char, Traits &gt; &amp; 
-      operator&lt;&lt;(std::basic_ostream&lt; Char, Traits &gt; &amp;, 
-                 sub_match&lt; BidiIter &gt; const &amp;);
-    template&lt;typename BidiIter&gt; 
-      bool operator==(sub_match&lt; BidiIter &gt; const &amp; lhs, 
-                      sub_match&lt; BidiIter &gt; const &amp; rhs);
-    template&lt;typename BidiIter&gt; 
-      bool operator!=(sub_match&lt; BidiIter &gt; const &amp; lhs, 
-                      sub_match&lt; BidiIter &gt; const &amp; rhs);
-    template&lt;typename BidiIter&gt; 
-      bool operator&lt;(sub_match&lt; BidiIter &gt; const &amp; lhs, 
-                     sub_match&lt; BidiIter &gt; const &amp; rhs);
-    template&lt;typename BidiIter&gt; 
-      bool operator&lt;=(sub_match&lt; BidiIter &gt; const &amp; lhs, 
-                      sub_match&lt; BidiIter &gt; const &amp; rhs);
-    template&lt;typename BidiIter&gt; 
-      bool operator&gt;=(sub_match&lt; BidiIter &gt; const &amp; lhs, 
-                      sub_match&lt; BidiIter &gt; const &amp; rhs);
-    template&lt;typename BidiIter&gt; 
-      bool operator&gt;(sub_match&lt; BidiIter &gt; const &amp; lhs, 
-                     sub_match&lt; BidiIter &gt; const &amp; rhs);
-    template&lt;typename BidiIter&gt; 
-      bool operator==(typename iterator_value&lt; BidiIter &gt;::type const * lhs, 
-                      sub_match&lt; BidiIter &gt; const &amp; rhs);
-    template&lt;typename BidiIter&gt; 
-      bool operator!=(typename iterator_value&lt; BidiIter &gt;::type const * lhs, 
-                      sub_match&lt; BidiIter &gt; const &amp; rhs);
-    template&lt;typename BidiIter&gt; 
-      bool operator&lt;(typename iterator_value&lt; BidiIter &gt;::type const * lhs, 
-                     sub_match&lt; BidiIter &gt; const &amp; rhs);
-    template&lt;typename BidiIter&gt; 
-      bool operator&gt;(typename iterator_value&lt; BidiIter &gt;::type const * lhs, 
-                     sub_match&lt; BidiIter &gt; const &amp; rhs);
-    template&lt;typename BidiIter&gt; 
-      bool operator&gt;=(typename iterator_value&lt; BidiIter &gt;::type const * lhs, 
-                      sub_match&lt; BidiIter &gt; const &amp; rhs);
-    template&lt;typename BidiIter&gt; 
-      bool operator&lt;=(typename iterator_value&lt; BidiIter &gt;::type const * lhs, 
-                      sub_match&lt; BidiIter &gt; const &amp; rhs);
-    template&lt;typename BidiIter&gt; 
-      bool operator==(sub_match&lt; BidiIter &gt; const &amp; lhs, 
-                      typename iterator_value&lt; BidiIter &gt;::type const * rhs);
-    template&lt;typename BidiIter&gt; 
-      bool operator!=(sub_match&lt; BidiIter &gt; const &amp; lhs, 
-                      typename iterator_value&lt; BidiIter &gt;::type const * rhs);
-    template&lt;typename BidiIter&gt; 
-      bool operator&lt;(sub_match&lt; BidiIter &gt; const &amp; lhs, 
-                     typename iterator_value&lt; BidiIter &gt;::type const * rhs);
-    template&lt;typename BidiIter&gt; 
-      bool operator&gt;(sub_match&lt; BidiIter &gt; const &amp; lhs, 
-                     typename iterator_value&lt; BidiIter &gt;::type const * rhs);
-    template&lt;typename BidiIter&gt; 
-      bool operator&gt;=(sub_match&lt; BidiIter &gt; const &amp; lhs, 
-                      typename iterator_value&lt; BidiIter &gt;::type const * rhs);
-    template&lt;typename BidiIter&gt; 
-      bool operator&lt;=(sub_match&lt; BidiIter &gt; const &amp; lhs, 
-                      typename iterator_value&lt; BidiIter &gt;::type const * rhs);
-    template&lt;typename BidiIter&gt; 
-      bool operator==(typename iterator_value&lt; BidiIter &gt;::type const &amp; lhs, 
-                      sub_match&lt; BidiIter &gt; const &amp; rhs);
-    template&lt;typename BidiIter&gt; 
-      bool operator!=(typename iterator_value&lt; BidiIter &gt;::type const &amp; lhs, 
-                      sub_match&lt; BidiIter &gt; const &amp; rhs);
-    template&lt;typename BidiIter&gt; 
-      bool operator&lt;(typename iterator_value&lt; BidiIter &gt;::type const &amp; lhs, 
-                     sub_match&lt; BidiIter &gt; const &amp; rhs);
-    template&lt;typename BidiIter&gt; 
-      bool operator&gt;(typename iterator_value&lt; BidiIter &gt;::type const &amp; lhs, 
-                     sub_match&lt; BidiIter &gt; const &amp; rhs);
-    template&lt;typename BidiIter&gt; 
-      bool operator&gt;=(typename iterator_value&lt; BidiIter &gt;::type const &amp; lhs, 
-                      sub_match&lt; BidiIter &gt; const &amp; rhs);
-    template&lt;typename BidiIter&gt; 
-      bool operator&lt;=(typename iterator_value&lt; BidiIter &gt;::type const &amp; lhs, 
-                      sub_match&lt; BidiIter &gt; const &amp; rhs);
-    template&lt;typename BidiIter&gt; 
-      bool operator==(sub_match&lt; BidiIter &gt; const &amp; lhs, 
-                      typename iterator_value&lt; BidiIter &gt;::type const &amp; rhs);
-    template&lt;typename BidiIter&gt; 
-      bool operator!=(sub_match&lt; BidiIter &gt; const &amp; lhs, 
-                      typename iterator_value&lt; BidiIter &gt;::type const &amp; rhs);
-    template&lt;typename BidiIter&gt; 
-      bool operator&lt;(sub_match&lt; BidiIter &gt; const &amp; lhs, 
-                     typename iterator_value&lt; BidiIter &gt;::type const &amp; rhs);
-    template&lt;typename BidiIter&gt; 
-      bool operator&gt;(sub_match&lt; BidiIter &gt; const &amp; lhs, 
-                     typename iterator_value&lt; BidiIter &gt;::type const &amp; rhs);
-    template&lt;typename BidiIter&gt; 
-      bool operator&gt;=(sub_match&lt; BidiIter &gt; const &amp; lhs, 
-                      typename iterator_value&lt; BidiIter &gt;::type const &amp; rhs);
-    template&lt;typename BidiIter&gt; 
-      bool operator&lt;=(sub_match&lt; BidiIter &gt; const &amp; lhs, 
-                      typename iterator_value&lt; BidiIter &gt;::type const &amp; rhs);
-    template&lt;typename BidiIter&gt; 
-      sub_match&lt; BidiIter &gt;::string_type 
-      operator+(sub_match&lt; BidiIter &gt; const &amp; lhs, 
-                sub_match&lt; BidiIter &gt; const &amp; rhs);
-    template&lt;typename BidiIter&gt; 
-      sub_match&lt; BidiIter &gt;::string_type 
-      operator+(sub_match&lt; BidiIter &gt; const &amp; lhs, 
-                typename iterator_value&lt; BidiIter &gt;::type const &amp; rhs);
-    template&lt;typename BidiIter&gt; 
-      sub_match&lt; BidiIter &gt;::string_type 
-      operator+(typename iterator_value&lt; BidiIter &gt;::type const &amp; lhs, 
-                sub_match&lt; BidiIter &gt; const &amp; rhs);
-    template&lt;typename BidiIter&gt; 
-      sub_match&lt; BidiIter &gt;::string_type 
-      operator+(sub_match&lt; BidiIter &gt; const &amp; lhs, 
-                typename iterator_value&lt; BidiIter &gt;::type const * rhs);
-    template&lt;typename BidiIter&gt; 
-      sub_match&lt; BidiIter &gt;::string_type 
-      operator+(typename iterator_value&lt; BidiIter &gt;::type const * lhs, 
-                sub_match&lt; BidiIter &gt; const &amp; rhs);
-    template&lt;typename BidiIter&gt; 
-      sub_match&lt; BidiIter &gt;::string_type 
-      operator+(sub_match&lt; BidiIter &gt; const &amp; lhs, 
-                typename sub_match&lt; BidiIter &gt;::string_type const &amp; rhs);
-    template&lt;typename BidiIter&gt; 
-      sub_match&lt; BidiIter &gt;::string_type 
-      operator+(typename sub_match&lt; BidiIter &gt;::string_type const &amp; lhs, 
-                sub_match&lt; BidiIter &gt; const &amp; rhs);
-  }
-}</synopsis>
-
-  <section>
-    <title>sub_match 構造体テンプレート</title>
-    <para>
-      boost::xpressive::sub_match — <classname linkend="sub_match">sub_match</classname> クラステンプレートは、個々のマーク済み部分式にマッチした文字シーケンスを表す。
-    </para>
-
-    <section>
-      <title>書式</title>
-      <synopsis language="C++">// ヘッダ：&lt;boost/xpressive/sub_match.hpp&gt;
+  <refsynopsisdiv>
+    <synopsis language="C++">// ヘッダ：&lt;<filename class="headerfile" linkend="header.sub_match_hpp">boost/xpressive/sub_match.hpp</filename>&gt;
 
 template&lt;typename BidiIter&gt;
-struct sub_match : public std::pair&lt; BidiIter, BidiIter &gt; {
+struct <classname linkend="sub_match">sub_match</classname> : public std::pair&lt; BidiIter, BidiIter &gt; {
   // 型
   typedef iterator_value&lt; BidiIter &gt;::type      value_type;     
   typedef iterator_difference&lt; BidiIter &gt;::type difference_type;
   typedef <replaceable>unspecified</replaceable>                           string_type;    
   typedef BidiIter                              iterator;       
 
-  // 構築、コピー、解体
-  sub_match();
-  sub_match(BidiIter, BidiIter, bool = false);
+  // <link linkend="sub_match.construct-copy-destruct">構築、コピー、解体</link>
+  <methodname linkend="sub_match.sub_match.0">sub_match</methodname>();
+  <methodname linkend="sub_match.sub_match.1">sub_match</methodname>(BidiIter, BidiIter, bool = false);
 
-  // 公開メンバ関数
-  string_type str() const;
-  operator string_type() const;
-  difference_type length() const;
-  operator bool_type() const;
-  bool operator!() const;
-  int compare(string_type const &amp;) const;
-  int compare(sub_match const &amp;) const;
-  int compare(value_type const *) const;
+  // <link linkend="sub_match.public-member-functions">公開メンバ関数</link>
+  string_type <methodname linkend="sub_match.str">str</methodname>() const;
+  <methodname linkend="sub_match.operator.string_type">operator string_type</methodname>() const;
+  difference_type <methodname linkend="sub_match.length">length</methodname>() const;
+  <methodname linkend="sub_match.operator.bool_type">operator bool_type</methodname>() const;
+  bool <methodname linkend="sub_match.operator.0">operator!</methodname>() const;
+  int <methodname linkend="sub_match.compare.0">compare</methodname>(string_type const &amp;) const;
+  int <methodname linkend="sub_match.compare.1">compare</methodname>(<classname linkend="sub_match">sub_match</classname> const &amp;) const;
+  int <methodname linkend="sub_match.compare.2">compare</methodname>(value_type const *) const;
+
+  // 公開データメンバ
   bool matched;  // この部分マッチが全体マッチに関与していれば真。
 };</synopsis>
-    </section>
+  </refsynopsisdiv>
 
-    <section>
-      <title>説明</title>
-      <para>
-	<classname linkend="sub_match">sub_match&lt;&gt;</classname> 型のオブジェクトが表すマーク済み部分式が正規表現マッチに関与している場合、メンバ <varname>matched</varname> は真と評価されメンバ <varname>first</varname> および <varname>second</varname> はマッチを形成する文字範囲 <code>[first,second)</code> を表す。それ以外の場合、<varname>matched</varname> は偽でありメンバ <varname>first</varname> および <varname>second</varname> に未定義の値が入る。
-      </para>
-      <para>
-	<classname linkend="sub_match">sub_match&lt;&gt;</classname> 型のオブジェクトが 0 番目の部分式、つまりマッチ全体を表す場合、メンバ <varname>matched</varname> は常に真である。ただし、フラグ <constant>match_partial</constant> を正規表現アルゴリズムを渡して部分マッチが得られた場合は例外である。この場合メンバ <varname>matched</varname> は偽であり、メンバ <varname>first</varname> および <varname>second</varname> は部分マッチを形成する文字範囲を表す。
-      </para>
+  <refsection>
+    <title>説明</title>
 
-      <section>
-	<title>sub_match 構築、コピー、解体の公開演算</title>
-	<orderedlist>
-	  <listitem>
-	    <synopsis language="C++">sub_match();</synopsis>
-	  </listitem>
-	  <listitem>
-	    <synopsis language="C++">sub_match(BidiIter first, BidiIter second, bool matched_ = false);</synopsis>
-	  </listitem>
-	</orderedlist>
-      </section>
-
-      <section>
-	<title>sub_match 公開メンバ関数</title>
-	<orderedlist>
-	  <listitem>
-	    <synopsis language="C++">string_type str() const;</synopsis>
-	  </listitem>
-	  <listitem>
-	    <synopsis language="C++">operator string_type() const;</synopsis>
-	  </listitem>
-	  <listitem>
-	    <synopsis language="C++">difference_type length() const;</synopsis>
-	  </listitem>
-	  <listitem>
-	    <synopsis language="C++">operator bool_type() const;</synopsis>
-	  </listitem>
-	  <listitem>
-	    <synopsis language="C++">bool operator!() const;</synopsis>
-	  </listitem>
-	  <listitem>
-	    <synopsis language="C++">int compare(string_type const &amp; str) const;</synopsis>
-	    <para>字句的な文字列比較を行う。</para>
-	    <informaltable>
-	      <tr>
-		<th>引数：</th>
-		<td><parameter class="function">str</parameter></td>
-		<td>比較する文字列。</td>
-	      </tr>
-	      <tr>
-		<th>戻り値：</th>
-		<td colspan="2"><code language="C++">(*this).str().compare(str)</code> の結果</td>
-	      </tr>
-	    </informaltable>
-	  </listitem>
-	  <listitem>
-	    <synopsis language="C++">int compare(sub_match const &amp; sub) const;</synopsis>
-	    <para>利便性のためのメンバ関数多重定義。上記関数と受け取る引数が異なるのみ。</para>
-	  </listitem>
-	  <listitem>
-	    <synopsis language="C++">int compare(value_type const * ptr) const;</synopsis>
-	    <para>利便性のためのメンバ関数多重定義。上記関数と受け取る引数が異なるのみ。</para>
-	  </listitem>
-	</orderedlist>
-      </section>
-    </section>
-  </section>
-
-  <section>
-    <title>range_begin 関数</title>
     <para>
-      boost::xpressive::range_begin — <classname linkend="sub_match">sub_match&lt;&gt;</classname> を有効な範囲にするための <function>range_begin</function>。
+      <classname linkend="sub_match">sub_match&lt;&gt;</classname> 型のオブジェクトが表すマーク済み部分式が正規表現マッチに関与している場合、メンバ <varname>matched</varname> は真と評価されメンバ <varname>first</varname> および <varname>second</varname> はマッチを形成する文字範囲 <code>[first,second)</code> を表す。それ以外の場合、<varname>matched</varname> は偽でありメンバ <varname>first</varname> および <varname>second</varname> に未定義の値が入る。
+    </para>
+    <para>
+      <classname linkend="sub_match">sub_match&lt;&gt;</classname> 型のオブジェクトが 0 番目の部分式、つまりマッチ全体を表す場合、メンバ <varname>matched</varname> は常に真である。ただし、フラグ <constant>match_partial</constant> を正規表現アルゴリズムを渡して部分マッチが得られた場合は例外である。この場合メンバ <varname>matched</varname> は偽であり、メンバ <varname>first</varname> および <varname>second</varname> は部分マッチを形成する文字範囲を表す。
     </para>
 
-    <section>
-      <title>書式</title>
-      <synopsis language="C++">// ヘッダ：&lt;boost/xpressive/sub_match.hpp&gt;
+    <refsection xml:id="sub_match.construct-copy-destruct">
+      <title><classname>sub_match</classname> 構築、コピー、解体の公開演算</title>
+      <orderedlist>
+	<listitem xml:id="sub_match.sub_match.0">
+	  <constructorsynopsis language="C++">
+	    <methodname>sub_match</methodname>
+	  </constructorsynopsis>
+	</listitem>
 
+	<listitem xml:id="sub_match.sub_match.1">
+	  <constructorsynopsis language="C++">
+	    <methodname>sub_match</methodname>
+	    <methodparam>
+	      <type>BidiIter</type>
+	      <parameter>first</parameter>
+	    </methodparam>
+	    <methodparam>
+	      <type>BidiIter</type>
+	      <parameter>second</parameter>
+	    </methodparam>
+	    <methodparam>
+	      <type>bool</type>
+	      <parameter>matched_</parameter>
+	      <initializer>false</initializer>
+	    </methodparam>
+	  </constructorsynopsis>
+	</listitem>
+      </orderedlist>
+    </refsection>
 
-template&lt;typename BidiIter&gt; BidiIter range_begin(sub_match&lt; BidiIter &gt; &amp; sub);
-template&lt;typename BidiIter&gt;
-  BidiIter range_begin(sub_match&lt; BidiIter &gt; const &amp; sub);</synopsis>
-    </section>
+    <refsection xml:id="sub_match.public-member-functions">
+      <title><classname>sub_match</classname> 公開メンバ関数</title>
 
-    <section>
-      <title>説明</title>
-      <informaltable>
-	<tr>
-	  <th>引数：</th>
-	  <td><parameter class="function">sub</parameter></td>
-	  <td>範囲を表す <classname linkend="sub_match">sub_match&lt;&gt;</classname> オブジェクト</td>
-	</tr>
-	<tr>
-	  <th>要件：</th>
-	  <td colspan="2"><code language="C++">sub.first</code> が単方向でない</td>
-	</tr>
-	<tr>
-	  <th>戻り値：</th>
-	  <td colspan="2"><code language="C++">sub.first</code></td>
-	</tr>
-      </informaltable>
-    </section>
-  </section>
+      <orderedlist>
+	<listitem xml:id="sub_match.str">
+	  <methodsynopsis language="C++">
+	    <type>string_type</type>
+	    <methodname>str</methodname>
+	    <void/>
+	    <modifier>const</modifier>
+	  </methodsynopsis>
+	</listitem>
 
-  <section>
-    <title>range_end 関数</title>
-    <para>
-      boost::xpressive::range_end — <classname linkend="sub_match">sub_match&lt;&gt;</classname> を有効な範囲にするための <function>range_end</function>。
-    </para>
+	<listitem xml:id="sub_match.operator.string_type">
+	  <methodsynopsis language="C++">
+	    <methodname>operator string_type</methodname>
+	    <void/>
+	    <modifier>const</modifier>
+	  </methodsynopsis>
+	</listitem>
 
-    <section>
-      <title>書式</title>
-      <synopsis language="C++">// ヘッダ：&lt;boost/xpressive/sub_match.hpp&gt;
+	<listitem xml:id="sub_match.length">
+	  <methodsynopsis language="C++">
+	    <type>difference_type</type>
+	    <methodname>length</methodname>
+	    <void/>
+	    <modifier>const</modifier>
+	  </methodsynopsis>
+	</listitem>
 
+	<listitem xml:id="sub_match.operator.bool_type">
+	  <methodsynopsis language="C++">
+	    <methodname>operator bool_type</methodname>
+	    <void/>
+	    <modifier>const</modifier>
+	  </methodsynopsis>
+	</listitem>
 
-template&lt;typename BidiIter&gt; BidiIter range_end(sub_match&lt; BidiIter &gt; &amp; sub);
-template&lt;typename BidiIter&gt;
-  BidiIter range_end(sub_match&lt; BidiIter &gt; const &amp; sub);</synopsis>
-    </section>
+	<listitem xml:id="sub_match.operator.0">
+	  <methodsynopsis language="C++">
+	    <type>bool</type>
+	    <methodname>operator!</methodname>
+	    <void/>
+	    <modifier>const</modifier>
+	  </methodsynopsis>
+	</listitem>
 
-    <section>
-      <title>説明</title>
-      <informaltable>
-	<tr>
-	  <th>引数：</th>
-	  <td><parameter class="function">sub</parameter></td>
-	  <td>範囲を表す <classname linkend="sub_match">sub_match&lt;&gt;</classname> オブジェクト</td>
-	</tr>
-	<tr>
-	  <th>要件：</th>
-	  <td colspan="2"><code language="C++">sub.second</code> が単方向でない</td>
-	</tr>
-	<tr>
-	  <th>戻り値：</th>
-	  <td colspan="2"><code language="C++">sub.second</code></td>
-	</tr>
-      </informaltable>
-    </section>
-  </section>
+	<listitem xml:id="sub_match.compare.0">
+	  <methodsynopsis language="C++">
+	    <type>int</type>
+	    <methodname>compare</methodname>
+	    <methodparam>
+	      <type>string_type const &amp;</type>
+	      <parameter>str</parameter>
+	    </methodparam>
+	    <modifier>const</modifier>
+	  </methodsynopsis>
+	  <para>字句的な文字列比較を行う。</para>
+	  <variablelist spacing="compact">
+	    <varlistentry>
+	      <term>引数：</term>
+	      <listitem>
+		<variablelist spacing="compact">
+		  <varlistentry>
+		    <term><parameter>str</parameter></term>
+		    <listitem>
+		      <para>比較する文字列</para>
+		    </listitem>
+		  </varlistentry>
+		</variablelist>
+	      </listitem>
+	    </varlistentry>
+	    <varlistentry>
+	      <term>戻り値：</term>
+	      <listitem>
+		<para><code language="C++">(*this).str().compare(str)</code> の結果</para>
+	      </listitem>
+	    </varlistentry>
+	  </variablelist>
+	</listitem>
 
-  <section>
-    <title>operator&lt;&lt; 関数テンプレート</title>
-    <para>
-      boost::xpressive::operator&lt;&lt; — 部分マッチを出力ストリームへ送る挿入演算子。
-    </para>
+	<listitem xml:id="sub_match.compare.1">
+	  <methodsynopsis language="C++">
+	    <type>int</type>
+	    <methodname>compare</methodname>
+	    <methodparam>
+	      <type>sub_match const &amp;</type>
+	      <parameter>sub</parameter>
+	    </methodparam>
+	    <modifier>const</modifier>
+	  </methodsynopsis>
+	  <xi:include href="-overload-description.xml"/>
+	</listitem>
 
-    <section>
-      <title>書式</title>
-      <synopsis language="C++">// ヘッダ：&lt;boost/xpressive/sub_match.hpp&gt;
-
-
-template&lt;typename BidiIter, typename Char, typename Traits&gt;
-  std::basic_ostream&lt; Char, Traits &gt; &amp;
-  operator&lt;&lt;(std::basic_ostream&lt; Char, Traits &gt; &amp; sout, 
-             sub_match&lt; BidiIter &gt; const &amp; sub);</synopsis>
-    </section>
-
-    <section>
-      <title>説明</title>
-      <informaltable>
-	<tr>
-	  <th rowspan="2">引数：</th>
-	  <td><parameter class="function">sout</parameter></td>
-	  <td>出力ストリーム。</td>
-	</tr>
-	<tr>
-	  <td><parameter class="function">sub</parameter></td>
-	  <td>ストリームへ書き込む <classname linkend="sub_match">sub_match</classname> オブジェクト</td>
-	</tr>
-	<tr>
-	  <th>戻り値：</th>
-	  <td colspan="2"><code language="C++">sout &lt;&lt; sub.str()</code></td>
-	</tr>
-      </informaltable>
-    </section>
-  </section>
-</article>
+	<listitem xml:id="sub_match.compare.2">
+	  <methodsynopsis language="C++">
+	    <type>int</type>
+	    <methodname>compare</methodname>
+	    <methodparam>
+	      <type>value_type const *</type>
+	      <parameter>ptr</parameter>
+	    </methodparam>
+	    <modifier>const</modifier>
+	  </methodsynopsis>
+	  <xi:include href="-overload-description.xml"/>
+	</listitem>
+      </orderedlist>
+    </refsection>
+  </refsection>
+</refentry>

@@ -531,7 +531,7 @@
     <xi:include href="regex_traits_version_2_tag.xml"/>
   </section>
 
-  <section>
+  <section xml:id="header.sub_match_hpp">
     <title>&lt;boost/xpressive/sub_match.hpp&gt; ヘッダ</title>
     <para>
       <classname>sub_match&lt;&gt;</classname> クラステンプレートと、関連するヘルパ関数の定義がある。
@@ -539,136 +539,141 @@
     <synopsis language="C++">namespace boost {
   namespace xpressive {
     template&lt;typename BidiIter&gt; struct <classname linkend="sub_match">sub_match</classname>;
-    template&lt;typename BidiIter&gt; BidiIter <function linkend="range_begin">range_begin</function>(sub_match&lt; BidiIter &gt; &amp;);
+    template&lt;typename BidiIter&gt; BidiIter <function linkend="range_begin">range_begin</function>(<classname linkend="sub_match">sub_match</classname>&lt; BidiIter &gt; &amp;);
     template&lt;typename BidiIter&gt; 
-      BidiIter <function linkend="range_begin">range_begin</function>(sub_match&lt; BidiIter &gt; const &amp;);
-    template&lt;typename BidiIter&gt; BidiIter <function linkend="range_end">range_end</function>(sub_match&lt; BidiIter &gt; &amp;);
+      BidiIter <function linkend="range_begin">range_begin</function>(<classname linkend="sub_match">sub_match</classname>&lt; BidiIter &gt; const &amp;);
+    template&lt;typename BidiIter&gt; BidiIter <function linkend="range_end">range_end</function>(<classname linkend="sub_match">sub_match</classname>&lt; BidiIter &gt; &amp;);
     template&lt;typename BidiIter&gt; 
-      BidiIter <function linkend="range_end">range_end</function>(sub_match&lt; BidiIter &gt; const &amp;);
+      BidiIter <function linkend="range_end">range_end</function>(<classname linkend="sub_match">sub_match</classname>&lt; BidiIter &gt; const &amp;);
     template&lt;typename BidiIter, typename Char, typename Traits&gt; 
       std::basic_ostream&lt; Char, Traits &gt; &amp; 
-      <function linkend="operator_left_shift">operator&lt;&lt;</function>(std::basic_ostream&lt; Char, Traits &gt; &amp;, 
-                 sub_match&lt; BidiIter &gt; const &amp;);
+      <function linkend="sub_match.operator.left-shift">operator&lt;&lt;</function>(std::basic_ostream&lt; Char, Traits &gt; &amp;, 
+                 <classname linkend="sub_match">sub_match</classname>&lt; BidiIter &gt; const &amp;);
     template&lt;typename BidiIter&gt; 
-      bool operator==(sub_match&lt; BidiIter &gt; const &amp; lhs, 
-                      sub_match&lt; BidiIter &gt; const &amp; rhs);
+      bool operator==(<classname linkend="sub_match">sub_match</classname>&lt; BidiIter &gt; const &amp; lhs, 
+                      <classname linkend="sub_match">sub_match</classname>&lt; BidiIter &gt; const &amp; rhs);
     template&lt;typename BidiIter&gt; 
-      bool operator!=(sub_match&lt; BidiIter &gt; const &amp; lhs, 
-                      sub_match&lt; BidiIter &gt; const &amp; rhs);
+      bool operator!=(<classname linkend="sub_match">sub_match</classname>&lt; BidiIter &gt; const &amp; lhs, 
+                      <classname linkend="sub_match">sub_match</classname>&lt; BidiIter &gt; const &amp; rhs);
     template&lt;typename BidiIter&gt; 
-      bool operator&lt;(sub_match&lt; BidiIter &gt; const &amp; lhs, 
-                     sub_match&lt; BidiIter &gt; const &amp; rhs);
+      bool operator&lt;(<classname linkend="sub_match">sub_match</classname>&lt; BidiIter &gt; const &amp; lhs, 
+                     <classname linkend="sub_match">sub_match</classname>&lt; BidiIter &gt; const &amp; rhs);
     template&lt;typename BidiIter&gt; 
-      bool operator&lt;=(sub_match&lt; BidiIter &gt; const &amp; lhs, 
-                      sub_match&lt; BidiIter &gt; const &amp; rhs);
+      bool operator&lt;=(<classname linkend="sub_match">sub_match</classname>&lt; BidiIter &gt; const &amp; lhs, 
+                      <classname linkend="sub_match">sub_match</classname>&lt; BidiIter &gt; const &amp; rhs);
     template&lt;typename BidiIter&gt; 
-      bool operator&gt;=(sub_match&lt; BidiIter &gt; const &amp; lhs, 
-                      sub_match&lt; BidiIter &gt; const &amp; rhs);
+      bool operator&gt;=(<classname linkend="sub_match">sub_match</classname>&lt; BidiIter &gt; const &amp; lhs, 
+                      <classname linkend="sub_match">sub_match</classname>&lt; BidiIter &gt; const &amp; rhs);
     template&lt;typename BidiIter&gt; 
-      bool operator&gt;(sub_match&lt; BidiIter &gt; const &amp; lhs, 
-                     sub_match&lt; BidiIter &gt; const &amp; rhs);
+      bool operator&gt;(<classname linkend="sub_match">sub_match</classname>&lt; BidiIter &gt; const &amp; lhs, 
+                     <classname linkend="sub_match">sub_match</classname>&lt; BidiIter &gt; const &amp; rhs);
     template&lt;typename BidiIter&gt; 
       bool operator==(typename iterator_value&lt; BidiIter &gt;::type const * lhs, 
-                      sub_match&lt; BidiIter &gt; const &amp; rhs);
+                      <classname linkend="sub_match">sub_match</classname>&lt; BidiIter &gt; const &amp; rhs);
     template&lt;typename BidiIter&gt; 
       bool operator!=(typename iterator_value&lt; BidiIter &gt;::type const * lhs, 
-                      sub_match&lt; BidiIter &gt; const &amp; rhs);
+                      <classname linkend="sub_match">sub_match</classname>&lt; BidiIter &gt; const &amp; rhs);
     template&lt;typename BidiIter&gt; 
       bool operator&lt;(typename iterator_value&lt; BidiIter &gt;::type const * lhs, 
-                     sub_match&lt; BidiIter &gt; const &amp; rhs);
+                     <classname linkend="sub_match">sub_match</classname>&lt; BidiIter &gt; const &amp; rhs);
     template&lt;typename BidiIter&gt; 
       bool operator&gt;(typename iterator_value&lt; BidiIter &gt;::type const * lhs, 
-                     sub_match&lt; BidiIter &gt; const &amp; rhs);
+                     <classname linkend="sub_match">sub_match</classname>&lt; BidiIter &gt; const &amp; rhs);
     template&lt;typename BidiIter&gt; 
       bool operator&gt;=(typename iterator_value&lt; BidiIter &gt;::type const * lhs, 
-                      sub_match&lt; BidiIter &gt; const &amp; rhs);
+                      <classname linkend="sub_match">sub_match</classname>&lt; BidiIter &gt; const &amp; rhs);
     template&lt;typename BidiIter&gt; 
       bool operator&lt;=(typename iterator_value&lt; BidiIter &gt;::type const * lhs, 
-                      sub_match&lt; BidiIter &gt; const &amp; rhs);
+                      <classname linkend="sub_match">sub_match</classname>&lt; BidiIter &gt; const &amp; rhs);
     template&lt;typename BidiIter&gt; 
-      bool operator==(sub_match&lt; BidiIter &gt; const &amp; lhs, 
+      bool operator==(<classname linkend="sub_match">sub_match</classname>&lt; BidiIter &gt; const &amp; lhs, 
                       typename iterator_value&lt; BidiIter &gt;::type const * rhs);
     template&lt;typename BidiIter&gt; 
-      bool operator!=(sub_match&lt; BidiIter &gt; const &amp; lhs, 
+      bool operator!=(<classname linkend="sub_match">sub_match</classname>&lt; BidiIter &gt; const &amp; lhs, 
                       typename iterator_value&lt; BidiIter &gt;::type const * rhs);
     template&lt;typename BidiIter&gt; 
-      bool operator&lt;(sub_match&lt; BidiIter &gt; const &amp; lhs, 
+      bool operator&lt;(<classname linkend="sub_match">sub_match</classname>&lt; BidiIter &gt; const &amp; lhs, 
                      typename iterator_value&lt; BidiIter &gt;::type const * rhs);
     template&lt;typename BidiIter&gt; 
-      bool operator&gt;(sub_match&lt; BidiIter &gt; const &amp; lhs, 
+      bool operator&gt;(<classname linkend="sub_match">sub_match</classname>&lt; BidiIter &gt; const &amp; lhs, 
                      typename iterator_value&lt; BidiIter &gt;::type const * rhs);
     template&lt;typename BidiIter&gt; 
-      bool operator&gt;=(sub_match&lt; BidiIter &gt; const &amp; lhs, 
+      bool operator&gt;=(<classname linkend="sub_match">sub_match</classname>&lt; BidiIter &gt; const &amp; lhs, 
                       typename iterator_value&lt; BidiIter &gt;::type const * rhs);
     template&lt;typename BidiIter&gt; 
-      bool operator&lt;=(sub_match&lt; BidiIter &gt; const &amp; lhs, 
+      bool operator&lt;=(<classname linkend="sub_match">sub_match</classname>&lt; BidiIter &gt; const &amp; lhs, 
                       typename iterator_value&lt; BidiIter &gt;::type const * rhs);
     template&lt;typename BidiIter&gt; 
       bool operator==(typename iterator_value&lt; BidiIter &gt;::type const &amp; lhs, 
-                      sub_match&lt; BidiIter &gt; const &amp; rhs);
+                      <classname linkend="sub_match">sub_match</classname>&lt; BidiIter &gt; const &amp; rhs);
     template&lt;typename BidiIter&gt; 
       bool operator!=(typename iterator_value&lt; BidiIter &gt;::type const &amp; lhs, 
-                      sub_match&lt; BidiIter &gt; const &amp; rhs);
+                      <classname linkend="sub_match">sub_match</classname>&lt; BidiIter &gt; const &amp; rhs);
     template&lt;typename BidiIter&gt; 
       bool operator&lt;(typename iterator_value&lt; BidiIter &gt;::type const &amp; lhs, 
-                     sub_match&lt; BidiIter &gt; const &amp; rhs);
+                     <classname linkend="sub_match">sub_match</classname>&lt; BidiIter &gt; const &amp; rhs);
     template&lt;typename BidiIter&gt; 
       bool operator&gt;(typename iterator_value&lt; BidiIter &gt;::type const &amp; lhs, 
-                     sub_match&lt; BidiIter &gt; const &amp; rhs);
+                     <classname linkend="sub_match">sub_match</classname>&lt; BidiIter &gt; const &amp; rhs);
     template&lt;typename BidiIter&gt; 
       bool operator&gt;=(typename iterator_value&lt; BidiIter &gt;::type const &amp; lhs, 
-                      sub_match&lt; BidiIter &gt; const &amp; rhs);
+                      <classname linkend="sub_match">sub_match</classname>&lt; BidiIter &gt; const &amp; rhs);
     template&lt;typename BidiIter&gt; 
       bool operator&lt;=(typename iterator_value&lt; BidiIter &gt;::type const &amp; lhs, 
-                      sub_match&lt; BidiIter &gt; const &amp; rhs);
+                      <classname linkend="sub_match">sub_match</classname>&lt; BidiIter &gt; const &amp; rhs);
     template&lt;typename BidiIter&gt; 
-      bool operator==(sub_match&lt; BidiIter &gt; const &amp; lhs, 
+      bool operator==(<classname linkend="sub_match">sub_match</classname>&lt; BidiIter &gt; const &amp; lhs, 
                       typename iterator_value&lt; BidiIter &gt;::type const &amp; rhs);
     template&lt;typename BidiIter&gt; 
-      bool operator!=(sub_match&lt; BidiIter &gt; const &amp; lhs, 
+      bool operator!=(<classname linkend="sub_match">sub_match</classname>&lt; BidiIter &gt; const &amp; lhs, 
                       typename iterator_value&lt; BidiIter &gt;::type const &amp; rhs);
     template&lt;typename BidiIter&gt; 
-      bool operator&lt;(sub_match&lt; BidiIter &gt; const &amp; lhs, 
+      bool operator&lt;(<classname linkend="sub_match">sub_match</classname>&lt; BidiIter &gt; const &amp; lhs, 
                      typename iterator_value&lt; BidiIter &gt;::type const &amp; rhs);
     template&lt;typename BidiIter&gt; 
-      bool operator&gt;(sub_match&lt; BidiIter &gt; const &amp; lhs, 
+      bool operator&gt;(<classname linkend="sub_match">sub_match</classname>&lt; BidiIter &gt; const &amp; lhs, 
                      typename iterator_value&lt; BidiIter &gt;::type const &amp; rhs);
     template&lt;typename BidiIter&gt; 
-      bool operator&gt;=(sub_match&lt; BidiIter &gt; const &amp; lhs, 
+      bool operator&gt;=(<classname linkend="sub_match">sub_match</classname>&lt; BidiIter &gt; const &amp; lhs, 
                       typename iterator_value&lt; BidiIter &gt;::type const &amp; rhs);
     template&lt;typename BidiIter&gt; 
-      bool operator&lt;=(sub_match&lt; BidiIter &gt; const &amp; lhs, 
+      bool operator&lt;=(<classname linkend="sub_match">sub_match</classname>&lt; BidiIter &gt; const &amp; lhs, 
                       typename iterator_value&lt; BidiIter &gt;::type const &amp; rhs);
     template&lt;typename BidiIter&gt; 
-      sub_match&lt; BidiIter &gt;::string_type 
-      operator+(sub_match&lt; BidiIter &gt; const &amp; lhs, 
-                sub_match&lt; BidiIter &gt; const &amp; rhs);
+      <classname linkend="sub_match">sub_match</classname>&lt; BidiIter &gt;::string_type 
+      operator+(<classname linkend="sub_match">sub_match</classname>&lt; BidiIter &gt; const &amp; lhs, 
+                <classname linkend="sub_match">sub_match</classname>&lt; BidiIter &gt; const &amp; rhs);
     template&lt;typename BidiIter&gt; 
-      sub_match&lt; BidiIter &gt;::string_type 
-      operator+(sub_match&lt; BidiIter &gt; const &amp; lhs, 
+      <classname linkend="sub_match">sub_match</classname>&lt; BidiIter &gt;::string_type 
+      operator+(<classname linkend="sub_match">sub_match</classname>&lt; BidiIter &gt; const &amp; lhs, 
                 typename iterator_value&lt; BidiIter &gt;::type const &amp; rhs);
     template&lt;typename BidiIter&gt; 
-      sub_match&lt; BidiIter &gt;::string_type 
+      <classname linkend="sub_match">sub_match</classname>&lt; BidiIter &gt;::string_type 
       operator+(typename iterator_value&lt; BidiIter &gt;::type const &amp; lhs, 
-                sub_match&lt; BidiIter &gt; const &amp; rhs);
+                <classname linkend="sub_match">sub_match</classname>&lt; BidiIter &gt; const &amp; rhs);
     template&lt;typename BidiIter&gt; 
-      sub_match&lt; BidiIter &gt;::string_type 
-      operator+(sub_match&lt; BidiIter &gt; const &amp; lhs, 
+      <classname linkend="sub_match">sub_match</classname>&lt; BidiIter &gt;::string_type 
+      operator+(<classname linkend="sub_match">sub_match</classname>&lt; BidiIter &gt; const &amp; lhs, 
                 typename iterator_value&lt; BidiIter &gt;::type const * rhs);
     template&lt;typename BidiIter&gt; 
-      sub_match&lt; BidiIter &gt;::string_type 
+      <classname linkend="sub_match">sub_match</classname>&lt; BidiIter &gt;::string_type 
       operator+(typename iterator_value&lt; BidiIter &gt;::type const * lhs, 
-                sub_match&lt; BidiIter &gt; const &amp; rhs);
+                <classname linkend="sub_match">sub_match</classname>&lt; BidiIter &gt; const &amp; rhs);
     template&lt;typename BidiIter&gt; 
-      sub_match&lt; BidiIter &gt;::string_type 
-      operator+(sub_match&lt; BidiIter &gt; const &amp; lhs, 
-                typename sub_match&lt; BidiIter &gt;::string_type const &amp; rhs);
+      <classname linkend="sub_match">sub_match</classname>&lt; BidiIter &gt;::string_type 
+      operator+(<classname linkend="sub_match">sub_match</classname>&lt; BidiIter &gt; const &amp; lhs, 
+                typename <classname linkend="sub_match">sub_match</classname>&lt; BidiIter &gt;::string_type const &amp; rhs);
     template&lt;typename BidiIter&gt; 
-      sub_match&lt; BidiIter &gt;::string_type 
-      operator+(typename sub_match&lt; BidiIter &gt;::string_type const &amp; lhs, 
-                sub_match&lt; BidiIter &gt; const &amp; rhs);
+      <classname linkend="sub_match">sub_match</classname>&lt; BidiIter &gt;::string_type 
+      operator+(typename <classname linkend="sub_match">sub_match</classname>&lt; BidiIter &gt;::string_type const &amp; lhs, 
+                <classname linkend="sub_match">sub_match</classname>&lt; BidiIter &gt; const &amp; rhs);
   }
 }</synopsis>
+
+    <xi:include href="sub_match.xml"/>
+    <xi:include href="range_begin.xml"/>
+    <xi:include href="range_end.xml"/>
+    <xi:include href="sub_match.operator.left-shift.xml"/>
   </section>
 
   <section>
