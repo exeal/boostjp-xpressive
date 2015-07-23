@@ -501,7 +501,7 @@
     <xi:include href="skip.xml"/>
   </section>
 
-  <section>
+  <section xml:id="header.regex_token_iterator_hpp">
     <title>&lt;boost/xpressive/regex_token_iterator.hpp&gt; ヘッダ</title>
     <para>
       <classname>regex_token_iterator</classname> の定義と、正規表現を使って文字列をトークンに分割する STL 互換のイテレータがある。
@@ -511,9 +511,11 @@
     template&lt;typename BidiIter&gt; struct <classname linkend="regex_token_iterator">regex_token_iterator</classname>;
   }
 }</synopsis>
+
+    <xi:include href="regex_token_iterator.xml"/>
   </section>
 
-  <section>
+  <section xml:id="header.regex_traits_hpp">
     <title>&lt;boost/xpressive/regex_traits.hpp&gt; ヘッダ</title>
     <para>
       <symbol>BOOST_XPRESSIVE_USE_C_TRAITS</symbol> マクロにしたがって C 正規表現特性か C++ 正規表現特性のヘッダファイルをインクルードする。
@@ -524,6 +526,9 @@
     struct <classname linkend="regex_traits_version_2_tag">regex_traits_version_2_tag</classname>;
   }
 }</synopsis>
+
+    <xi:include href="regex_traits_version_1_tag.xml"/>
+    <xi:include href="regex_traits_version_2_tag.xml"/>
   </section>
 
   <section>
