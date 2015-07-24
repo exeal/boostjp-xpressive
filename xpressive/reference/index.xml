@@ -676,48 +676,48 @@
     <xi:include href="sub_match.operator.left-shift.xml"/>
   </section>
 
-  <section>
+  <section xml:id="header.traits.c_regex_traits_hpp">
     <title>&lt;boost/xpressive/traits/c_regex_traits.hpp&gt; ヘッダ</title>
     <para>
       静的・動的正規表現の振る舞いをカスタマイズする C ロカール関数のラッパである <classname>c_regex_traits</classname> テンプレートの定義がある。
     </para>
   </section>
 
-  <section>
+  <section xml:id="header.traits.cpp_regex_traits_hpp">
     <title>&lt;boost/xpressive/traits/cpp_regex_traits.hpp&gt; ヘッダ</title>
     <para>
       静的・動的正規表現の振る舞いをカスタマイズする <classname>std::locale</classname> のラッパである <classname>cpp_regex_traits</classname> テンプレートの定義がある。
     </para>
   </section>
 
-  <section>
+  <section xml:id="header.traits.null_regex_traits_hpp">
     <title>&lt;boost/xpressive/traits/null_regex_traits.hpp&gt; ヘッダ</title>
     <para>
       非文字データを検索する静的・動的正規表現で使用する控えの正規表現特性の実装である、<classname>null_regex_traits</classname> テンプレートの定義がある。
     </para>
   </section>
 
-  <section>
+  <section xml:id="header.xpressive_hpp">
     <title>&lt;boost/xpressive/xpressive.hpp&gt; ヘッダ</title>
     <para>
       静的・動的両方の正規表現サポートを含む xpressive のすべてをインクルードする。
     </para>
   </section>
 
-  <section>
+  <section xml:id="header.xpressive_dynamic_hpp">
     <title>&lt;boost/xpressive/xpressive_dynamic.hpp&gt; ヘッダ</title>
     <para>
       動的正規表現の記述と使用に必要なすべてをインクルードする。
     </para>
   </section>
 
-  <section>
+  <section xml:id="header.xpressive_fwd_hpp">
     <title>&lt;boost/xpressive/xpressive_fwd.hpp&gt; ヘッダ</title>
     <para>
       xpressive のすべての公開データ型の前方宣言。
     </para>
-    <synopsis language="C++"><symbol linkend="BOOST_PROTO_FUSION_V2">BOOST_PROTO_FUSION_V2</symbol>
-<symbol linkend="BOOST_XPRESSIVE_HAS_MS_STACK_GUARD">BOOST_XPRESSIVE_HAS_MS_STACK_GUARD</symbol></synopsis>
+    <synopsis language="C++"><symbol xlink:href="http://www.boost.org/doc/html/BOOST_PROTO_FUSION_V2">BOOST_PROTO_FUSION_V2</symbol>
+<symbol xlink:href="http://www.boost.org/doc/html/BOOST_XPRESSIVE_HAS_MS_STACK_GUARD">BOOST_XPRESSIVE_HAS_MS_STACK_GUARD</symbol></synopsis>
   <synopsis language="C++">namespace boost {
   namespace xpressive {
     template&lt;typename BidiIter&gt; struct <classname linkend="basic_regex">basic_regex</classname>;
@@ -734,22 +734,22 @@
     typedef <classname linkend="basic_regex">basic_regex</classname>&lt; char const * &gt; cregex;
     typedef <classname linkend="basic_regex">basic_regex</classname>&lt; std::wstring::const_iterator &gt; wsregex;
     typedef <classname linkend="basic_regex">basic_regex</classname>&lt; wchar_t const * &gt; wcregex;
-    typedef sub_match&lt; std::string::const_iterator &gt; ssub_match;
-    typedef sub_match&lt; char const * &gt; csub_match;
-    typedef sub_match&lt; std::wstring::const_iterator &gt; wssub_match;
-    typedef sub_match&lt; wchar_t const * &gt; wcsub_match;
-    typedef regex_compiler&lt; std::string::const_iterator &gt; sregex_compiler;
-    typedef regex_compiler&lt; char const * &gt; cregex_compiler;
-    typedef regex_compiler&lt; std::wstring::const_iterator &gt; wsregex_compiler;
-    typedef regex_compiler&lt; wchar_t const * &gt; wcregex_compiler;
-    typedef regex_iterator&lt; std::string::const_iterator &gt; sregex_iterator;
-    typedef regex_iterator&lt; char const * &gt; cregex_iterator;
-    typedef regex_iterator&lt; std::wstring::const_iterator &gt; wsregex_iterator;
-    typedef regex_iterator&lt; wchar_t const * &gt; wcregex_iterator;
-    typedef regex_token_iterator&lt; std::string::const_iterator &gt; sregex_token_iterator;
-    typedef regex_token_iterator&lt; char const * &gt; cregex_token_iterator;
-    typedef regex_token_iterator&lt; std::wstring::const_iterator &gt; wsregex_token_iterator;
-    typedef regex_token_iterator&lt; wchar_t const * &gt; wcregex_token_iterator;
+    typedef <classname linkend="sub_match">sub_match</classname>&lt; std::string::const_iterator &gt; ssub_match;
+    typedef <classname linkend="sub_match">sub_match</classname>&lt; char const * &gt; csub_match;
+    typedef <classname linkend="sub_match">sub_match</classname>&lt; std::wstring::const_iterator &gt; wssub_match;
+    typedef <classname linkend="sub_match">sub_match</classname>&lt; wchar_t const * &gt; wcsub_match;
+    typedef <classname linkend="regex_compiler">regex_compiler</classname>&lt; std::string::const_iterator &gt; sregex_compiler;
+    typedef <classname linkend="regex_compiler">regex_compiler</classname>&lt; char const * &gt; cregex_compiler;
+    typedef <classname linkend="regex_compiler">regex_compiler</classname>&lt; std::wstring::const_iterator &gt; wsregex_compiler;
+    typedef <classname linkend="regex_compiler">regex_compiler</classname>&lt; wchar_t const * &gt; wcregex_compiler;
+    typedef <classname linkend="regex_iterator">regex_iterator</classname>&lt; std::string::const_iterator &gt; sregex_iterator;
+    typedef <classname linkend="regex_iterator">regex_iterator</classname>&lt; char const * &gt; cregex_iterator;
+    typedef <classname linkend="regex_iterator">regex_iterator</classname>&lt; std::wstring::const_iterator &gt; wsregex_iterator;
+    typedef <classname linkend="regex_iterator">regex_iterator</classname>&lt; wchar_t const * &gt; wcregex_iterator;
+    typedef <classname linkend="regex_token_iterator">regex_token_iterator</classname>&lt; std::string::const_iterator &gt; sregex_token_iterator;
+    typedef <classname linkend="regex_token_iterator">regex_token_iterator</classname>&lt; char const * &gt; cregex_token_iterator;
+    typedef <classname linkend="regex_token_iterator">regex_token_iterator</classname>&lt; std::wstring::const_iterator &gt; wsregex_token_iterator;
+    typedef <classname linkend="regex_token_iterator">regex_token_iterator</classname>&lt; wchar_t const * &gt; wcregex_token_iterator;
     typedef <classname linkend="match_results">match_results</classname>&lt; std::string::const_iterator &gt; smatch;
     typedef <classname linkend="match_results">match_results</classname>&lt; char const * &gt; cmatch;
     typedef <classname linkend="match_results">match_results</classname>&lt; std::wstring::const_iterator &gt; wsmatch;
@@ -762,16 +762,23 @@
     }
   }
 }</synopsis>
+
+    <xi:include href="c_regex_traits.xml"/>
+    <xi:include href="compiler_traits.xml"/>
+    <xi:include href="cpp_regex_traits.xml"/>
+    <xi:include href="has_fold_case.xml"/>
+    <xi:include href="null_regex_traits.xml"/>
+    <xi:include href="regex_traits.xml"/>
   </section>
 
-  <section>
+  <section xml:id="header.xpressive_static_hpp">
     <title>&lt;boost/xpressive/xpressive_static.hpp&gt; ヘッダ</title>
     <para>
       静的正規表現の記述と使用に必要なすべてをインクルードする。
     </para>
   </section>
 
-  <section>
+  <section xml:id="header.xpressive_typeof_hpp">
     <title>&lt;boost/xpressive/xpressive_typeof.hpp&gt; ヘッダ</title>
     <para>
       xpressive を Boost.Typeof ライブラリとともに使用するための型登録。
