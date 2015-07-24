@@ -727,7 +727,7 @@
     template&lt;typename Traits&gt; struct <classname linkend="has_fold_case">has_fold_case</classname>;
     template&lt;typename Elem&gt; struct <classname linkend="null_regex_traits">null_regex_traits</classname>;
     template&lt;typename BidiIter&gt; struct <classname linkend="regex_token_iterator">regex_token_iterator</classname>;
-    template&lt;typename Char, typename Impl&gt; <classname linkend="regex_traits">struct regex_traits</classname>;
+    template&lt;typename Char, typename Impl&gt; struct <classname linkend="regex_traits">regex_traits</classname>;
 
     typedef void const * regex_id_type;
     typedef <classname linkend="basic_regex">basic_regex</classname>&lt; std::string::const_iterator &gt; sregex;

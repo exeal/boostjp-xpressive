@@ -6,7 +6,9 @@
 
   <refnamediv>
     <refname>boost::xpressive::has_fold_case</refname>
-    <refpurpose/>
+    <refpurpose>
+      ある特性クラスが <methodname>fold_case</methodname> メンバ関数を持つことを示すのに使用する特性。
+    </refpurpose>
   </refnamediv>
 
   <refsynopsisdiv>
