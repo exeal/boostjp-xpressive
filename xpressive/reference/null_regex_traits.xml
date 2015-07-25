@@ -1,377 +1,676 @@
 <?xml version="1.0" ?>
-<article xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xml:lang="ja" version="5.0">
-  <info>
-    <title>&lt;boost/xpressive/traits/null_regex_traits.hpp&gt; ヘッダ</title>
-    <copyright>
-      <year>2008</year>
-      <holder>Eric Niebler</holder>
-    </copyright>
-  </info>
+<refentry xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink" xml:lang="ja" version="5.0" xml:id="null_regex_traits">
+  <refmeta>
+    <refentrytitle>null_regex_traits 構造体テンプレート</refentrytitle>
+  </refmeta>
 
-  <para>
-    非文字データを検索する静的・動的正規表現で使用する控えの正規表現特性の実装である、<classname>null_regex_traits</classname> テンプレートの定義がある。
-  </para>
+  <refnamediv>
+    <refname>boost::xpressive::null_regex_traits</refname>
+    <refpurpose>
+      非文字データのための控えの <classname linkend="regex_traits">regex_traits</classname>。
+    </refpurpose>
+  </refnamediv>
 
-  <synopsis language="C++">namespace boost {
-  namespace xpressive {
-    template&lt;typename Elem&gt; struct null_regex_traits;
-  }
-}</synopsis>
+  <refsynopsisdiv>
+    <synopsis language="C++">// ヘッダ：&lt;<filename class="headerfile" linkend="header.xpressive_fwd_hpp">boost/xpressive/xpressive_fwd.hpp</filename>&gt;
 
-  <section>
-    <title>null_regex_traits 構造体テンプレート</title>
-    <para>
-      boost::xpressive::null_regex_traits – 非文字データのための控えの <classname linkend="regex_traits">regex_traits</classname>。
-    </para>
-
-    <section>
-      <title>書式</title>
-      <synopsis language="C++">// ヘッダ：&lt;boost/xpressive/traits/null_regex_traits.hpp&gt;
-
-template&lt;typename Elem&gt; 
-struct null_regex_traits {
+template&lt;typename Char&gt; 
+struct <classname linkend="null_regex_traits">null_regex_traits</classname> {<!--
   // 型
-  typedef Elem                       char_type;      
-  typedef std::vector&lt; char_type &gt;   string_type;    
-  typedef <replaceable>unspecified</replaceable>                locale_type;    
-  typedef int                        char_class_type;
-  typedef regex_traits_version_1_tag version_tag;    
+  typedef Char                           char_type;
+  typedef std::basic_string&lt; char_type &gt; string_type;
+  typedef <replaceable>unspecified</replaceable>                    locale_type;
+  typedef <replaceable>unspecified</replaceable>                    char_class_type;
+  typedef regex_traits_version_2_tag     version_tag;
+  typedef <replaceable>unspecified</replaceable>                    base_type;
+-->
+  // <link linkend="null_regex_traits.construct-copy-destruct">構築、コピー、解体</link>
+  <methodname linkend="null_regex_traits.null_regex_traits">null_regex_traits</methodname>(locale_type const &amp; = locale_type());
 
-  // 構築、コピー、解体
-  null_regex_traits(locale_type = locale_type());
+  // <link linkend="null_regex_traits.public-member-functions">公開メンバ関数</link>
+  bool <methodname linkend="null_regex_traits.operator.0">operator==</methodname>(<classname linkend="null_regex_traits">null_regex_traits</classname>&lt; char_type &gt; const &amp;) const;
+  bool <methodname linkend="null_regex_traits.operator.1">operator!=</methodname>(<classname linkend="null_regex_traits">null_regex_traits</classname>&lt; char_type &gt; const &amp;) const;
+  char_type <methodname linkend="null_regex_traits.widen">widen</methodname>(char) const;
 
-  // 公開メンバ関数
-  bool operator==(null_regex_traits&lt; char_type &gt; const &amp;) const;
-  bool operator!=(null_regex_traits&lt; char_type &gt; const &amp;) const;
-  char_type widen(char) const;
-
-  // 公開静的メンバ関数
-  static unsigned char hash(char_type);
-  static char_type translate(char_type);
-  static char_type translate_nocase(char_type);
-  static bool in_range(char_type, char_type, char_type);
-  static bool in_range_nocase(char_type, char_type, char_type);
-  template&lt;typename FwdIter&gt; static string_type transform(FwdIter, FwdIter);
+  // <link linkend="null_regex_traits.public-static-functions">公開静的メンバ関数</link>
+  static unsigned char <methodname linkend="null_regex_traits.hash">hash</methodname>(char_type);
+  static char_type <methodname linkend="null_regex_traits.translate">translate</methodname>(char_type);
+  static char_type <methodname linkend="null_regex_traits.translate_nocase">translate_nocase</methodname>(char_type);
+  static bool <methodname linkend="null_regex_traits.in_range">in_range</methodname>(char_type, char_type, char_type);
+  static bool <methodname linkend="null_regex_traits.in_range_nocase">in_range_nocase</methodname>(char_type, char_type, char_type);
+  template&lt;typename FwdIter&gt; static string_type <methodname linkend="null_regex_traits.transform">transform</methodname>(FwdIter, FwdIter);
   template&lt;typename FwdIter&gt; 
-    static string_type transform_primary(FwdIter, FwdIter);
+    static string_type <methodname linkend="null_regex_traits.transform_primary">transform_primary</methodname>(FwdIter, FwdIter);
   template&lt;typename FwdIter&gt; 
-    static string_type lookup_collatename(FwdIter, FwdIter);
+    static string_type <methodname linkend="null_regex_traits.lookup_collatename">lookup_collatename</methodname>(FwdIter, FwdIter);
   template&lt;typename FwdIter&gt; 
-    static char_class_type lookup_classname(FwdIter, FwdIter, bool);
-  static bool isctype(char_type, char_class_type);
-  static int value(char_type, int);
-  static locale_type imbue(locale_type);
-  static locale_type getloc();
+    static char_class_type <methodname linkend="null_regex_traits.lookup_classname">lookup_classname</methodname>(FwdIter, FwdIter, bool);
+  static bool <methodname linkend="null_regex_traits.isctype">isctype</methodname>(char_type, char_class_type);
+  static int <methodname linkend="null_regex_traits.value">value</methodname>(char_type, int);
+  static locale_type <methodname linkend="null_regex_traits.imbue">imbue</methodname>(locale_type);
+  static locale_type <methodname linkend="null_regex_traits.getloc">getloc</methodname>();
 };</synopsis>
-    </section>
+  </refsynopsisdiv>
 
-    <section>
-      <title>説明</title>
+  <refsection>
+    <title>説明</title>
 
-      <section>
-	<title>null_regex_traits 構築、コピー、解体の公開演算</title>
-	<orderedlist>
-	  <listitem>
-	    <synopsis language="C++">null_regex_traits(locale_type = locale_type());</synopsis>
-	    <para>
-	      <classname linkend="null_regex_traits">null_regex_traits</classname> オブジェクトを初期化する。
-	    </para>
-	  </listitem>
-	</orderedlist>
-      </section>
+    <refsection xml:id="null_regex_traits.construct-copy-destruct">
+      <title><classname>null_regex_traits</classname> 構築、コピー、解体の公開演算</title>
+      <orderedlist>
+	<listitem xml:id="null_regex_traits.null_regex_traits">
+	  <constructorsynopsis language="C++">
+	    <methodname>null_regex_traits</methodname>
+	    <methodparam>
+	      <type>locale_type const &amp;</type>
+	      <parameter>loc</parameter>
+	      <initializer>locale_type()</initializer>
+	    </methodparam>
+	  </constructorsynopsis>
+	  <para>
+	    <classname linkend="null_regex_traits">null_regex_traits</classname> オブジェクトを初期化する。
+	  </para>
+	</listitem>
+      </orderedlist>
+    </refsection>
 
-      <section>
-	<title>null_regex_traits 公開メンバ関数</title>
-	<orderedlist>
-	  <listitem>
-	    <synopsis language="C++">bool operator==(null_regex_traits&lt; char_type &gt; const &amp; that) const;</synopsis>
-	    <para>
-	      2 つの <classname linkend="null_regex_traits">null_regex_traits</classname> オブジェクトが等値か調べる。
-	    </para>
-	    <informaltable>
-	      <tr>
-		<th>戻り値：</th>
-		<td>真。</td>
-	      </tr>
-	    </informaltable>
-	  </listitem>
-	  <listitem>
-	    <synopsis language="C++">bool operator!=(null_regex_traits&lt; char_type &gt; const &amp; that) const;</synopsis>
-	    <para>
-	      2 つの <classname linkend="null_regex_traits">null_regex_traits</classname> オブジェクトが等値でないか調べる。
-	    </para>
-	    <informaltable>
-	      <tr>
-		<th>戻り値：</th>
-		<td>偽。</td>
-	      </tr>
-	    </informaltable>
-	  </listitem>
-	  <listitem>
-	    <synopsis language="C++">char_type widen(char ch) const;</synopsis>
-	    <para>
-	      <type>char</type> 型の値を <type>Elem</type> 型に変換する。
-	    </para>
-	    <informaltable>
-	      <tr>
-		<th>引数：</th>
-		<td><parameter class="function">ch</parameter></td>
-		<td>元の文字。</td>
-	      </tr>
-	      <tr>
-		<th>戻り値：</th>
-		<td><code language="C++">Elem(ch)</code></td>
-	      </tr>
-	    </informaltable>
-	  </listitem>
-	</orderedlist>
-      </section>
+    <refsection xml:id="null_regex_traits.public-member-functions">
+      <title><classname>null_regex_traits</classname> 公開メンバ関数</title>
+      <orderedlist>
+	<listitem xml:id="null_regex_traits.operator.0">
+	  <methodsynopsis language="C++">
+	    <type>bool</type>
+	    <methodname>operator==</methodname>
+	    <methodparam>
+	      <type>null_regex_traits&lt; char_type &gt; const &amp;</type>
+	      <parameter>that</parameter>
+	    </methodparam>
+	    <modifier>const</modifier>
+	  </methodsynopsis>
+	  <para>
+	    2 つの <classname linkend="null_regex_traits">null_regex_traits</classname> オブジェクトが等値か調べる。
+	  </para>
+	  <variablelist spacing="compact">
+	    <varlistentry>
+	      <term>戻り値：</term>
+	      <listitem>
+		<para>真。</para>
+	      </listitem>
+	    </varlistentry>
+	  </variablelist>
+	</listitem>
 
-      <section>
-	<title>null_regex_traits 公開静的メンバ関数</title>
-	<orderedlist>
-	  <listitem>
-	    <synopsis language="C++">static unsigned char hash(char_type ch);</synopsis>
+	<listitem xml:id="null_regex_traits.operator.1">
+	  <methodsynopsis language="C++">
+	    <type>bool</type>
+	    <methodname>operator!=</methodname>
+	    <methodparam>
+	      <type>null_regex_traits&lt; char_type &gt; const &amp;</type>
+	      <parameter>that</parameter>
+	    </methodparam>
+	    <modifier>const</modifier>
+	  </methodsynopsis>
+	  <para>
+	    2 つの <classname linkend="null_regex_traits">null_regex_traits</classname> オブジェクトが等値でないか調べる。
+	  </para>
+	  <variablelist spacing="compact">
+	    <varlistentry>
+	      <term>戻り値：</term>
+	      <listitem>
+		<para>偽。</para>
+	      </listitem>
+	    </varlistentry>
+	  </variablelist>
+	</listitem>
+
+	<listitem xml:id="null_regex_traits.widen">
+	  <methodsynopsis language="C++">
+	    <type>char_type</type>
+	    <methodname>widen</methodname>
+	    <methodparam>
+	      <type>char</type>
+	      <parameter>ch</parameter>
+	    </methodparam>
+	    <modifier>const</modifier>
+	  </methodsynopsis>
+	  <para>
+	    <type>char</type> 型の値を <type>Char</type> 型に変換する。
+	  </para>
+	  <variablelist spacing="compact">
+	    <varlistentry>
+	      <term>引数：</term>
+	      <listitem>
+		<variablelist spacing="compact">
+		  <varlistentry>
+		    <term><parameter>ch</parameter></term>
+		    <listitem>
+		      <para>元の文字。</para>
+		    </listitem>
+		  </varlistentry>
+		</variablelist>
+	      </listitem>
+	    </varlistentry>
+	    <varlistentry>
+	      <term>戻り値：</term>
+	      <listitem>
+		<para><code language="C++">Elem(ch)</code>。</para>
+	      </listitem>
+	    </varlistentry>
+	  </variablelist>
+	</listitem>
+      </orderedlist>
+    </refsection>
+
+    <refsection xml:id="null_regex_traits.public-static-functions">
+      <title><classname>null_regex_traits</classname> 公開静的メンバ関数</title>
+      <orderedlist>
+	<listitem xml:id="null_regex_traits.hash">
+	  <methodsynopsis language="C++">
+	    <modifier>static</modifier>
+	    <type>unsigned char</type>
+	    <methodname>hash</methodname>
+	    <methodparam>
+	      <type>char_type</type>
+	      <parameter>ch</parameter>
+	    </methodparam>
+	  </methodsynopsis>
+	  <para>
+	    <code>[0, UCHAR_MAX]</code> の範囲で <type>Elem</type> のハッシュ値を返す。
+	  </para>
+	  <variablelist spacing="compact">
+	    <varlistentry>
+	      <term>引数：</term>
+	      <listitem>
+		<variablelist spacing="compact">
+		  <varlistentry>
+		    <term><parameter>ch</parameter></term>
+		    <listitem>
+		      <para>元の文字。</para>
+		    </listitem>
+		  </varlistentry>
+		</variablelist>
+	      </listitem>
+	    </varlistentry>
+	    <varlistentry>
+	      <term>戻り値：</term>
+	      <listitem>
+		<para><literal>0</literal> 以上 <constant>UCHAR_MAX</constant> 以下の値。</para>
+	      </listitem>
+	    </varlistentry>
+	  </variablelist>
+	</listitem>
+
+	<listitem xml:id="null_regex_traits.translate">
+	  <methodsynopsis language="C++">
+	    <modifier>static</modifier>
+	    <type>char_type</type>
+	    <methodname>translate</methodname>
+	    <methodparam>
+	      <type>char_type</type>
+	      <parameter>ch</parameter>
+	    </methodparam>
+	  </methodsynopsis>
+	  <para>
+	    何もしない。
+	  </para>
+	  <variablelist spacing="compact">
+	    <varlistentry>
+	      <term>引数：</term>
+	      <listitem>
+		<variablelist spacing="compact">
+		  <varlistentry>
+		    <term><parameter>ch</parameter></term>
+		    <listitem>
+		      <para>元の文字。</para>
+		    </listitem>
+		  </varlistentry>
+		</variablelist>
+	      </listitem>
+	    </varlistentry>
+	    <varlistentry>
+	      <term>戻り値：</term>
+	      <listitem>
+		<para><parameter>ch</parameter></para>
+	      </listitem>
+	    </varlistentry>
+	  </variablelist>
+	</listitem>
+
+	<listitem xml:id="null_regex_traits.translate_nocase">
+	  <methodsynopsis language="C++">
+	    <modifier>static</modifier>
+	    <type>char_type</type>
+	    <methodname>translate_nocase</methodname>
+	    <methodparam>
+	      <type>char_type</type>
+	      <parameter>ch</parameter>
+	    </methodparam>
+	  </methodsynopsis>
+	  <para>
+	    何もしない。
+	  </para>
+	  <variablelist spacing="compact">
+	    <varlistentry>
+	      <term>引数：</term>
+	      <listitem>
+		<variablelist spacing="compact">
+		  <varlistentry>
+		    <term><parameter>ch</parameter></term>
+		    <listitem>
+		      <para>元の文字。</para>
+		    </listitem>
+		  </varlistentry>
+		  <varlistentry>
+		    <term><parameter>first</parameter></term>
+		    <listitem>
+		      <para>範囲の下限。</para>
+		    </listitem>
+		  </varlistentry>
+		  <varlistentry>
+		    <term><parameter>last</parameter></term>
+		    <listitem>
+		      <para>範囲の上限。</para>
+		    </listitem>
+		  </varlistentry>
+		</variablelist>
+	      </listitem>
+	    </varlistentry>
+	    <varlistentry>
+	      <term>戻り値：</term>
+	      <listitem>
+		<para><code language="C++">first &lt;= ch &amp;&amp; ch &lt;= last</code></para>
+	      </listitem>
+	    </varlistentry>
+	  </variablelist>
+	</listitem>
+
+	<listitem xml:id="null_regex_traits.in_range">
+	  <methodsynopsis language="C++">
+	    <modifier>static</modifier>
+	    <type>bool</type>
+	    <methodname>in_range</methodname>
+	    <methodparam>
+	      <type>char_type</type>
+	      <parameter>first</parameter>
+	    </methodparam>
+	    <methodparam>
+	      <type>char_type</type>
+	      <parameter>last</parameter>
+	    </methodparam>
+	    <methodparam>
+	      <type>char_type</type>
+	      <parameter>ch</parameter>
+	    </methodparam>
+	  </methodsynopsis>
+	  <para>
+	    文字が文字範囲に含まれるか調べる。
+	  </para>
+	  <variablelist spacing="compact">
+	    <varlistentry>
+	      <term>引数：</term>
+	      <listitem>
+		<variablelist spacing="compact">
+		  <varlistentry>
+		    <term><parameter>ch</parameter></term>
+		    <listitem>
+		      <para>元の文字。</para>
+		    </listitem>
+		  </varlistentry>
+		  <varlistentry>
+		    <term><parameter>first</parameter></term>
+		    <listitem>
+		      <para>範囲の下限。</para>
+		    </listitem>
+		  </varlistentry>
+		  <varlistentry>
+		    <term><parameter>last</parameter></term>
+		    <listitem>
+		      <para>範囲の上限。</para>
+		    </listitem>
+		  </varlistentry>
+		</variablelist>
+	      </listitem>
+	    </varlistentry>
+	    <varlistentry>
+	      <term>戻り値：</term>
+	      <listitem>
+		<para><code language="C++">first &lt;= ch &amp;&amp; ch &lt;= last</code></para>
+	      </listitem>
+	    </varlistentry>
+	  </variablelist>
+	</listitem>
+
+	<listitem xml:id="null_regex_traits.in_range_nocase">
+	  <methodsynopsis language="C++">
+	    <modifier>static</modifier>
+	    <type>bool</type>
+	    <methodname>in_range_nocase</methodname>
+	    <methodparam>
+	      <type>char_type</type>
+	      <parameter>first</parameter>
+	    </methodparam>
+	    <methodparam>
+	      <type>char_type</type>
+	      <parameter>last</parameter>
+	    </methodparam>
+	    <methodparam>
+	      <type>char_type</type>
+	      <parameter>ch</parameter>
+	    </methodparam>
+	  </methodsynopsis>
+	  <para>
+	    文字が文字範囲に含まれるか調べる。
+	  </para>
+	  <note>
 	    <para>
-	      <code>[0, UCHAR_MAX]</code> の範囲で <type>Elem</type> のハッシュ値を返す。
+	      <classname linkend="null_regex_traits">null_regex_traits</classname> はケースフォールディングを行わないので、この関数は <methodname>in_range()</methodname> と等価である。
 	    </para>
-	    <informaltable>
-	      <tr>
-		<th>引数：</th>
-		<td><parameter class="function">ch</parameter></td>
-		<td>元の文字。</td>
-	      </tr>
-	      <tr>
-		<th>戻り値：</th>
-		<td colspan="2"><literal>0</literal> 以上 <constant>UCHAR_MAX</constant> 以下の値。</td>
-	      </tr>
-	    </informaltable>
-	  </listitem>
-	  <listitem>
-	    <synopsis language="C++">static char_type translate(char_type ch);</synopsis>
-	    <para>
-	      何もしない。
-	    </para>
-	    <informaltable>
-	      <tr>
-		<th>引数：</th>
-		<td><parameter class="function">ch</parameter></td>
-		<td>元の文字。</td>
-	      </tr>
-	      <tr>
-		<th>戻り値：</th>
-		<td colspan="2"><parameter>ch</parameter></td>
-	      </tr>
-	    </informaltable>
-	  </listitem>
-	  <listitem>
-	    <synopsis language="C++">static char_type translate_nocase(char_type ch);</synopsis>
-	    <para>
-	      何もしない。
-	    </para>
-	    <informaltable>
-	      <tr>
-		<th>引数：</th>
-		<td><parameter class="function">ch</parameter></td>
-		<td>元の文字。</td>
-	      </tr>
-	      <tr>
-		<th>戻り値：</th>
-		<td colspan="2"><parameter>ch</parameter></td>
-	      </tr>
-	    </informaltable>
-	  </listitem>
-	  <listitem>
-	    <synopsis language="C++">static bool in_range(char_type first, char_type last, char_type ch);</synopsis>
-	    <para>
-	      文字が文字範囲に含まれるか調べる。
-	    </para>
-	    <informaltable>
-	      <tr>
-		<th rowspan="3">引数：</th>
-		<td><parameter class="function">ch</parameter></td>
-		<td>元の文字。</td>
-	      </tr>
-	      <tr>
-		<td><parameter class="function">first</parameter></td>
-		<td>範囲の下限。</td>
-	      </tr>
-	      <tr>
-		<td><parameter class="function">last</parameter></td>
-		<td>範囲の上限。</td>
-	      </tr>
-	      <tr>
-		<th>戻り値：</th>
-		<td colspan="2"><code language="C++">first &lt;= ch &amp;&amp; ch &lt;= last</code></td>
-	      </tr>
-	    </informaltable>
-	  </listitem>
-	  <listitem>
-	    <synopsis language="C++">static bool in_range_nocase(char_type first, char_type last, char_type ch);</synopsis>
-	    <para>
-	      文字が文字範囲に含まれるか調べる。
-	    </para>
-	    <note>
-	      <para>
-		<classname linkend="null_regex_traits">null_regex_traits</classname> はケースフォールディングを行わないので、この関数は <methodname>in_range()</methodname> と等価である。
-	      </para>
-	    </note>
-	    <informaltable>
-	      <tr>
-		<th rowspan="3">引数：</th>
-		<td><parameter class="function">ch</parameter></td>
-		<td>元の文字。</td>
-	      </tr>
-	      <tr>
-		<td><parameter class="function">first</parameter></td>
-		<td>範囲の下限。</td>
-	      </tr>
-	      <tr>
-		<td><parameter class="function">last</parameter></td>
-		<td>範囲の上限。</td>
-	      </tr>
-	      <tr>
-		<th>戻り値：</th>
-		<td colspan="2"><code language="C++">first &lt;= ch &amp;&amp; ch &lt;= last</code></td>
-	      </tr>
-	    </informaltable>
-	  </listitem>
-	  <listitem>
-	    <synopsis language="C++">template&lt;typename FwdIter&gt;
-  static string_type transform(FwdIter begin, FwdIter end);</synopsis>
-	    <para>
-	      イテレータ範囲 <code>[F1, F2)</code> が示す文字シーケンスのソートキーを返す。文字シーケンス <code>[G1, G2)</code> が文字シーケンス <code>[H1, H2)</code> の前にソートされる場合に <code language="C++">v.transform(G1, G2) &lt; v.transform(H1, H2)</code> とならなければならない。
-	    </para>
-	    <note>
-	      <para>
-		現在使用していない。
-	      </para>
-	    </note>
-	  </listitem>
-	  <listitem>
-	    <synopsis language="C++">template&lt;typename FwdIter&gt;
-  static string_type transform_primary(FwdIter begin, FwdIter end);</synopsis>
-	    <para>
-	      イテレータ範囲 <code>[F1, F2)</code> が示す文字シーケンスのソートキーを返す。大文字小文字を区別せずにソートして文字シーケンス <code>[G1, G2)</code> が文字シーケンス <code>[H1, H2)</code> の前に現れる場合に <code language="C++">v.transform(G1, G2) &lt; v.transform(H1, H2)</code> とならなければならない。
-	    </para>
-	    <note>
-	      <para>
-		現在使用していない。
-	      </para>
-	    </note>
-	  </listitem>
-	  <listitem>
-	    <synopsis language="C++">template&lt;typename FwdIter&gt;
-  static string_type lookup_collatename(FwdIter begin, FwdIter end);</synopsis>
-	    <para>
-	      イテレータ範囲 <code>[F1, F2)</code> が示す文字シーケンスが構成する照合要素を表す文字シーケンスを返す。文字シーケンスが正しい照合要素でなければ空文字列を返す。
-	    </para>
-	    <note>
-	      <para>
-		現在使用していない。
-	      </para>
-	    </note>
-	  </listitem>
-	  <listitem>
-	    <synopsis language="C++">template&lt;typename FwdIter&gt;
-  static char_class_type 
-  lookup_classname(FwdIter begin, FwdIter end, bool icase);</synopsis>
-	    <para>
-	      <classname linkend="null_regex_traits">null_regex_traits</classname> は文字分類をもたないので、<methodname>lookup_classname()</methodname> は使用しない。
-	    </para>
-	    <informaltable>
-	      <tr>
-		<th rowspan="3">引数：</th>
-		<td><parameter class="function">begin</parameter></td>
-		<td>使用しない。</td>
-	      </tr>
-	      <tr>
-		<td><parameter class="function">end</parameter></td>
-		<td>使用しない。</td>
-	      </tr>
-	      <tr>
-		<td><parameter class="function">icase</parameter></td>
-		<td>使用しない。</td>
-	      </tr>
-	      <tr>
-		<th>戻り値：</th>
-		<td colspan="2"><code language="C++">static_cast&lt;char_class_type&gt;(0)</code></td>
-	      </tr>
-	    </informaltable>
-	  </listitem>
-	  <listitem>
-	    <synopsis language="C++">static bool isctype(char_type ch, char_class_type mask);</synopsis>
-	    <para>
-	      <classname linkend="null_regex_traits">null_regex_traits</classname> は文字分類をもたないので、<methodname>isctype()</methodname> は使用しない。
-	    </para>
-	    <informaltable>
-	      <tr>
-		<th rowspan="2">引数：</th>
-		<td><parameter class="function">ch</parameter></td>
-		<td>使用しない</td>
-	      </tr>
-	      <tr>
-		<td><parameter class="function">mask</parameter></td>
-		<td>使用しない</td>
-	      </tr>
-	      <tr>
-		<th>戻り値：</th>
-		<td colspan="2">偽</td>
-	      </tr>
-	    </informaltable>
-	  </listitem>
-	  <listitem>
-	    <synopsis language="C++">static int value(char_type ch, int radix);</synopsis>
-	    <para>
-	      <classname linkend="null_regex_traits">null_regex_traits</classname> は数字を解釈しないので、<methodname>value()</methodname> は使用しない。
-	    </para>
-	    <informaltable>
-	      <tr>
-		<th rowspan="2">引数：</th>
-		<td><parameter class="function">ch</parameter></td>
-		<td>使用しない</td>
-	      </tr>
-	      <tr>
-		<td><parameter class="function">radix</parameter></td>
-		<td>使用しない</td>
-	      </tr>
-	      <tr>
-		<th>戻り値：</th>
-		<td colspan="2"><literal>-1</literal></td>
-	      </tr>
-	    </informaltable>
-	  </listitem>
-	  <listitem>
-	    <synopsis language="C++">static locale_type imbue(locale_type loc);</synopsis>
-	    <para>
-	      使用しない。
-	    </para>
-	    <informaltable>
-	      <tr>
-		<th>引数：</th>
-		<td><parameter class="function">loc</parameter></td>
-		<td>使用しない</td>
-	      </tr>
-	      <tr>
-		<th>戻り値：</th>
-		<td colspan="2"><parameter class="function">loc</parameter></td>
-	      </tr>
-	    </informaltable>
-	  </listitem>
-	  <listitem>
-	    <synopsis language="C++">static locale_type getloc();</synopsis>
-	    <para>
-	      <code language="C++">locale_type()</code> を返す。
-	    </para>
-	    <informaltable>
-	      <tr>
-		<th>戻り値：</th>
-		<td colspan="2"><code language="C++">locale_type()</code></td>
-	      </tr>
-	    </informaltable>
-	  </listitem>
-	</orderedlist>
-      </section>
-    </section>
-  </section>
-</article>
+	  </note>
+	  <variablelist spacing="compact">
+	    <varlistentry>
+	      <term>引数：</term>
+	      <listitem>
+		<variablelist spacing="compact">
+		  <varlistentry>
+		    <term><parameter>ch</parameter></term>
+		    <listitem>
+		      <para>元の文字。</para>
+		    </listitem>
+		  </varlistentry>
+		  <varlistentry>
+		    <term><parameter>first</parameter></term>
+		    <listitem>
+		      <para>範囲の下限。</para>
+		    </listitem>
+		  </varlistentry>
+		  <varlistentry>
+		    <term><parameter>last</parameter></term>
+		    <listitem>
+		      <para>範囲の上限。</para>
+		    </listitem>
+		  </varlistentry>
+		</variablelist>
+	      </listitem>
+	    </varlistentry>
+	    <varlistentry>
+	      <term>戻り値：</term>
+	      <listitem>
+		<para><code language="C++">first &lt;= ch &amp;&amp; ch &lt;= last</code></para>
+	      </listitem>
+	    </varlistentry>
+	  </variablelist>
+	</listitem>
+
+	<listitem xml:id="null_regex_traits.transform">
+	  <methodsynopsis language="C++">
+	    <modifier>template&lt;typename FwdIter&gt; static</modifier>
+	    <type>string_type</type>
+	    <methodname>transform</methodname>
+	    <methodparam>
+	      <type>FwdIter</type>
+	      <parameter>begin</parameter>
+	    </methodparam>
+	    <methodparam>
+	      <type>FwdIter</type>
+	      <parameter>end</parameter>
+	    </methodparam>
+	  </methodsynopsis>
+	  <para>
+	    イテレータ範囲 <code>[F1, F2)</code> が示す文字シーケンスのソートキーを返す。文字シーケンス <code>[G1, G2)</code> が文字シーケンス <code>[H1, H2)</code> の前にソートされる場合に <code language="C++">v.transform(G1, G2) &lt; v.transform(H1, H2)</code> とならなければならない。
+	  </para>
+	  <note>
+	    <para>現在使用していない。</para>
+	  </note>
+	</listitem>
+
+	<listitem xml:id="null_regex_traits.transform_primary">
+	  <methodsynopsis language="C++">
+	    <modifier>template&lt;typename FwdIter&gt; static</modifier>
+	    <type>string_type</type>
+	    <methodname>transform_primary</methodname>
+	    <methodparam>
+	      <type>FwdIter</type>
+	      <parameter>begin</parameter>
+	    </methodparam>
+	    <methodparam>
+	      <type>FwdIter</type>
+	      <parameter>end</parameter>
+	    </methodparam>
+	  </methodsynopsis>
+	  <para>
+	    イテレータ範囲 <code>[F1, F2)</code> が示す文字シーケンスのソートキーを返す。大文字小文字を区別せずにソートして文字シーケンス <code>[G1, G2)</code> が文字シーケンス <code>[H1, H2)</code> の前に現れる場合に <code language="C++">v.transform(G1, G2) &lt; v.transform(H1, H2)</code> とならなければならない。
+	  </para>
+	  <note>
+	    <para>現在使用していない。</para>
+	  </note>
+	</listitem>
+
+	<listitem xml:id="null_regex_traits.lookup_collatename">
+	  <methodsynopsis language="C++">
+	    <modifier>template&lt;typename FwdIter&gt; static</modifier>
+	    <type>string_type</type>
+	    <methodname>lookup_collatename</methodname>
+	    <methodparam>
+	      <type>FwdIter</type>
+	      <parameter>begin</parameter>
+	    </methodparam>
+	    <methodparam>
+	      <type>FwdIter</type>
+	      <parameter>end</parameter>
+	    </methodparam>
+	  </methodsynopsis>
+	  <para>
+	    イテレータ範囲 <code>[F1, F2)</code> が示す文字シーケンスが構成する照合要素を表す文字シーケンスを返す。文字シーケンスが正しい照合要素でなければ空文字列を返す。
+	  </para>
+	  <note>
+	    <para>現在使用していない。</para>
+	  </note>
+	</listitem>
+
+	<listitem xml:id="null_regex_traits.lookup_classname">
+	  <methodsynopsis language="C++">
+	    <modifier>template&lt;typename FwdIter&gt; static</modifier>
+	    <type>char_class_type</type>
+	    <methodname>lookup_classname</methodname>
+	    <methodparam>
+	      <type>FwdIter</type>
+	      <parameter>begin</parameter>
+	    </methodparam>
+	    <methodparam>
+	      <type>FwdIter</type>
+	      <parameter>end</parameter>
+	    </methodparam>
+	    <methodparam>
+	      <type>bool</type>
+	      <parameter>icase</parameter>
+	    </methodparam>
+	  </methodsynopsis>
+	  <para>
+	    <classname linkend="null_regex_traits">null_regex_traits</classname> は文字分類をもたないので、<methodname>lookup_classname()</methodname> は使用しない。
+	  </para>
+	  <variablelist spacing="compact">
+	    <varlistentry>
+	      <term>引数：</term>
+	      <listitem>
+		<variablelist spacing="compact">
+		  <varlistentry>
+		    <term><parameter>begin</parameter></term>
+		    <listitem>
+		      <para>使用しない。</para>
+		    </listitem>
+		  </varlistentry>
+		  <varlistentry>
+		    <term><parameter>end</parameter></term>
+		    <listitem>
+		      <para>使用しない。</para>
+		    </listitem>
+		  </varlistentry>
+		  <varlistentry>
+		    <term><parameter>icase</parameter></term>
+		    <listitem>
+		      <para>使用しない。</para>
+		    </listitem>
+		  </varlistentry>
+		</variablelist>
+	      </listitem>
+	    </varlistentry>
+	    <varlistentry>
+	      <term>戻り値：</term>
+	      <listitem>
+		<para><code language="C++">static_cast&lt;char_class_type&gt;(0)</code></para>
+	      </listitem>
+	    </varlistentry>
+	  </variablelist>
+	</listitem>
+
+	<listitem xml:id="null_regex_traits.isctype">
+	  <methodsynopsis language="C++">
+	    <modifier>static</modifier>
+	    <type>bool</type>
+	    <methodname>isctype</methodname>
+	    <methodparam>
+	      <type>char_type</type>
+	      <parameter>ch</parameter>
+	    </methodparam>
+	    <methodparam>
+	      <type>char_class_type</type>
+	      <parameter>mask</parameter>
+	    </methodparam>
+	  </methodsynopsis>
+	  <para>
+	    <classname linkend="null_regex_traits">null_regex_traits</classname> は文字分類をもたないので、<methodname>isctype()</methodname> は使用しない。
+	  </para>
+	  <variablelist spacing="compact">
+	    <varlistentry>
+	      <term>引数：</term>
+	      <listitem>
+		<variablelist spacing="compact">
+		  <varlistentry>
+		    <term><parameter>ch</parameter></term>
+		    <listitem>
+		      <para>使用しない。</para>
+		    </listitem>
+		  </varlistentry>
+		  <varlistentry>
+		    <term><parameter>mask</parameter></term>
+		    <listitem>
+		      <para>使用しない。</para>
+		    </listitem>
+		  </varlistentry>
+		</variablelist>
+	      </listitem>
+	    </varlistentry>
+	    <varlistentry>
+	      <term>戻り値：</term>
+	      <listitem>
+		<para>偽</para>
+	      </listitem>
+	    </varlistentry>
+	  </variablelist>
+	</listitem>
+
+	<listitem xml:id="null_regex_traits.value">
+	  <methodsynopsis language="C++">
+	    <modifier>static</modifier>
+	    <type>int</type>
+	    <methodname>value</methodname>
+	    <methodparam>
+	      <type>char_type</type>
+	      <parameter>ch</parameter>
+	    </methodparam>
+	    <methodparam>
+	      <type>int</type>
+	      <parameter>radix</parameter>
+	    </methodparam>
+	  </methodsynopsis>
+	  <para>
+	    <classname linkend="null_regex_traits">null_regex_traits</classname> は数字を解釈しないので、<methodname>value()</methodname> は使用しない。
+	  </para>
+	  <variablelist spacing="compact">
+	    <varlistentry>
+	      <term>引数：</term>
+	      <listitem>
+		<variablelist spacing="compact">
+		  <varlistentry>
+		    <term><parameter>ch</parameter></term>
+		    <listitem>
+		      <para>使用しない。</para>
+		    </listitem>
+		  </varlistentry>
+		  <varlistentry>
+		    <term><parameter>radix</parameter></term>
+		    <listitem>
+		      <para>使用しない。</para>
+		    </listitem>
+		  </varlistentry>
+		</variablelist>
+	      </listitem>
+	    </varlistentry>
+	    <varlistentry>
+	      <term>戻り値：</term>
+	      <listitem>
+		<para><literal>-1</literal></para>
+	      </listitem>
+	    </varlistentry>
+	  </variablelist>
+	</listitem>
+
+	<listitem xml:id="null_regex_traits.imbue">
+	  <methodsynopsis language="C++">
+	    <modifier>static</modifier>
+	    <type>locale_type</type>
+	    <methodname>imbue</methodname>
+	    <methodparam>
+	      <type>locale_type</type>
+	      <parameter>loc</parameter>
+	    </methodparam>
+	  </methodsynopsis>
+	  <para>
+	    何もしない。
+	  </para>
+	  <variablelist spacing="compact">
+	    <varlistentry>
+	      <term>引数：</term>
+	      <listitem>
+		<variablelist spacing="compact">
+		  <varlistentry>
+		    <term><parameter>loc</parameter></term>
+		    <listitem>
+		      <para>使用しない。</para>
+		    </listitem>
+		  </varlistentry>
+		</variablelist>
+	      </listitem>
+	    </varlistentry>
+	    <varlistentry>
+	      <term>戻り値：</term>
+	      <listitem>
+		<para><parameter>loc</parameter></para>
+	      </listitem>
+	    </varlistentry>
+	  </variablelist>
+	</listitem>
+
+	<listitem xml:id="null_regex_traits.getloc">
+	  <methodsynopsis language="C++">
+	    <modifier>static</modifier>
+	    <type>locale_type</type>
+	    <methodname>getloc</methodname>
+	    <void/>
+	  </methodsynopsis>
+	  <para>
+	    何もしない。
+	  </para>
+	  <variablelist spacing="compact">
+	    <varlistentry>
+	      <term>戻り値：</term>
+	      <listitem>
+		<para><code language="C++">locale_type()</code> を返す。</para>
+	      </listitem>
+	    </varlistentry>
+	  </variablelist>
+	</listitem>
+      </orderedlist>
+    </refsection>
+  </refsection>
+</refentry>

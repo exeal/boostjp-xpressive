@@ -178,7 +178,9 @@ struct <classname linkend="c_regex_traits">c_regex_traits</classname> {<!--
 	      <parameter>loc</parameter>
 	    </methodparam>
 	  </methodsynopsis>
-	  <para>何もしない。</para>
+	  <para>
+	    何もしない。
+	  </para>
 	</listitem>
 
 	<listitem xml:id="c_regex_traits.widen.0">
@@ -276,7 +278,9 @@ struct <classname linkend="c_regex_traits">c_regex_traits</classname> {<!--
 	      <parameter>ch</parameter>
 	    </methodparam>
 	  </methodsynopsis>
-	  <para><type>char</type> 型の値を <type>Char</type> 型に変換する。</para>
+	  <para>
+	    <type>char</type> 型の値を <type>Char</type> 型に変換する。
+	  </para>
 	  <variablelist spacing="compact">
 	    <varlistentry>
 	      <term>引数：</term>
@@ -310,7 +314,9 @@ struct <classname linkend="c_regex_traits">c_regex_traits</classname> {<!--
 	      <parameter>ch</parameter>
 	    </methodparam>
 	  </methodsynopsis>
-	  <para><code>[0, UCHAR_MAX]</code> の範囲で <type>Char</type> のハッシュ値を返す。</para>
+	  <para>
+	    <code>[0, UCHAR_MAX]</code> の範囲で <type>Char</type> のハッシュ値を返す。
+	  </para>
 	  <variablelist spacing="compact">
 	    <varlistentry>
 	      <term>引数：</term>
@@ -344,7 +350,9 @@ struct <classname linkend="c_regex_traits">c_regex_traits</classname> {<!--
 	      <parameter>ch</parameter>
 	    </methodparam>
 	  </methodsynopsis>
-	  <para>何もしない。</para>
+	  <para>
+	    何もしない。
+	  </para>
 	  <variablelist spacing="compact">
 	    <varlistentry>
 	      <term>引数：</term>
@@ -378,7 +386,9 @@ struct <classname linkend="c_regex_traits">c_regex_traits</classname> {<!--
 	      <parameter>ch</parameter>
 	    </methodparam>
 	  </methodsynopsis>
-	  <para>現在のグローバルな C ロカールを使用して、文字を小文字に変換する。</para>
+	  <para>
+	    現在のグローバルな C ロカールを使用して、文字を小文字に変換する。
+	  </para>
 	  <variablelist spacing="compact">
 	    <varlistentry>
 	      <term>引数：</term>
@@ -412,7 +422,9 @@ struct <classname linkend="c_regex_traits">c_regex_traits</classname> {<!--
 	      <parameter>ch</parameter>
 	    </methodparam>
 	  </methodsynopsis>
-	  <para>現在のグローバルな C ロカールを使用して、文字を小文字に変換する。</para>
+	  <para>
+	    現在のグローバルな C ロカールを使用して、文字を小文字に変換する。
+	  </para>
 	  <variablelist spacing="compact">
 	    <varlistentry>
 	      <term>引数：</term>
@@ -446,7 +458,9 @@ struct <classname linkend="c_regex_traits">c_regex_traits</classname> {<!--
 	      <parameter>ch</parameter>
 	    </methodparam>
 	  </methodsynopsis>
-	  <para>現在のグローバルな C ロカールを使用して、文字を大文字に変換する。</para>
+	  <para>
+	    現在のグローバルな C ロカールを使用して、文字を大文字に変換する。
+	  </para>
 	  <variablelist spacing="compact">
 	    <varlistentry>
 	      <term>引数：</term>
@@ -488,7 +502,9 @@ struct <classname linkend="c_regex_traits">c_regex_traits</classname> {<!--
 	      <parameter>ch</parameter>
 	    </methodparam>
 	  </methodsynopsis>
-	  <para>文字が文字範囲に含まれるか調べる。</para>
+	  <para>
+	    文字が文字範囲に含まれるか調べる。
+	  </para>
 	  <variablelist spacing="compact">
 	    <varlistentry>
 	      <term>引数：</term>
@@ -542,7 +558,9 @@ struct <classname linkend="c_regex_traits">c_regex_traits</classname> {<!--
 	      <parameter>ch</parameter>
 	    </methodparam>
 	  </methodsynopsis>
-	  <para>文字が文字範囲に含まれるか調べる。大文字小文字を区別しない。</para>
+	  <para>
+	    文字が文字範囲に含まれるか調べる。大文字小文字を区別しない。
+	  </para>
 	  <note>
 	    <para>
 	      既定の実装は適正な Unicode ケースフォールディングを行わないが、標準 C ロカールではこれが最善である。
@@ -597,7 +615,9 @@ struct <classname linkend="c_regex_traits">c_regex_traits</classname> {<!--
 	      <parameter>end</parameter>
 	    </methodparam>
 	  </methodsynopsis>
-	  <para>イテレータ範囲 <code>[F1, F2)</code> が示す文字シーケンスのソートキーを返す。文字シーケンス <code>[G1, G2)</code> が文字シーケンス <code>[H1, H2)</code> の前にソートされる場合に <code language="C++">v.transform(G1, G2) &lt; v.transform(H1, H2)</code> とならなければならない。</para>
+	  <para>
+	    イテレータ範囲 <code>[F1, F2)</code> が示す文字シーケンスのソートキーを返す。文字シーケンス <code>[G1, G2)</code> が文字シーケンス <code>[H1, H2)</code> の前にソートされる場合に <code language="C++">v.transform(G1, G2) &lt; v.transform(H1, H2)</code> とならなければならない。
+	  </para>
 	  <note>
 	    <para>現在使用していない。</para>
 	  </note>
@@ -617,7 +637,9 @@ struct <classname linkend="c_regex_traits">c_regex_traits</classname> {<!--
 	      <parameter>end</parameter>
 	    </methodparam>
 	  </methodsynopsis>
-	  <para>イテレータ範囲 <code>[F1, F2)</code> が示す文字シーケンスのソートキーを返す。大文字小文字を区別せずにソートして文字シーケンス <code>[G1, G2)</code> が文字シーケンス <code>[H1, H2)</code> の前に現れる場合に <code language="C++">v.transform(G1, G2) &lt; v.transform(H1, H2)</code> とならなければならない。</para>
+	  <para>
+	    イテレータ範囲 <code>[F1, F2)</code> が示す文字シーケンスのソートキーを返す。大文字小文字を区別せずにソートして文字シーケンス <code>[G1, G2)</code> が文字シーケンス <code>[H1, H2)</code> の前に現れる場合に <code language="C++">v.transform(G1, G2) &lt; v.transform(H1, H2)</code> とならなければならない。
+	  </para>
 	  <note>
 	    <para>現在使用していない。</para>
 	  </note>
@@ -637,7 +659,9 @@ struct <classname linkend="c_regex_traits">c_regex_traits</classname> {<!--
 	      <parameter>end</parameter>
 	    </methodparam>
 	  </methodsynopsis>
-	  <para>イテレータ範囲 <code>[F1, F2)</code> が示す文字シーケンスが構成する照合要素を表す文字シーケンスを返す。文字シーケンスが正しい照合要素でなければ空文字列を返す。</para>
+	  <para>
+	    イテレータ範囲 <code>[F1, F2)</code> が示す文字シーケンスが構成する照合要素を表す文字シーケンスを返す。文字シーケンスが正しい照合要素でなければ空文字列を返す。
+	  </para>
 	  <note>
 	    <para>現在使用していない。</para>
 	  </note>
@@ -661,7 +685,9 @@ struct <classname linkend="c_regex_traits">c_regex_traits</classname> {<!--
 	      <parameter>icase</parameter>
 	    </methodparam>
 	  </methodsynopsis>
-	  <para>指定した文字シーケンスが表す文字分類について、相当するビットマスクを返す。</para>
+	  <para>
+	    指定した文字シーケンスが表す文字分類について、相当するビットマスクを返す。
+	  </para>
 	  <variablelist spacing="compact">
 	    <varlistentry>
 	      <term>引数：</term>
@@ -711,7 +737,9 @@ struct <classname linkend="c_regex_traits">c_regex_traits</classname> {<!--
 	      <parameter>mask</parameter>
 	    </methodparam>
 	  </methodsynopsis>
-	  <para>文字分類ビットマスクに対して文字をテストする。</para>
+	  <para>
+	    文字分類ビットマスクに対して文字をテストする。
+	  </para>
 	  <variablelist spacing="compact">
 	    <varlistentry>
 	      <term>引数：</term>
@@ -761,7 +789,9 @@ struct <classname linkend="c_regex_traits">c_regex_traits</classname> {<!--
 	      <parameter>radix</parameter>
 	    </methodparam>
 	  </methodsynopsis>
-	  <para>数字を数値に変換する。</para>
+	  <para>
+	    数字を数値に変換する。
+	  </para>
 	  <variablelist spacing="compact">
 	    <varlistentry>
 	      <term>引数：</term>
@@ -804,7 +834,9 @@ struct <classname linkend="c_regex_traits">c_regex_traits</classname> {<!--
 	    <methodname>getloc</methodname>
 	    <void/>
 	  </methodsynopsis>
-	  <para>何もしない。</para>
+	  <para>
+	    何もしない。
+	  </para>
 	</listitem>
       </orderedlist>
     </refsection>
