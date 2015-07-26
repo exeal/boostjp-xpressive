@@ -4,17 +4,17 @@
   Distributed under the Boost Software License, Version 1.0. (See accompanying
   file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
 -->
-<section xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xml:lang="ja" version="5.0">
+<section xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xml:lang="ja" version="5.0" xml:id="user_s_guide.symbol_tables_and_attributes">
   <title>記号表と属性</title>
 
-  <section>
+  <section xml:id="user_s_guide.symbol_tables_and_attributes.overview">
     <title>概要</title>
     <para>
       xpressive の正規表現で記号表を構築するには、<classname>std::map&lt;&gt;</classname> を使うだけでよい。辞書のキーはマッチした文字列であり、辞書の値は意味アクションが返すデータである。xpressive の 属性 <constant>a1</constant> 、<constant>a2</constant> 、…、<constant>a9</constant> はマッチしたキーに相当する値を保持し、意味アクション内で使用する。記号が見つからなかった場合の属性の既定値を指定することも可能である。
     </para>
   </section>
 
-  <section>
+  <section xml:id="user_s_guide.symbol_tables_and_attributes.symbol_tables">
     <title>記号表</title>
     <para>
       xpressive の記号表は単純に <classname>std::map&lt;&gt;</classname> であり、キーは文字列型、値は何でもよい。例えば以下の正規表現は、<varname>map1</varname> のキーにマッチし対応する値を属性 <constant>a1</constant> に代入する。次に意味アクションにおいて、属性 <constant>a1</constant> に格納した値を結果の整数に代入する。
@@ -76,7 +76,7 @@ int main()
     </para>
   </section>
 
-  <section>
+  <section xml:id="user_s_guide.symbol_tables_and_attributes.attributes">
     <title>属性</title>
     <para>
       1 つの正規表現内で使用できる属性は最大 9 つであり、<constant>a1</constant> 、<constant>a2</constant> 、…、<constant>a9</constant> という名前で <phrase role="namespace">boost::xpressive</phrase> 名前空間内にある。属性の型は代入元の辞書の 2 番目の要素と同じである。属性の既定値は意味アクション内で <code language="C++">(a1 | <replaceable>default-value</replaceable>)</code> のような構文で指定する。

@@ -4,17 +4,17 @@
   Distributed under the Boost Software License, Version 1.0. (See accompanying
   file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
 -->
-<section xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xml:lang="ja" version="5.0">
+<section xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xml:lang="ja" version="5.0" xml:id="user_s_guide.semantic_actions_and_user_defined_assertions">
   <title>意味アクションとユーザー定義表明</title>
 
-  <section>
+  <section xml:id="user_s_guide.semantic_actions_and_user_defined_assertions.overview">
     <title>概要</title>
     <para>
       入力文字列を解析し、そこから <classname>std::map&lt;&gt;</classname> を構築したいとする。このような場合、正規表現では不十分である。正規表現マッチの部分で<emphasis>何か</emphasis>をしたい。xpressive は、静的正規表現の部分に意味アクションを結びつける方法を提供する。本節ではその方法を説明する。
     </para>
   </section>
 
-  <section>
+  <section xml:id="user_s_guide.semantic_actions_and_user_defined_assertions.semantic_actions">
     <title>意味アクション（<foreignphrase xml:lang="en">Semantic Actions</foreignphrase>）</title>
     <para>
       以下のコードを考える。xpressive の意味アクションを使って単語と整数の組からなる文字列を解析し、<classname>std::map&lt;&gt;</classname> に詰め込んでいる。
@@ -77,7 +77,7 @@ int main()
 sregex rex = (+_d)[ ref(i) = as&lt;int&gt;(_) ];</programlisting>
   </section>
 
-  <section>
+  <section xml:id="user_s_guide.semantic_actions_and_user_defined_assertions.lazy_action_execution">
     <title>アクションの遅延実行</title>
     <para>
       アクションを正規表現のある部分に結び付けてマッチを行うとは、実際にはどういう意味なのか？ アクションが実行されるのはいつなのか？ アクションが繰り返し部分式の一部である場合は、アクションが実行される回数は1度なのか複数回なのか？ また部分式が最初はマッチしていたが正規表現の残りの部分がマッチせず最終的に失敗した場合は、アクションはまったく実行されないのか？
@@ -99,7 +99,7 @@ assert( i == 2 );</programlisting>
     </para>
   </section>
 
-  <section>
+  <section xml:id="user_s_guide.semantic_actions_and_user_defined_assertions.immediate_action_execution">
     <title>アクションの即時実行</title>
     <para>
       意味アクションを即時実行したい場合は、そのアクションを含む部分式を <function linkend="keep">keep()</function> で包む。<function>keep()</function> は当該部分式についてバックトラックを無効にし、その部分式の待ち行列に入っているあらゆるアクションを <function>keep()</function> の終了とともに実行する。これにより、あたかも <function>keep()</function> 内の部分式が別の正規表現オブジェクトにコンパイルされ、<function>keep()</function> のマッチングが <function>regex_search()</function> を個別に呼び出して実行されたかのようになる。結果この部分式は文字にマッチしアクションを実行するが、バックトラックも巻き戻しもしない。例えば上の例を以下のように書き換えたとする。
@@ -120,7 +120,7 @@ assert( i == 3 );</programlisting>
     </note>
   </section>
 
-  <section>
+  <section xml:id="user_s_guide.semantic_actions_and_user_defined_assertions.lazy_functions">
     <title>遅延関数</title>
     <para>
       ここまで変数と演算子からなる意味アクションの記述方法について見てきたが、意味アクションから関数を呼び出す方法についてはどうだろう？ xpressive にはそのための機構がある。
@@ -184,7 +184,7 @@ struct first_impl
 function&lt;first_impl&gt;::type const first = {{}};</programlisting>
   </section>
 
-  <section>
+  <section xml:id="user_s_guide.semantic_actions_and_user_defined_assertions.referring_to_local_variables">
     <title>ローカル変数を参照する</title>
     <para>
       上の例で見たように、<function>xpressive::ref()</function> を使用するとアクション内からローカル変数を参照できる。この変数は正規表現による参照に保持されるが、これらの参照が懸垂しないよう注意が必要である。例えば以下のコードでは、<function>bad_voodoo()</function> が制御を返すと <varname>i</varname> に対する参照が懸垂する。
@@ -288,7 +288,7 @@ assert( i.get() == 2 );</programlisting>
     </para>
   </section>
 
-  <section>
+  <section xml:id="user_s_guide.semantic_actions_and_user_defined_assertions.referring_to_non_local_variables">
     <title>非ローカル変数を参照する</title>
     <para>
       この節の最初で、正規表現を使って単語・整数の組からなる文字列を解析して <classname>std::map&lt;&gt;</classname> に詰め込む例を見た。この例では辞書と正規表現を定義しておき、いずれかがスコープから出る前にそれらを使う必要があった。正規表現を先に定義しておき、異なる複数の辞書に書き込みたい場合はどうすればよいだろうか？ 正規表現オブジェクトに辞書に対する参照を直接組み込むのではなく、<function linkend="regex_match">regex_match()</function> アルゴリズムに辞書を渡すようにしてはどうか。プレースホルダを定義し、意味アクション内で辞書そのものの代わりに使用する。後でいずれかの正規表現アルゴリズムを呼び出すときに実際の辞書オブジェクトへ参照を束縛できる。以下のようにする。
@@ -370,7 +370,7 @@ std::cout &lt;&lt; result["ccc"] &lt;&lt; '\n';</programlisting>
 456</screen>
   </section>
 
-  <section>
+  <section xml:id="user_s_guide.semantic_actions_and_user_defined_assertions.user_defined_assertions">
     <title>ユーザー定義表明</title>
     <para>
       正規表現の<emphasis>表明</emphasis>については慣れたものだろう。Perlだと表明の例として <phrase role="regex-pattern">^</phrase> や <phrase role="regex-pattern">$</phrase> があり、それぞれ文字列の先頭・終端にマッチする。xpressive では新たに表明を定義できる。カスタム表明は、マッチの成否を判断する時点で真でなければならない条件である。カスタム表明をチェックするには xpressive の <function linkend="check">check()</function>関数を使用する。

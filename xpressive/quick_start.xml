@@ -4,7 +4,7 @@
   Distributed under the Boost Software License, Version 1.0. (See accompanying
   file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
 -->
-<section xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xml:lang="ja" version="5.0">
+<section xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xml:lang="ja" version="5.0" xml:id="user_s_guide.quick_start">
   <title>クイックスタート</title>
 
   <para>
@@ -72,7 +72,7 @@
     </listitem>
   </orderedlist>
 
-  <section>
+  <section xml:id="user_s_guide.quick_start.know_your_iterator_type">
     <title>イテレータの型</title>
     <para>
       xpressive において、ほとんどのクラスはイテレータ型を引数にもつテンプレートである。正しい型を簡単に選択できるように xpressive は共通の typedef をいくつか定義している。以下の表を見ればイテレータ型から正しい型が分かる。
@@ -136,7 +136,7 @@
     </para>
   </section>
 
-  <section>
+  <section xml:id="user_s_guide.quick_start.know_your_task">
     <title>タスク</title>
     <para>
       パターンを使うのは 1 度か、複数回か。検索か置換か。xpressive はこれらをすべてカバーし、他にも多くの機能がある。以下が早見表である。
@@ -155,7 +155,7 @@
 	  <td>
 	    <tip>
 	      <para>
-		<link linkend="see_if_a_whole_string_matches_a_regex">文字列全体が正規表現にマッチするか調べる</link>
+		<link linkend="user_s_guide.examples.see_if_a_whole_string_matches_a_regex">文字列全体が正規表現にマッチするか調べる</link>
 	      </para>
 	    </tip>
 	  </td>
@@ -165,7 +165,7 @@
 	  <td>
 	    <tip>
 	      <para>
-		<link linkend="see_if_a_string_contains_a_sub_string_that_matches_a_regex">文字列が正規表現にマッチする部分文字列を含むか調べる</link>
+		<link linkend="user_s_guide.examples.see_if_a_string_contains_a_sub_string_that_matches_a_regex">文字列が正規表現にマッチする部分文字列を含むか調べる</link>
 	      </para>
 	    </tip>
 	  </td>
@@ -175,7 +175,7 @@
 	  <td>
 	    <tip>
 	      <para>
-		<link linkend="replace_all_sub_strings_that_match_a_regex">正規表現にマッチする部分文字列をすべて置換する</link>
+		<link linkend="user_s_guide.examples.replace_all_sub_strings_that_match_a_regex">正規表現にマッチする部分文字列をすべて置換する</link>
 	      </para>
 	    </tip>
 	  </td>
@@ -185,7 +185,7 @@
 	  <td>
 	    <tip>
 	      <para>
-		<link linkend="find_all_the_sub_strings_that_match_a_regex_and_step_through_them_one_at_a_time">正規表現にマッチする部分文字列をすべて検索し、1 つずつたどる</link>
+		<link linkend="user_s_guide.examples.find_all_the_sub_strings_that_match_a_regex_and_step_through_them_one_at_a_time">正規表現にマッチする部分文字列をすべて検索し、1 つずつたどる</link>
 	      </para>
 	    </tip>
 	  </td>
@@ -195,7 +195,7 @@
 	  <td>
 	    <tip>
 	      <para>
-		<link linkend="split_a_string_into_tokens_that_each_match_a_regex">それぞれが正規表現にマッチするトークンに文字列を分割する</link>
+		<link linkend="user_s_guide.examples.split_a_string_into_tokens_that_each_match_a_regex">それぞれが正規表現にマッチするトークンに文字列を分割する</link>
 	      </para>
 	    </tip>
 	  </td>
@@ -205,7 +205,7 @@
 	  <td>
 	    <tip>
 	      <para>
-		<link linkend="split_a_string_using_a_regex_as_a_delimiter">正規表現を区切りとして文字列を分割する</link>
+		<link linkend="user_s_guide.examples.split_a_string_using_a_regex_as_a_delimiter">正規表現を区切りとして文字列を分割する</link>
 	      </para>
 	    </tip>
 	  </td>

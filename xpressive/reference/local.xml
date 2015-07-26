@@ -16,11 +16,11 @@
 
 template&lt;typename T&gt;
 struct <classname linkend="local">local</classname> : public proto::terminal::type&lt; reference_wrapper&lt; T &gt; &gt; {
-  // <link linkend="construct-copy-destruct">構築、コピー、解体</link>
+  // <link linkend="local.construct-copy-destruct">構築、コピー、解体</link>
   <methodname linkend="local.local.0">local</methodname>();
   explicit <methodname linkend="local.local.1">local</methodname>(T const &amp;);
 
-  // <link linkend="public-member-functions">公開メンバ関数</link>
+  // <link linkend="local.public-member-functions">公開メンバ関数</link>
   T &amp; <methodname linkend="local.get.0">get</methodname>();
   T const &amp; <methodname linkend="local.get.1">get</methodname>() const;
 };</synopsis>
@@ -55,7 +55,7 @@ assert( i.get() == 2 );</programlisting>
       </orderedlist>
     </refsection>
 
-    <refsection xml:id="construct-copy-destruct">
+    <refsection xml:id="local.construct-copy-destruct">
       <title>local 構築、コピー、解体の公開演算</title>
       <orderedlist>
 	<listitem xml:id="local.local.0">
@@ -94,7 +94,7 @@ assert( i.get() == 2 );</programlisting>
       </orderedlist>
     </refsection>
 
-    <refsection xml:id="public-member-functions">
+    <refsection xml:id="local.public-member-functions">
       <title>公開メンバ関数</title>
       <orderedlist>
 	<listitem xml:id="local.get.0">

@@ -29,7 +29,7 @@ struct basic_regex {
   // <link linkend="basic_regex.public-static-functions">公開静的メンバ関数</link>
   template&lt;typename InputIter&gt; 
     static basic_regex&lt; BidiIter &gt; 
-    <methodname linkend="basic_regex.compile.0">compile</methodname>(InputIter, InputIter, flag_type = regex_constants::ECMAScript);
+    <methodname linkend="basic_regex.compile">compile</methodname>(InputIter, InputIter, flag_type = regex_constants::ECMAScript);
   template&lt;typename InputRange&gt; 
     static basic_regex&lt; BidiIter &gt; 
     <methodname linkend="basic_regex.compile.1">compile</methodname>(InputRange const &amp;, flag_type = regex_constants::ECMAScript);
@@ -319,7 +319,7 @@ struct basic_regex {
     <refsection xml:id="basic_regex.public-static-functions">
       <title>basic_regex の公開静的メンバ関数</title>
       <orderedlist>
-	<listitem xml:id="basic_regex.compile.0">
+	<listitem xml:id="basic_regex.compile">
 	  <methodsynopsis language="C++">
 	    <modifier>template&lt;typename InputIter&gt; static</modifier>
 	    <type>basic_regex&lt; BidiIter &gt;</type>

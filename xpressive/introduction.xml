@@ -4,10 +4,10 @@
   Distributed under the Boost Software License, Version 1.0. (See accompanying
   file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
 -->
-<section xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xml:lang="ja" version="5.0">
+<section xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xml:lang="ja" version="5.0" xml:id="user_s_guide.introduction">
   <title>はじめに</title>
   
-  <section>
+  <section xml:id="user_s_guide.introduction.what_is_xpressive_">
     <title>xpressive とは何か</title>
     <para>
       xpressive は正規表現のテンプレートライブラリである。正規表現・正規式（<foreignphrase xml:lang="ja">regex</foreignphrase> とも
@@ -26,7 +26,7 @@
     </para>
   </section>
 
-  <section>
+  <section xml:id="user_s_guide.introduction.hello__world_">
     <title>Hello, world!</title>
     <para>
       理論は十分だ。xpressive スタイルの Hello World を見よう。

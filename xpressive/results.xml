@@ -4,17 +4,17 @@
   Distributed under the Boost Software License, Version 1.0. (See accompanying
   file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
 -->
-<section xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xml:lang="ja" version="5.0">
+<section xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xml:lang="ja" version="5.0" xml:id="user_s_guide.accessing_results">
   <title>結果へのアクセス</title>
 
-  <section>
+  <section xml:id="user_s_guide.accessing_results.overview">
     <title>概要</title>
     <para>
       <function linkend="regex_match">regex_match()</function> および <function linkend="regex_search">regex_search()</function> の成否が分かるだけでは十分でない場合もある。<function linkend="regex_match">regex_match()</function> 、<function linkend="regex_search">regex_search()</function> に <classname linkend="match_results">match_results&lt;&gt;</classname> 型のオブジェクトを渡すと、アルゴリズムが完全に成功した後 <classname linkend="match_results">match_results&lt;&gt;</classname> に、正規表現のどの部分がシーケンスのどの部分にマッチしたかの追加情報が入る。Perl ではこれらの部分シーケンスを<emphasis>後方参照</emphasis>といい、変数 <code language="Perl">$1</code> 、<code language="Perl">$2</code> 、…に格納される。xpressive では <classname linkend="sub_match">sub_match&lt;&gt;</classname> 型のオブジェクトであり、<classname linkend="match_results">match_results&lt;&gt;</classname> 構造体に格納される。これらは <classname linkend="sub_match">sub_match&lt;&gt;</classname> オブジェクトのベクタとして振舞う。
     </para>
   </section>
 
-  <section>
+  <section xml:id="user_s_guide.accessing_results.match_results">
     <title>match_results</title>
     <para>
       さて、正規表現アルゴリズムに <classname linkend="match_results">match_results&lt;&gt;</classname> オブジェクトを渡し、アルゴリズムが成功したとする。結果を調べたくなるところだ。<classname linkend="match_results">match_results&lt;&gt;</classname> オブジェクトを使ってすることといえば、その内部に格納されている <classname linkend="sub_match">sub_match&lt;&gt;</classname> オブジェクトへ添字を介してアクセスすることがほとんどである。しかし <classname linkend="match_results">match_results&lt;&gt;</classname> オブジェクトには他にも少し使い道がある。
@@ -68,11 +68,11 @@
     </table>
 
     <para>
-      <classname linkend="match_results">match_results&lt;&gt;</classname> オブジェクトには他にも使い道があるが、<link linkend="grammars_and_nested_matches">文法と入れ子マッチ</link>の項であらためて述べることにする。
+      <classname linkend="match_results">match_results&lt;&gt;</classname> オブジェクトには他にも使い道があるが、<link linkend="user_s_guide.grammars_and_nested_matches">文法と入れ子マッチ</link>の項であらためて述べることにする。
     </para>
   </section>
 
-  <section>
+  <section xml:id="user_s_guide.accessing_results.sub_match">
     <title>sub_match</title>
     <para>
       <classname linkend="match_results">match_results&lt;&gt;</classname> オブジェクトに添字を介してアクセスすると <classname linkend="sub_match">sub_match&lt;&gt;</classname> オブジェクトが得られる。<classname linkend="sub_match">sub_match&lt;&gt;</classname> は基本的にはイテレータの組である。定義は以下のようになっている。
@@ -118,7 +118,7 @@ struct sub_match
     </table>
   </section>
 
-  <section>
+  <section xml:id="user_s_guide.accessing_results.results_invalidation">
     <title>結果の無効可</title>
     <important>
       <para>

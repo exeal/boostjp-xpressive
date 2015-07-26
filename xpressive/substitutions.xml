@@ -4,14 +4,14 @@
   Distributed under the Boost Software License, Version 1.0. (See accompanying
   file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
 -->
-<section xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xml:lang="ja" version="5.0">
+<section xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xml:lang="ja" version="5.0" xml:id="user_s_guide.string_substitutions">
   <title>文字列の置換</title>
 
   <para>
     正規表現が威力を発揮するのはテキスト検索のときだけではない。テキストの<emphasis>操作</emphasis>においても有効である。最もありふれたテキスト操作の 1 つが、「検索して置換」である。xpressive は検索と置換のために <function linkend="regex_replace">regex_replace()</function> アルゴリズムを提供する。
   </para>
 
-  <section>
+  <section xml:id="user_s_guide.string_substitutions.regex_replace__">
     <title>regex_replace()</title>
     <para>
       <function linkend="regex_replace">regex_replace()</function> を用いた「検索して置換」処理は簡単である。必要なのは入力シーケンス、正規表現オブジェクト、および書式化文字列か書式化オブジェクトだけである。<function linkend="regex_replace">regex_replace()</function> には複数のバージョンがあり、入力シーケンスを <classname>std::string</classname> のような双方向コンテナとして受け付けて結果を同じ型の新しいコンテナで返すものや、入力を null 終端文字列で受け付けて <classname>std::string</classname> を返すもの、イテレータの組で受け付けて結果を出力イテレータに書き込むものがある。置換は書式化シーケンスを含む文字列か書式化オブジェクトで指定する。文字列ベースの置換について、単純な使用例を以下に示す。
@@ -36,11 +36,11 @@ Ther is her face</screen>
       <code language="C++">"his"</code> が<emphasis>すべて</emphasis> <code language="C++">"her"</code> に置換されることに注意していただきたい。
     </para>
     <para>
-      <function linkend="regex_replace">regex_replace()</function> の使い方に関する完全なプログラム例は<link linkend="examples.replace_all_sub_strings_that_match_a_regex">ここ</link>にある。利用可能な多重定義の完全なリストは <function linkend="regex_replace">regex_replace()</function> のリファレンスを見よ。
+      <function linkend="regex_replace">regex_replace()</function> の使い方に関する完全なプログラム例は<link linkend="user_s_guide.examples.replace_all_sub_strings_that_match_a_regex">ここ</link>にある。利用可能な多重定義の完全なリストは <function linkend="regex_replace">regex_replace()</function> のリファレンスを見よ。
     </para>
   </section>
 
-  <section>
+  <section xml:id="user_s_guide.string_substitutions.replace_options">
     <title>置換のオプション</title>
     <para>
       <function linkend="regex_replace">regex_replace()</function> アルゴリズムは、省略可能なビットマスク引数により書式化を制御する。使用可能なビットマスク値を以下に示す。
@@ -89,7 +89,7 @@ Ther is her face</screen>
     </para>
   </section>
 
-  <section>
+  <section xml:id="user_s_guide.string_substitutions.the_ecma_262_format_sequences">
     <title>ECMA-262 書式化シーケンス</title>
     <para>
       上記のフラグを指定せずに書式化文字列を渡した場合は、ECMAScript の標準である ECMA-262 の定義が使われる。ECMA-262 モードで使用するエスケープシーケンスを以下に示す。
@@ -130,7 +130,7 @@ Ther is her face</screen>
     </para>
   </section>
 
-  <section>
+  <section xml:id="user_s_guide.string_substitutions.the_sed_format_sequences">
     <title>sed 書式化シーケンス</title>
     <para>
       <function linkend="regex_replace">regex_replace()</function> に <constant>format_sed</constant> フラグを指定した場合に使用するエスケープシーケンスを以下に示す。
@@ -196,7 +196,7 @@ Ther is her face</screen>
     </table>
   </section>
 
-  <section>
+  <section xml:id="user_s_guide.string_substitutions.the_perl_format_sequences">
     <title>Perl 書式化シーケンス</title>
     <para>
       <function linkend="regex_replace">regex_replace()</function> に <constant>format_perl</constant> フラグを指定した場合に使用するエスケープシーケンスを以下に示す。
@@ -302,7 +302,7 @@ Ther is her face</screen>
     </table>
   </section>
 
-  <section>
+  <section xml:id="user_s_guide.string_substitutions.the_boost_specific_format_sequences">
     <title>Boost 固有の書式化シーケンス</title>
     <para>
       <function linkend="regex_replace">regex_replace()</function> に <constant>format_all</constant> を指定した場合に使用するエスケープシーケンスは上に挙げた <constant>format_perl</constant> と同じである。さらに以下の形式の条件式を使用する。
@@ -313,7 +313,7 @@ Ther is her face</screen>
     </para>
   </section>
 
-  <section>
+  <section xml:id="user_s_guide.string_substitutions.formatter_objects">
     <title>書式化オブジェクト</title>
     <para>
       テキスト置換において、書式化文字列の表現能力が常に十分とは限らない。入力文字列を環境変数で置換して出力文字列にコピーする単純な例を考えよう。こういう場合は、書式化<emphasis>文字列</emphasis>ではなく書式化<emphasis>オブジェクト</emphasis>を使ったほうがよい。次のコードを考えよう。<phrase role="regex-input">$(xyz)</phrase> の形式で埋め込まれた環境変数を検索し、辞書に照らし合わせて見つかった置換文字列を算出する。
@@ -386,10 +386,10 @@ int main()
     </table>
   </section>
 
-  <section>
-    <title>書式化列</title>
+  <section xml:id="user_s_guide.string_substitutions.formatter_expressions">
+    <title>書式化式</title>
     <para>
-      書式化<emphasis>文字列</emphasis>、書式化<emphasis>オブジェクト</emphasis>に加えて、<function linkend="regex_replace">regex_replace()</function> は書式化<emphasis>式</emphasis>も受け付ける。書式化式は文字列を生成するラムダ式である。使用する構文は後述する<link linkend="semantic_actions_and_user_defined_assertions">意味アクション</link>と同じである。文字列を <function linkend="regex_replace">regex_replace()</function> を用いて環境変数で置換する上の例を書式化式を使って書き直すと、次のようになる。
+      書式化<emphasis>文字列</emphasis>、書式化<emphasis>オブジェクト</emphasis>に加えて、<function linkend="regex_replace">regex_replace()</function> は書式化<emphasis>式</emphasis>も受け付ける。書式化式は文字列を生成するラムダ式である。使用する構文は後述する<link linkend="user_s_guide.semantic_actions_and_user_defined_assertions">意味アクション</link>と同じである。文字列を <function linkend="regex_replace">regex_replace()</function> を用いて環境変数で置換する上の例を書式化式を使って書き直すと、次のようになる。
     </para>
     <programlisting language="C++">#include &lt;map&gt;
 #include &lt;string&gt;

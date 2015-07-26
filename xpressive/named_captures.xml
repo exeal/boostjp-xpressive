@@ -4,10 +4,10 @@
   Distributed under the Boost Software License, Version 1.0. (See accompanying
   file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
 -->
-<section xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xml:lang="ja" version="5.0">
+<section xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xml:lang="ja" version="5.0" xml:id="user_s_guide.named_captures">
   <title>名前付き捕捉</title>
 
-  <section>
+  <section xml:id="user_s_guide.named_captures.overview">
     <title>概要</title>
     <para>
       正規表現が複雑になると、番号付き捕捉を取り扱うのが苦痛になる場合がある。左括弧の数を数えてどの捕捉に対応しているのか調べるのはつまらない仕事である。さらに面白くないのは、正規表現を編集するだけで捕捉に新しい番号が割り振られて古い番号を使っていた後方参照が無効になることである。
@@ -17,7 +17,7 @@
     </para>
   </section>
 
-  <section>
+  <section xml:id="user_s_guide.named_captures.dynamic_named_captures">
     <title>動的名前付き捕捉</title>
     <para>
       動的正規表現については、xpressive は他の一般的な正規表現エンジンの名前付き捕捉の構文に従う。<phrase role="regex-pattern">(?P&lt;xxx&gt;...)</phrase> で名前つき捕捉を作成し、<phrase role="regex-pattern">(?P=xxx)</phrase> でこの捕捉を後方参照する。名前付き後方参照を作成し後方参照する例を以下に示す。
@@ -54,7 +54,7 @@ std::cout &lt;&lt; str &lt;&lt; std::endl;</programlisting>
     <screen>tw**e**t</screen>
   </section>
 
-  <section>
+  <section xml:id="user_s_guide.named_captures.static_named_captures">
     <title>静的名前付き捕捉</title>
     <para>
       静的正規表現を使う場合は、名前付き捕捉の作成と使用はより簡単である。<classname linkend="mark_tag">mark_tag</classname> 型を使って <constant>s1</constant> 、<constant>s2</constant> のような変数を作成するが、より意味のある名前を与えることができる。静的表現を使うと上の例は以下のようになる。

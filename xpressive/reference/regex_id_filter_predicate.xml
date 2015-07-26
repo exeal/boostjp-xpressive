@@ -14,18 +14,18 @@
 
 template&lt;typename BidiIter&gt;
 struct <classname linkend="regex_id_filter_predicate">regex_id_filter_predicate</classname> {
-  // <link linkend="construct-copy-destruct">構築、コピー、解体</link>
+  // <link linkend="regex_id_filter_predicate.construct-copy-destruct">構築、コピー、解体</link>
   <methodname linkend="regex_id_filter_predicate.regex_id_filter_predicate">regex_id_filter_predicate</methodname>(regex_id_type);
 
-  // <link linkend="public-member-functions">公開メンバ関数</link>
-  bool <methodname linkend="regex_id_filter_predicate.operator">operator()</methodname>(<classname linkend="match_results">match_results</classname>&lt; BidiIter &gt; const &amp;) const;
+  // <link linkend="regex_id_filter_predicate.public-member-functions">公開メンバ関数</link>
+  bool <methodname linkend="regex_id_filter_predicate.operator.0">operator()</methodname>(<classname linkend="match_results">match_results</classname>&lt; BidiIter &gt; const &amp;) const;
 };</synopsis>
   </refsynopsisdiv>
 
   <refsection>
     <title>説明</title>
     
-    <refsection xml:id="construct-copy-destruct">
+    <refsection xml:id="regex_id_filter_predicate.construct-copy-destruct">
       <title>regex_id_filter_predicate 構築、コピー、解体の公開演算</title>
       <orderedlist>
 	<listitem xml:id="regex_id_filter_predicate.regex_id_filter_predicate">
@@ -40,10 +40,10 @@ struct <classname linkend="regex_id_filter_predicate">regex_id_filter_predicate<
       </orderedlist>
     </refsection>
 
-    <refsection xml:id="public-member-functions">
+    <refsection xml:id="regex_id_filter_predicate.public-member-functions">
       <title>regex_id_filter_predicate 公開メンバ関数</title>
       <orderedlist>
-	<listitem linkend="regex_id_filter_predicate.operator">
+	<listitem xml:id="regex_id_filter_predicate.operator.0">
 	  <methodsynopsis language="C++">
 	    <type>bool</type>
 	    <methodname>operator()</methodname>

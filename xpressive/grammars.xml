@@ -4,17 +4,17 @@
   Distributed under the Boost Software License, Version 1.0. (See accompanying
   file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
 -->
-<section xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xml:lang="ja" version="5.0">
+<section xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xml:lang="ja" version="5.0" xml:id="user_s_guide.grammars_and_nested_matches">
   <title>文法と入れ子マッチ</title>
 
-  <section>
+  <section xml:id="user_s_guide.grammars_and_nested_matches.overview">
     <title>概要</title>
     <para>
       正規表現を C++ の式で表現することの重要な利点の 1 つは、正規表現中から他の C++ コードやデータに容易にアクセスできることである。これにより、他の正規表現で不可能なプログラミングイディオムが可能になる。特に注意していただきたいのは、正規表現が他の正規表現を参照する機能で、これにより正規表現の外部で文法を構築できる。この節では正規表現を他の正規表現に値や参照で組み込む方法、正規表現が他の正規表現を参照したときの振る舞い、解析が成功した後の結果木にアクセスする方法を説明する。
     </para>
   </section>
 
-  <section>
+  <section xml:id="user_s_guide.grammars_and_nested_matches.embedding_a_regex_by_value">
     <title>値による正規表現の組み込み</title>
     <para>
       <classname linkend="basic_regex">basic_regex&lt;&gt;</classname> オブジェクトは値のセマンティクスをもつ。正規表現オブジェクトが別の正規表現定義の右辺に現れると、値による組み込みが起こるとみなされる。つまり、入れ子の正規表現のコピーが外側の正規表現に格納される。内側の正規表現は、パターンマッチ時に外側の正規表現により呼び出される。内側の正規表現をマッチに対して完全に消耗すると、マッチを成功させるためにバックトラックが起こる。
@@ -54,7 +54,7 @@ re = bow &gt;&gt; re &gt;&gt; eow;</programlisting>
     </note>
   </section>
 
-  <section>
+  <section xml:id="user_s_guide.grammars_and_nested_matches.embedding_a_regex_by_reference">
     <title>参照による正規表現の組み込み</title>
     <para>
       再帰正規表現および文脈自由文法を構築するには、値による正規表現の組み込みでは不十分である。正規表現を自己参照的にする必要がある。大半の正規表現エンジンにはそういった能力はないが、xpressive では可能である。
@@ -85,7 +85,7 @@ parentheses                          // 数の合った括弧群は...
     </para>
   </section>
 
-  <section>
+  <section xml:id="user_s_guide.grammars_and_nested_matches.building_a_grammar">
     <title>文法の構築</title>
     <para>
       正規表現が自己再帰的になりさえすれば、もう後戻りする必要はない。楽しみにしていたことがすべて可能になる。特に正規表現の外部で文法を構築できるようになる。text-book 文法の例を見よう。ちょっとした計算機だ。
@@ -110,7 +110,7 @@ expression  = term &gt;&gt; *(('+' &gt;&gt; term) | ('-' &gt;&gt; term));</progr
     </tip>
   </section>
 
-  <section>
+  <section xml:id="user_s_guide.grammars_and_nested_matches.dynamic_regex_grammars">
     <title>動的正規表現文法</title>
     <para>
       <classname linkend="regex_compiler">regex_compiler&lt;&gt;</classname> を使用して動的正規表現の外部で文法を構築することもできる。名前付きの正規表現を作成し、他の正規表現から名前で参照するのである。各 <classname linkend="regex_compiler">regex_compiler&lt;&gt;</classname> インスタンスは名前と正規表現の対応を保持する。
@@ -151,7 +151,7 @@ if(regex_search(str, what, expr))
     </para>
   </section>
 
-  <section>
+  <section xml:id="user_s_guide.grammars_and_nested_matches.cyclic_patterns__copying_and_memory_management__oh_my_">
     <title>循環パターンにコピーにメモリ管理まで、まあ何てこと！</title>
     <para>
       上の計算機の例で非常に複雑なメモリ管理の問題が持ち上がる。4 つの正規表現オブジェクトは直接・間接的に、また値・参照でお互いを参照している。このうちの 1 つを関数から返し、残りがスコープの外に出るとどうなるのか？ 参照はどうなるのか？ 答えは、正規表現オブジェクトは内部に参照カウントを持つため必要な限り正規表現による参照は保持される、である。よって正規表現オブジェクトを値で渡しても、それがスコープの外に行ってしまった正規表現オブジェクトを参照していたとしても問題は起きない。
@@ -161,7 +161,7 @@ if(regex_search(str, what, expr))
     </para>
   </section>
 
-  <section>
+  <section xml:id="user_s_guide.grammars_and_nested_matches.nested_regexes_and_sub_match_scoping">
     <title>入れ子の正規表現と部分マッチのスコープ</title>
     <para>
       正規表現を入れ子にすると部分マッチのスコープの問題が持ち上がる。内側と外側の両方の正規表現が同じ部分マッチのベクタを読み書きすると、混乱が起こる。外側の正規表現が書き込んだ部分マッチを内側の正規表現が台無しにするわけだ。例えば、これはどうなるか。
@@ -176,10 +176,10 @@ sregex outer = (s1= _) &gt;&gt; inner &gt;&gt; s1;</programlisting>
     </para>
   </section>
 
-  <section>
+  <section xml:id="user_s_guide.grammars_and_nested_matches.nested_results">
     <title>入れ子の結果</title>
     <para>
-      入れ子の正規表現が自身の部分マッチをもつのであれば、マッチ成功後にそれらにアクセスする方法があってしかるべきである。<function linkend="regex_match">regex_match()</function> か <function linkend="regex_search">regex_search()</function> の後、<classname linkend="match_results">match_results&lt;&gt;</classname> 構造体は入れ子の結果を表す木の頂点のように振舞う。<classname linkend="match_results">match_results&lt;&gt;</classname> クラスは、入れ子の正規表現の結果を表す <classname linkend="match_result">match_results&lt;&gt;</classname> 構造体の順序付きシーケンスを返す <methodname linkend="match_results.nested_results">nested_results()</methodname> メンバ関数を提供する。入れ子の結果の順序は、入れ子の正規表現がマッチした順序と同じである。
+      入れ子の正規表現が自身の部分マッチをもつのであれば、マッチ成功後にそれらにアクセスする方法があってしかるべきである。<function linkend="regex_match">regex_match()</function> か <function linkend="regex_search">regex_search()</function> の後、<classname linkend="match_results">match_results&lt;&gt;</classname> 構造体は入れ子の結果を表す木の頂点のように振舞う。<classname linkend="match_results">match_results&lt;&gt;</classname> クラスは、入れ子の正規表現の結果を表す <classname linkend="match_results">match_results&lt;&gt;</classname> 構造体の順序付きシーケンスを返す <methodname linkend="match_results.nested_results">nested_results()</methodname> メンバ関数を提供する。入れ子の結果の順序は、入れ子の正規表現がマッチした順序と同じである。
     </para>
     <para>
       前に見た、数の合った入れ子の括弧の正規表現を例にとる。
@@ -215,12 +215,12 @@ if( regex_search( str, what, parentheses ) )
     </para>
     <tip>
       <para>
-	<link linkend="samples">例</link>の節にある <link linkend="exmaples.display_a_tree_of_nested_results">output_nested_results</link> の定義を見よ。
+	<link linkend="user_s_guide.examples">例</link>の節にある <link linkend="user_s_guide.examples.display_a_tree_of_nested_results">output_nested_results</link> の定義を見よ。
       </para>
     </tip>
   </section>
 
-  <section>
+  <section xml:id="user_s_guide.grammars_and_nested_matches.filtering_nested_results">
     <title>入れ子の結果のフィルタリング</title>
     <para>
       1 つの正規表現の中に複数の入れ子の正規表現があり、どの結果がどの正規表現に対応するのか知りたい場合がある。<methodname>basic_regex&lt;&gt;::regex_id()</methodname> と <methodname>match_results&lt;&gt;::regex_id()</methodname> が役に立つ場面である。入れ子の結果を走査しているときに、結果の正規表現 ID と目的の正規表現オブジェクトの ID を比較するとよい。

@@ -4,7 +4,7 @@
   Distributed under the Boost Software License, Version 1.0. (See accompanying
   file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
 -->
-<section xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xml:lang="ja" version="5.0">
+<section xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xml:lang="ja" version="5.0" xml:id="user_s_guide.string_splitting_and_tokenization">
   <title>文字列の分割とトークン分割</title>
 
   <para>
@@ -17,7 +17,7 @@
     のナイフである。薄切りもさいの目切りも思いのまま！ 本節では高度に設定可能な <classname linkend="regex_token_iterator">regex_token_iterator</classname> で入力シーケンスを分割する方法を述べる。
   </para>
 
-  <section>
+  <section xml:id="user_s_guide.string_splitting_and_tokenization.overview">
     <title>概要</title>
     <para>
       <classname linkend="regex_token_iterator">regex_token_iterator&lt;&gt;</classname> は入力シーケンス、正規表現、省略可能な設定引数で初期化する。<classname linkend="regex_token_iterator">regex_token_iterator&lt;&gt;</classname> は <function linkend="regex_search">regex_search()</function> を使って、シーケンス内で最初に正規表現にマッチする位置を見つける。<classname linkend="regex_token_iterator">regex_token_iterator&lt;&gt;</classname> を参照はがしすると、<classname>std::basic_string</classname> 形式で<emphasis>トークン</emphasis>を返す。どの文字列を返すかは設定引数による。既定ではマッチ全体に相当する文字列を返すが、マーク済み部分式のみならずシーケンス内のマッチ<emphasis>しなかった</emphasis>部分を返すことも可能である。<classname linkend="regex_token_iterator">regex_token_iterator&lt;&gt;</classname> をインクリメントすると次のトークンに移動する。次がどのトークンかは設定引数による。単純に現在のマッチにおける異なるマーク済み部分式の場合もあれば、次のマッチの全体か一部分である場合、マッチ<emphasis>しなかった</emphasis>部分である場合もある。
@@ -27,7 +27,7 @@
     </para>
   </section>
 
-  <section>
+  <section xml:id="user_s_guide.string_splitting_and_tokenization.example_1__simple_tokenization">
     <title>例 1：単純なトークン分割</title>
     <para>
       この例では <classname linkend="regex_token_iterator">regex_token_iterator&lt;&gt;</classname> を使ってシーケンスを単語のトークンに切っている。
@@ -50,7 +50,7 @@ his
 face</screen>
   </section>
 
-  <section>
+  <section xml:id="user_s_guide.string_splitting_and_tokenization.example_2__simple_tokenization__reloaded">
     <title>例 2：単純なトークン分割・リローデッド</title>
     <para>
       この例も <classname linkend="regex_token_iterator">regex_token_iterator&lt;&gt;</classname> を使ってシーケンスを単語トークンに切っているが、正規表現を区切りとして使っている。<classname linkend="regex_token_iterator">regex_token_iterator&lt;&gt;</classname> コンストラクタの最後の引数に <literal>-1</literal> を渡すと、入力内の正規表現にマッチ<emphasis>しなかった</emphasis>部分がトークンとなる。
@@ -73,7 +73,7 @@ his
 face</screen>
   </section>
 
-  <section>
+  <section xml:id="user_s_guide.string_splitting_and_tokenization.example_3__simple_tokenization__revolutions">
     <title>
       例 3：単純なトークン分割・レボリューションズ
       <footnote>
@@ -102,7 +102,7 @@ std::copy( begin, end, out_iter );</programlisting>
 1981</screen>
   </section>
 
-  <section>
+  <section xml:id="user_s_guide.string_splitting_and_tokenization.example_4__not_so_simple_tokenization">
     <title>例 4：あまり単純でないトークン分割</title>
     <para>
       この例は 1 つ前のものと似ているが、年だけでなく月と日をトークンに入れている点が異なる。<classname linkend="regex_token_iterator">regex_token_iterator&lt;&gt;</classname> コンストラクタの最後の引数に整数の配列 <code>{I,J,...}</code> を渡すと、各マッチの <replaceable>I</replaceable> 番目、<replaceable>J</replaceable> 番目、…のマーク済み部分式がトークンとなる。

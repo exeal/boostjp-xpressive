@@ -33,7 +33,7 @@ struct <classname linkend="regex_compiler">regex_compiler</classname> {
     <classname linkend="basic_regex">basic_regex</classname>&lt; BidiIter &gt; 
     <methodname linkend="regex_compiler.compile.0">compile</methodname>(InputIter, InputIter, flag_type = regex_constants::ECMAScript);
   template&lt;typename InputRange&gt; 
-    disable_if&lt; is_pointer&lt; InputRange &gt;, <class linkend="basic_regex">basic_regex</class>&lt; BidiIter &gt; &gt;::type 
+    disable_if&lt; is_pointer&lt; InputRange &gt;, <classname linkend="basic_regex">basic_regex</classname>&lt; BidiIter &gt; &gt;::type 
     <methodname linkend="regex_compiler.compile.1">compile</methodname>(InputRange const &amp;, flag_type = regex_constants::ECMAScript);
   <classname linkend="basic_regex">basic_regex</classname>&lt; BidiIter &gt; 
   <methodname linkend="regex_compiler.compile.2">compile</methodname>(char_type const *, flag_type = regex_constants::ECMAScript);
@@ -55,7 +55,7 @@ struct <classname linkend="regex_compiler">regex_compiler</classname> {
     <refsection xml:id="regex_compiler.construct-copy-destruct">
       <title>regex_compiler 構築、コピー、解体の公開演算</title>
       <orderedlist>
-	<listitem>
+	<listitem xml:id="regex_compiler.regex_compiler">
 	  <constructorsynopsis language="C++">
 	    <methodname>regex_compiler</methodname>
 	    <methodparam>

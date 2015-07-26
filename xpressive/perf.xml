@@ -4,7 +4,7 @@
   Distributed under the Boost Software License, Version 1.0. (See accompanying
   file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
 -->
-<section xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink" xml:lang="ja" version="5.0">
+<section xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink" xml:lang="ja" version="5.0" xml:id="appendices.perf">
   <title>付録 4：パフォーマンスの比較</title>
   <para>
     xpressive の効率は <link xlink:href="http://www.boost.org/libs/regex/">Boost.Regex</link> に負けず劣らずである。パフォーマンスベンチマークを走らせ、静的正規表現、動的正規表現、Boost.Regex を 2 つのプラットフォーム（gcc（Cygwin）、Visual C++）で比較した。テストは短いマッチと長い検索を行った。いずれのプラットフォームでも、短いマッチでは xpressive が高速であり、長い検索では大体 <link xlink:href="http://www.boost.org/libs/regex/">Boost.Regex</link> と同じだった。
@@ -15,7 +15,7 @@
     </footnote>
   </para>
 
-  <section xml:id="perf_gcc">
+  <section xml:id="appendices.perf.perf_gcc">
     <title>xpressive 対 Boost.Regex（GCC（Cygwin））</title>
     <itemizedlist>
       <listitem>
@@ -72,7 +72,7 @@
       </varlistentry>
     </variablelist>
 
-    <section>
+    <section xml:id="appendices.perf.perf_gcc.comparison_1__short_matches">
       <title>比較 1：短いマッチ</title>
       <para>
 	以下のテストでは入力文字列に対する正規表現マッチに要した時間を評価項目とする。各テスト結果の上側の数値は最速時間に対して正規化しており、1.0 が最もよい。下側の（括弧で囲んだ）数値は実際の秒時間である。最良の結果は緑色にしてある。
@@ -186,7 +186,7 @@
       </table>
     </section>
 
-    <section>
+    <section xml:id="appendices.perf.perf_gcc.comparison_2__long_searches">
       <title>比較 2：長い検索</title>
       <para>
 	次のテストは長い英文テキストから<emphasis>すべての</emphasis>マッチを見つけるのに要した時間を測定した。<link xlink:href="http://promo.net/pg/">Project Gutenberg</link> の <link xlink:href="http://www.gutenberg.org/dirs/3/2/0/3200/3200.zip">Mark Twain</link> の完全なテキストを使用した。テキストの長さは 19MB である。上と同様に上側の数値は正規化時間であり、下側の数値は実際の時間である。最短時間は緑色にした。
@@ -244,7 +244,7 @@
     </section>
   </section>
 
-  <section xml:id="perf_msvc">
+  <section xml:id="appendices.perf.perf_msvc">
     <title>xpressive 対 Boost.Regex（Visual C++）</title>
     <itemizedlist>
       <listitem>
@@ -300,7 +300,7 @@
       </varlistentry>
     </variablelist>
 
-    <section>
+    <section xml:id="appendices.perf.perf_msvc.comparison_1__short_matches">
       <title>比較 1：短いマッチ</title>
       <para>
 	以下のテストでは入力文字列に対する正規表現マッチに要した時間を評価項目とする。各テスト結果の上側の数値は最速時間に対して正規化しており、1.0 が最もよい。下側の（括弧で囲んだ）数値は実際の秒時間である。最良の結果は緑色にしてある。
@@ -413,7 +413,7 @@
       </table>
     </section>
 
-    <section>
+    <section xml:id="appendices.perf.perf_msvc.comparison_2__long_searches">
       <title>比較 2：長い検索</title>
       <para>
 	次のテストは長い英文テキストから<emphasis>すべての</emphasis>マッチを見つけるのに要した時間を測定した。<link xlink:href="http://promo.net/pg/">Project Gutenberg</link> の <link xlink:href="http://www.gutenberg.org/dirs/3/2/0/3200/3200.zip">Mark Twain</link> の完全なテキストを使用した。テキストの長さは 19MB である。上と同様に上側の数値は正規化時間であり、下側の数値は実際の時間である。最短時間は緑色にした。

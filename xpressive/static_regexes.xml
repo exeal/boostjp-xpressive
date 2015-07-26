@@ -4,10 +4,10 @@
   Distributed under the Boost Software License, Version 1.0. (See accompanying
   file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
 -->
-<section xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xml:lang="ja" version="5.0">
+<section xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xml:lang="ja" version="5.0" xml:id="user_s_guide.creating_a_regex_object.static_regexes">
   <title>静的正規表現</title>
 
-  <section>
+  <section xml:id="user_s_guide.creating_a_regex_object.static_regexes.overview">
     <title>概要</title>
     <para>
       xpressive が他の C/C++ 正規表現ライブラリと一線を画すのは、C++ の式を用いて正規表現を記述する機能による。xpressive は演算子の多重定義と<emphasis>式テンプレート</emphasis>という技術を使って、パターンマッチのための小言語を C++ に組み込むことでこれを実現している。これら「静的正規表現」には文字列ベースのものに比較して多くの利点がある。特に以下の点を挙げておく。
@@ -39,7 +39,7 @@
     </para>
   </section>
 
-  <section>
+  <section xml:id="user_s_guide.creating_a_regex_object.static_regexes.construction_and_assignment">
     <title>構築と代入</title>
     <para>
       静的正規表現の作成は、<classname linkend="basic_regex">basic_regex&lt;&gt;</classname> 型のオブジェクトへの代入により行う。例えば、以下は <classname>std::string</classname> 型のオブジェクトに対してパターンを探索する正規表現を定義する。
@@ -50,7 +50,7 @@
     </para>
   </section>
 
-  <section>
+  <section xml:id="user_s_guide.creating_a_regex_object.static_regexes.character_and_string_literals">
     <title>文字と文字列リテラル</title>
     <para>
       静的正規表現において、文字と文字列リテラルはそれ自身にマッチする。例えば上の正規表現において <code language="C++">'$'</code> と <code language="C++">'.'</code> は、それぞれ文字 <phrase role="regex-input">'$'</phrase> 、<phrase role="regex-input">'.'</phrase> にマッチする。Perlにおいて <phrase role="regex-pattern">$</phrase> と <phrase role="regex-pattern">.</phrase> がメタ文字であるからといって混乱しないでいただきたい。xpressive ではリテラルは常にそれ自身を表す。
@@ -67,7 +67,7 @@ sregex re2 = +'a';               // エラー！</programlisting>
 sregex re2 = +as_xpr('a');       // OK</programlisting>
   </section>
 
-  <section>
+  <section xml:id="user_s_guide.creating_a_regex_object.static_regexes.sequencing_and_alternation">
     <title>結合と選択</title>
     <para>
       すでに見てきたように、静的正規表現における部分式は結合演算子 <code language="C++">&gt;&gt;</code> で分離されていなければならない。この演算子は「～の後に」などと読み替えるとよい。
@@ -86,7 +86,7 @@ sregex re = 'a' &gt;&gt; _d;</programlisting>
 sregex re = +( _d | _w );</programlisting>
   </section>
 
-  <section>
+  <section xml:id="user_s_guide.creating_a_regex_object.static_regexes.grouping_and_captures">
     <title>グループ化と捕捉</title>
     <para>Perl では括弧 <code language="Perl">()</code> は特別な意味をもつ。これらはグループ化を行うが、<code language="C++">$1</code> や <code language="C++">$2</code> といった後方参照を作成するという副作用がある。C++ では括弧を多重定義して副作用を与えることはできない。そこで同じ効果を得るために <constant>s1</constant> や <constant>s2</constant> という特殊なトークンを使用する。これらに代入を行うことで後方参照を作成する。後方参照は Perl の <code language="Perl">\1</code> や <code language="Perl">\2</code> のような使い方で式中で使用できる。例えば以下の HTML タグのマッチを探索する正規表現を考えよう。</para>
     <programlisting language="C++">"&lt;(\\w+)&gt;.*?&lt;/\\1&gt;"</programlisting>
@@ -105,7 +105,7 @@ sregex re = +( _d | _w );</programlisting>
     </tip>
   </section>
 
-  <section>
+  <section xml:id="user_s_guide.creating_a_regex_object.static_regexes.case_insensitivity_and_internationalization">
     <title>大文字小文字の区別と国際化</title>
     <para>
       Perl ではパターン修飾子 <phrase role="regex-pattern">(?i:)</phrase> を使用することで正規表現が大文字小文字を区別しなくなる。xpressive でも <function>icase</function> という大文字小文字を区別しないパターン修飾子がある。以下のように使用する。
@@ -120,11 +120,11 @@ sregex re = +( _d | _w );</programlisting>
     <programlisting language="C++">std::locale my_locale = /* std::locale オブジェクトを初期化する */;
 sregex re = imbue( my_locale )( +alpha &gt;&gt; +digit );</programlisting>
     <para>
-      この正規表現は <constant>alpha</constant> と <constant>digit</constant> を <varname>my_locale</varname> にしたがって処理する。正規表現の振る舞いをカスタマイズする方法については<link linkend="localization_and_regex_traits">地域化と正規表現の特性</link>の節を見よ。
+      この正規表現は <constant>alpha</constant> と <constant>digit</constant> を <varname>my_locale</varname> にしたがって処理する。正規表現の振る舞いをカスタマイズする方法については<link linkend="user_s_guide.localization_and_regex_traits">地域化と正規表現の特性</link>の節を見よ。
     </para>
   </section>
 
-  <section>
+  <section xml:id="user_s_guide.creating_a_regex_object.static_regexes.static_xpressive_syntax_cheat_sheet">
     <title>静的 xpressive 構文のカンニングペーパー</title>
     <para>
       一般的な正規表現の構造と静的 xpressive の対応を以下の表に示す。

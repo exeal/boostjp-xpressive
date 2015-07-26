@@ -346,7 +346,7 @@
     <xi:include href="regex_error.xml"/>
   </section>
 
-  <section>
+  <section xml:id="header.regex_iterator_hpp">
     <title>&lt;boost/xpressive/regex_iterator.hpp&gt; ヘッダ</title>
     <para>
       シーケンス内のすべてのマッチを辿る STL 互換のイテレータである <classname>regex_iterator</classname> 型の定義がある。

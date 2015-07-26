@@ -25,7 +25,7 @@
     <xi:include href="installation.xml"/>
     <xi:include href="quick_start.xml"/>
 
-    <section>
+    <section xml:id="user_s_guide.creating_a_regex_object">
       <title>正規表現オブジェクトの作成</title>
       <para>
 	xpressive を使う場合、最初に行うのが <classname linkend="basic_regex">basic_regex&lt;&gt;</classname> オブジェクトの作成である。本節では静的・動的の 2 つの表現方法による正規表現作成の基本を見ていく。
@@ -51,14 +51,14 @@
   <xi:include href="reference/index.xml"/>
   <xi:include href="acknowledgements.xml"/>
 
-  <section>
+  <section xml:id="appendices">
     <title>付録</title>
     <xi:include href="history.xml"/>
     <xi:include href="nyi.xml"/>
     <xi:include href="regexpp_diffs.xml"/>
     <xi:include href="perf.xml"/>
 
-    <section>
+    <section xml:id="appendices.appendix_5__implementation_notes">
       <title>付録 5：実装ノート</title>
       <xi:include href="tracking_ptr.xml"/>
     </section>

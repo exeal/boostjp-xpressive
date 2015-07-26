@@ -4,14 +4,14 @@
   Distributed under the Boost Software License, Version 1.0. (See accompanying
   file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
 -->
-<section xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xml:lang="ja" version="5.0">
+<section xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xml:lang="ja" version="5.0" xml:id="appendices.appendix_5__implementation_notes.cycle_collection_with___tracking_ptr___">
   <title><classname>tracking_ptr&lt;&gt;</classname> による循環型コレクション</title>
 
   <para>
     xpressive では正規表現オブジェクトがお互いや自分自身を値や参照で参照する場合がある。また参照先の正規表現が生存するために参照カウントを使っている。これにより循環参照が生じ、メモリリークが起きる可能性がある。xpressive は <classname>tracking_ptr&lt;&gt;</classname> という型を使ってリークを回避している。本ドキュメントでは <classname>tracking_ptr&lt;&gt;</classname> の、高水準な観点からの振る舞いについて述べる。
   </para>
   
-  <section>
+  <section xml:id="appendices.appendix_5__implementation_notes.cycle_collection_with___tracking_ptr___.constraints">
     <title>制限</title>
     <para>
       以下に挙げる設計上の制限を満たす解法でなければならない。
@@ -40,7 +40,7 @@
     </itemizedlist>
   </section>
 
-  <section>
+  <section xml:id="appendices.appendix_5__implementation_notes.cycle_collection_with___tracking_ptr___.handle_body_idiom">
     <title>ハンドル・ボディイディオム</title>
     <para>
       <classname>tracking_ptr&lt;&gt;</classname> を使うには、型をハンドルとボディに分離しなければならない。xpressive の場合、ハンドル型は <classname>basic_regex&lt;&gt;</classname> でありボディは <classname>regex_impl&lt;&gt;</classname> である。ハンドルがボディへの <classname>tracking_ptr&lt;&gt;</classname> をもつ。
@@ -62,7 +62,7 @@
     </orderedlist>
   </section>
 
-  <section>
+  <section xml:id="appendices.appendix_5__implementation_notes.cycle_collection_with___tracking_ptr___.references_and_dependencies">
     <title>参照と依存</title>
     <para>
       上記 1. を「参照」、2. を「依存」と呼ぶことにする。<classname>tracking_ptr&lt;&gt;</classname> は直接参照されるオブジェクトと（他の参照を介して）間接的に参照されるオブジェクトの両方を参照の集合として扱う、ということは理解しておかなければならない。依存の集合についても同じことが当てはまる。言い換えると、各ボディはそのボディが必要とする他のあらゆるボディに対する直接の参照カウンタをもつ。
@@ -167,7 +167,7 @@ term: cnt5 refs{expr,group,fact,term} deps={expr,group,fact}</literallayout>
     </para>
   </section>
 
-  <section>
+  <section xml:id="appendices.appendix_5__implementation_notes.cycle_collection_with___tracking_ptr___.cycle_breaking">
     <title>循環を破る（循環ブレーカ）</title>
     <para>
       ボディは参照と依存の集合をもつ、というところまでは分かった。循環をいつどこで破るかがまだ決まっていない。これはハンドルの一部になっている <classname>tracking_ptr&lt;&gt;</classname> の仕事である。<classname>tracking_ptr&lt;&gt;</classname> は 2 つの <classname>shared_ptr</classname> をもつ。1 つ目は明らかなように <classname>shared_ptr&lt;body&gt;</classname> であり、このハンドルが参照するボディへの参照である。2 つ目の <classname>shared_ptr</classname> は循環を破るのに使用し、ボディへのハンドルがすべてスコープから出たときに、ボディがもつ参照の集合を解放する。
@@ -197,7 +197,7 @@ struct reference_deleter
     </para>
   </section>
 
-  <section>
+  <section xml:id="appendices.appendix_5__implementation_notes.cycle_collection_with___tracking_ptr___.future_work">
     <title>将来</title>
     <para>
       <classname>std::set</classname> 、<classname>shared_ptr</classname> 、<classname>weak_ptr</classname> を使っているが、軒並み効率が悪い。手ごろなので使っているだけなのだが。改善できると思う。
