@@ -1,0 +1,113 @@
+<?xml version="1.0" ?>
+<!--
+  Copyright (c) 2002-2003 Dave Abrahams
+  Distributed under the Boost Software License, Version 1.0. (See accompanying
+  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
+-->
+<chapter xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink" xml:lang="ja" version="5.0">
+  <info>
+    <title>Boost.Python（日本語訳）</title>
+    <copyright>
+      <year>2002-2003</year>
+      <holder>Dave Abrahams</holder>
+    </copyright>
+  </info>
+
+  <note>
+    <title>翻訳にあたって</title>
+    <itemizedlist>
+      <listitem>
+	<para>本書は <link xlink:href="http://www.boost.org/libs/python/doc/">Boost.Python ドキュメント</link>の日本語訳です。原文書のバージョンは翻訳時の最新である 1.55.0 です。</para>
+      </listitem>
+      <listitem>
+	<para>原文の誤りは修正したうえで翻訳しました。</para>
+      </listitem>
+      <listitem>
+	<para>外部文書の表題等は英語のままにしてあります。</para>
+      </listitem>
+      <listitem>
+	<para>Python のサイトへのリンクは可能な限り日本語サイトへ変更しました。</para>
+      </listitem>
+      <listitem>
+	<para>原文に含まれているローカルファイルへのハイパーリンクは削除したか、Boost のサイトへのリンクに変更しました。</para>
+      </listitem>
+      <listitem>
+	<para>ファイル名、ディレクトリ名は <filename>pathname</filename> のように記します。</para>
+      </listitem>
+      <listitem>
+	<para>その他、読みやすくするためにいくつか書式の変更があります。</para>
+      </listitem>
+      <listitem>
+	<para>翻訳の誤り等は <link xlink:href="http://twitter.com/exeal">exeal</link> に連絡ください。</para>
+      </listitem>
+    </itemizedlist>
+  </note>
+
+  <section>
+    <title>概要</title>
+    
+    <para>
+      <emphasis>Boost.Python</emphasis> のバージョン2へようこそ。Boost.Python は、C++ と <link xlink:href="http://www.python.jp/">Python</link> プログラミング言語間のシームレスな相互運用を可能にするC++ライブラリである。新バージョンは、より便利で柔軟なインターフェイスを備えるために完全に一から書き直した。加えて以下の項目をサポートする機能を追加した：
+    </para>
+
+    <itemizedlist>
+      <listitem>
+	<para>参照とポインタ</para>
+      </listitem>
+      <listitem>
+	<para>大域に登録した型変換</para>
+      </listitem>
+      <listitem>
+	<para>モジュール間の自動的な型変換</para>
+      </listitem>
+      <listitem>
+	<para>効率的な関数多重定義</para>
+      </listitem>
+      <listitem>
+	<para>C++ 例外の Python への変換</para>
+      </listitem>
+      <listitem>
+	<para>既定の引数</para>
+      </listitem>
+      <listitem>
+	<para>キーワード引数</para>
+      </listitem>
+      <listitem>
+	<para>C++ における Python オブジェクトの操作</para>
+      </listitem>
+      <listitem>
+	<para>C++ のイテレータを Python のイテレータとしてエクスポート</para>
+      </listitem>
+      <listitem>
+	<para>ドキュメンテーション文字列</para>
+      </listitem>
+    </itemizedlist>
+
+    <para>
+      これらの機能の開発は、<link xlink:href="http://www.boost-consulting.com/">Boost Consulting</link> に対する <link xlink:href="http://www.llnl.gov/">Lawrence Livemore National Laboratories</link> の一部助成と、Lawrence Berkeley National Laboratories の <link xlink:href="http://cci.lbl.gov/">Computational Crystallography Initiative</link> に提供を受けた。
+    </para>
+  </section>
+
+  <section>
+    <xi:include href="tutorial.xml"/><!--
+    <xi:include href="building.xml"/>
+    <xi:include href="v2/reference.xml"/>
+    <xi:include href="v2/configuration.xml"/>
+    <xi:include href="v2/platforms.xml"/>
+    <xi:include href="v2/definitions.xml"/>
+    <xi:include href="v2/projects.xml"/>
+    <xi:include href="v2/support.xml"/>
+    <xi:include href="v2/faq.xml"/>
+    <xi:include href="pyste.xml"/>
+    <xi:include href="internals.xml"/>
+    <xi:include href="news.xml"/>
+    <xi:include href="todo.xml"/>
+    <xi:include href="v2/progress_reports.xml"/>
+    <xi:include href="v2/acknowledgements.xml"/>-->
+  </section>
+
+  <section>
+    <title>記事</title><!--
+    <xi:include href="PyConDC_2003/bpl.xml"/>-->
+  </section>
+</chapter>
