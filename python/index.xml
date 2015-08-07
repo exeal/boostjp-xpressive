@@ -88,23 +88,21 @@
     </para>
   </section>
 
-  <section>
-    <xi:include href="tutorial.xml"/><!--
-    <xi:include href="building.xml"/>
-    <xi:include href="v2/reference.xml"/>
-    <xi:include href="v2/configuration.xml"/>
-    <xi:include href="v2/platforms.xml"/>
-    <xi:include href="v2/definitions.xml"/>
-    <xi:include href="v2/projects.xml"/>
-    <xi:include href="v2/support.xml"/>
-    <xi:include href="v2/faq.xml"/>
-    <xi:include href="pyste.xml"/>
-    <xi:include href="internals.xml"/>
-    <xi:include href="news.xml"/>
-    <xi:include href="todo.xml"/>
-    <xi:include href="v2/progress_reports.xml"/>
-    <xi:include href="v2/acknowledgements.xml"/>-->
-  </section>
+  <xi:include href="tutorial.xml"/>
+  <xi:include href="building.xml"/><!--
+  <xi:include href="v2/reference.xml"/>-->
+  <xi:include href="v2/configuration.xml"/><!--
+  <xi:include href="v2/platforms.xml"/>
+  <xi:include href="v2/definitions.xml"/>
+  <xi:include href="v2/projects.xml"/>
+  <xi:include href="v2/support.xml"/>
+  <xi:include href="v2/faq.xml"/>
+  <xi:include href="pyste.xml"/>
+  <xi:include href="internals.xml"/>
+  <xi:include href="news.xml"/>
+  <xi:include href="todo.xml"/>
+  <xi:include href="v2/progress_reports.xml"/>
+  <xi:include href="v2/acknowledgements.xml"/>-->
 
   <section>
     <title>記事</title><!--
