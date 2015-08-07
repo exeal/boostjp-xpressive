@@ -91,8 +91,8 @@
   <xi:include href="tutorial.xml"/>
   <xi:include href="building.xml"/><!--
   <xi:include href="v2/reference.xml"/>-->
-  <xi:include href="v2/configuration.xml"/><!--
-  <xi:include href="v2/platforms.xml"/>
+  <xi:include href="v2/configuration.xml"/>
+  <xi:include href="v2/platforms.xml"/><!--
   <xi:include href="v2/definitions.xml"/>
   <xi:include href="v2/projects.xml"/>
   <xi:include href="v2/support.xml"/>
