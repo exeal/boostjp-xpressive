@@ -95,8 +95,8 @@
   <xi:include href="v2/platforms.xml"/>
   <xi:include href="v2/definitions.xml"/>
   <xi:include href="projects.xml"/>
-  <xi:include href="support.xml"/><!--
-  <xi:include href="v2/faq.xml"/>
+  <xi:include href="support.xml"/>
+  <xi:include href="v2/faq.xml"/><!--
   <xi:include href="pyste.xml"/>
   <xi:include href="internals.xml"/>
   <xi:include href="news.xml"/>
