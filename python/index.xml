@@ -88,6 +88,27 @@
     </para>
   </section>
 
+  <toc>
+    <title>目次</title>
+    <tocentry><xref xrefstyle="select: title" linkend="tutorial"/></tocentry>
+    <tocentry><xref xrefstyle="select: title" linkend="building"/></tocentry>
+    <tocentry><xref xrefstyle="select: title" linkend="v2.reference"/></tocentry>
+    <tocentry><xref xrefstyle="select: title" linkend="v2.configuration"/></tocentry>
+    <tocentry><xref xrefstyle="select: title" linkend="v2.platforms"/></tocentry>
+    <tocentry><xref xrefstyle="select: title" linkend="v2.definitions"/></tocentry>
+    <tocentry><xref xrefstyle="select: title" linkend="projects"/></tocentry>
+    <tocentry><xref xrefstyle="select: title" linkend="support"/></tocentry>
+    <tocentry><xref xrefstyle="select: title" linkend="v2.faq"/></tocentry>
+    <tocentry><link xlink:href="http://www.language-binding.net/pyplusplus/pyplusplus.html">Py++ Boost.Python コード生成器</link></tocentry>
+    <tocentry><link xlink:href="http://www.boost.org/libs/python/pyste/">Pyste Boost.Python コード生成器</link></tocentry>
+    <tocentry><xref xrefstyle="select: title" linkend="internals"/></tocentry>
+    <tocentry><xref xrefstyle="select: title" linkend="news"/></tocentry>
+    <tocentry><xref xrefstyle="select: title" linkend="todo"/></tocentry>
+    <tocentry><xref xrefstyle="select: title" linkend="v2.progress_reports"/></tocentry>
+    <tocentry><xref xrefstyle="select: title" linkend="v2.acknowledgements"/></tocentry>
+    <tocentry/>
+  </toc>
+  
   <xi:include href="tutorial.xml"/>
   <xi:include href="building.xml"/><!--
   <xi:include href="v2/reference.xml"/>-->
@@ -96,9 +117,8 @@
   <xi:include href="v2/definitions.xml"/>
   <xi:include href="projects.xml"/>
   <xi:include href="support.xml"/>
-  <xi:include href="v2/faq.xml"/><!--
-  <xi:include href="pyste.xml"/>
-  <xi:include href="internals.xml"/>
+  <xi:include href="v2/faq.xml"/>
+  <xi:include href="internals.xml"/><!--
   <xi:include href="news.xml"/>
   <xi:include href="todo.xml"/>
   <xi:include href="v2/progress_reports.xml"/>
