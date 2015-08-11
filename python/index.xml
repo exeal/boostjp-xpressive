@@ -120,9 +120,9 @@
   <xi:include href="v2/faq.xml"/>
   <xi:include href="internals.xml"/>
   <xi:include href="news.xml"/>
-  <xi:include href="todo.xml"/><!--
+  <xi:include href="todo.xml"/>
   <xi:include href="v2/progress_reports.xml"/>
-  <xi:include href="v2/acknowledgements.xml"/>-->
+  <xi:include href="v2/acknowledgements.xml"/>
 
   <section>
     <title>記事</title><!--
