@@ -1,16 +1,33 @@
 <?xml version="1.0" ?>
-<!--
-  Copyright (c) 2002-2003 Dave Abrahams
-  Distributed under the Boost Software License, Version 1.0. (See accompanying
-  file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
--->
 <chapter xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink" xml:lang="ja" version="5.0">
   <info>
     <title>Boost.Python（日本語訳）</title>
+    <authorgroup>
+      <author>
+	<personname>
+	  <surname>Abrahams</surname>
+	  <firstname>David</firstname>
+	</personname>
+      </author>
+      <author>
+	<personname>
+	  <surname>Seefeld</surname>
+	  <firstname>Stefan</firstname>
+	</personname>
+      </author>
+    </authorgroup>
     <copyright>
-      <year>2002-2003</year>
+      <year>2002 - 2015</year>
       <holder>Dave Abrahams</holder>
+      <holder>Stefan Seefeld</holder>
     </copyright>
+    <legalnotice>
+      <remark>
+	Distributed under the Boost Software License, Version 1.0.
+        (See accompanying file LICENSE_1_0.txt or copy at
+        <link xlink:href="http://www.boost.org/LICENSE_1_0.txt">http://www.boost.org/LICENSE_1_0.txt</link>
+      </remark>
+    </legalnotice>
   </info>
 
   <note>
@@ -43,89 +60,129 @@
     </itemizedlist>
   </note>
 
-  <section>
-    <title>概要</title>
-    
-    <para>
-      <emphasis>Boost.Python</emphasis> のバージョン2へようこそ。Boost.Python は、C++ と <link xlink:href="http://www.python.jp/">Python</link> プログラミング言語間のシームレスな相互運用を可能にするC++ライブラリである。新バージョンは、より便利で柔軟なインターフェイスを備えるために完全に一から書き直した。加えて以下の項目をサポートする機能を追加した：
-    </para>
+  <section xml:id="python">
+    <title/>
 
-    <itemizedlist>
-      <listitem>
-	<para>参照とポインタ</para>
-      </listitem>
-      <listitem>
-	<para>大域に登録した型変換</para>
-      </listitem>
-      <listitem>
-	<para>モジュール間の自動的な型変換</para>
-      </listitem>
-      <listitem>
-	<para>効率的な関数多重定義</para>
-      </listitem>
-      <listitem>
-	<para>C++ 例外の Python への変換</para>
-      </listitem>
-      <listitem>
-	<para>既定の引数</para>
-      </listitem>
-      <listitem>
-	<para>キーワード引数</para>
-      </listitem>
-      <listitem>
-	<para>C++ における Python オブジェクトの操作</para>
-      </listitem>
-      <listitem>
-	<para>C++ のイテレータを Python のイテレータとしてエクスポート</para>
-      </listitem>
-      <listitem>
-	<para>ドキュメンテーション文字列</para>
-      </listitem>
-    </itemizedlist>
+    <section xml:id="python.synopsis">
+      <title>概要</title>
 
-    <para>
-      これらの機能の開発は、<link xlink:href="http://www.boost-consulting.com/">Boost Consulting</link> に対する <link xlink:href="http://www.llnl.gov/">Lawrence Livemore National Laboratories</link> の一部助成と、Lawrence Berkeley National Laboratories の <link xlink:href="http://cci.lbl.gov/">Computational Crystallography Initiative</link> に提供を受けた。
-    </para>
+      <para>
+	Boost.Python へようこそ。Boost.Python は、C++ と <link xlink:href="http://www.python.jp/">Python</link> プログラミング言語間のシームレスな相互運用を可能にする C++ ライブラリである。以下の項目をサポートする：
+      </para>
+
+      <itemizedlist>
+	<listitem>
+	  <para>参照とポインタ</para>
+	</listitem>
+	<listitem>
+	  <para>大域に登録した型変換</para>
+	</listitem>
+	<listitem>
+	  <para>モジュール間の自動的な型変換</para>
+	</listitem>
+	<listitem>
+	  <para>効率的な関数多重定義</para>
+	</listitem>
+	<listitem>
+	  <para>C++ 例外の Python への変換</para>
+	</listitem>
+	<listitem>
+	  <para>既定の引数</para>
+	</listitem>
+	<listitem>
+	  <para>キーワード引数</para>
+	</listitem>
+	<listitem>
+	  <para>C++ における Python オブジェクトの操作</para>
+	</listitem>
+	<listitem>
+	  <para>C++ のイテレータを Python のイテレータとしてエクスポート</para>
+	</listitem>
+	<listitem>
+	  <para>ドキュメンテーション文字列</para>
+	</listitem>
+      </itemizedlist>
+
+      <para>
+	これらの機能の開発は、<wordasword>Boost Consulting</wordasword> に対する <link xlink:href="http://www.llnl.gov/">Lawrence Livemore National Laboratories</link> の一部助成と、Lawrence Berkeley National Laboratories の <link xlink:href="http://cci.lbl.gov/">Computational Crystallography Initiative</link> に提供を受けた。
+      </para>
+    </section>
+<!--
+    <section xml:id="python.contents">
+      <title>目次</title>
+      <itemizedlist>
+	<listitem>
+	  <para><xref xrefstyle="select: title" linkend="tutorial"/></para>
+	</listitem>
+	<listitem>
+	  <para><xref xrefstyle="select: title" linkend="building"/></para>
+	</listitem>
+	<listitem>
+	  <para><xref xrefstyle="select: title" linkend="reference"/></para>
+	</listitem>
+	<listitem>
+	  <para><xref xrefstyle="select: title" linkend="configuration"/></para>
+	</listitem>
+	<listitem>
+	  <para><xref xrefstyle="select: title" linkend="glossary"/></para>
+	</listitem>
+	<listitem>
+	  <para><xref xrefstyle="select: title" linkend="support"/></para>
+	</listitem>
+	<listitem>
+	  <para><xref xrefstyle="select: title" linkend="faq"/></para>
+	</listitem>
+      </itemizedlist>
+
+      <note>
+	<para>訳注：以前のドキュメントには次の記事がありましたが削除されました。</para>
+	<itemizedlist>
+	  <listitem>
+	    <para><xref xrefstyle="select: title" linkend="platforms"/></para>
+	  </listitem>
+	  <listitem>
+	    <para><xref xrefstyle="select: title" linkend="projects"/></para>
+	  </listitem>
+	  <listitem>
+	    <para><link xlink:href="http://www.language-binding.net/pyplusplus/pyplusplus.html">Py++ Boost.Python コード生成器</link></para>
+	  </listitem>
+	  <listitem>
+	    <para><link xlink:href="http://www.boost.org/libs/python/pyste/">Pyste Boost.Python コード生成器</link></para>
+	  </listitem>
+	  <listitem>
+	    <para><xref xrefstyle="select: title" linkend="internals"/></para>
+	  </listitem>
+	  <listitem>
+	    <para><xref xrefstyle="select: title" linkend="news"/></para>
+	  </listitem>
+	  <listitem>
+	    <para><xref xrefstyle="select: title" linkend="todo"/></para>
+	  </listitem>
+	  <listitem>
+	    <para><xref xrefstyle="select: title" linkend="progress_reports"/></para>
+	  </listitem>
+	  <listitem>
+	    <para><xref xrefstyle="select: title" linkend="acknowledgements"/></para>
+	  </listitem>
+	</itemizedlist>
+      </note>
+    </section>
+-->    
+    <section xml:id="python.articles">
+      <title>記事</title>
+      <para>
+	Dave Abrahams and Ralf W. Grosse-Kunstleve による『<link xlink:href="http://boostorg.github.io/python/doc/html/article.html">Building Hybrid Systems With Boost Python</link>』。
+	<!-- 未訳 -->
+      </para>
+    </section>
   </section>
 
-  <toc>
-    <title>目次</title>
-    <tocentry><xref xrefstyle="select: title" linkend="tutorial"/></tocentry>
-    <tocentry><xref xrefstyle="select: title" linkend="building"/></tocentry>
-    <tocentry><xref xrefstyle="select: title" linkend="v2.reference"/></tocentry>
-    <tocentry><xref xrefstyle="select: title" linkend="v2.configuration"/></tocentry>
-    <tocentry><xref xrefstyle="select: title" linkend="v2.platforms"/></tocentry>
-    <tocentry><xref xrefstyle="select: title" linkend="v2.definitions"/></tocentry>
-    <tocentry><xref xrefstyle="select: title" linkend="projects"/></tocentry>
-    <tocentry><xref xrefstyle="select: title" linkend="support"/></tocentry>
-    <tocentry><xref xrefstyle="select: title" linkend="v2.faq"/></tocentry>
-    <tocentry><link xlink:href="http://www.language-binding.net/pyplusplus/pyplusplus.html">Py++ Boost.Python コード生成器</link></tocentry>
-    <tocentry><link xlink:href="http://www.boost.org/libs/python/pyste/">Pyste Boost.Python コード生成器</link></tocentry>
-    <tocentry><xref xrefstyle="select: title" linkend="internals"/></tocentry>
-    <tocentry><xref xrefstyle="select: title" linkend="news"/></tocentry>
-    <tocentry><xref xrefstyle="select: title" linkend="todo"/></tocentry>
-    <tocentry><xref xrefstyle="select: title" linkend="v2.progress_reports"/></tocentry>
-    <tocentry><xref xrefstyle="select: title" linkend="v2.acknowledgements"/></tocentry>
-    <tocentry/>
-  </toc>
-  
   <xi:include href="tutorial.xml"/>
-  <xi:include href="building.xml"/><!--
-  <xi:include href="v2/reference.xml"/>-->
-  <xi:include href="v2/configuration.xml"/>
-  <xi:include href="v2/platforms.xml"/>
-  <xi:include href="v2/definitions.xml"/>
-  <xi:include href="projects.xml"/>
+  <xi:include href="building.xml"/>
+  <xi:include href="reference.xml"/>
+  <xi:include href="configuration.xml"/>
+  <xi:include href="glossary.xml"/>
   <xi:include href="support.xml"/>
-  <xi:include href="v2/faq.xml"/>
-  <xi:include href="internals.xml"/>
-  <xi:include href="news.xml"/>
-  <xi:include href="todo.xml"/>
-  <xi:include href="v2/progress_reports.xml"/>
-  <xi:include href="v2/acknowledgements.xml"/>
-
-  <section>
-    <title>記事</title><!--
-    <xi:include href="PyConDC_2003/bpl.xml"/>-->
-  </section>
+  <xi:include href="faq.xml"/>
+  <xi:include href="v2.xml"/>
 </chapter>
