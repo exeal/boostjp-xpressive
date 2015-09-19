@@ -1,27 +1,24 @@
 <?xml version="1.0" ?>
-<!--
-  Copyright David Abrahams 2006. Distributed under the Boost
-  Software License, Version 1.0. (See accompanying
-  file LICENSE_1_0.txt or copy at
-  http://www.boost.org/LICENSE_1_0.txt)
--->
-<section xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xml:lang="ja" version="5.0" xml:id="v2.definitions">
-  <title>定義</title>
+<chapter xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xml:lang="ja" version="5.0" xml:id="glossary">
+  <title>用語</title>
   <para/>
 
   <glossary>
     <title/>
 
-    <glossentry xml:id="v2.definitions.arity">
+    <glossentry xml:id="glossary.arity">
       <glossterm>arity</glossterm>
       <glossdef>
 	<para>
 	  関数、メンバ関数が受け取る引数の数。特に指定がない限り、メンバ関数の不可視な <code language="C++">this</code> 引数は数に含まれない。
+	  <footnote>
+	    <para>訳注：日本語訳では「引数長」と記述します。</para>
+	  </footnote>
 	</para>
       </glossdef>
     </glossentry>
 
-    <glossentry xml:id="v2.definitions.ntbs">
+    <glossentry xml:id="glossary.ntbs">
       <glossterm>ntbs</glossterm>
       <glossdef>
 	<para>
@@ -30,16 +27,19 @@
       </glossdef>
     </glossentry>
 
-    <glossentry xml:id="v2.definitions.raise">
+    <glossentry xml:id="glossary.raise">
       <glossterm>raise</glossterm>
       <glossdef>
 	<para>
-	  Python において例外は、C++ のように「投げられる（<foreignphrase xml:lang="en">thrown</foreignphrase>）」のではなく「送出される（<foreignphrase xml:lang="en">raised</foreignphrase>）」。このドキュメントにおいて C++ コードの文脈で Python 例外が「送出される」とは、対応する Python 例外が <link xlink:href="http://docs.python.jp/2/c-api/exceptions.html">Python/'C' API</link> で設定され <methodname linkend="v2.errors.throw_error_already_set-spec">throw_error_already_set()</methodname> が呼び出されるという意味である。
+	  Python において例外は、C++ のように「投げられる（<foreignphrase xml:lang="en">thrown</foreignphrase>）」のではなく「送出される（<foreignphrase xml:lang="en">raised</foreignphrase>）」。このドキュメントにおいて C++ コードの文脈で Python 例外が「送出される」とは、対応する Python 例外が <link xlink:href="http://docs.python.jp/2/c-api/exceptions.html">Python/'C' API</link> で設定され <methodname>throw_error_already_set()</methodname> が呼び出されるという意味である。
+	  <footnote>
+	    <para>訳注：日本語訳では「送出する」と記述します。</para>
+	  </footnote>
 	</para>
       </glossdef>
     </glossentry>
 
-    <glossentry xml:id="v2.definitions.POD">
+    <glossentry xml:id="glossary.POD">
       <glossterm>POD</glossterm>
       <glossdef>
 	<para>
@@ -48,7 +48,7 @@
       </glossdef>
     </glossentry>
 
-    <glossentry xml:id="v2.definitions.ODR">
+    <glossentry xml:id="glossary.ODR">
       <glossterm>ODR</glossterm>
       <glossdef>
 	<para>
@@ -57,4 +57,4 @@
       </glossdef>
     </glossentry>
   </glossary>
-</section>
+</chapter>

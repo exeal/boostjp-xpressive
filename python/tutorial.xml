@@ -1,5 +1,5 @@
 <?xml version="1.0" ?>
-<section xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xml:lang="ja" version="5.0" xml:id="tutorial">
+<article xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xml:lang="ja" version="5.0" xml:id="tutorial">
   <info>
     <title>チュートリアル</title>
     <authorgroup>
@@ -24,10 +24,13 @@
       <holder>Joel de Guzman</holder>
       <holder>David Abrahams</holder>
     </copyright>
-    <!--
+    <legalnotice>
+      <remark>
 	Distributed under the Boost Software License, Version 1.0.
-        (See accompanying file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
-    -->
+        (See accompanying file LICENSE_1_0.txt or copy at
+        <link xlink:href="http://www.boost.org/LICENSE_1_0.txt">http://www.boost.org/LICENSE_1_0.txt</link>
+      </remark>
+    </legalnotice>
   </info>
 
   <section xml:id="tutorial.quickstart">
@@ -36,7 +39,7 @@
       Boost.Python ライブラリは Python と C++ 間のインターフェイスのためのフレームワークである。C++ のクラス、関数、オブジェクトをすばやくシームレスに Python へエクスポートでき、また逆に Python から C++ へエクスポートできる。特別なツールは必要なく、あなたのコンパイラだけで可能だ。このライブラリは C++ インターフェイスを非侵入的にラップするよう設計されており、C++ コードを変更する必要は一切ない。このため、サードパーティ製ライブラリを Python へエクスポートするには Boost.Python が最適である。ライブラリは高度なメタプログラミング技術を使ってその構文を単純化しており、コードのラッピングは宣言的なインターフェイス定義言語（IDL）のような見た目になっている。
     </para>
 
-    <section>
+    <section xml:id="tutorial.quickstart.hello_world">
       <title>Hello World</title>
       <para>
 	C/C++ の伝統に従い「hello, world」から始めるとしよう。
@@ -68,10 +71,10 @@ BOOST_PYTHON_MODULE(hello_ext)
       次回、「Hello Worldモジュールのビルド」。
   -->
 
-  <section xml:id="hello">
+  <section xml:id="tutorial.hello">
     <title>Hello World のビルド</title>
 
-    <section>
+    <section xml:id="tutorial.hello.from_start_to_finish">
       <title>始めから終わりまで</title>
       <para>
 	まず最初は Hello World モジュールをビルドして Python で使ってみることだろう。本節でそのためのステップを明らかにする。あらゆる Boost ディストリビューションに付属するビルドツールである <command>bjam</command> を使用する。
@@ -110,7 +113,7 @@ BOOST_PYTHON_MODULE(hello_ext)
       </para>
     </section>
 
-    <section>
+    <section xml:id="tutorial.hello.let_s_jam">
       <title>Jam ろう！</title>
       <para>
 	最小限の Jamroot ファイルを <filename>/libs/python/example/tutorial/Jamroot</filename> に置いておく。そのままファイルをコピーして <code>use-project boost</code> の部分を Boost のルートディレクトリに設定すればよい。
@@ -120,7 +123,7 @@ BOOST_PYTHON_MODULE(hello_ext)
       </para>
     </section>
 
-    <section>
+    <section xml:id="tutorial.hello.running_bjam">
       <title>bjam を起動する</title>
       <para>
 	オペレーティングシステムのコマンドラインインタープリタから <command>bjam</command> を起動する。
@@ -171,7 +174,7 @@ using python : 2.4 : C:/dev/tools/Python ;</programlisting>
     </section>
   </section>
 
-  <section xml:id="exposing">
+  <section xml:id="tutorial.exposing">
     <title>クラスのエクスポート</title>
     <para>
       では C++ クラスを Python へエクスポートしよう。
@@ -392,31 +395,32 @@ def("factory", factory,
 	<classname>Base</classname> の継承に加え、<classname>wrapper&lt;Base&gt;</classname> を多重継承していることに注意していただきたい（<link linkend="header.wrapper_hpp">ラッパ</link>の節を見よ）。<classname>wrapper</classname> テンプレートはラップするクラスをPython側でオーバーライドできるようにする段取りを容易にする。
       </para>
 
-      <section>
+      <caution>
 	<title>msvc6/7 におけるバグの回避方法</title>
 	<para>
 	  Microsoft Visual C++ のバージョン 6 か 7 を使っている場合、<methodname>f</methodname> は次のように書かなければならない。
 	</para>
 	<programlisting language="C++">return call&lt;int&gt;(this-&gt;get_override("f").ptr());</programlisting>
-	<para>
-	  <classname>BaseWrap</classname> のオーバーライドされた仮想メンバ関数 <methodname>f</methodname> は、実際には <methodname>get_override</methodname> を介して Python オブジェクトの相当するメソッドを呼び出す。
-	</para>
-	<para>
-	  最後に <classname>Base</classname> をエクスポートする。
-	</para>
-	<programlisting language="C++">class_&lt;BaseWrap, boost::noncopyable&gt;("Base")
+      </caution>
+      
+      <para>
+	<classname>BaseWrap</classname> のオーバーライドされた仮想メンバ関数 <methodname>f</methodname> は、実際には <methodname>get_override</methodname> を介して Python オブジェクトの相当するメソッドを呼び出す。
+      </para>
+      <para>
+	最後に <classname>Base</classname> をエクスポートする。
+      </para>
+      <programlisting language="C++">class_&lt;BaseWrap, boost::noncopyable&gt;("Base")
     .def("f", pure_virtual(&amp;Base::f))
     ;</programlisting>
+      <para>
+	<function>pure_virtual</function> は、関数 <methodname>f</methodname> が純粋仮想関数であることを Boost.Python に伝える。
+      </para>
+      <note>
+	<title>メンバ関数とメソッド</title>
 	<para>
-	  <function>pure_virtual</function> は、関数 <methodname>f</methodname> が純粋仮想関数であることを Boost.Python に伝える。
+	  Python をはじめ、多くのオブジェクト指向言語では<emphasis>メソッド（<foreignphrase xml:lang="en">methods</foreignphrase>）</emphasis>という用語を使う。メソッドは大雑把に言えば C++ の<emphasis>メンバ関数（<foreignphrase xml:lang="en">member functions</foreignphrase>）</emphasis>に相当する。
 	</para>
-	<note>
-	  <title>メンバ関数とメソッド</title>
-	  <para>
-	    Python をはじめ、多くのオブジェクト指向言語では<emphasis>メソッド（<foreignphrase xml:lang="en">methods</foreignphrase>）</emphasis>という用語を使う。メソッドは大雑把に言えば C++ の<emphasis>メンバ関数（<foreignphrase xml:lang="en">member functions</foreignphrase>）</emphasis>に相当する。
-	  </para>
-	</note>
-      </section>
+      </note>
     </section>
 
     <section xml:id="tutorial.exposing.virtual_functions_with_default_implementations">
@@ -457,47 +461,48 @@ def("factory", factory,
 	<methodname>BaseWrap::f</methodname> の実装方法に注意していただきたい。この場合、<methodname>f</methodname> のオーバーライドが存在するかチェックしなければならない。存在しなければ <methodname>Base::f()</methodname> を呼び出すとよい。
       </para>
 
-      <section>
+      <caution>
 	<title>MSVC6/7 におけるバグの回避方法</title>
 	<para>
 	  Microsoft Visual C++ のバージョン 6 か 7 を使っている場合、＊注意＊と書いた行を次のように変更しなければならない。
 	</para>
 	<programlisting language="C++">return call&lt;char const*&gt;(f.ptr());</programlisting>
-	<para>
-	  最後にエスクポートを行う。
-	</para>
-	<programlisting language="C++">class_&lt;BaseWrap, boost::noncopyable&gt;("Base")
+      </caution>
+
+      <para>
+	最後にエスクポートを行う。
+      </para>
+      <programlisting language="C++">class_&lt;BaseWrap, boost::noncopyable&gt;("Base")
     .def("f", &amp;Base::f, &amp;BaseWrap::default_f)
     ;</programlisting>
-	<para>
-	  <methodname>&amp;Base::f</methodname> と <methodname>&amp;BaseWrap::default_f</methodname> の両方をスクスポートしていることに注意していただきたい。Boost.Python は（1）転送（<foreignphrase xml:lang="en">dispatch</foreignphrase>）関数fと（2）既定の実装への転送（<foreignphrase xml:lang="en">forwarding</foreignphrase>）関数 <methodname>default_f</methodname> の追跡を維持しなければならない。この目的のための特別な <methodname>def</methodname> 関数が用意されている。
-	</para>
-	<para>
-	  Python 側では結果的に次のようになる。
-	</para>
-	<screen language="Python"><prompt>&gt;&gt;&gt; </prompt><userinput>base = Base()</userinput>
+      <para>
+	<methodname>&amp;Base::f</methodname> と <methodname>&amp;BaseWrap::default_f</methodname> の両方をスクスポートしていることに注意していただきたい。Boost.Python は（1）転送（<foreignphrase xml:lang="en">dispatch</foreignphrase>）関数fと（2）既定の実装への転送（<foreignphrase xml:lang="en">forwarding</foreignphrase>）関数 <methodname>default_f</methodname> の追跡を維持しなければならない。この目的のための特別な <methodname>def</methodname> 関数が用意されている。
+      </para>
+      <para>
+	Python 側では結果的に次のようになる。
+      </para>
+      <screen language="Python"><prompt>&gt;&gt;&gt; </prompt><userinput>base = Base()</userinput>
 <prompt>&gt;&gt;&gt; </prompt><userinput>class Derived(Base):
 ...     def f(self):
 ...         return 42
 ...</userinput>
 <prompt>&gt;&gt;&gt; </prompt><userinput>derived = Derived()</userinput></screen>
-	<para>
-	  <methodname>base.f()</methodname> を呼び出すと次のようになる。
-	</para>
-	<programlisting language="Python"><prompt>&gt;&gt;&gt; </prompt><userinput>base.f()</userinput>
+      <para>
+	<methodname>base.f()</methodname> を呼び出すと次のようになる。
+      </para>
+      <programlisting language="Python"><prompt>&gt;&gt;&gt; </prompt><userinput>base.f()</userinput>
 <computeroutput>0</computeroutput></programlisting>
-	<para>
-	  <methodname>derived.f()</methodname> を呼び出すと次のようになる。
-	</para>
-	<programlisting language="Python"><prompt>&gt;&gt;&gt; </prompt><userinput>derived.f()</userinput>
+      <para>
+	<methodname>derived.f()</methodname> を呼び出すと次のようになる。
+      </para>
+      <programlisting language="Python"><prompt>&gt;&gt;&gt; </prompt><userinput>derived.f()</userinput>
 <computeroutput>42</computeroutput></programlisting>
-      </section>
     </section>
 
     <section xml:id="tutorial.exposing.class_operators_special_functions">
       <title>演算子・特殊関数</title>
 
-      <section>
+      <section xml:id="tutorial.exposing.class_operators_special_functions.python_operators">
 	<title>Python の演算子</title>
 	<para>
 	  C は演算子が豊富なことでよく知られている。C++ はこれを演算子の多重定義を認めることにより極限まで拡張した。Boost.Python はこれを利用して、演算子を多用した C++ クラスのラップを容易にする。
@@ -530,7 +535,7 @@ bool        operator&lt;(FilePos, FilePos);</programlisting>
 	</para>
       </section>
 
-      <section>
+      <section xml:id="tutorial.exposing.class_operators_special_functions.special_methods">
 	<title>特殊メソッド</title>
 	<para>
 	  Python には他にいくつか<emphasis>特殊メソッド</emphasis>がある。Boost.Python は、実際の Python クラスインスタンスがサポートする標準的な特殊メソッド名をすべてサポートする。直感的なインターフェイス群で、これらの Python <emphasis>特殊関数</emphasis>に相当する C++ 関数をラップできる。以下に例を示す。
@@ -899,7 +904,7 @@ int f2(int x, double y) { return f(x,y); }
 	</listitem>
       </itemizedlist>
 
-      <section>
+      <section xml:id="tutorial.functions.default_arguments.boost_python_function_overloads">
 	<title>BOOST_PYTHON_FUNCTION_OVERLOADS</title>
 	<para>
 	  Boost.Python はこれを容易にする方法を提供する。例えば次の関数が与えられたとする。
@@ -918,7 +923,7 @@ int f2(int x, double y) { return f(x,y); }
 	<programlisting language="C++">def("foo", foo, foo_overloads());</programlisting>
       </section>
 
-      <section>
+      <section xml:id="tutorial.functions.default_arguments.boost_python_member_function_overloads">
 	<title>BOOST_PYTHON_MEMBER_FUNCTION_OVERLOADS</title>
 	<para>
 	  オブジェクトはここにも、そこにも、あそこにも、どこにでもある。Python にエクスポートするのは、クラスのメンバ関数が最も頻度が高い。ここでまた、以前の既定の引数や引数の先頭部分が共通列である多重定義の場合の不便が出てくる。これを容易にするマクロが提供されている。
@@ -947,7 +952,7 @@ int f2(int x, double y) { return f(x,y); }
 	</para>
       </section>
 
-      <section>
+      <section xml:id="tutorial.functions.default_arguments.init_and_optional">
 	<title>init と optional</title>
 	<para>
 	  クラスのコンストラクタ、特に既定の引数と多重定義については類似の機能が提供されている。<classname>init&lt;...&gt;</classname> を覚えているだろうか？ 例えばクラス <classname>X</classname> とそのコンストラクタがあるとすると、
@@ -1003,7 +1008,7 @@ void foo(bool a, int b, char c)
 	この例では引数の個数は最少で 0 、最多で 3 となっていることに注意していただきたい。
       </para>
 
-      <section>
+      <section xml:id="tutorial.functions.auto_overloading.manual_wrapping">
 	<title>手動のラッピング</title>
 	<para>
 	  <emphasis>多重定義した関数は引数列の先頭に共通部分を持っていなければならない</emphasis>ということを強調しておく。それ以外の場合、上で述べた方法は動作せず、関数を<link linkend="tutorial.functions.overloading">手動で</link>ラップしなければならない。
@@ -1127,21 +1132,24 @@ object getfunc() {
       <para>
 	上記のコードのように Python の <code language="Python">"format" % x,y,z</code> を C++ で書ける。標準の C++ で同じことを簡単に行う方法がないため便利である。
       </para>
-      <para>
-	Python 同様、Python の可変型の多くがコンストラクタでコピーを行うというよく知られた落とし穴があるので注意が必要である。
-      </para>
-      <para>
-	Python の場合：
-      </para>
-      <screen language="Python"><prompt>&gt;&gt;&gt; </prompt><userinput>d = dict(x.__dict__)     # x.__dict__ をコピーする</userinput>
-<prompt>&gt;&gt;&gt; </prompt><userinput>d['whatever'] = 3        # コピーを変更する</userinput></screen>
-      <para>
-	C++ の場合：
-      </para>
-      <programlisting language="C++">dict d(x.attr("__dict__"));  // x.__dict__ をコピーする
-d['whatever'] = 3;           // コピーを変更する</programlisting>
 
-      <section>
+      <caution>
+	<para>
+	  Python 同様、Python の可変型の多くがコンストラクタでコピーを行うというよく知られた落とし穴があるので注意が必要である。
+	</para>
+	<para>
+	  Python の場合：
+	</para>
+	<screen language="Python"><prompt>&gt;&gt;&gt; </prompt><userinput>d = dict(x.__dict__)     # x.__dict__ をコピーする</userinput>
+<prompt>&gt;&gt;&gt; </prompt><userinput>d['whatever'] = 3        # コピーを変更する</userinput></screen>
+        <para>
+	  C++ の場合：
+	</para>
+	<programlisting language="C++">dict d(x.attr("__dict__"));  // x.__dict__ をコピーする
+d['whatever'] = 3;           // コピーを変更する</programlisting>
+      </caution>
+
+      <section xml:id="tutorial.object.derived_object_types.class_t_as_objects">
 	<title>object としての class_&lt;T&gt;</title>
 	<para>
 	  Boost.Python における <classname>object</classname> の動的な性質に従えば、あらゆる <classname>class_&lt;T&gt;</classname> もまたこれら型の 1 つである！ 以下のコード片はクラス（型）オブジェクトをラップする。
@@ -1256,7 +1264,7 @@ enum_&lt;X::nested&gt;("nested")
 
     <section>
       <title/>
-      <section>
+      <section xml:id="tutorial.embedding.building_embedded_programs">
 	<title>組み込みプログラムをビルドする</title>
 	<para>
 	  Python をプログラムに組み込み可能にするには、Python だけでなく Boost.Python 本体の実行時ライブラリにもリンクしなければならない。
@@ -1289,7 +1297,7 @@ exe embedded_program # 実行可能ファイルの名前
     &lt;find-library&gt;$(PYTHON_EMBEDDED_LIBRARY) ;</programlisting>
       </section>
 
-      <section>
+      <section xml:id="tutorial.embedding.getting_started">
 	<title>はじめに</title>
 	<para>
 	  ビルドできるようになったのはよいが、まだビルドするものがない。Python のインタープリタを C++ のプログラムに組み込むには、以下の 3 段階が必要である。
@@ -1325,7 +1333,7 @@ exe embedded_program # 実行可能ファイルの名前
 	すでに知っていることと思うが、Python のオブジェクトは参照カウントで管理されている。当然、Python C API の <type>PyObject</type> も参照カウンタを持っているが、違いがある。参照カウントは Python では完全に自動で行われているが、Python C API では<link xlink:href="http://docs.python.jp/2/c-api/refcounting.html">手動で</link>行う必要がある。これは厄介で、とりわけ C++ 例外が現れるコードで正しく取り扱うのが困難である。幸いにも Boost.Python には <classname linkend="header.handle_hpp">handle</classname> および <classname linkend="header.object_hpp">object</classname> クラステンプレートがあり、この処理を自動化できる。
       </para>
 
-      <section>
+      <section xml:id="tutorial.embedding.using_the_interpreter.running_python_code">
 	<title>Python のコードを起動する</title>
 	<para>
 	  Boost.Python は、C++ から Python のコードを起動する関数を 3 つ提供している。
@@ -1361,7 +1369,7 @@ object ignored = exec("hello = file('hello.txt', 'w')\n"
 	</para>
       </section>
 
-      <section>
+      <section xml:id="tutorial.embedding.using_the_interpreter.manipulating_python_objects">
 	<title>Python のオブジェクトを操作する</title>
 	<para>
 	  Python オブジェクトを操作するクラスを用意したいことがよくある。しかしすでに上記や<link linkend="tutorial.object">前節</link>でそのようなクラスを見た。文字通りの名前を持つ <classname>object</classname> とその派生型である。またそれらを <classname>handle</classname> から構築できることも見た。以下の例を見ればより明らかだろう。
@@ -1377,7 +1385,7 @@ int five_squared = extract&lt;int&gt;(main_namespace["result"]);</programlisting
 int five_squared = extract&lt;int&gt;(result);</programlisting>
       </section>
 
-      <section>
+      <section xml:id="tutorial.embedding.using_the_interpreter.exception_handling">
 	<title>例外処理</title>
 	<para>
 	  Python の式を評価中に例外を送出した場合、<exceptionname linkend="error_already_set">error_already_set</exceptionname> が投げられる。
@@ -1868,9 +1876,9 @@ BOOST_PYTHON_MODULE(_geom)
       </note>
       <note>
 	<para>
-	  巨大なソースファイルをコンパイルしてエラーメッセージ「致命的なエラー C1204：コンパイラの制限：内部構造がオーバーフローしました。」が出た場合にも、この方法を推奨する。<link linkend="v2.faq.c1204">FAQ</link> に説明がある。
+	  巨大なソースファイルをコンパイルしてエラーメッセージ「致命的なエラー C1204：コンパイラの制限：内部構造がオーバーフローしました。」が出た場合にも、この方法を推奨する。<link linkend="faq.fatal_error_c1204_compiler_limit">FAQ</link> に説明がある。
 	</para>
       </note>
     </section>
   </section>
-</section>
+</article>

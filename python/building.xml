@@ -1,15 +1,30 @@
 <?xml version="1.0" ?>
-<!--
-  Copyright David Abrahams 2006. Distributed under the Boost
-  Software License, Version 1.0. (See accompanying
-  file LICENSE_1_0.txt or copy at
-  http://www.boost.org/LICENSE_1_0.txt)
--->
-<section xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xml:lang="ja" version="5.0" xml:id="building">
-  <title>ビルドとテスト</title>
+<chapter xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xml:lang="ja" version="5.0" xml:id="building">
+  <info>
+    <title>ビルドとテスト</title>
+    <authorgroup>
+      <author>
+	<personname>
+	  <surname>Abrahams</surname>
+	  <firstname>David</firstname>
+	</personname>
+      </author>
+    </authorgroup>
+    <copyright>
+      <year>2002 - 2015</year>
+      <holder>Dave Abrahams</holder>
+      <holder>Stefan Seefeld</holder>
+    </copyright>
+  </info>
+  <!--
+      Copyright David Abrahams 2006. Distributed under the Boost
+      Software License, Version 1.0. (See accompanying
+      file LICENSE_1_0.txt or copy at
+      http://www.boost.org/LICENSE_1_0.txt)
+  -->
 
   <section xml:id="building.requirements">
-    <title>1 必要事項</title>
+    <title>必要事項</title>
     <para>
       Boost.Python は Python の<link xlink:href="http://www.python.org/2.2">バージョン 2.2</link>
       <footnote>
@@ -22,7 +37,7 @@
   </section>
 
   <section xml:id="building.background">
-    <title>2 背景</title>
+    <title>背景</title>
     <para>
       C++ と Python を組み合わせるための基本的なモデルは 2 つある。
     </para>
@@ -47,7 +62,7 @@
   </section>
 
   <section xml:id="building.no-install-quickstart">
-    <title>3 インストールなしのクイックスタート</title>
+    <title>インストールなしのクイックスタート</title>
     <para>
       Boost.Python を使い始めるのに「Boost をインストール」する必要はない。この説明では、必要なバイナリをすぐにビルドする <link xlink:href="http://www.boost.org/boost-build2/">Boost.Build</link> プロジェクトを利用する。最初のテストは Boost.Python のビルドより少し長くかかるかもしれないが、この方法であれば特定のコンパイラ設定に対してどのライブラリバイナリを使用すべきかといった厄介ごとに悩むことなく、正しいコンパイラオプションをあなた自身が理解できることだろう。
     </para>
@@ -60,8 +75,8 @@
       </para>
     </note>
 
-    <section xml:id="building.basic-procedure">
-      <title>3.1 基本的な手順</title>
+    <section xml:id="building.no_install_quickstart.basic_procedure">
+      <title>基本的な手順</title>
       <orderedlist>
 	<listitem>
 	  <para>
@@ -103,8 +118,8 @@
       </para>
     </section>
 
-    <section xml:id="building.in-case-of-trouble">
-      <title>3.2 問題が起きた場合</title>
+    <section xml:id="building.no_install_quickstart.in_case_of_trouble">
+      <title>問題が起きた場合</title>
       <para>
 	コンパイラやリンカのエラーメッセージが大量に表示された場合、Boost.Build が Python のインストール情報を見つけられていない可能性が高い。<command>bjam</command> を起動する最初の数回、<option>--debug-configuration</option> オプションを <command>bjam</command> に渡して Boost.Build が Python のインストール構成部分をすべて正しく見つけられているか確認することだ。失敗している場合は、以下の <link linkend="building.configuring-boost-build">Boost.Build を設定する</link>の節を試すとよい。
       </para>
@@ -125,15 +140,15 @@
       </itemizedlist>
     </section>
 
-    <section xml:id="building.in-case-everything-seemed-to-work">
-      <title>3.3 すべて問題ない場合</title>
+    <section xml:id="building.no_install_quickstart.in_case_everything_seemed_to_wor">
+      <title>すべて問題ない場合</title>
       <para>
-	おめでとう！ Boost.Python に慣れていなければ、この時点でしばらくビルドに関することを忘れ、<link linkend="tutorial">チュートリアル</link>や<link linkend="v2.reference">リファレンス</link>を通じてライブラリの学習に集中するとよいかもしれない。quickstart プロジェクトに変更を加えて、API について学んだことを十分に試してみるのもよい。
+	おめでとう！ Boost.Python に慣れていなければ、この時点でしばらくビルドに関することを忘れ、<link linkend="tutorial">チュートリアル</link>や<link linkend="reference">リファレンス</link>を通じてライブラリの学習に集中するとよいかもしれない。quickstart プロジェクトに変更を加えて、API について学んだことを十分に試してみるのもよい。
       </para>
     </section>
 
-    <section xml:id="building.modifying-the-example-project">
-      <title>3.4 サンプルプロジェクトを変更する</title>
+    <section xml:id="building.no_install_quickstart.modifying_the_example_project">
+      <title>サンプルプロジェクトを変更する</title>
       <para>
 	拡張モジュールを（Boost ディストリビューション内の 1 つのソースファイルである）<filename xlink:href="http://www.boost.org/doc/libs/python/example/quickstart/extending.cpp">extending.cpp</filename> 内に限定し、これを <package>extending</package> としてインポートすることに満足しているのであれば、ここでやめてしまってもよい。しかしながら少しぐらいは変更したいと思うことだろう。<link xlink:href="http://www.boost.org/boost-build2/">Boost.Build</link> について詳しく学ぶことなく先に進む方法はある。
       </para>
@@ -141,7 +156,7 @@
 	今ビルドしたプロジェクトは現在のディレクトリにある 2 つのファイルで規定されている。<filename xlink:href="http://www.boost.org/doc/libs/python/example/quickstart/boost-build.jam">boost-build.jam</filename> は Boost ビルドシステムのコードの場所を <command>bjam</command> に指定する。<filename xlink:href="http://www.boost.org/doc/libs/python/example/quickstart/Jamroot">Jamroot</filename> はビルドしたターゲットを記述する。これらのファイルにはコメントを大量に書いてあるので、変更は容易なはずである。ただし空白の保持には注意していただきたい。<code language="bjam">;</code> のような区切り文字は前後に空白がなければ <command>bjam</command> は認識しない。
       </para>
 
-      <section>
+      <section xml:id="building.no_install_quickstart.modifying_the_example_project.relocate_the_project">
 	<title>プロジェクトの場所を変更する</title>
 	<para>
 	  Boost ディストリビューションに変更が生じないよう、このプロジェクトをどこか他の場所にコピーしたいと思うことだろう。単純に次のようにする。
@@ -176,7 +191,7 @@
 	<literallayout><emphasis>/home/dave/boost_1_34_0</emphasis></literallayout>
       </section>
 
-      <section>
+      <section xml:id="building.no_install_quickstart.modifying_the_example_project.add_new_or_change_names_of_exist">
 	<title>新しいソースファイルを追加するか既存ファイルの名前を変更する</title>
 	<para>
 	  拡張モジュールや組み込みアプリケーションのビルドに必要なファイルの名前は、<filename xlink:href="http://www.boost.org/doc/libs/python/example/quickstart/Jamroot">Jamroot</filename> 内にそれぞれ <filename>extending.cpp</filename> 、<filename>embedding.cpp</filename> の右に並べて書く。各ファイル名の前後に空白を入れるのを忘れてはならない。
@@ -187,7 +202,7 @@
 	</para>
       </section>
 
-      <section>
+      <section xml:id="building.no_install_quickstart.modifying_the_example_project.change_the_name_of_your_extensio">
 	<title>拡張モジュールの名前を変更する</title>
 	<para>
 	  拡張モジュールの名前は以下の 2 つで決まる。
@@ -225,7 +240,7 @@
   </section>
 
   <section xml:id="building.installing-boost-python-on-your-system">
-    <title>4 システムに Boost.Python をインストールする</title>
+    <title>システムに Boost.Python をインストールする</title>
     <para>
       Boost.Python は（<link xlink:href="http://www.boost.org/more/getting_started/windows.html#header-only-libraries">ヘッダオンリーライブラリ</link>とは逆に）個別にコンパイルが必要なライブラリであるため、ユーザは Boost.Python ライブラリバイナリのサービスに依存する。
     </para>
@@ -235,7 +250,7 @@
   </section>
 
   <section xml:id="building.configuring-boost-build">
-    <title>5 Boost.Build を設定する</title>
+    <title>Boost.Build を設定する</title>
     <para>
       <link xlink:href="http://www.boost.org/boost-build2/doc/html/bbv2/advanced/configuration.html">Boost.Build のリファレンスマニュアル</link>にあるとおり、ビルドシステムで利用可能なツールとライブラリの指定はホームディレクトリ
       <footnote>
@@ -264,8 +279,8 @@
       ただしこれが行われるのは Boost.Python のプロジェクトファイルを使用した場合だけである（例えば <package linkend="building.no-install-quickstart">quickstart</package> の方法のように別のプロジェクトから参照される場合）。個別にコンパイルした Boost.Python バイナリにリンクする場合は、上に挙げた最小限のおまじないで <filename>user-config.jam</filename> をセットアップしなければならない。
     </para>
 
-    <section xml:id="building.python-configuration-parameters">
-      <title>5.1 Python の設定引数</title>
+    <section xml:id="building.configuring_boost_build.python_configuration_parameters">
+      <title>Python の設定引数</title>
       <para>
 	Python を複数バージョンインストールしている場合や Python を通常でない方法でインストールした場合は、以下の省略可能な引数のいずれか、またはすべてを <code language="bjam">using python</code> に与えなければならない可能性がある。
       </para>
@@ -321,8 +336,8 @@
       </variablelist>
     </section>
 
-    <section xml:id="building.examples">
-      <title>5.2 例</title>
+    <section xml:id="building.configuring_boost_build.examples">
+      <title>例</title>
       <para>
 	以下の例では大文字小文字の区別や、<emphasis>特に空白</emphasis>が重要である。
       </para>
@@ -408,7 +423,7 @@ using python : 2.4 : : : : &lt;target-os&gt;cygwin ;</programlisting>
   </section>
 
   <section xml:id="building.choosing-a-boost-python-library-binary">
-    <title>6 Boost.Python ライブラリのバイナリを選択する</title>
+    <title>Boost.Python ライブラリのバイナリを選択する</title>
     <para>
       （Boost.Build に自動的に正しいライブラリを構築、リンクさせる代わりに）ビルド済みの Boost.Python ライブラリを使用する場合、どれをリンクするか考える必要がある。Boost.Python バイナリには動的版と静的版がある。アプリケーションに応じて注意して選択しなければならない。
       <footnote>
@@ -426,8 +441,8 @@ using python : 2.4 : : : : &lt;target-os&gt;cygwin ;</programlisting>
       </footnote>
     </para>
 
-    <section xml:id="building.the-dynamic-binary">
-      <title>6.1 動的バイナリ</title>
+    <section xml:id="building.choosing_a_boost_python_library_.the_dynamic_binary">
+      <title>動的バイナリ</title>
       <para>
 	動的ライブラリは最も安全で最も汎用性の高い選択である。
       </para>
@@ -450,8 +465,8 @@ using python : 2.4 : : : : &lt;target-os&gt;cygwin ;</programlisting>
       </itemizedlist>
     </section>
 
-    <section xml:id="building.the-static-binary">
-      <title>6.2 静的バイナリ</title>
+    <section xml:id="building.choosing_a_boost_python_library_.the_static_binary">
+      <title>静的バイナリ</title>
       <para>
 	以下のいずれかの場合は Boost.Python の静的ライブラリを使用するのが適切である。
       </para>
@@ -483,7 +498,7 @@ using python : 2.4 : : : : &lt;target-os&gt;cygwin ;</programlisting>
   </section>
 
   <section xml:id="building.include-issues">
-    <title>7 <code language="C++">#include</code> に関すること</title>
+    <title><code language="C++">#include</code> に関すること</title>
     <orderedlist>
       <listitem>
 	<para>
@@ -505,7 +520,7 @@ using python : 2.4 : : : : &lt;target-os&gt;cygwin ;</programlisting>
   </section>
 
   <section xml:id="building.python-debugging-builds">
-    <title>8 Pythonの デバッグビルド</title>
+    <title>Pythonの デバッグビルド</title>
     <para>
       Python は特殊な「python debugging」設定でビルドすることで、拡張モジュールの開発者にとって非常に有用なチェックとインストゥルメント（<foreignphrase xml:lang="en">instrumentation</foreignphrase>）を追加できる。デバッグ設定が使用するデータ構造は追加のメンバの含んでいるため、<emphasis>python debugging を有効にした Python 実行可能ビルドを、有効にせずにコンパイルしたライブラリや拡張モジュールとともに使用することはできない（その逆も同様である）。</emphasis>
     </para>
@@ -524,16 +539,16 @@ using python : 2.4 : : : : &lt;target-os&gt;cygwin ;</programlisting>
   </section>
 
   <section xml:id="building.testing-boost-python">
-    <title>9 Boost.Python をテストする</title>
+    <title>Boost.Python をテストする</title>
     <para>
       Boost.Build の完全なテストスイートを走らせるには、Boost ディストリビューションの <filename class="directory">libs/python/test</filename> サブディレクトリで <command>bjam</command> を起動する。
     </para>
   </section>
 
   <section xml:id="building.notes-for-mingw-and-cygwin-with-mno-cygwin-gcc-users">
-    <title>10 MinGW（および Cygwin の -mno-cygwin）の GCC ユーザに対する注意</title>
+    <title>MinGW（および Cygwin の -mno-cygwin）の GCC ユーザに対する注意</title>
     <para>
       Python の 2.4.1 より前のバージョンを MinGW の 3.0.0（binutils-2.13.90-20030111-1）より前のバージョンで使用する場合は、MinGW 互換バージョンの Python ライブラリを作成する必要がある（Python に付属のものは Microsoft 互換のリンカでしか動作しない）。『<link xlink:href="http://docs.python.jp/2/install/">Python モジュールのインストール</link>』の「拡張モジュールのビルド: 小技と豆知識」―「Windows で非 Microsoft コンパイラを使ってビルドするには」の節に従い、<filename class="libraryfile">libpython<replaceable>XX</replaceable>.a</filename> を作成する。<replaceable>XX</replaceable> はインストールした Python のメジャーバージョンとマイナーバージョン番号である。
     </para>
   </section>
-</section>
+</chapter>

@@ -1,16 +1,10 @@
 <?xml version="1.0" ?>
-<!--
-  Copyright David Abrahams 2006. Distributed under the Boost
-  Software License, Version 1.0. (See accompanying
-  file LICENSE_1_0.txt or copy at
-  http://www.boost.org/LICENSE_1_0.txt)
--->
-<section xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xml:lang="ja" version="5.0" xml:id="v2.faq">
+<chapter xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xml:lang="ja" version="5.0" xml:id="faq">
   <title>よくある質問と回答</title>
 
   <!-- qandaset は使用しない -->
 
-  <section xml:id="v2.faq.funcptr">
+  <section xml:id="faq.how_can_i_wrap_a_function_which_">
     <title>関数ポインタを引数にとる関数をラップするにはどうすればよいか</title>
     <para>
       次のようにしたい場合は、
@@ -51,7 +45,7 @@ BOOST_PYTHON_MODULE(test)
     </para>
   </section>
 
-  <section xml:id="v2.faq.dangling">
+  <section xml:id="faq.i_m_getting_the_attempt_to_retur">
     <title>「懸垂参照を返そうとしました」エラーが出る。何が間違っているのか</title>
     <para>
       厄介なクラッシュの発生を防ぐために発生している例外である。大抵は次のようなコードを書いたときに発生する。
@@ -71,7 +65,7 @@ class period</screen>
     </para>
   </section>
 
-  <section xml:id="v2.faq.question1">
+  <section xml:id="faq.is_return_internal_reference_eff">
     <title>return_internal_reference の効率はどうか</title>
 
     <blockquote>
@@ -85,7 +79,7 @@ class period</screen>
     </para>
   </section>
 
-  <section xml:id="v2.faq.question2">
+  <section xml:id="faq.how_can_i_wrap_functions_which_t">
     <title>C++ コンテナを引数にとる関数をラップするにはどうすればよいか</title>
     <para>
       <personname>Ralf W. Grosse-Kunstleve</personname> が次のようなノートを残している。
@@ -148,7 +142,7 @@ void foo(std::vector&lt;double&gt; array); // 値渡し</programlisting>
 <userinput>cvs -d:pserver:anonymous@cvs.cctbx.sourceforge.net:/cvsroot/cctbx co scitbx</userinput></screen>
   </section>
 
-  <section xml:id="v2.faq.c1204">
+  <section xml:id="faq.fatal_error_c1204_compiler_limit">
     <title>致命的なエラー C1204：コンパイラの制限 : 内部構造がオーバーフローしました。</title>
     <blockquote>
       <para>
@@ -183,7 +177,7 @@ BOOST_PYTHON_MODULE(my_module)
    ...
 }</programlisting>
     <para>
-      <classname linkend="v2.class.class_-spec">class_&lt;...&gt;</classname> 宣言を単一のソースファイルに押し込むことがエラーにより不可能な場合、<classname>class_</classname> オブジェクトへの参照を他のソースファイルの関数へ渡して、その補助ソースファイル内でメンバ関数（<methodname>.def(...)</methodname> 等）を呼び出すとよい。
+      <classname linkend="class.class_-spec">class_&lt;...&gt;</classname> 宣言を単一のソースファイルに押し込むことがエラーにより不可能な場合、<classname>class_</classname> オブジェクトへの参照を他のソースファイルの関数へ渡して、その補助ソースファイル内でメンバ関数（<methodname>.def(...)</methodname> 等）を呼び出すとよい。
     </para>
     <bridgehead>more_of_my_class.cpp：</bridgehead>
     <programlisting language="C++">void more_of_my_class(class_&lt;my_class&gt;&amp; x)
@@ -197,7 +191,7 @@ BOOST_PYTHON_MODULE(my_module)
 }</programlisting>
   </section>
 
-  <section xml:id="v2.faq.debugging">
+  <section xml:id="faq.how_do_i_debug_my_python_extensi">
     <title>Python 拡張をデバッグするにはどうすればよいか</title>
     <para>
       <personname>Greg Burley</personname> が Unix GCC ユーザに対して以下の回答をしている。
@@ -267,7 +261,7 @@ Breakpoint 1, 0x1e04eff0 in python22!PyOS_Readline ()
 <prompt>(gdb) </prompt><computeroutput># my_ext now loaded (with any debugging symbols it contains)</computeroutput></screen>
     </blockquote>
 
-    <section>
+    <section xml:id="faq.how_do_i_debug_my_python_extensi.debugging_extensions_through_boo">
       <title>Boost.Build で拡張をデバッグする</title>
       <para>
 	<link xlink:href="http://www.boost.org/boost-build2/">Boost.Build</link> で boost-python-runtest 規則を使用して拡張モジュールのテストを起動する場合、<command>bjam</command> コマンドラインに <option>--debugger=debugger</option> を追加して好きなデバッガを起動できる。
@@ -280,7 +274,7 @@ Breakpoint 1, 0x1e04eff0 in python22!PyOS_Readline ()
     </section>
   </section>
 
-  <section xml:id="v2.faq.imul">
+  <section xml:id="faq.why_doesn_t_my_operator_work">
     <title>私の <code language="Python">*=</code> 演算子が動作しないのはなぜか</title>
     <blockquote>
       <para>
@@ -301,7 +295,7 @@ Breakpoint 1, 0x1e04eff0 in python22!PyOS_Readline ()
     </para>
   </section>
 
-  <section xml:id="v2.faq.macosx">
+  <section xml:id="faq.does_boost_python_work_with_mac_">
     <title>Boost.Python は Mac OS X で動作するか</title>
     <para>
       10.2.8 および 10.3 では <orgname class="corporation">Apple</orgname> の gcc 3.3 コンパイラで動作することが分かっている。
@@ -348,7 +342,7 @@ make frameworkinstall</screen>
 };</programlisting>
   </section>
 
-  <section xml:id="v2.faq.xref">
+  <section xml:id="faq.how_can_i_find_the_existing_pyob">
     <title>C++ オブジェクトを保持する既存の PyObject を探し出すにはどうすればよいか</title>
     <blockquote>
       <para>
@@ -394,7 +388,7 @@ class_&lt;X,X_wrap,boost::noncopyable&gt;("X", init&lt;int&gt;())
     </para>
   </section>
 
-  <section xml:id="v2.faq.ownership">
+  <section xml:id="faq.how_can_i_wrap_a_function_which0">
     <title>生のポインタの所有権を持つ必要がある関数をラップするにはどうすればいいか</title>
     <blockquote>
       <para>
@@ -438,21 +432,21 @@ del b
     </para>
   </section>
 
-  <section xml:id="v2.faq.slow_compilation">
+  <section xml:id="faq.compilation_takes_too_much_time_">
     <title>コンパイルに時間がかかりメモリも大量に消費する！高速化するにはどうすればよいか</title>
     <para>
       チュートリアルの<xref linkend="tutorial.techniques.reducing_compiling_time"/>の節を参照いただきたい。
     </para>
   </section>
 
-  <section xml:id="v2.faq.packages">
+  <section xml:id="faq.how_do_i_create_sub_packages_usi">
     <title>Boost.Python を使用してサブパッケージを作成するにはどうすればよいか</title>
     <para>
       チュートリアル<xref linkend="tutorial.techniques.creating_packages"/>の節を参照いただきたい。
     </para>
   </section>
 
-  <section xml:id="v2.faq.msvcthrowbug">
+  <section xml:id="faq.error_c2064_term_does_not_evalua">
     <title>error C2064：2 引数を取り込む関数には評価されません</title>
     <para>
       <personname>Niall Douglas</personname> が次のノートを提供している。
@@ -492,7 +486,7 @@ void Export_FXThread()
     </blockquote>
   </section>
 
-  <section xml:id="v2.faq.custom_string">
+  <section xml:id="faq.how_can_i_automatically_convert_">
     <title>カスタム文字列型と Python 文字列を自動的に相互変換するにはどうすればよいか</title>
     <para>
       <personname>Ralf W. Grosse-Kunstleve</personname> が次のノートを提供している。
@@ -603,7 +597,7 @@ BOOST_PYTHON_MODULE(custom_string)
     </blockquote>
   </section>
 
-  <section xml:id="v2.faq.topythonconversionfailed">
+  <section xml:id="faq.why_is_my_automatic_to_python_co">
     <title>Python への自動変換器が見つからないのはなぜか</title>
     <para>
       <personname>Niall Douglas</personname> が次のノートを提供している。
@@ -626,7 +620,7 @@ BOOST_PYTHON_MODULE(custom_string)
     </blockquote>
   </section>
 
-  <section xml:id="v2.faq.threadsupport">
+  <section xml:id="faq.is_boost_python_thread_aware_com">
     <title>インタープリタが複数の場合 Boost.Python はスレッドに対して問題ないか</title>
     <para>
       <personname>Niall Douglas</personname> が次のノートを提供している。
@@ -643,5 +637,4 @@ BOOST_PYTHON_MODULE(custom_string)
       </para>
     </blockquote>
   </section>
-</section>
- 
+</chapter>

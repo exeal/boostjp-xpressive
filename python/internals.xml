@@ -5,7 +5,7 @@
   file LICENSE_1_0.txt or copy at
   http://www.boost.org/LICENSE_1_0.txt)
 -->
-<section xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xml:lang="ja" version="5.0" xml:id="internals">
+<article xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xml:lang="ja" version="5.0" xml:id="v2.internals">
   <title>Boost.Python の裏側</title>
 
   <section>
@@ -181,4 +181,4 @@ class_&lt;boring&gt;("boring")
       </para>
     </section>
   </section>
-</section>
+</article>

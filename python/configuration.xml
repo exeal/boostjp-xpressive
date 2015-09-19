@@ -1,24 +1,33 @@
 <?xml version="1.0" ?>
-<!--
-  Copyright David Abrahams 2006. Distributed under the Boost
-  Software License, Version 1.0. (See accompanying
-  file LICENSE_1_0.txt or copy at
-  http://www.boost.org/LICENSE_1_0.txt)
--->
-<section xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xml:lang="ja" version="5.0" xml:id="v2.configuration">
-  <title>設定に関する情報</title>
+<chapter xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xml:lang="ja" version="5.0" xml:id="configuration">
+  <info>
+    <title>設定に関する情報</title>
+    <authorgroup>
+      <author>
+	<personname>
+	  <surname>Abrahams</surname>
+	  <firstname>David</firstname>
+	</personname>
+      </author>
+    </authorgroup>
+    <copyright>
+      <year>2002 - 2015</year>
+      <holder>Dave Abrahams</holder>
+      <holder>Stefan Seefeld</holder>
+    </copyright>
+  </info>
 
-  <section xml:id="v2.configuration.introduction">
+  <simplesect xml:id="configuration.introduction">
     <title>はじめに</title>
     <para>
-      Boost.Python は <filename class="headerfile" xlink:href="http://www.boost.org/libs/config/config.htm">&lt;boost/config.hpp&gt;</filename> にある数個の設定マクロのほか、アプリケーションが与える設定マクロを使用する。これらのマクロについて記載する。
+      <emphasis>Boost.Python</emphasis> は <filename class="headerfile" xlink:href="http://www.boost.org/libs/config/config.htm">&lt;boost/config.hpp&gt;</filename> にある数個の設定マクロのほか、アプリケーションが与える設定マクロを使用する。これらのマクロについて記載する。
     </para>
-  </section>
+  </simplesect>
 
-  <section xml:id="v2.configuration.app-defined">
+  <simplesect xml:id="configuration.app-defined">
     <title>アプリケーション定義のマクロ</title>
     <para>
-      これらは Boost.Python を使用するアプリケーションが定義可能なマクロである。動的ライブラリをカバーするのに C++ 標準の厳密な解釈を拡大するのであれば、異なるライブラリ（拡張モジュールや Boost.Python 自身も含む）をコンパイルするときにこれらのマクロの異なる値を使用することは <glossterm linkend="v2.definitions.ODR">ODR</glossterm> 違反であることに注意していただきたい。しかしながら、この種の違反を検出可能か問題となる C++ 実装は無いようである。
+      これらは Boost.Python を使用するアプリケーションが定義可能なマクロである。動的ライブラリをカバーするのに C++ 標準の厳密な解釈を拡大するのであれば、異なるライブラリ（拡張モジュールや Boost.Python 自身も含む）をコンパイルするときにこれらのマクロの異なる値を使用することは <glossterm linkend="glossary.ODR">ODR</glossterm> 違反であることに注意していただきたい。しかしながら、この種の違反を検出可能か問題となる C++ 実装は無いようである。
     </para>
     <informaltable>
       <thead>
@@ -32,12 +41,12 @@
 	<tr>
 	  <td><symbol>BOOST_PYTHON_MAX_ARITY</symbol></td>
 	  <td>15</td>
-	  <td>引数 <code>x1, x2, ...x<replaceable>n</replaceable></code> をとるよう指定した Boost.Python 関数の起動における、ラップする関数、メンバ関数、コンストラクタの最大<glossterm linkend="v2.definitions.arity">引数長</glossterm>。これには特に <code language="C++"><classname linkend="v2.object.object-spec">object</classname>::operator()(...)</code> や <code language="C++"><function linkend="v2.call_method.call_method-spec">call_method</function>&lt;R&gt;(...)</code> のようなコールバック機構も含まれる。</td>
+	  <td>引数 <code>x1, x2, ...x<replaceable>n</replaceable></code> をとるよう指定した Boost.Python 関数の起動における、ラップする関数、メンバ関数、コンストラクタの最大<glossterm linkend="glossary.arity">引数長</glossterm>。これには特に <code language="C++"><classname linkend="object.object-spec">object</classname>::operator()(...)</code> や <code language="C++"><function linkend="call_method.call_method-spec">call_method</function>&lt;R&gt;(...)</code> のようなコールバック機構も含まれる。</td>
 	</tr>
 	<tr>
 	  <td><symbol>BOOST_PYTHON_MAX_BASES</symbol></td>
 	  <td>10</td>
-	  <td>ラップした C++ クラスの基底型を指定する <classname linkend="v2.class.bases-spec">bases&lt;...&gt;</classname> クラステンプレートのテンプレート引数の最大数。</td>
+	  <td>ラップした C++ クラスの基底型を指定する <classname linkend="class.bases-spec">bases&lt;...&gt;</classname> クラステンプレートのテンプレート引数の最大数。</td>
 	</tr>
 	<tr>
 	  <td><symbol>BOOST_PYTHON_STATIC_MODULE</symbol></td>
@@ -61,9 +70,9 @@
 	</tr>
       </tbody>
     </informaltable>
-  </section>
+  </simplesect>
 
-  <section xml:id="v2.configuration.lib-defined-impl">
+  <simplesect xml:id="configuration.lib-defined-impl">
     <title>ライブラリ定義の実装マクロ</title>
     <para>
       これらのマクロは Boost.Python が定義するものであり、新しいプラットフォームへ移植する実装者のみが取り扱う実装の詳細である。
@@ -90,7 +99,7 @@
 	<tr>
 	  <td><symbol>BOOST_PYTHON_SUPPORTS_PY_SIGNATURES</symbol></td>
 	  <td><symbol>BOOST_PYTHON_NO_PY_SIGNATURES</symbol> を定義していないと定義される</td>
-	  <td>このマクロを定義すると、Python のシグニチャをサポートしない古いバージョンの Boost.Python からのスムースな移行が有効になる。使用例は<link linkend="v2.pytype_function.examples">ここ</link>を見よ。</td>
+	  <td>このマクロを定義すると、Python のシグニチャをサポートしない古いバージョンの Boost.Python からのスムースな移行が有効になる。使用例は<link linkend="pytype_function.examples">ここ</link>を見よ。</td>
 	</tr>
 	<tr>
 	  <td><symbol>BOOST_PYTHON_PY_SIGNATURES_PROPER_INIT_SELF_TYPE</symbol></td>
@@ -99,5 +108,5 @@
 	</tr>
       </tbody>
     </informaltable>
-  </section>
-</section>
+  </simplesect>
+</chapter>

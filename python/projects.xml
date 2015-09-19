@@ -5,7 +5,7 @@
   file LICENSE_1_0.txt or copy at
   http://www.boost.org/LICENSE_1_0.txt)
 -->
-<section xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xml:lang="ja" version="5.0" xml:id="projects">
+<article xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xml:lang="ja" version="5.0" xml:id="v2.projects">
   <title>Boost.Python を使用しているプロジェクト</title>
 
   <section>
@@ -481,4 +481,4 @@
       </varlistentry>
     </variablelist>
   </section>
-</section>
+</article>

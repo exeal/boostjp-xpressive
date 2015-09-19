@@ -5,7 +5,7 @@
   file LICENSE_1_0.txt or copy at
   http://www.boost.org/LICENSE_1_0.txt)
 -->
-<section xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xml:lang="ja" version="5.0" xml:id="v2.platforms">
+<article xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xml:lang="ja" version="5.0" xml:id="v2.platforms">
   <title>動作を確認したプラットフォームとコンパイラ</title>
   <para>
     最新の情報は<link xlink:href="http://boost.sourceforge.net/regression-logs">退行ログ</link>を確認いただきたい。他でマークされていないログはリリースの状態ではなく、CVS の状態を反映する。
@@ -92,4 +92,4 @@
       </listitem>
     </varlistentry>
   </variablelist>
-</section>
+</article>
