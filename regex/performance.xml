@@ -1,0 +1,26 @@
+<?xml version="1.0" ?>
+<!--
+  Copyright 2006-2007 John Maddock.
+  Distributed under the Boost Software License, Version 1.0.
+  (See accompanying file LICENSE_1_0.txt or copy at
+  http://www.boost.org/LICENSE_1_0.txt).
+-->
+<section xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink" xml:lang="ja" version="5.0" xml:id="background_information.performance">
+  <title>効率</title>
+  <para>
+    Boost.Regex の再帰モードと非再帰モード両方の効率については、他の幅広い正規表現ライブラリと比較されてしかるべきである。再帰モードは少しばかり高速（主にメモリ割り当てにスレッドの同期が必要な場合）だが、あまり大きな差は無い。以下のページで 2 種類のコンパイラを用いて数種類の正規表現ライブラリと比較を行っている。
+  </para>
+  <itemizedlist>
+    <listitem>
+      <para>
+	<link xlink:href="http://www.boost.org/libs/regex/doc/vc71-performance.html">Visual Studio .Net 2003（再帰的な Boost.Regex 実装）</link>
+      </para>
+    </listitem>
+    <listitem>
+      <para>
+	<link xlink:href="http://www.boost.org/libs/regex/doc/gcc-performance.html">GCC 3.2（Cygwin）（非再帰的な Boost.Regex 実装）</link>
+      </para>
+    </listitem>
+  </itemizedlist>
+  <!-- xpressive の翻訳版ではリンク先も翻訳して含めた。 -->
+</section>
