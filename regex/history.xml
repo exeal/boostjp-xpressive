@@ -17,6 +17,26 @@
     クローズなものを含めた全項目は<link xlink:href="https://svn.boost.org/trac/boost/query?status=assigned&amp;status=closed&amp;status=new&amp;status=reopened&amp;component=regex&amp;order=priority&amp;col=id&amp;col=summary&amp;col=status&amp;col=type&amp;col=milestone&amp;col=component">ここ</link>から見られる。
   </para>
 
+  <sect4 xml:id="background_information.history.boost_regex_5_1_0">
+    <title>Boost.Regex-5.1.0</title>
+    <itemizedlist>
+      <listitem>
+	<para>
+	  Perl のバックトラッキング動詞をサポートした（<link xlink:href="https://svn.boost.org/trac/boost/ticket/11205">#11205</link>）。ただし現時点では <phrase role="regex-pattern">(*MARK)</phrase> とマークに対する操作はサポートしていないことに注意していただきたい。
+	</para>
+      </listitem>
+      <listitem>
+	<phrase role="regex-pattern">[[:unicode:]]</phrase> にマッチする範囲の末尾が間違っていたのを修正した（<link xlink:href="https://svn.boost.org/trac/boost/ticket/11524">#11524</link>）。
+      </listitem>
+      <listitem>
+	<function>reg_comp</function> POSIX API を未初期化のメモリをチェックしないように変更した。これまで（<function>reg_free</function> を呼び出さず）メモリリークしなかったコード（結局は不正なのだが）でリークが発生することに注意していただきたい（<link xlink:href="https://svn.boost.org/trac/boost/ticket/11472">#11472</link>）。
+      </listitem>
+      <listitem>
+	<classname>sub_match</classname> を合法な C++ 範囲型にした（<link xlink:href="https://svn.boost.org/trac/boost/ticket/11036">#11306</link>）。
+      </listitem>
+    </itemizedlist>
+  </sect4>
+
   <sect4 xml:id="background_information.history.boost_regex_5_0_1__boost_1_58_0_">
     <title>Boost.Regex-5.0.1（Boost-1.58.0）</title>
     <itemizedlist>

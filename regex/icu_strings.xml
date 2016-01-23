@@ -18,7 +18,7 @@
       に、Unicode 環境で正規表現を使用するのに必要なデータ型とアルゴリズムが含まれている。
     </para>
     <para>
-      このヘッダを使用する場合は <link xlink:href="http://www.ibm.com/software/globalization/icu/">ICU ライブラリ</link>が必要である。また <link linkend="install.building_with_unicode_and_icu_support">ICU サポートを有効にして</link> Boost.Regex をビルドしていなければならない。
+      このヘッダを使用する場合は <link xlink:href="http://www.ibm.com/software/globalization/icu/">ICU ライブラリ</link>が必要である。また <link linkend="install.building_with_unicode_and_icu_su">ICU サポートを有効にして</link> Boost.Regex をビルドしていなければならない。
     </para>
     <para>
       このヘッダにより以下のことが可能となる。

@@ -27,7 +27,7 @@
     </para>
   </sect4>
 
-  <sect4 xml:id="install.building_with_unicode_and_icu_support">
+  <sect4 xml:id="install.building_with_unicode_and_icu_su">
     <title>
       Unicode および ICU サポートビルド
       <footnote>

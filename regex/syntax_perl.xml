@@ -794,6 +794,63 @@ aaaa</literallayout>
 	  </listitem>
 	</itemizedlist>
       </sect5>
+
+      <sect5 xml:id="syntax.perl_syntax.backtracking_control_verbs">
+	<title>バックトラッキング制御動詞</title>
+	<para>
+	  本ライブラリは Perl のバックトラッキング制御動詞をサポートする。ただし部分的なものであり、特に <phrase role="regex-pattern">(*MARK)</phrase> はサポートしない。本ライブラリと Perl の間では細かい挙動が異なる可能性がある。少なくとも Perl の挙動はドキュメントが不十分であり、実際にはよく分からない動作をすることがあるからである。サポートしている動詞は以下のとおり。
+	</para>
+	<variablelist>
+	  <varlistentry>
+	    <term role="regex-pattern">(*PRUNE)</term>
+	    <listitem>
+	      <para>
+		バックトラックしてきた場合に、それ以前のバックトラッキングに関するすべての情報を破棄する。これ以外の場合では作用は無い。
+	      </para>
+	    </listitem>
+	  </varlistentry>
+	  <varlistentry>
+	    <term role="regex-pattern">(*SKIP)</term>
+	    <listitem>
+	      <para>
+		<phrase role="regex-pattern">(*PRUNE)</phrase> と同じだが、検索対象文字列における現在位置より前でマッチが発生しないことを示す点が異なる。すでにマッチを構成しないと決定したテキストのチャンクをスキップすることで検索を最適化するのに使用する。
+	      </para>
+	    </listitem>
+	  </varlistentry>
+	  <varlistentry>
+	    <term role="regex-pattern">(*THEN)</term>
+	    <listitem>
+	      <para>
+		バックトラックしてきた場合に、選択グループ内の残りすべての選択を破棄する。これ以外の場合では作用は無い。
+	      </para>
+	    </listitem>
+	  </varlistentry>
+	  <varlistentry>
+	    <term role="regex-pattern">(*COMMIT)</term>
+	    <listitem>
+	      <para>
+		バックトラックしてきた場合に、残りすべてのマッチと検索を失敗させる。これ以外の場合では作用は無い。
+	      </para>
+	    </listitem>
+	  </varlistentry>
+	  <varlistentry>
+	    <term role="regex-pattern">(*FAIL)</term>
+	    <listitem>
+	      <para>
+		この時点で無条件にマッチを失敗させる。正規表現エンジンにバックトラックを強制するのに使用する。
+	      </para>
+	    </listitem>
+	  </varlistentry>
+	  <varlistentry>
+	    <term role="regex-pattern">(*ACCEPT)</term>
+	    <listitem>
+	      <para>
+		この時点でパターンがマッチしたとする。半開きの部分式はすべてその時点で閉じられる。
+	      </para>
+	    </listitem>
+	  </varlistentry>
+	</variablelist>
+      </sect5>
     </sect4>
 
     <sect4 xml:id="syntax.perl_syntax.operator_precedence">
