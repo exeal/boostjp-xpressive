@@ -279,14 +279,14 @@ BOOST_PYTHON_MODULE(hello)
       <para>
 	これで Python 側で <package>hello</package> 名前空間内に <classname>Var</classname> クラスがあるように扱うことができる。
       </para>
-      <screen language="C++"><prompt>&gt;&gt;&gt; </prompt><userinput>x = hello.Var('pi')</userinput>
+      <screen language="Python"><prompt>&gt;&gt;&gt; </prompt><userinput>x = hello.Var('pi')</userinput>
 <prompt>&gt;&gt;&gt; </prompt><userinput>x.value = 3.14</userinput>
 <prompt>&gt;&gt;&gt; </prompt><userinput>print x.name, 'is around', x.value</userinput>
 <computeroutput>pi is around 3.14</computeroutput></screen>
       <para>
 	<varname>name</varname> を<emphasis>読み取り専用</emphasis>としてエクスポートしたいっぽうで、<varname>value</varname> は<emphasis>読み書き可能</emphasis>としてエクスポートしたことに注意していただきたい。
       </para>
-      <screen language="C++"><prompt>&gt;&gt;&gt; </prompt><userinput>x.name = 'e' # nameは変更できない</userinput>
+      <screen language="Python"><prompt>&gt;&gt;&gt; </prompt><userinput>x.name = 'e' # name は変更できない</userinput>
 <computeroutput>Traceback (most recent call last):
   File "&lt;stdin&gt;", line 1, in ?
 AttributeError: can't set attribute</computeroutput></screen>
@@ -357,10 +357,10 @@ Base* factory() { return new Derived; }</programlisting>
       </para>
       <orderedlist>
 	<listitem>
-	  <para><classname>Derived</classname> は <classname>Base</classname> のすべてのメソッド（ラップされた C++ メンバ関数）を自動的に継承する。</para>
+	  <para><classname>Derived</classname> は <classname>Base</classname> のすべての Python メソッド（ラップされた C++ メンバ関数）を自動的に継承する。</para>
 	</listitem>
 	<listitem>
-	  <para><classname>Base</classname> が多態的である場合、<classname>Base</classname> へのポインタか参照で Python へ渡した <classname>Derived</classname> オブジェクトは、<classname>Derived</classname> へのポインタか参照が期待されているところに渡すことができる。</para>
+	  <para><classname>Base</classname> が多態的<emphasis>ならば</emphasis>、<classname>Base</classname> へのポインタか参照で Python へ渡した <classname>Derived</classname> オブジェクトは、<classname>Derived</classname> へのポインタか参照が期待されているところに渡すことができる。</para>
 	</listitem>
       </orderedlist>
       <para>
@@ -388,11 +388,17 @@ def("factory", factory,
     virtual int f() = 0;
 };</programlisting>
       <para>
-	Boost.Python の目標の 1 つが、既存の C++ の設計に対して侵入を最小限にすることである。原則的にはサードパーティ製ライブラリに対して、インターフェイス部分を変更することなくエクスポート可能であるべきである。<classname>Base</classname> クラスに何かを追加するのは望ましいことではない。しかし Python 側でオーバーライドし C++ <emphasis>から</emphasis>多態的に呼び出す関数の場合、正しく動作させるのに足場が必要になる。Python のオーバーライドが呼び出されるように仮想関数に非侵入的にフックする、<classname>Base</classname> から派生したラッパクラスを書くことである。
+	Boost.Python の目標の 1 つが、既存の C++ の設計に対して侵入を最小限にすることである。原則的にはサードパーティ製ライブラリに対して、インターフェイス部分を変更することなくエクスポート可能であるべきである。<classname>Base</classname> クラスに何かを追加するのは望ましいことではない。しかし Python 側でオーバーライドし <emphasis>C++ から</emphasis>多態的に呼び出す関数の場合、正しく動作させるのに足場が必要になる。Python のオーバーライドが呼び出されるように仮想関数に非侵入的にフックする、<classname>Base</classname> から派生したラッパクラスを書くことである。
       </para>
-      <programlisting language="C++"></programlisting>
+      <programlisting language="C++"><![CDATA[struct BaseWrap : Base, wrapper<Base>
+{
+    int f()
+    {
+        return this->get_override("f")();
+    }
+};]]></programlisting>
       <para>
-	<classname>Base</classname> の継承に加え、<classname>wrapper&lt;Base&gt;</classname> を多重継承していることに注意していただきたい（<link linkend="header.wrapper_hpp">ラッパ</link>の節を見よ）。<classname>wrapper</classname> テンプレートはラップするクラスをPython側でオーバーライドできるようにする段取りを容易にする。
+	<classname>Base</classname> の継承に加え、<classname>wrapper&lt;Base&gt;</classname> を多重継承していることに注意していただきたい（<link linkend="header.wrapper_hpp">ラッパ</link>の節を見よ）。<classname>wrapper</classname> テンプレートはラップするクラスを Python 側でオーバーライドできるようにする段取りを容易にする。
       </para>
 
       <caution>
@@ -576,8 +582,8 @@ class_&lt;Rational&gt;("Rational")
     <para>
       しかしその前に Python 2.2 以降を立ち上げて <code language="Python">&gt;&gt;&gt; import this</code> とタイプしたくなるかもしれない。
     </para>
-    <screen language="Python"><computeroutput>The Zen of Python, by Tim Peters
-
+    <screen language="Python"><prompt>&gt;&gt;&gt; </prompt><userinput>import this</userinput>
+<computeroutput>The Zen of Python, by Tim Peters
 Beautiful is better than ugly.
 Explicit is better than implicit.
 Simple is better than complex.
@@ -665,7 +671,7 @@ Namespaces are one honking great idea -- let's do more of those!</computeroutput
 	データメンバ <varname>z</varname> がクラス <classname>Y</classname> に生のポインタで保持されていることに注意していただきたい。潜在的な懸垂ポインタの問題が <classname>Y</classname> の内部で発生している。
       </para>
       <screen language="C++"><prompt>&gt;&gt;&gt; </prompt><userinput>x = f(y, z) # y は z を参照する</userinput>
-<prompt>&gt;&gt;&gt; </prompt><userinput>del z       # オブジェクトzを削除</userinput>
+<prompt>&gt;&gt;&gt; </prompt><userinput>del z       # オブジェクト z を削除</userinput>
 <prompt>&gt;&gt;&gt; </prompt><userinput>y.z_value() # クラッシュ！</userinput></screen>
       <para>
 	参考のために <function>f</function> の実装を再掲する。
@@ -715,11 +721,11 @@ Namespaces are one honking great idea -- let's do more of those!</computeroutput
 	</para>
 	<programlisting language="C++">return_internal_reference&lt;1</programlisting>
 	<para>
-	  これは 1 番目の引数（<code language="C++">Y&amp; y</code>）が返される参照（<type>X&amp;</type>）の所有者であると Boost.Python に伝えている。「1」は単に 1 番目の引数という意味である。まとめると「第 1 引数 <code language="C++">Y&amp; y</code> が所有する内部参照 <type>X&amp;</type> を返す」となる。
+	  これは「1 番目の引数（<code language="C++">Y&amp; y</code>）が、返される参照（<type>X&amp;</type>）の所有者である」と Boost.Python に伝えている。「1」は単に 1 番目の引数という意味である。まとめると「第 1 引数 <code language="C++">Y&amp; y</code> が所有する内部参照 <type>X&amp;</type> を返す」となる。
 	</para>
 	<programlisting language="C++">with_custodian_and_ward&lt;1, 2&gt;</programlisting>
 	<para>
-	  これは <foreignphrase xml:lang="en">ward</foreignphrase>（被後見人）で指定した引数（第 2 引数。<code language="C++">Z* z</code>）の寿命が <foreignphrase xml:lang="en">custodian</foreignphrase>（後見人）で指定した引数（第 1 引数。<code language="C++">Y&amp; y</code>）の寿命に依存すると Boost.Python に伝えている。
+	  これは「<foreignphrase xml:lang="en">ward</foreignphrase>（被後見人）で指定した引数（第 2 引数。<code language="C++">Z* z</code>）の寿命が、<foreignphrase xml:lang="en">custodian</foreignphrase>（後見人）で指定した引数（第 1 引数。<code language="C++">Y&amp; y</code>）の寿命に依存する」と Boost.Python に伝えている。
 	</para>
 	<para>
 	  上で 2 つのポリシーを定義していることに注意していただきたい。2 つ以上のポリシーは数珠繋ぎに結合できる。汎用的な構文は以下のようになる。
@@ -774,7 +780,7 @@ Namespaces are one honking great idea -- let's do more of those!</computeroutput
 		    <classname>copy_const_reference</classname>
 		  </term>
 		  <listitem>
-		    <para>Boost.Python v1のアプローチ</para>
+		    <para>Boost.Python v1 のアプローチ</para>
 		  </listitem>
 		</varlistentry>
 		<varlistentry>
@@ -798,7 +804,7 @@ Namespaces are one honking great idea -- let's do more of those!</computeroutput
 	  </varlistentry>
 	</variablelist>
 	<para>
-	  禅（Zen）を思い出そう、Luke
+	  禅（<foreignphrase xml:lang="en">Zen</foreignphrase>）を思い出そう、Luke
 	  <footnote>
 	    <para>
 	      訳注　この日本語訳は <link xlink:href="http://www.python.jp/Zope/Zope/articles/misc/zen">http://www.python.jp/Zope/Zope/articles/misc/zen</link> によりました（Copyright © 2001-2012 Python Japan User's Group）。
@@ -864,7 +870,7 @@ int     (X::*fx4)(int, int, int)    = &amp;X::f;</programlisting>
     <section xml:id="tutorial.functions.default_arguments">
       <title>既定の引数</title>
       <para>
-	Boost.Python は（メンバ）関数ポインタをラップするが、残念ながら C++ 関数ポインタは既定の引数について情報を持たない。既定の引数を持った関数fを考える。
+	Boost.Python は（メンバ）関数ポインタをラップするが、残念ながら C++ 関数ポインタは既定の引数について情報を持たない。既定の引数を持った関数 <function>f</function> を考える。
       </para>
       <programlisting language="C++">int f(int, double = 3.14, char const* = "hello");</programlisting>
       <para>
@@ -889,7 +895,7 @@ int f2(int x, double y) { return f(x,y); }
     def("f", f2); // 2 引数バージョン	
     def("f", f1); // 1 引数バージョン</programlisting>
       <para>
-	以下のいずれかの関数（メンバ関数）をラップするときは、次節に進むとよい。
+	以下のいずれかの関数（、メンバ関数）をラップするときは、次節に進むとよい。
       </para>
       <itemizedlist>
 	<listitem>
@@ -967,7 +973,7 @@ int f2(int x, double y) { return f(x,y); }
 	</para>
 	<programlisting language="C++">.def(init&lt;int, optional&lt;char, std::string, double&gt; &gt;())</programlisting>
 	<para>
-	  <classname>init&lt;...&gt;</classname> と <classname>optional&lt;...&gt;</classname> の使用が既定（省略可能な引数）を表すことに注意していただきたい。
+	  <classname>init&lt;...&gt;</classname> と <classname>optional&lt;...&gt;</classname> の使うことで、既定（省略可能な引数）であることを表現している点に注意していただきたい。
 	</para>
       </section>
     </section>
@@ -1014,11 +1020,11 @@ void foo(bool a, int b, char c)
 	  <emphasis>多重定義した関数は引数列の先頭に共通部分を持っていなければならない</emphasis>ということを強調しておく。それ以外の場合、上で述べた方法は動作せず、関数を<link linkend="tutorial.functions.overloading">手動で</link>ラップしなければならない。
 	</para>
 	<para>
-	  実際には多重定義関数の手動ラッピングと、<symbol>BOOST_PYTHON_MEMBER_FUNCTION_OVERLOADS</symbol> とその姉妹版である <symbol>BOOST_PYTHON_FUNCTION_OVERLOADS</symbol> による自動的なラッピングを混用することは可能である。<link linkend="tutorial.functions.overloading">多重定義</link>の節で見た例だと 4 つの多重定義関数は引数の先頭列が共通であるので、<symbol>BOOST_PYTHON_MEMBER_FUNCTION_OVERLOADS</symbol> を使って最初の 3 つの <function>def</function> を自動的にラップでき、残り 1 つだけを手動でラップすることになる。方法は以下のとおり。
+	  実際には多重定義関数の手動ラッピングと、<symbol>BOOST_PYTHON_MEMBER_FUNCTION_OVERLOADS</symbol> とその姉妹版である <symbol>BOOST_PYTHON_FUNCTION_OVERLOADS</symbol> による自動的なラッピングを混用することは可能である。<link linkend="tutorial.functions.overloading">多重定義</link>の節で見た例だと 4 つの多重定義関数は引数の先頭列が共通であるので、<symbol>BOOST_PYTHON_MEMBER_FUNCTION_OVERLOADS</symbol> を使って最初の 3 つの <function>def</function> を自動的にラップでき、残り 1 つだけを手動でラップすることになる。以下のようにする。
 	</para>
 	<programlisting language="C++">BOOST_PYTHON_MEMBER_FUNCTION_OVERLOADS(xf_overloads, f, 1, 4)</programlisting>
 	<para>
-	  両方の <methodname>X::f</methodname> 多重定義について、メンバ関数ポインタを作成すると、
+	  両方の <methodname>X::f</methodname> 多重定義について、以前と同様にメンバ関数ポインタを作成すると、
 	</para>
 	<programlisting language="C++">bool    (X::*fx1)(int, double, char)    = &amp;X::f;
 int     (X::*fx2)(int, int, int)        = &amp;X::f;</programlisting>
@@ -1098,6 +1104,7 @@ object getfunc() {
 	</listitem>
 	<listitem>
 	  <para><classname>enum_</classname></para>
+	  <!-- 原文は 'enum' になってる -->
 	</listitem>
       </itemizedlist>
       <para>
@@ -1118,7 +1125,7 @@ object getfunc() {
       <programlisting language="C++">void f(str name)
 {
     object n2 = name.attr("upper")();   // NAME = name.upper()
-    str NAME = name.upper();            // こちらのほうがよい
+    str NAME = name.upper();            // のほうがよい
     object msg = "%s is bigger than %s" % make_tuple(NAME,name);
 }</programlisting>
       <para>
@@ -1209,9 +1216,9 @@ d["whatever"] = 3;          // x.__dict__ を変更する！</programlisting>
 	新しい列挙は現在の <methodname>scope()</methodname> に作成される。これは大抵の場合現在のモジュールである。上記のコード片は Python の <type>int</type> 型から派生した、第 1 引数に渡した C++ 型に対応する Python クラスを作成する。
       </para>
       <note>
-	<title>スコープとは</title>
+	<title>scope とは</title>
 	<para>
-	  スコープは、新しい拡張クラスやラップした関数が属性として定義される Python の名前空間を制御するグローバルな関連 Python オブジェクトを持つクラスである。詳細は<link linkend="header.scope_hpp">リファレンス</link>を見よ。
+	  <classname>scope</classname> は、新しい拡張クラスやラップした関数が属性として定義される Python の名前空間を制御するグローバルな関連 Python オブジェクトを持つクラスである。詳細は<link linkend="header.scope_hpp">リファレンス</link>を見よ。
 	</para>
       </note>
       <para>
@@ -1235,7 +1242,7 @@ enum_&lt;X::nested&gt;("nested")
     </section>
 
     <section xml:id="tutorial.object.creating_python_object">
-      <title>PyObject* から boost::python::object を作成する</title>
+      <title><type>PyObject*</type> から <classname>boost::python::object</classname> を作成する</title>
       <para>
 	<type>PyObject*</type> である <varname>pyobj</varname> へのポインタを <classname>boost::python::object</classname> で管理したい場合、以下のようにする。
       </para>
@@ -1319,7 +1326,7 @@ exe embedded_program # 実行可能ファイルの名前
 	  </para>
 	</note>
 	<para>
-	  （当然ながら、上記の段階の間に C++ コードが入る。）
+	  （当然ながら、上記の各段階の間に他の C++ コードを挟んでもよい。）
 	</para>
 	<para>
 	  これでプログラムにインタープリタを組み込み可能になった。次に使用方法を見ていく。
@@ -1372,7 +1379,7 @@ object ignored = exec("hello = file('hello.txt', 'w')\n"
       <section xml:id="tutorial.embedding.using_the_interpreter.manipulating_python_objects">
 	<title>Python のオブジェクトを操作する</title>
 	<para>
-	  Python オブジェクトを操作するクラスを用意したいことがよくある。しかしすでに上記や<link linkend="tutorial.object">前節</link>でそのようなクラスを見た。文字通りの名前を持つ <classname>object</classname> とその派生型である。またそれらを <classname>handle</classname> から構築できることも見た。以下の例を見ればより明らかだろう。
+	  Python オブジェクトを操作するクラスが欲しくなることがよくある。しかしすでに上記や<link linkend="tutorial.object">前節</link>でそのようなクラスを見た。文字通りの名前を持つ <classname>object</classname> とその派生型である。またそれらを <classname>handle</classname> から構築できることも見た。以下の例を見ればより明らかだろう。
 	</para>
 	<programlisting language="C++">object main_module = import("__main__");
 object main_namespace = main_module.attr("__dict__");
@@ -1407,7 +1414,7 @@ catch(error_already_set const &amp;)
 {
     if (PyErr_ExceptionMatches(PyExc_ZeroDivisionError))
     {
-        // ZeroDivisionError を個別に処理する
+        // ZeroDivisionError を特別扱いする
     }
     else
     {
@@ -1425,7 +1432,7 @@ catch(error_already_set const &amp;)
   <section xml:id="tutorial.iterators">
     <title>イテレータ</title>
     <para>
-      C++、特に STL においてイテレータはあらゆる場面で使用されている。Python にもイテレータがあるが、両者には大きな違いがある。
+      C++ 、特に STL においてイテレータはあらゆる場面で使用されている。Python にもイテレータがあるが、両者には大きな違いがある。
     </para>
 
     <variablelist>
@@ -1540,7 +1547,7 @@ for y in f.bogons:
     <section>
       <title>stl_input_iterator</title>
       <para>
-	ここまで C++ のイテレータと範囲を Python へエクスポートする方法を見てきた。しかし時には違うこと、Python のシーケンスを STL アルゴリズムに渡したり、STL コンテナを初期化したいと考えることがある。Python のイテレータを STL のイテレータのように見せかける必要がある。これには <classname>stl_input_iterator&lt;&gt;</classname> を使用する。<methodname>std::list&lt;int&gt;::assign()</methodname> を Python へエクスポートする関数の実装方法を考えよう。
+	ここまで C++ のイテレータと範囲を Python へエクスポートする方法を見てきた。しかしこれ以外に、Python のシーケンスを STL アルゴリズムに渡したり、STL コンテナを初期化したい場合がある。Python のイテレータを STL のイテレータのように見せかける必要がある。これには <classname>stl_input_iterator&lt;&gt;</classname> を使用する。<methodname>std::list&lt;int&gt;::assign()</methodname> を Python へエクスポートする関数の実装方法を考えよう。
       </para>
       <programlisting language="C++">template&lt;typename T&gt;
 void list_assign(std::list&lt;T&gt;&amp; l, object o) {
@@ -1565,7 +1572,7 @@ x.assign([1,2,3,4,5])</programlisting>
   <section xml:id="tutorial.exception">
     <title>例外の変換</title>
     <para>
-      C++ の例外はすべて Python コードとの境界で捕捉しなければならない。この境界は C++ が Python と接する地点である。Boost.Python は選択した標準の例外を変換してダウンする既定の例外ハンドラを提供する。
+      C++ の例外はすべて Python コードとの境界で捕捉しなければならない。この境界は C++ が Python と接する地点である。Boost.Python は、選択した標準の例外を変換して処理を中止する既定の例外ハンドラを提供する。
     </para>
     <programlisting language="Python">raise RuntimeError, 'unidentifiable C++ Exception'</programlisting>
     <para>
@@ -1661,7 +1668,7 @@ BOOST_PYTHON_MODULE(filters)
 <prompt>&gt;&gt;&gt; </prompt><userinput>sound = sounds.io.open('file.mp3')</userinput>
 <prompt>&gt;&gt;&gt; </prompt><userinput>new_sound = sounds.filters.echo(sound, 1.0)</userinput></screen>
       <para>
-	何も問題ないようだが、どうだろう？
+	何も問題無いようだが、どうだろう？
       </para>
       <para>
 	これはパッケージ階層を作成する最も単純な方法だが、柔軟性がまるでない。<emphasis>純粋な</emphasis> Python の関数、例えば音オブジェクトに 3 つのフィルタを同時にかける関数を <package>filters</package> パッケージに追加したい場合はどうだろうか？ 確かにC++ で書いてエクスポートすれば可能だが、Python でやってみてはどうか。そうすれば拡張モジュールの再コンパイルが不要で、書くのも簡単である。
@@ -1676,7 +1683,7 @@ BOOST_PYTHON_MODULE(_core)
     /* 名前空間 sounds::core 内のものをすべてエクスポートする */
 }</programlisting>
       <para>
-	モジュール名に下線を追加したことに注意していただきたい。ファイル名も <filename>_core.pyd</filename> に変わるはずである。他の拡張モジュールも同様である。これでパッケージ階層は以下のように変更された。
+	モジュール名にアンダースコアを追加したことに注意していただきたい。ファイル名も <filename>_core.pyd</filename> に変わるはずである。他の拡張モジュールも同様である。これでパッケージ階層は以下のように変更された。
       </para>
       <literallayout>sounds/
     __init__.py
@@ -1824,7 +1831,7 @@ def point(x=0, y=0):
     <section xml:id="tutorial.techniques.reducing_compiling_time">
       <title>コンパイルにかかる時間を短縮する</title>
       <para>
-	多数のクラスをエクスポートすると、Boost.Python ラッパのコンパイルにかなりの時間がかかる。またメモリの消費量が容易に過大となる。これが問題となるのであれば、<classname>class_</classname> 定義を複数のファイルに分割するとよい。
+	クラスを大量にエクスポートすると、Boost.Python ラッパのコンパイルにかなりの時間がかかる。またメモリの消費量が容易に過大となる。これが問題となるのであれば、<classname>class_</classname> 定義を複数のファイルに分割するとよい。
       </para>
       <programlisting language="C++">/* ファイル point.cpp */
 #include &lt;point.h&gt;
