@@ -1876,11 +1876,14 @@ BOOST_PYTHON_MODULE(_geom)
       <para>
 	C++ ライブラリ開発と Python へのエクスポートを同時に行っている場合にも、この方法を推奨する。クラス内で変更があっても、ラッパコード全体ではなく単一の cpp ファイルについてコンパイルが必要になるだけである。
       </para>
+      <!-- 1.61 で削除 -->
+<!--
       <note>
 	<para>
-	  <link linkend="pyste">Pyste</link> を使ってクラスをエクスポートする場合は、<option>--multiple</option> オプションを覚えておくとよい。ここで示したように複数のファイルにラッパを生成する。
+	  <link linkend="pyste">Pyste</link> を使ってクラスをエクスポートする場合は、<option>&#x2d;&#x2d;multiple</option> オプションを覚えておくとよい。ここで示したように複数のファイルにラッパを生成する。
 	</para>
       </note>
+-->
       <note>
 	<para>
 	  巨大なソースファイルをコンパイルしてエラーメッセージ「致命的なエラー C1204：コンパイラの制限：内部構造がオーバーフローしました。」が出た場合にも、この方法を推奨する。<link linkend="faq.fatal_error_c1204_compiler_limit">FAQ</link> に説明がある。
