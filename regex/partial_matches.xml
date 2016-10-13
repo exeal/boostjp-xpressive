@@ -58,6 +58,11 @@
 	現時点では Boost.Regex は完全マッチに対して最左マッチを採用しているため、<phrase role="regex-input">ab</phrase> に対して <phrase role="regex-pattern">abc|b</phrase> でマッチをかけると <phrase role="regex-input">b</phrase> に対する完全マッチではなく <phrase role="regex-input">ab</phrase> に対する部分マッチが得られる。
       </para>
     </listitem>
+    <listitem>
+      <para>
+	部分マッチが成立するにも関わらず完全マッチが見つかる場合がある。例えば部分文字列の末尾が <phrase role="regex-input">abc</phrase> で正規表現が <phrase role="regex-pattern">\w+</phrase> であれば、後続にアルファベット文字が現れる可能性があるにも関わらず完全マッチが見つかる。マッチが現在の入力文字列の終端で見つかるか調べれば、今回のケースを検出可能である。ただし不可能な場合もあり、例えば <phrase role="regex-pattern">abc.*123</phrase> のような正規表現は（それがどれだけ長くなるかに関わらず）入力文字列全体にマッチするだろうから、常により長いマッチとなる。
+      </para>
+    </listitem>
   </itemizedlist>
   <para>
     次の例は、テキストが正しいクレジットカード番号となり得るかを、調べる。ユーザが打鍵して入力された文字が文字列に追加されるたびに、文字列を <function>is_possible_card_number</function> に渡すという使い方を想定している。この手続きが真を返す場合、テキストは正しいクレジットカード番号であり、ユーザインターフェイスの OK ボタンを有効にする。偽を返す場合、テキストはまだ正しいカード番号になっていないが、さらに入力があれば正しい番号となるため、ユーザインターフェイスの OK ボタンを無効にする。最後に手続きが例外を投げる場合は、入力が正しい番号となる可能性が無いため、入力テキストを破棄して適切なエラーをユーザに表示しなければならない。

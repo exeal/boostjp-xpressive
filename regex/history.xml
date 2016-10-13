@@ -17,8 +17,34 @@
     クローズなものを含めた全項目は<link xlink:href="https://svn.boost.org/trac/boost/query?status=assigned&amp;status=closed&amp;status=new&amp;status=reopened&amp;component=regex&amp;order=priority&amp;col=id&amp;col=summary&amp;col=status&amp;col=type&amp;col=milestone&amp;col=component">ここ</link>から見られる。
   </para>
 
-  <sect4 xml:id="background_information.history.boost_regex_5_1_1">
-    <title>Boost.Regex-5.1.1</title>
+  <sect4 xml:id="background_information.history.boost_regex_5_1_2_boost_1_62_0">
+    <title>Boost.Regex-5.1.2（Boost-1.62.0）</title>
+    <itemizedlist>
+      <listitem>
+	<para>
+	  特定の正規表現を解析したときに発生するバッファオーバーランを修正した（<link xlink:href="https://svn.boost.org/trac/boost/ticket/12222">#12222</link>）。
+	</para>
+      </listitem>
+      <listitem>
+	<para>
+	  ライブラリビルドにおける ICU の検出方法を修正した（<link xlink:href="https://svn.boost.org/trac/boost/ticket/12152">#12152</link>）。
+	</para>
+      </listitem>
+      <listitem>
+	<para>
+	  大文字小文字の区別切り替えにおけるバグを修正した（<link xlink:href="https://svn.boost.org/trac/boost/ticket/11940">#11940</link>）。
+	</para>
+      </listitem>
+      <listitem>
+	<para>
+	  <phrase role="regex-pattern">\x{}</phrase> 式内で（<type>char32_t</type> 等の）<type>int</type> より広い型を使えるようにした（<link xlink:href="https://svn.boost.org/trac/boost/ticket/11988">#11988</link>）。
+	</para>
+      </listitem>
+    </itemizedlist>
+  </sect4>
+
+  <sect4 xml:id="background_information.history.boost_regex_5_1_1_boost_1_61_0">
+    <title>Boost.Regex-5.1.1（Boost-1.61.0）</title>
     <itemizedlist>
       <listitem>
 	<para>
@@ -28,7 +54,7 @@
     </itemizedlist>
   </sect4>
 
-  <sect4 xml:id="background_information.history.boost_regex_5_1_0">
+  <sect4 xml:id="background_information.history.boost_regex_5_1_0_boost_1_60_0">
     <title>Boost.Regex-5.1.0（Boost-1.60.0）</title>
     <itemizedlist>
       <listitem>
