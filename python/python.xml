@@ -132,6 +132,9 @@
 	<listitem>
 	  <para><xref xrefstyle="select: title" linkend="faq"/></para>
 	</listitem>
+	<listitem>
+	  <para><link linkend="numpy">Numpy 拡張</link></para>
+	</listitem>
       </itemizedlist>
 
       <note>
@@ -184,6 +187,7 @@
   <xi:include href="glossary.xml"/>
   <xi:include href="support.xml"/>
   <xi:include href="faq.xml"/>
+  <xi:include href="numpy/index.xml"/>
 
   <xi:include href="platforms.xml"/>
   <xi:include href="projects.xml"/>
