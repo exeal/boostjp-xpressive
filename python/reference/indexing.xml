@@ -104,7 +104,7 @@ val == c[i]</programlisting>
 	      このメソッドは、コンテナに対してイテレータが要求されたときに呼び出される。このメソッドは、コンテナ内のすべてのオブジェクトを走査する新しいイテレータオブジェクトを返さなければならない。マップ型については、コンテナのキーを走査しなければならず、<methodname>iterkeys()</methodname> メソッドとしても利用可能でなければならない。
 	    </para>
 	    <para>
-	      イテレータオブジェクトもまたこのメソッドを実装する必要があり、自分自身を返さなければならない。イテレータオブジェクトの詳細については、<link xlink:href="http://docs.python.jp/2/library/index.html">Python ライブラリリファレンス</link>の「<link xlink:href="http://docs.python.jp/2/library/stdtypes.html#typeiter">イテレータ型</link>」を見よ。
+	      イテレータオブジェクトもまたこのメソッドを実装する必要があり、自分自身を返さなければならない。イテレータオブジェクトの詳細については、<link xlink:href="https://docs.python.jp/3/library/index.html">Python ライブラリリファレンス</link>の「<link xlink:href="https://docs.python.jp/3/library/stdtypes.html#iterator-types">イテレータ型</link>」を見よ。
 	    </para>
 	  </listitem>
 	</varlistentry>

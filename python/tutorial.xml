@@ -1352,6 +1352,9 @@ object exec_file(str filename, object globals = object(), object locals = object
 	  <function>eval</function> は与えられた式を評価し結果の値を返す。<function>exec</function> は与えられたコード（典型的には文の集まり）を実行し結果を返す。<function>exec_file</function>は与えられたファイル内のコードを実行する。
 	</para>
 	<para>
+	  これらについては第 1 引数が <classname>str</classname> ではなく <type>char* const</type> となっている多重定義もある。
+	</para>
+	<para>
 	  <parameter>globals</parameter> と <parameter>locals</parameter> 引数は、コードを実行するコンテキストの <varname>globals</varname> と <varname>locals</varname> に相当する Python の辞書である。ほとんどの目的において、<package>__main__</package> モジュールの名前空間辞書を両方の引数に使用するとよい。
 	</para>
 	<para>

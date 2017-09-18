@@ -5,7 +5,6 @@
   <xi:include href="dict.xml"/>
   <xi:include href="list.xml"/>
   <xi:include href="long.xml"/>
-  <xi:include href="numeric.xml"/>
   <xi:include href="object.xml"/>
   <xi:include href="str.xml"/>
   <xi:include href="slice.xml"/>

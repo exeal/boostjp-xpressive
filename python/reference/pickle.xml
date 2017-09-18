@@ -9,7 +9,7 @@
     <!-- 自己記述 = "introspection" -->
   </para>
   <para>
-    Boost.Python ライブラリは、<link xlink:href="http://docs.python.jp/2/library/pickle.html">Python ライブラリリファレンスの pickle の項</link>に詳細記載のインターフェイスを通じて pickle モジュールをサポートする。このインターフェイスは以下に述べる特殊メソッド <methodname>__getinitargs__</methodname> 、<methodname>__getstate__</methodname> および <methodname>__setstate__</methodname> を必要とする。Boost.Python は Python の cPickle モジュールとも完全に互換であることに注意していただきたい。
+    Boost.Python ライブラリは、<link xlink:href="https://docs.python.jp/2/library/pickle.html">Python ライブラリリファレンスの pickle の項</link>に詳細記載のインターフェイスを通じて pickle モジュールをサポートする。このインターフェイスは以下に述べる特殊メソッド <methodname>__getinitargs__</methodname> 、<methodname>__getstate__</methodname> および <methodname>__setstate__</methodname> を必要とする。Boost.Python は Python の cPickle モジュールとも完全に互換であることに注意していただきたい。
   </para>
 
   <section>

@@ -320,14 +320,6 @@ list odd_elements(list l)
     return l[slice(_,_,2)];
 }
 
-// Numeric.array の多次元拡張スライスをとる
-numeric::array even_columns(numeric::array arr)
-{
-    // 2 次元配列の 2 番目から 1 列おきに選択。
-    // Pythonの "return arr[:, 1::2]" と等価。
-    return arr[make_tuple( slice(), slice(1,_,2))];
-}
-
 // std::vector のスライスに対して合計をとる。
 double partial_sum(std::vector<double> const& Foo, const slice index)
 {
