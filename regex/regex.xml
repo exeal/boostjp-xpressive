@@ -21,7 +21,7 @@
 	</personname>
       </author>
     </authorgroup>
-    <!-- [version 5.1.2] -->
+    <!-- [version 5.1.3] -->
     <!-- [/last-revision $Date$] -->
   </info>
 
@@ -29,7 +29,7 @@
     <title>翻訳にあたって</title>
     <itemizedlist>
       <listitem>
-	<para>本書は <link xlink:href="http://www.boost.org/doc/libs/1_58_0/libs/regex/index.html">Boost.Regex ドキュメント</link>の日本語訳です。原文書のバージョンは翻訳時の最新である 1.60.0 です。</para>
+	<para>本書は <link xlink:href="http://www.boost.org/doc/libs/1_65_1/libs/regex/index.html">Boost.Regex ドキュメント</link>の日本語訳です。原文書のバージョンは翻訳時の最新である 1.65.1 です。</para>
       </listitem>
       <listitem>
 	<para>原文の誤りは修正したうえで翻訳しました。</para>

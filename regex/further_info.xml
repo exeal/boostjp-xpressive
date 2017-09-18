@@ -8,7 +8,7 @@
 <section xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink" xml:lang="ja" version="5.0" xml:id="background_information.futher">
   <title>参考文献とさらなる情報</title>
   <para>
-    正規表現の短いチュートリアルが<link xlink:href="http://etext.lib.virginia.edu/helpsheets/regex.html">ここ</link>と<link xlink:href="http://www.linuxpcug.org/lessons/regexp.html">ここ</link>にある。
+    Perl の正規表現について主なチュートリアルが<link xlink:href="http://perldoc.perl.org/perlretut.html">ここ</link>にある。主要な機能についてより短い概要が<link xlink:href="https://www.cs.tut.fi/~jkorpela/perl/regexp.html">ここ</link>にある。
   </para>
   <para>
     正規表現に関する最も重要な書籍は <link xlink:href="http://oreilly.com/catalog/9780596528126/">O'Reilly 出版の Mastering Regular Expressions</link> である。

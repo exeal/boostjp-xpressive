@@ -26,6 +26,9 @@ boost::regex e2(my_expression, boost::regex::perl|boost::regex::icase);]]></prog
       Perl の正規表現では、以下の特別なものを除くあらゆる文字が文字そのものにマッチする。
     </para>
     <literallayout>.[{()\*+?|^$</literallayout>
+    <para>
+      他の文字は特定の場合のみ特別扱いである。例えば <phrase role="regex-pattern">]</phrase> は開き <phrase role="regex-pattern">[</phrase> の後のみ特別扱いとなる。
+    </para>
 
     <sect4 xml:id="syntax.perl_syntax.wildcard">
       <title>ワイルドカード</title>
