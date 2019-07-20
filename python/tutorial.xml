@@ -119,7 +119,7 @@ BOOST_PYTHON_MODULE(hello_ext)
 	最小限の Jamroot ファイルを <filename>/libs/python/example/tutorial/Jamroot</filename> に置いておく。そのままファイルをコピーして <code>use-project boost</code> の部分を Boost のルートディレクトリに設定すればよい。
       </para>
       <para>
-	必要なことはこの Jamrules ファイルのコメントに書いてある。
+	必要なことはこの Jamroot ファイルのコメントに書いてある。
       </para>
     </section>
 
@@ -1790,6 +1790,7 @@ point.__str__ = point_str</programlisting>
 	  <para>高速なプロトタイピング（インターフェイスを変更しないことが要求されている場合、コードを C++ に移動することが可能）</para>
 	</listitem>
       </itemizedlist>
+<!--
       <para>
 	メタクラスを使って簡単な構文糖を追加することもできる。メソッドを他のクラスに「注入する」特別なメタクラスを作成しよう。
       </para>
@@ -1819,6 +1820,7 @@ class more_point(injector, point):
 <computeroutput>Point(x=10, y=10)</computeroutput>
 <prompt>&gt;&gt;&gt; </prompt><userinput>point().foo()</userinput>
 <computeroutput>foo!</computeroutput></screen>
+-->
       <para>
 	別の有用な考えとして、コンストラクタをファクトリ関数で置き換える方法がある。
       </para>
