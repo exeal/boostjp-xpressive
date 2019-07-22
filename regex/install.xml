@@ -107,10 +107,5 @@
 	</para>
       </listitem>
     </itemizedlist>
-    <important>
-      <para>
-	Boost.Regex で提供しているメイクファイルは非推奨となったため、次回のリリースで削除する。
-      </para>
-    </important>
   </sect4>
 </section>

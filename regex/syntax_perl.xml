@@ -189,7 +189,7 @@ aaaa</literallayout>
       <para>
 	エスケープ文字の直後に数字 <replaceable>n</replaceable> があると、部分式 <replaceable>n</replaceable> にマッチしたものと同じ文字列にマッチする。<replaceable>n</replaceable> は 0 から 9 の範囲である。例えば次の正規表現は、
       </para>
-      <literallayout>^(a*).*\1$</literallayout>
+      <literallayout>^(a*)[^a]*\1$</literallayout>
       <para>
 	次の文字列にマッチする。
       </para>
@@ -395,7 +395,7 @@ aaaa</literallayout>
 	  </tr>
 	  <tr>
 	    <td><phrase role="regex-pattern">\cX</phrase></td>
-	    <td>ASCII エスケープシーケンス。コードポイントがX % 32の文字</td>
+	    <td>ASCII エスケープシーケンス。コードポイントが X % 32の文字</td>
 	  </tr>
 	  <tr>
 	    <td><phrase role="regex-pattern">\xdd</phrase></td>

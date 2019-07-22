@@ -5,7 +5,7 @@
   (See accompanying file LICENSE_1_0.txt or copy at
   http://www.boost.org/LICENSE_1_0.txt).
 -->
-<section xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink" xml:lang="ja" version="5.0" xml:id="background_information.thread_safety">
+<section xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink" xml:lang="ja" version="5.0" xml:id="background.thread_safety">
   <title>スレッド安全性</title>
   <para>
     Boost がスレッド安全であれば、Boost.Regex はスレッド安全である。Boost がスレッド安全モードであるかどうか確認するには、<symbol>BOOST_HAS_THREADS</symbol> が定義されているか調べるとよい。コンパイラがスレッドのサポートを有効にしていれば、設定システムがこのマクロを自動的に定義する。
@@ -17,7 +17,7 @@
     <link linkend="ref.posix">POSIX API 関数</link>はすべて再入可能かつスレッド安全であり、<function>regcomp</function> でコンパイルした正規表現もスレッド間で共有可能である。
   </para>
   <para>
-    <classname linkend="ref.deprecated_interfaces.old_regex">RegEx</classname> クラスは、各スレッドが <classname>RegEx</classname> インスタンスを保持する場合のみスレッド安全である（アパートメントスレッディング）。これは <classname>RegEx</classname> が正規表現のコンパイルとマッチの両方を処理するためである。
+    <classname linkend="ref.deprecated.old_regex">RegEx</classname> クラスは、各スレッドが <classname>RegEx</classname> インスタンスを保持する場合のみスレッド安全である（アパートメントスレッディング）。これは <classname>RegEx</classname> が正規表現のコンパイルとマッチの両方を処理するためである。
   </para>
   <para>
     最後に、大域ロカールを変更するとあらゆるコンパイル済み正規表現が無効になるため、あるスレッドで正規表現を使用しているときに別のスレッドが <function>setlocale</function> を呼び出すと予期しない結果となることに注意していただきたい。

@@ -5,10 +5,10 @@
   (See accompanying file LICENSE_1_0.txt or copy at
   http://www.boost.org/LICENSE_1_0.txt).
 -->
-<section xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink" xml:lang="ja" version="5.0" xml:id="ref.internal_details.uni_iter">
+<section xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink" xml:lang="ja" version="5.0" xml:id="ref.internals.uni_iter">
   <title>Unicode イテレータ</title>
 
-  <sect4 xml:id="ref.internal_details.uni_iter.synopsis">
+  <sect4 xml:id="ref.internals.uni_iter.synopsis">
     <title>概要</title>
     <programlisting language="C++"><![CDATA[#include <boost/regex/pending/unicode_iterator.hpp>]]></programlisting>
     <classsynopsis language="C++">
@@ -49,7 +49,7 @@
     </classsynopsis>
   </sect4>
 
-  <sect4 xml:id="ref.internal_details.uni_iter.description">
+  <sect4 xml:id="ref.internals.uni_iter.description">
     <title>説明</title>
     <para>
       このヘッダに含まれるのは、あるエンコーディングの文字シーケンスを別のエンコーディングの読み取り専用文字シーケンス「のように見せる」イテレータアダプタ群である。

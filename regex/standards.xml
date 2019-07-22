@@ -5,17 +5,17 @@
   (See accompanying file LICENSE_1_0.txt or copy at
   http://www.boost.org/LICENSE_1_0.txt).
 -->
-<section xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink" xml:lang="ja" version="5.0" xml:id="background_information.standards">
+<section xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink" xml:lang="ja" version="5.0" xml:id="background.standards">
   <title>標準への適合</title>
 
-  <sect4 xml:id="background_information.standards.c__">
+  <sect4 xml:id="background.standards.c__">
     <title>C++</title>
     <para>
       Boost.Regex は <link xlink:href="http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2005/n1836.pdf">Technical Report on C++ Library Extensions</link> への適合を意図している。
     </para>
   </sect4>
 
-  <sect4 xml:id="background_information.standards.ecmascript___javascript">
+  <sect4 xml:id="background.standards.ecmascript___javascript">
     <title>ECMAScript / JavaScript</title>
     <para>
       以下を除く ECMAScript 正規表現構文のすべての機能をサポートする。
@@ -25,7 +25,7 @@
     </para>
   </sect4>
 
-  <sect4 xml:id="background_information.standards.perl">
+  <sect4 xml:id="background.standards.perl">
     <title>Perl</title>
     <para>
       以下を除く Perl のほとんどすべての機能をサポートする。
@@ -60,7 +60,7 @@
     </itemizedlist>
   </sect4>
 
-  <sect4 xml:id="background_information.standards.posix">
+  <sect4 xml:id="background.standards.posix">
     <title>POSIX</title>
     <para>
       以下を除く POSIX 標準および拡張のすべての機能をサポートする。
@@ -73,7 +73,7 @@
     </para>
   </sect4>
 
-  <sect4 xml:id="background_information.standards.unicode">
+  <sect4 xml:id="background.standards.unicode">
     <title>Unicode</title>
     <para>
       以下のコメントは <link xlink:href="http://www.unicode.org/reports/tr18/tr18-11.html">Unicode Technical Report #18: Unicode Regular Expressions version 11</link> に対するものである。

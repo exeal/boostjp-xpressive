@@ -5,10 +5,10 @@
   (See accompanying file LICENSE_1_0.txt or copy at
   http://www.boost.org/LICENSE_1_0.txt).
 -->
-<section xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink" xml:lang="ja" version="5.0" xml:id="background_information.examples">
+<section xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink" xml:lang="ja" version="5.0" xml:id="background.examples">
   <title>テストとサンプルプログラム</title>
 
-  <sect4 xml:id="background_information.examples.test_programs">
+  <sect4 xml:id="background.examples.test_programs">
     <title>テストプログラム</title>
     <variablelist>
       <varlistentry>
@@ -181,7 +181,7 @@
     </variablelist>
   </sect4>
 
-  <sect4 xml:id="background_information.examples.example_programs">
+  <sect4 xml:id="background.examples.example_programs">
     <title>サンプルプログラム</title>
     <variablelist>
       <varlistentry>
@@ -209,7 +209,7 @@
     </variablelist>
   </sect4>
 
-  <sect4 xml:id="background_information.examples.code_snippets">
+  <sect4 xml:id="background.examples.code_snippets">
     <title>コード片</title>
     <para>
       コード片の例は本ドキュメントで使用したコード例である。

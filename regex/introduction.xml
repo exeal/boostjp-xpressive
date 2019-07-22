@@ -5,7 +5,7 @@
   (See accompanying file LICENSE_1_0.txt or copy at
   http://www.boost.org/LICENSE_1_0.txt).
 -->
-<section xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink" xml:lang="ja" version="5.0" xml:id="introduction_and_overview">
+<section xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink" xml:lang="ja" version="5.0" xml:id="intro">
   <title>導入と概要</title>
   <para>
     正規表現はテキスト処理でよく使われるパターンマッチの形式である。Unix ユーティリティの grep 、sed 、awk やプログラミング言語Perlといった正規表現を広範にわたって利用しているツールに馴染みのあるユーザは多い。古くから C++ ユーザが正規表現処理を行う方法は POSIX C API に限られていた。Boost.Regex もこれらの API を提供するが、本ライブラリの最適な利用法ではない。例えば Boost.Regex はワイド文字列に対応している。また従来の C ライブラリでは不可能だった（sed や Perl で使用されているような）検索や置換も可能である。
@@ -85,12 +85,12 @@ typedef match_results<std::wstring::const_iterator> wsmatch;
     テキスト中のマッチ結果をすべて走査するイテレータ型が 2 つある。<classname linkend="ref.regex_iterator">regex_iterator</classname> は見つかった <classname linkend="ref.match_results">match_results</classname> オブジェクトを列挙する。一方 <classname linkend="ref.regex_token_iterator">regex_token_iterator</classname> は文字列の列を列挙する（Perl スタイルの分割操作に似ている）。
   </para>
   <para>
-    テンプレートを使うのが嫌な人には、低水準のテンプレートコードをカプセル化した高水準のラッパクラス <classname linkend="ref.deprecated_interfaces.old_regex">RegEx</classname> がある。ライブラリの全機能は必要ないという人向けの簡単なインターフェイスとなっており、ナロー文字と「拡張」正規表現構文のみをサポートする。正規表現 C++ 標準ライブラリの草案には含まれておらず、現在は非推奨である。
+    テンプレートを使うのが嫌な人には、低水準のテンプレートコードをカプセル化した高水準のラッパクラス <classname linkend="ref.deprecated.old_regex">RegEx</classname> がある。ライブラリの全機能は必要ないという人向けの簡単なインターフェイスとなっており、ナロー文字と「拡張」正規表現構文のみをサポートする。正規表現 C++ 標準ライブラリの草案には含まれておらず、現在は非推奨である。
   </para>
   <para>
     POSIX API 関数 <function linkend="ref.posix.regcomp">regcomp</function> 、<function linkend="ref.posix.regexec">regexec</function> 、<function linkend="ref.posix.regfree">regfree</function> および <function linkend="ref.posix.regerror">regerror</function> はナロー文字および Unicode 版の両方で利用可能であり、これらの API との互換性が必要な場合のために提供している。
   </para>
   <para>
-    最後に、本ライブラリは GNU および BSD4 の regex パッケージや PCRE 、Perl 5 といった正規表現ライブラリの他に、<link linkend="background_information.locale">実行時の地域化</link>と完全な POSIX 正規表現構文もサポートしている。これには複数文字の照合要素や等価クラスのような発展的な機能も含まれている。
+    最後に、本ライブラリは GNU および BSD4 の regex パッケージや PCRE 、Perl 5 といった正規表現ライブラリの他に、<link linkend="background.locale">実行時の地域化</link>と完全な POSIX 正規表現構文もサポートしている。これには複数文字の照合要素や等価クラスのような発展的な機能も含まれている。
   </para>
 </section>

@@ -5,7 +5,7 @@
   (See accompanying file LICENSE_1_0.txt or copy at
   http://www.boost.org/LICENSE_1_0.txt).
 -->
-<section xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink" xml:lang="ja" version="5.0" xml:id="background_information.locale">
+<section xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink" xml:lang="ja" version="5.0" xml:id="background.locale">
   <title>地域化</title>
   <para>
     Boost.Regex は実行時の地域化について広範のサポートを提供する。この地域化モデルは、フロントエンドとバックエンドの2つの部分に分けられる。
@@ -20,7 +20,7 @@
     個別の地域化の機構が 3 つ、Boost.Regex によりサポートされている。
   </para>
 
-  <sect4 xml:id="background_information.locale.win32_localization_model">
+  <sect4 xml:id="background.locale.win32_localization_model">
     <title>Win32 地域化モデル</title>
     <para>
       ライブラリを Win32 のもとでコンパイルした場合の既定で、特性クラス <classname>w32_regex_traits</classname> によりカプセル化される。このモデルを使用する場合、<classname linkend="ref.basic_regex">basic_regex</classname> オブジェクトは各自で LCID を保持する。既定ではこれは <function>GetUserDefaultLCID</function> が返すユーザ既定の設定だが、必要な場合は <classname>basic_regex</classname> オブジェクトの <methodname>imbue</methodname> を呼び出して他の LCID を設定することも可能である。Boost.Regex が使用する設定はすべて C 実行時ライブラリ経由で直接オペレーティングシステムから得る。フロントエンドの地域化では、ユーザ定義文字列の入ったストリングテーブルを含むリソース DLL が必要である。特性クラスは関数
@@ -35,7 +35,7 @@
     </para>
   </sect4>
 
-  <sect4 xml:id="background_information.locale.c_localization_model">
+  <sect4 xml:id="background.locale.c_localization_model">
     <title>C 地域化モデル</title>
     <para>
       C++ ロカールがあるので、C++ ロカールをサポートする非 Win32 コンパイラではこのモデルは非推奨である。このロカールは特性クラス <classname>c_regex_traits</classname> によりカプセル化され、Win32 ユーザはプリプロセッサシンボル <symbol>BOOST_REGEX_USE_C_LOCALE</symbol> を定義してこのモデルを有効化できる。このモデルが有効な場合、<function>setlocale</function> で設定可能な大域ロカールが 1 つだけ存在することになる。すべての設定は実行時ライブラリから得るため、したがって Unicode サポートは実行時ライブラリの実装による。
@@ -48,7 +48,7 @@
     </para>
   </sect4>
 
-  <sect4 xml:id="background_information.locale.c_localization_model0">
+  <sect4 xml:id="background.locale.c_localization_model0">
     <title>C++ 地域化モデル</title>
     <para>
       Windows 以外のコンパイラではこのモデルが既定である。
@@ -69,7 +69,7 @@
     </para>
   </sect4>
 
-  <sect4 xml:id="background_information.locale.providing_a_message_catalogue">
+  <sect4 xml:id="background.locale.providing_a_message_catalogue">
     <title>メッセージカタログの提供</title>
     <para>
       ライブラリのフロントエンドを地域化するためには、リソース DLL のストリングテーブル（Win32 モデル）か POSIX メッセージカタログ（C++ モデル）に適切なメッセージ文字列を含めたライブラリを提供する必要がある。後者の場合、カタログのメッセージセット 0 にメッセージを入れておかなければならない。メッセージとその ID は以下のとおりである。
