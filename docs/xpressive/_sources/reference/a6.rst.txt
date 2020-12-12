@@ -1,0 +1,14 @@
+a6 グローバル変数
+=================
+
+.. cpp:var:: unspecified a6
+
+
+概要
+----
+
+.. parsed-literal::
+
+   // ヘッダ：<:file:`boost/xpressive/regex_primitives.hpp`>
+
+   :samp:`{unspecified}` a6;
