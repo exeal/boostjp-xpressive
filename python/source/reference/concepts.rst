@@ -224,7 +224,7 @@ ResultConverter コンセプト
      - :cpp:var:`!v` に対応する Python オブジェクトへのポインタ。:cpp:var:`!r` が ``to_python`` 変換不可能な場合は ``0`` で、\ `PyErr_Occurred <http://docs.python.jp/2/c-api/exceptions.html#PyErr_Occurred>`_ は非 ``0`` を返すはずである。
    * - :cpp:expr:`c.get_pytype()`
      - :c:type:`!PyTypeObject const*`
-     - 変換の結果に対応する Python の型オブジェクトへのポインタか ``0``。ドキュメンテーションの生成に使用する。``0`` を返した場合はドキュメンテーション内で生成された型は **:cpp:type:`!object`** になる。
+     - 変換の結果に対応する Python の型オブジェクトへのポインタか ``0``。ドキュメンテーションの生成に使用する。``0`` を返した場合はドキュメンテーション内で生成された型は「:cpp:type:`!object`」になる。
 
 
 .. _concepts.resultconverter.resultconvertergenerator_concept:

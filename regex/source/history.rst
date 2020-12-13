@@ -31,7 +31,7 @@ Boost.Regex-5.1.2（Boost-1.62.0）
 * 特定の正規表現を解析したときに発生するバッファオーバーランを修正した（`#12222 <https://svn.boost.org/trac/boost/ticket/12222>`_）。
 * ライブラリビルドにおける ICU の検出方法を修正した（`#12152 <https://svn.boost.org/trac/boost/ticket/12152>`_）。
 * 大文字小文字の区別切り替えにおけるバグを修正した（`#11940 <https://svn.boost.org/trac/boost/ticket/11940>`_）。
-* :regexp:`\\x{}` 式内で（:cpp:type:`!char32_t` 等の）:cpp:type:`!int` より広い型を使えるようにした（`#11988 <https://svn.boost.org/trac/boost/ticket/11988>`_）。
+* :regexp:`\\x{}` 式内で（:cpp:type:`!char32_t` 等の）\ :cpp:type:`!int` より広い型を使えるようにした（`#11988 <https://svn.boost.org/trac/boost/ticket/11988>`_）。
 
 
 .. _background.history.boost_regex_5_1_1_boost_1_61_0:

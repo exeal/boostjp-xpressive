@@ -228,9 +228,9 @@ bjam を起動する
        ;
    }
 
-:cpp:func:`!init<std::string>()` が、:cpp:type:`!std::string` を引数にとるコンストラクタをエクスポートする（Python ではコンストラクタを「:code:`"__init__"`」と書く）。
+:cpp:func:`!init<std::string>()` が、:cpp:type:`!std::string` を引数にとるコンストラクタをエクスポートする（Python ではコンストラクタを「\ :code:`"__init__"`\」と書く）。
 
-:cpp:func:`!def() メンバ関数に :cpp:class:`!init\<...>` を渡すことでエクスポートするコンストラクタを追加できる。例えば :cpp:class:`!World` に :cpp:type:`!double` を 2 つとる別のコンストラクタがあるとすれば、 ::
+:cpp:func:`!def()` メンバ関数に :cpp:class:`!init\<...>` を渡すことでエクスポートするコンストラクタを追加できる。例えば :cpp:class:`!World` に :cpp:type:`!double` を 2 つとる別のコンストラクタがあるとすれば、 ::
 
    class_<World>("World", init<std::string>())
        .def(init<double, double>())

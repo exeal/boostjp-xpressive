@@ -3,7 +3,7 @@ push_back 構造体テンプレート
 
 .. cpp:struct:: op::push_back
 
-   :cpp:struct::`push_back` は、コンテナに値を追加する PolymorphicFunctionObject である。
+   :cpp:struct:`push_back` は、コンテナに値を追加する PolymorphicFunctionObject である。
 
 
 .. cpp:namespace-push:: op::push_back
