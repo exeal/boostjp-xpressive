@@ -2,9 +2,8 @@
 
 Personal Japanese translation of Boost.Xpressive documentation.
 
-<dl>
-  <dt>Input</dt>
-  <dd>http://www.boost.org/libs/xpressive/</dd>
-  <dt>Output</dt>
-  <dd>http://boostjp-xpressive.readthedocs.io/</dd>
-</dl>
+- Input
+  - http://www.boost.org/libs/xpressive/
+- Output
+  - http://boostjp-xpressive.readthedocs.io/
+    [![Documentation Status](https://readthedocs.org/projects/boostjp-xpressive/badge/?version=latest)](https://boostjp-xpressive.readthedocs.io/ja/latest/?badge=latest)
