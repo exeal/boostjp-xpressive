@@ -1,7 +1,10 @@
-# exeal.boostjp #
+# exeal.boostjp-xpressive
 
-Personal Japanese translation of Boost documentation (http://www.boost.org/).
+Personal Japanese translation of Boost.Xpressive documentation.
 
-* Boost.Python
-* Boost.Regex
-* Boost.Xpressive
+<dl>
+  <dt>Input</dt>
+  <dd>http://www.boost.org/libs/xpressive/</dd>
+  <dt>Output</dt>
+  <dd>http://boostjp-xpressive.readthedocs.io/</dd>
+</dl>
